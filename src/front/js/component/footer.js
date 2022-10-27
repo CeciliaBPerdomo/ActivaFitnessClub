@@ -1,11 +1,29 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
+import logo from "../../img/wpp.jpg.png"
+import {Link} from "react-router-dom"
+
 
 export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
-		<p>
-			Made with <i className="fa fa-heart text-danger" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
-		</p>
-		<p>crecrtv</p>
-	</footer>
+    <footer className="bg-dark text-center text-white">
+        <div>
+            <p>Dirección : Colonia del Sacramento-Fosalba 674
+            </p>
+
+            <button><img className="center rounded"
+                    src={logo}
+                    style={
+                        {
+                            maxWidth: "30px",
+                            maxHeigth: "30px"
+                        }
+                    }
+                    onClick={
+                        () => (window.location.href = "https://api.whatsapp.com/send?phone=59899387921")
+                    }/>
+
+            </button>
+
+
+        </div>
+    </footer>
 );
