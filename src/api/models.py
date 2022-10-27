@@ -8,7 +8,7 @@ class User(db.Model):
     name = db.Column(db.String(80), nullable=False)
     last_name = db.Column(db.String(80), nullable=False)
     phone = db.Column(db.String(9), unique=True, nullable=False)
-    date_of_admission = db.Column(db.Column(db.String(80), nullable=False))
+    date_of_admission = db.Column(db.String(80), nullable=False) 
     birthday = db.Column(db.String(80), nullable=False)
     mutualist = db.Column(db.String(80), nullable=False)
     medical_conditions = db.Column(db.String(80), nullable=False)
@@ -41,9 +41,31 @@ class User(db.Model):
             "is_active": self.is_active
         }
 
-class Producto(db.Model): 
+class Product(db.Model): 
     id= db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     stock = db.Column(db.String(80), nullable=False)
     sale_price = db.Column(db.String(80), nullable=False)
-    photo = db.Column (db.Column(db.String(80), nullable=False))
+    photo = db.Column(db.String(80), nullable=False)
+    purchase_price = db.Column(db.String(80), nullable=False)
+
+
+    def __repr__(self):
+        return f'<Producto {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "stock": self.stock,
+            "sale_price": self.sale_price,
+            "photo": self.photo,
+            "purchase_price": self.purchase_price
+        }
+
+
+class Training(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    workout_name = db.Column(db.String(80), nullable=False)
+    type_of_muscle = db.Column(db.String(80), nullable=False)
+    description = db.Column(db.String(80), nullable=False)
