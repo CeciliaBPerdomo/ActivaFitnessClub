@@ -21,9 +21,9 @@ class User(db.Model):
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     
     carrito = db.relationship('ShoppingCart', backref="user", cascade="all, delete-orphan", lazy=True)
-    rutinas = db.relationship('Routines', backref="routines", cascade="all, delete-orphan", lazy=True)
-    payment_id = db.relationship('Payment', backref="payment", cascade="all, delete-orphan", lazy=True)
-    outstanding_id = db.relationship('Outstanding', backref="outstanding", cascade="all, delete-orphan", lazy=True)
+    rutinas = db.relationship('Routines', backref="user", cascade="all, delete-orphan", lazy=True)
+    payment_id = db.relationship('Payment', backref="user", cascade="all, delete-orphan", lazy=True)
+    outstanding_id = db.relationship('Outstanding', backref="user", cascade="all, delete-orphan", lazy=True)
 
 
     def __repr__(self):
@@ -59,7 +59,7 @@ class Product(db.Model):
     purchase_price = db.Column(db.String(80), nullable=False)
 
     carrito_id = db.relationship('ShoppingCart', backref = "product", cascade="all, delete-orphan", lazy=True)
-    outstanding_id = db.relationship('Outstanding', backref = "outstanding", cascade="all, delete-orphan", lazy=True)
+    outstanding_id = db.relationship('Outstanding', backref = "product", cascade="all, delete-orphan", lazy=True)
 
     def __repr__(self):
         return f'<Producto {self.id}>'
@@ -142,7 +142,7 @@ class Routines(db.Model):
     week = db.Column(db.String(80), nullable=False)
     finish = db.Column(db.String(80), nullable=False)
 
-    excercise_id = db.relationship('Routines', backref = "exercise", cascade="all, delete-orphan", lazy=True)
+    excercise_id = db.relationship('Exercise', backref="routines", cascade="all, delete-orphan", lazy=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
     def __repr__(self):
