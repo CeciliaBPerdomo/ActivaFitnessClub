@@ -5,6 +5,54 @@ import { Context } from "../store/appContext";
 export const ListaAlumno = () => {
   const { store, actions } = useContext(Context);
 
+  const borrar = (e, item) => {
+    e.preventDefault();
+    console.log("A borrar");
+    console.log(item);
+
+    return (
+      <>
+        <div className="modal" tabindex="-1">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Modal title</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <p>Modal body text goes here.</p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                {/* Borra */}
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={(e) => {
+                    actions.borrarAlumno(item.id);
+                  }}
+                >
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
   return (
     <>
       <div className="container">
@@ -74,19 +122,27 @@ export const ListaAlumno = () => {
                 <td>{item.email}</td>
                 <td>{item.activities}</td>
                 <td>
+                  {/* Ver rutina */}
                   <button type="button" className="btn btn-outline-dark">
-                    <i class="fa fa-eye"></i>
+                    <i className="fa fa-eye"></i>
                   </button>
                 </td>
                 <td>
+                  {/* Modificar alumno */}
                   <button type="button" className="btn btn-outline-dark">
-                    <i class="fa fa-pen"></i>
+                    <i className="fa fa-pen"></i>
                   </button>
                 </td>
 
                 <td>
-                  <button type="button" className="btn btn-outline-danger">
-                    <i class="fa fa-trash"></i>
+                  {/* Borrar alumno */}
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger"
+                    onClick={(e) => borrar(e, item)}
+                  >
+                    {/* value={item} */}
+                    <i className="fa fa-trash"></i>
                   </button>
                 </td>
               </tr>
