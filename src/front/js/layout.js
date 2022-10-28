@@ -15,6 +15,8 @@ import {VistaProducto} from "./component/vistaProductos";
 import {CrearEjercicio} from "./component/crearEjercicio"
 import Log_in from "./component/loguearse.jsx";
 import {MisPagos} from "./component/mispagos.jsx";
+import { QuienesSomos } from "./component/quienesSomos";
+import { Planes } from "./component/planes";
 
 // create your first component
 const Layout = () => {
@@ -31,6 +33,10 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home/>}
                             path="/"/>
+                            <Route element={<QuienesSomos/>}
+                            path="/quienesSomos"/>
+                            <Route element={<Planes/>}
+                            path="/planes"/>
                         <Route element={<Demo/>}
                             path="/demo"/>
                         <Route element={<CrearAlumno/>}

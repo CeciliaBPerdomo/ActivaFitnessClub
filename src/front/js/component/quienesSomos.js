@@ -14,7 +14,7 @@ export const QuienesSomos = ()  => {
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">Misión</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text">Gimnasio El Club brinda un espacio, los recursos humanos y los medios para realizar diferentes actividades físicas tanto recreativas como deportivas, orientadas a mejorar la calidad de vida de las personas, procurando en todo momento ofrecer un ambiente acogedor al socio. Brindamos un servicio de calidad para toda la familia, a cargo de profesionales en constante capacitación, con equipamientos y tecnología de vanguardia. Trabajamos para que el socio asista con entusiasmo y permanezca en la Institución por mucho tiempo Velamos por la seguridad de las personas.</p>
       </div>
     </div>
   </div>
