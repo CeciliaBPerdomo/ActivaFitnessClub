@@ -28,9 +28,7 @@ const Log_in = () => {
     }
 
     return (
-        <> {/* <div style={
-                {backgroundImage: `url("https://img.freepik.com/foto-gratis/pesos-ejercicio-pesas-fuerte-atletica_1139-709.jpg?w=740&t=st=1666975970~exp=1666976570~hmac=40bbde5e75ccacb3bd71337b68456e9e88f66a069bddace0d1c927a9be174ce4")`}
-            }> */}
+        <>
             <div className="bg-loguearse vh-100">
                 <br/>
                 <div style={
@@ -70,8 +68,14 @@ const Log_in = () => {
                     </div>
                 </div>
             </div>
-            {/* </div> */} </>
+        </>
     )
 };
 
 export default Log_in;
+
+
+/* <div style={
+                {backgroundImage: `url("https://img.freepik.com/foto-gratis/pesos-ejercicio-pesas-fuerte-atletica_1139-709.jpg?w=740&t=st=1666975970~exp=1666976570~hmac=40bbde5e75ccacb3bd71337b68456e9e88f66a069bddace0d1c927a9be174ce4")`}
+            }> */
+/* </div> */
