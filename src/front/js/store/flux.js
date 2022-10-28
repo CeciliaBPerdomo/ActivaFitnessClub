@@ -9,17 +9,18 @@ const getState = ({
     return {
         store: {
             message: null,
-            demo: [{
-                    title: "FIRST",
-                    background: "white",
-                    initial: "white",
-                },
-                {
-                    title: "SECOND",
-                    background: "white",
-                    initial: "white",
-                },
-            ],
+            // demo: [{
+            //         title: "FIRST",
+            //         background: "white",
+            //         initial: "white",
+            //     },
+            //     {
+            //         title: "SECOND",
+            //         background: "white",
+            //         initial: "white",
+            //     },
+            // ],
+            alumnos: [],
         },
         actions: {
             // ************************************************
@@ -65,6 +66,23 @@ const getState = ({
                     return true;
                 } catch (error) {
                     console.log(error);
+                }
+            },
+
+            obtenerAlumnos: async () => {
+                try {
+                    const response = await axios.get(
+                        "https://3001-ceciliabper-activafitne-b85gn1n5sqc.ws-us73.gitpod.io/api/user", {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        alumnos: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
                 }
             },
 
