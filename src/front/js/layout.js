@@ -12,7 +12,6 @@ import {Footer} from "./component/footer";
 import {CrearAlumno} from "./component/crearAlumnos";
 import {ListaAlumno} from "./component/listaAlumnos";
 
-import Log_in from "./component/loguearse.jsx";
 
 // create your first component
 const Layout = () => {
@@ -20,32 +19,32 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
-    return (<div>
-        <BrowserRouter basename={basename}>
-            <ScrollToTop>
-                <Navbar/>
+    return (
+        <div>
+            <BrowserRouter basename={basename}>
+                <ScrollToTop>
+                    <Navbar/>
 
-                <Routes>
-                    <Route element={<Home/>}
-                        path="/"/>
-                    <Route element={<Demo/>}
-                        path="/demo"/>
-                    <Route element={<CrearAlumno/>}
-                        path="/crearAlumno"/>
-                    <Route element={<ListaAlumno/>}
-                        path="/listaAlumno"/>
-                    <Route element={<Log_in/>}
-                        path="/login"/>
-                    <Route element={<Single/>}
-                        path="/single/:theid"/>
-                    <Route element={
-                        <h1>Not found!</h1>
-                    }/>
-                </Routes>
-                <Footer/>
-            </ScrollToTop>
-        </BrowserRouter>
-    </div>);
+                    <Routes>
+                        <Route element={<Home/>}
+                            path="/"/>
+                        <Route element={<Demo/>}
+                            path="/demo"/>
+                        <Route element={<CrearAlumno/>}
+                            path="/crearAlumno"/>
+                        <Route element={<ListaAlumno/>}
+                            path="/listaAlumno"/>
+                        <Route element={<Single/>}
+                            path="/single/:theid"/>
+                        <Route element={
+                            <h1>Not found!</h1>
+                        }/>
+                    </Routes>
+                    <Footer/>
+                </ScrollToTop>
+            </BrowserRouter>
+        </div>
+    );
 };
 
 export default injectContext(Layout);
