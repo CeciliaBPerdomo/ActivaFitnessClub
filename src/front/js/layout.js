@@ -14,7 +14,7 @@ import {ListaAlumno} from "./component/listaAlumnos";
 import {VistaProducto} from "./component/vistaProductos";
 import {CrearEjercicio} from "./component/crearEjercicio"
 import Log_in from "./component/loguearse.jsx";
-
+import {MisPagos} from "./component/mispagos.jsx";
 
 // create your first component
 const Layout = () => {
@@ -45,6 +45,8 @@ const Layout = () => {
                             path="/login"/>
                         <Route element={<Single/>}
                             path="/single/:theid"/>
+                        <Route element={<MisPagos/>}
+                            path="/mispagos/:theid"/>
                         <Route element={
                             <h1>Not found!</h1>
                         }/>
