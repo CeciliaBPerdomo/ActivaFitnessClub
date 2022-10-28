@@ -1,56 +1,32 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import swal from "sweetalert";
 
 export const ListaAlumno = () => {
   const { store, actions } = useContext(Context);
 
   const borrar = (e, item) => {
     e.preventDefault();
-    console.log("A borrar");
-    console.log(item);
 
-    return (
-      <>
-        <div className="modal" tabindex="-1">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Modal title</h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div className="modal-body">
-                <p>Modal body text goes here.</p>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                {/* Borra */}
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={(e) => {
-                    actions.borrarAlumno(item.id);
-                  }}
-                >
-                  Save changes
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </>
-    );
+    // Elimina el alumno!
+    swal({
+      title: `Desea borrar a: ${item.name} ${item.last_name}`,
+      text: "Una vez eliminado, no se podra recuperar",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal(`Poof! el alumno ${item.name} ${item.last_name} fue borrado`, {
+          icon: "success",
+          actions: actions.borrarAlumno(item.id),
+          actions: actions.ListaAlumno(),
+        });
+      } else {
+        swal("Ups! Casi, casi!");
+      }
+    });
   };
 
   return (
