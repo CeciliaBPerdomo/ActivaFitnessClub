@@ -23,7 +23,7 @@ export const CrearAlumno = () => {
   const [password, setPassword] = useState("");
   const [activities, setActivities] = useState("");
   const [role, setRole] = useState("");
-  const [isActive, setActive] = useState("");
+  const [isActive, setActive] = useState(true);
 
   const { actions } = useContext(Context);
   //let history = useHistory();
@@ -36,10 +36,10 @@ export const CrearAlumno = () => {
       name,
       last_name,
       phone,
-      date_of_admission,
+      admission,
       birthday,
       mutualist,
-      medical_conditions,
+      conditions,
       medicines,
       training_goals,
       mail,
@@ -48,6 +48,25 @@ export const CrearAlumno = () => {
       role,
       isActive
     );
+
+    {
+      /* Limpia el formulario */
+    }
+    setCI("");
+    setName("");
+    setLast_Name("");
+    setPhone("");
+    setAdmission("");
+    setBirthday("");
+    setMutualist("");
+    setConditions("");
+    setMedicines("");
+    setTraining("");
+    setMail("");
+    setPassword("");
+    setActivities("");
+    setRole("");
+    setActive("true");
   };
 
   return (
@@ -56,7 +75,8 @@ export const CrearAlumno = () => {
         <br />
         <h1>Ingreso de alumno</h1>
         <br />
-        <form>
+
+        <form onSubmit={registro}>
           <div className="mb-3">
             {/* Cedula */}
             <label htmlFor="cedula" className="form-label">
@@ -153,11 +173,11 @@ export const CrearAlumno = () => {
               onChange={(e) => setMutualist(e.target.value)}
               value={mutualist}
             >
-              <option selected>Mutualista</option>
-              <option value="1">Hospital Evangelico</option>
-              <option value="2">CAMEC</option>
-              <option value="3">Salud Publica</option>
-              <option value="4">Otro</option>
+              <option select>Mutualista</option>
+              <option value="Hospital Evangelico">Hospital Evangelico</option>
+              <option value="CAMEC">CAMEC</option>
+              <option value="Salud Publica">Salud Publica</option>
+              <option value="Otro">Otro</option>
             </select>
           </div>
 
@@ -172,6 +192,20 @@ export const CrearAlumno = () => {
               id="inputAfecciones"
               onChange={(e) => setConditions(e.target.value)}
               value={conditions}
+            />
+          </div>
+
+          {/* Medicamentos */}
+          <div className="mb-3">
+            <label htmlFor="medicamentos" className="form-label">
+              Medicamentos
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="inputMedicamentos"
+              onChange={(e) => setMedicines(e.target.value)}
+              value={medicines}
             />
           </div>
 
@@ -229,10 +263,14 @@ export const CrearAlumno = () => {
               onChange={(e) => setActivities(e.target.value)}
               value={activities}
             >
-              <option selected>Actividad</option>
-              <option value="1">Funcional</option>
-              <option value="2">Entrenamiento personalizado</option>
-              <option value="3">Ambos (Func, Entrenamiento)</option>
+              <option select>Actividad</option>
+              <option value="Funcional">Funcional</option>
+              <option value="Entrenamiento personalizado">
+                Entrenamiento personalizado
+              </option>
+              <option value="Ambos (Func, Entrenamiento)">
+                Ambos (Func, Entrenamiento)
+              </option>
             </select>
           </div>
 
@@ -247,18 +285,33 @@ export const CrearAlumno = () => {
               onChange={(e) => setRole(e.target.value)}
               value={role}
             >
-              <option selected>Rol</option>
-              <option value="1">Alumno</option>
-              <option value="2">Administrador</option>
-              <option value="3">Usuario Internet</option>
+              <option select>Rol</option>
+              <option value="Alumno">Alumno</option>
+              <option value="Administrador">Administrador</option>
+              <option value="Usuario Internet">Usuario Internet</option>
             </select>
           </div>
 
           {/* Activo */}
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              select="true"
+              id="flexCheckChecked"
+              checked
+              onChange={(e) => setActive(e.target.value)}
+              value={isActive}
+            />
+            <label className="form-check-label" htmlFor="flexCheckChecked">
+              Activo
+            </label>
+          </div>
 
+          <br />
           {/* Agregar */}
           <div>
-            <button type="button" className="btn btn-outline-primary w-100">
+            <button type="submit" className="btn btn-outline-primary w-100">
               Agregar
             </button>
           </div>

@@ -43,35 +43,25 @@ const getState = ({
                 is_active
             ) => {
                 try {
-                    const response = await fetch(
-                        "https://3001-ceciliabper-activafitne-41h62uazymi.ws-us72.gitpod.io/api/user", {
-                            method: "POST",
-                            body: JSON.stringify({
-                                ci: ci,
-                                name: name,
-                                last_name: last_name,
-                                phone: phone,
-                                date_of_admission: date_of_admission,
-                                birthday: birthday,
-                                mutualist: mutualist,
-                                medical_conditions: medical_conditions,
-                                medicines: medicines,
-                                training_goals: training_goals,
-                                email: email,
-                                password: password,
-                                activities: activities,
-                                role: role,
-                                is_active: is_active,
-                            }),
-                            headers: {
-                                "Content-type": "application/json",
-                            },
+                    const response = await axios.post(
+                        "https://3001-ceciliabper-activafitne-b85gn1n5sqc.ws-us73.gitpod.io/api/user", {
+                            ci: ci,
+                            name: name,
+                            last_name: last_name,
+                            phone: phone,
+                            date_of_admission: date_of_admission,
+                            birthday: birthday,
+                            mutualist: mutualist,
+                            medical_conditions: medical_conditions,
+                            medicines: medicines,
+                            training_goals: training_goals,
+                            email: email,
+                            password: password,
+                            activities: activities,
+                            role: role,
+                            is_active: is_active,
                         }
                     );
-                    if (response.status === 200) {
-                        const data = await response.json();
-                        console.log(data);
-                    }
                     return true;
                 } catch (error) {
                     console.log(error);
