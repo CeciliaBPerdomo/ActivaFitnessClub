@@ -16,8 +16,10 @@ export const ListaAlumno = ()  => {
                     <option value="Los Angeles"/>
                     <option value="Chicago"/>
         </div>  
-        <div className="d-grid gap-2 col-6 mx-auto">
-        <button type="button" className="btn btn-outline-success">Nuevo Alumno</button>
+        <div className="w-75">
+          <Link to={"/crearAlumno"}>
+              <button type="button" className="btn btn-outline-success w-25">Nuevo Alumno</button>
+          </Link>
         </div>
         <table className="table table-hover table-secondary">
   <thead>
