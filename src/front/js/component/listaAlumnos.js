@@ -21,7 +21,6 @@ export const ListaAlumno = () => {
         swal(`Poof! el alumno ${item.name} ${item.last_name} fue borrado`, {
           icon: "success",
           actions: actions.borrarAlumno(item.id),
-          actions: actions.ListaAlumno(),
         });
       } else {
         swal("Ups! Casi, casi!");
