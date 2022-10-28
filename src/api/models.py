@@ -45,6 +45,7 @@ class User(db.Model):
             "activities": self.activities,
             "role": self.role, 
             "is_active": self.is_active,
+            "ci": self.ci
             # "carrito": self.list(map(lambda x: x.serialize(), self.carrito))
         }
 

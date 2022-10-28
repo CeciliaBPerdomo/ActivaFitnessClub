@@ -26,6 +26,8 @@ const getState = ({
             // ************************************************
             // 					ALUMNOS						 //
             // ************************************************
+
+            /* Crea un nuevo alumno*/
             crearAlumno: async (
                 ci,
                 name,
@@ -69,6 +71,7 @@ const getState = ({
                 }
             },
 
+            /* Listar alumnos */
             obtenerAlumnos: async () => {
                 try {
                     const response = await axios.get(
@@ -78,6 +81,22 @@ const getState = ({
                     setStore({
                         alumnos: response.data,
                     });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            /* Borrar alumno */
+            borrarAlumno: async (id) => {
+                try {
+                    const response = await axios.delete(
+                        "https://3001-ceciliabper-activafitne-b85gn1n5sqc.ws-us73.gitpod.io/api/user/" +
+                        id, {}
+                    );
+                    console.log(response);
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
