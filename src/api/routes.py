@@ -159,3 +159,5 @@ def usersModif_porId(user_id):
 
     response_body = {"msg": "Usuario modificado"}
     return jsonify(response_body), 400
+
+    #RUTAS NUEVO

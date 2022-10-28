@@ -7,11 +7,13 @@ import {Demo} from "./pages/demo";
 import {Single} from "./pages/single";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
-import { CrearAlumno } from "./component/crearAlumnos";
-import { ListaAlumno } from "./component/listaAlumnos";
-import { VistaProducto } from "./component/vistaProductos";
+import {Navbar} from "./component/navbar";
+import {Footer} from "./component/footer";
+import {CrearAlumno} from "./component/crearAlumnos";
+import {ListaAlumno} from "./component/listaAlumnos";
+import {VistaProducto} from "./component/vistaProductos";
+import {CrearEjercicio} from "./component/crearEjercicio"
+import Log_in from "./component/loguearse.jsx";
 
 
 // create your first component
@@ -27,13 +29,25 @@ const Layout = () => {
                     <Navbar/>
 
                     <Routes>
-                        <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<CrearAlumno />} path="/crearAlumno" />
-                        <Route element={<ListaAlumno />} path="/listaAlumno" />
-                        <Route element={<VistaProducto />} path="/vistaProducto" />
-                        <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<h1>Not found!</h1>} />
+                        <Route element={<Home/>}
+                            path="/"/>
+                        <Route element={<Demo/>}
+                            path="/demo"/>
+                        <Route element={<CrearAlumno/>}
+                            path="/crearAlumno"/>
+                        <Route element={<ListaAlumno/>}
+                            path="/listaAlumno"/>
+                        <Route element={<VistaProducto/>}
+                            path="/vistaProducto"/>
+                        <Route element={<CrearEjercicio/>}
+                            path="/crearEjercicio"/>
+                        <Route element={<Log_in/>}
+                            path="/login"/>
+                        <Route element={<Single/>}
+                            path="/single/:theid"/>
+                        <Route element={
+                            <h1>Not found!</h1>
+                        }/>
                     </Routes>
                     <Footer/>
                 </ScrollToTop>
