@@ -15,8 +15,9 @@ import {VistaProducto} from "./component/vistaProductos";
 import {CrearEjercicio} from "./component/crearEjercicio"
 import Log_in from "./component/loguearse.jsx";
 import {MisPagos} from "./component/mispagos.jsx";
-import { QuienesSomos } from "./component/quienesSomos";
-import { Planes } from "./component/planes";
+import {QuienesSomos} from "./component/quienesSomos";
+import {Planes} from "./component/planes";
+import {VistaMensualidades} from "./component/vistaMensualidades.jsx";
 
 // create your first component
 const Layout = () => {
@@ -33,9 +34,9 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home/>}
                             path="/"/>
-                            <Route element={<QuienesSomos/>}
+                        <Route element={<QuienesSomos/>}
                             path="/quienesSomos"/>
-                            <Route element={<Planes/>}
+                        <Route element={<Planes/>}
                             path="/planes"/>
                         <Route element={<Demo/>}
                             path="/demo"/>
@@ -53,6 +54,8 @@ const Layout = () => {
                             path="/single/:theid"/>
                         <Route element={<MisPagos/>}
                             path="/mispagos/:theid"/>
+                        <Route element={<VistaMensualidades/>}
+                            path="/mensualidades"/>
                         <Route element={
                             <h1>Not found!</h1>
                         }/>
