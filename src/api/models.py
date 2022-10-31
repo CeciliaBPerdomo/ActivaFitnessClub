@@ -179,7 +179,8 @@ class Payment(db.Model):
             "id": self.id,
             "payment_date": self.payment_date,
             "payment_amount": self.payment_amount,
-            "bill_n": self.bill_n
+            "bill_n": self.bill_n,
+            "state": self.state
         }
 
 
