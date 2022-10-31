@@ -6,6 +6,18 @@ import swal from "sweetalert";
 export const ListaAlumno = () => {
   const { store, actions } = useContext(Context);
 
+  //const [ListaAlumno, setListaAlumnos] = useState([]);
+
+  //Inicio
+  useEffect(() => {
+    actions.obtenerAlumnos();
+  }, []);
+
+  //Pendiente de los cambios
+  // useEffect(() => {
+  //   actions.obtenerAlumnos();
+  // }, [store.alumnos]);
+
   const borrar = (e, item) => {
     e.preventDefault();
 
@@ -33,27 +45,31 @@ export const ListaAlumno = () => {
       <div className="container">
         <div>
           <br />
-          <h1>Alumnos</h1>
+          <h1>
+            <i className="fa fa-user"></i> Alumnos
+          </h1>{" "}
+          <br />
         </div>
 
         {/* Buscar */}
         <div>
-          <label htmlFor="exampleDataList" className="form-label">
-            <h3>Buscar</h3>
-          </label>
           <input
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"
-            placeholder="Buscar..."
+            placeholder="Buscar por nombre..."
           />
         </div>
 
         {/* Nuevo Alumno */}
         <br />
-        <div className="w-75">
+        <div className="crearAlumno">
           <Link to={"/crearAlumno"}>
-            <button type="button" className="btn btn-outline-success w-25">
+            <button
+              type="button"
+              className="btn btn-outline-success float-end"
+              style={{ marginBottom: "18px" }}
+            >
               Ingresar nuevo alumno
             </button>
           </Link>
@@ -63,18 +79,18 @@ export const ListaAlumno = () => {
         {/* Listado de alumnos */}
         <table className="table table-hover table-secondary">
           <thead>
-            <tr>
+            <tr className="text-center">
               {/* Cabezeras */}
               <th scope="col">Cedula</th>
               <th scope="col">Nombre</th>
               <th scope="col">Apellido</th>
               <th scope="col">Fecha de nacimiento</th>
               <th scope="col">Fecha de ingreso</th>
-              <th scope="col">Mutualista</th>
+              {/* <th scope="col">Mutualista</th>
               <th scope="col">Afecciones</th>
               <th scope="col">Medicamentos</th>
-              <th scope="col">Email</th>
-              <th scope="col">Actividades</th>
+              <th scope="col">Email</th> */}
+              <th scope="col">+Info</th>
               <th scope="col">Rutina</th>
               <th scope="col">Editar</th>
               <th scope="col">Borrar</th>
@@ -83,7 +99,7 @@ export const ListaAlumno = () => {
 
           {/* Listado */}
           {/* <thead> */}
-          <tbody>
+          <tbody className="align-middle text-center">
             {store.alumnos.map((item, id) => (
               <tr key={id}>
                 <td>{item.ci}</td>
@@ -91,11 +107,17 @@ export const ListaAlumno = () => {
                 <td>{item.last_name}</td>
                 <td>{item.birthday}</td>
                 <td>{item.date_of_admission}</td>
-                <td>{item.mutualist}</td>
+                {/* <td>{item.mutualist}</td>
                 <td>{item.medical_conditions}</td>
                 <td>{item.medicines}</td>
-                <td>{item.email}</td>
-                <td>{item.activities}</td>
+                <td>{item.email}</td> */}
+
+                {/* Mas informacion */}
+                <td>
+                  <button type="button" className="btn btn-outline-dark">
+                    <i className="fa fa-user-plus"></i>
+                  </button>
+                </td>
                 <td>
                   {/* Ver rutina */}
                   <button type="button" className="btn btn-outline-dark">

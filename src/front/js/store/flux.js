@@ -47,7 +47,7 @@ const getState = ({
             ) => {
                 try {
                     const response = await axios.post(
-                        "https://3001-ceciliabper-activafitne-b85gn1n5sqc.ws-us73.gitpod.io/api/user", {
+                        "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user", {
                             ci: ci,
                             name: name,
                             last_name: last_name,
@@ -75,9 +75,9 @@ const getState = ({
             obtenerAlumnos: async () => {
                 try {
                     const response = await axios.get(
-                        "https://3001-ceciliabper-activafitne-b85gn1n5sqc.ws-us73.gitpod.io/api/user", {}
+                        "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user", {}
                     );
-                    console.log(response.data);
+                    //console.log(response.data);
                     setStore({
                         alumnos: response.data,
                     });
@@ -93,7 +93,7 @@ const getState = ({
             borrarAlumno: async (id) => {
                 try {
                     const response = await axios.delete(
-                        "https://3001-ceciliabper-activafitne-b85gn1n5sqc.ws-us73.gitpod.io/api/user/" +
+                        "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user/" +
                         id, {}
                     );
                     console.log(response);
@@ -104,6 +104,17 @@ const getState = ({
                     }
                 }
             },
+
+            /* Actualizar lista de alumnos */
+            // actualizarAlumnos: async () => {
+            //     try {
+            //         const response = await axios.post(
+            //             "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user", {}
+            //         );
+            //     } catch (error) {
+            //         console.log(error);
+            //     }
+            // },
 
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
