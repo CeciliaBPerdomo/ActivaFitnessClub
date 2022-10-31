@@ -167,6 +167,7 @@ class Payment(db.Model):
     payment_date = db.Column(db.String(80), nullable=False)
     payment_amount = db.Column(db.String(80), nullable=False)
     bill_n = db.Column(db.String(80), nullable=False)
+    state = db.Column(db.Boolean(), unique=False, nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
