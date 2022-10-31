@@ -114,9 +114,12 @@ export const ListaAlumno = () => {
 
                 {/* Mas informacion */}
                 <td>
-                  <button type="button" className="btn btn-outline-dark">
+                  <Link
+                    to={"/alumno/" + item.id}
+                    className="btn btn-outline-dark"
+                  >
                     <i className="fa fa-user-plus"></i>
-                  </button>
+                  </Link>
                 </td>
                 <td>
                   {/* Ver rutina */}
