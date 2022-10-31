@@ -18,6 +18,8 @@ import {MisPagos} from "./component/mispagos.jsx";
 import {QuienesSomos} from "./component/quienesSomos";
 import {Planes} from "./component/planes";
 import {VistaMensualidades} from "./component/vistaMensualidades.jsx";
+import { VerEjercicio } from "./component/verEjercicios";
+import {Alumno} from "./component/alumno.jsx";
 
 // create your first component
 const Layout = () => {
@@ -56,6 +58,10 @@ const Layout = () => {
                             path="/mispagos/:theid"/>
                         <Route element={<VistaMensualidades/>}
                             path="/mensualidades"/>
+                            <Route element={<VerEjercicio/>}
+                            path="/verEjercicios"/>
+                            <Route element={<Alumno/>}
+                            path="/alumno"/>
                         <Route element={
                             <h1>Not found!</h1>
                         }/>
