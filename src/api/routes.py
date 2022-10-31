@@ -412,7 +412,9 @@ def get_payament(payment_id):
 # Busca por id de usuario
 @api.route('/mensualidad/<int:user_id>', methods=['GET'])
 def get_payment_userId(user_id):
-    paymentId = Payment.query.filter_by(id=user_id).first()
+    paymentId = Payment.query.filter_by(user_id=user_id).all()
+    # print(paymentId.serialize())
+
 
     if paymentId is None: 
         response_body = {"msg": "Mensualidad no encontrada"}
@@ -471,3 +473,64 @@ def paymentModif_porId(payment_id):
 ##      RUTAS DE RUTINAS             ##
 ##                                   ## 
 #######################################
+
+# Muestra todas las rutinas
+@api.route('/rutinas', methods=['GET'])
+def getRoutines():
+    
+    routines = Routines.query.all()
+    results = list(map(lambda x: x.serialize(), routines ))
+    print (results)
+    return jsonify(results), 200
+
+# Alta de mensualidad
+@api.route('/rutinas', methods=['POST'])
+def addRoutines():
+    body = json.loads(request.data)
+
+    queryNewRoutines= Routines.query.filter_by(user_id=body["user_id"]).first()
+    
+    if queryNewRoutines is None:
+        new_routines = Routines(series=body["series"],
+        repetitions=body["repetitions"], 
+        burden=body["burden"], 
+        week=body["week"],
+        user_id=body["user_id"],
+        finish=body["finish"])
+        
+        db.session.add(new_routines)
+        db.session.commit()
+        
+        response_body = {
+            "msg": "Nueva rutina creada" 
+        }
+        return jsonify(new_routines.serialize()), 200
+    
+    response_body = {
+        "msg": "Rutina ya creada" 
+    }
+    return jsonify(response_body), 400
+
+# Busca por id de rutina
+@api.route('/rutinas/<int:routines_id>', methods=['GET'])
+def get_routines(routines_id):
+    routinesId = Routines.query.filter_by(id=routines_id).first()
+
+    if routinesId is None: 
+        response_body = {"msg": "Rutina no encontrada"}
+        return jsonify(response_body), 400
+
+    routines= routinesId.serialize()
+    return jsonify(routines), 200
+
+# Busca por id de usuario
+@api.route('/rutina/<int:user_id>', methods=['GET'])
+def get_routines_userId(user_id):
+    routinesId = Routines.query.filter_by(id=user_id).first()
+
+    if routinesId is None: 
+        response_body = {"msg": "Rutina no encontrada"}
+        return jsonify(response_body), 400
+
+    payment = paymentId.serialize()
+    return jsonify(payment), 200
