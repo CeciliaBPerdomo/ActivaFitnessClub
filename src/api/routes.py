@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 
 # Tablas de la base de datos
-from api.models import db, User, Exercise
+from api.models import db, User, Exercise, Product, Payment
 from api.utils import generate_sitemap, APIException
 import json
 
@@ -160,9 +160,9 @@ def usersModif_porId(user_id):
     response_body = {"msg": "Usuario modificado"}
     return jsonify(response_body), 400
 
-    #######################################
+#######################################
 ##                                   ##
-##      RUTAS DE USUARIOS            ##
+##      RUTAS DE EJERCICIOS          ##
 ##                                   ## 
 #######################################
 
@@ -254,3 +254,220 @@ def exerciseModif_porId(exercise_id):
 
     response_body = {"msg": "Ejercicio modificado"}
     return jsonify(response_body), 400
+
+ #######################################
+##                                   ##
+##      RUTAS DE PRODUCTOS            ##
+##                                   ## 
+#######################################
+
+# Muestra todos los productos
+@api.route('/productos', methods=['GET'])
+def getProduct():
+    
+    product = Product.query.all()
+    results = list(map(lambda x: x.serialize(), product ))
+    print (results)
+    return jsonify(results), 200
+
+# Alta de un producto
+@api.route('/productos', methods=['POST'])
+def addProduct():
+    body = json.loads(request.data)
+
+    queryNewProduct = Product.query.filter_by(name=body["name"]).first()
+    
+    if queryNewProduct is None:
+        new_product = Product(name=body["name"],
+        stock=body["stock"], 
+        sale_price=body["sale_price"], 
+        photo=body["photo"],
+        purchase_price=body["purchase_price"])
+        
+        db.session.add(new_product)
+        db.session.commit()
+        
+        response_body = {
+            "msg": "Nuevo producto creado" 
+        }
+        return jsonify(new_product.serialize()), 200
+    
+    response_body = {
+        "msg": "Producto ya creado" 
+    }
+    return jsonify(response_body), 400
+
+# Busca por id de producto
+@api.route('/productos/<int:product_id>', methods=['GET'])
+def get_product(product_id):
+    productId = Product.query.filter_by(id=product_id).first()
+
+    if productId is None: 
+        response_body = {"msg": "Producto no encontrado"}
+        return jsonify(response_body), 400
+
+    product = productId.serialize()
+    return jsonify(product), 200
+
+# Borra un ejercicio
+@api.route('/productos/<int:product_id>', methods=['DELETE'])
+def deleteProduct(product_id):
+    productId = Product.query.filter_by(id=product_id).first()
+
+  
+    if productId is None: 
+        response_body = {"msg": "Producto no encontrado"}
+        return jsonify(response_body), 400
+
+    db.session.delete(productId)
+    db.session.commit()
+    response_body = {"msg": "Producto borrado"}
+    return jsonify(response_body), 200
+
+# Modifica un producto por id
+@api.route('/productos/<int:product_id>', methods=['PUT'])
+def productModif_porId(product_id):
+    print(product_id)
+    product = Product.query.filter_by(id=product_id).first()
+    body = json.loads(request.data)
+
+    if product is None:
+        response_body = {"msg": "No existe el producto"}
+        return jsonify(response_body), 400    
+
+    if "name" in body:
+         product.name =  body["name"]
+
+    if "stock" in body:
+        product.stock = body["stock"]
+
+    if "sale_price" in body:
+        product.sale_price= body["sale_price"]
+
+    if "photo" in body:
+        product.photo = body["photo"]
+    if "purchase_price" in body:
+        product.purchase_price = body["purchase_price"]
+
+    db.session.commit()
+
+    response_body = {"msg": "Producto modificado"}
+    return jsonify(response_body), 400
+
+#######################################
+##                                   ##
+##      RUTAS DE MENSUALIDADES       ##
+##                                   ## 
+#######################################
+
+# Muestra todas las mensualidadess
+@api.route('/mensualidades', methods=['GET'])
+def getPayment():
+    
+    payment = Payment.query.all()
+    results = list(map(lambda x: x.serialize(), payment ))
+    print (results)
+    return jsonify(results), 200
+
+# Alta de mensualidad
+@api.route('/mensualidades', methods=['POST'])
+def addPayment():
+    body = json.loads(request.data)
+
+    queryNewPayment= Payment.query.filter_by(bill_n=body["bill_n"]).first()
+    
+    if queryNewPayment is None:
+        new_payment = Payment(payment_date=body["payment_date"],
+        payment_amount=body["payment_amount"], 
+        bill_n=body["bill_n"], 
+        state=body["state"],
+        user_id=body["user_id"],
+        description=body["description"])
+        
+        db.session.add(new_payment)
+        db.session.commit()
+        
+        response_body = {
+            "msg": "Nueva mensualidad creada" 
+        }
+        return jsonify(new_payment.serialize()), 200
+    
+    response_body = {
+        "msg": "Mensualidad ya creada" 
+    }
+    return jsonify(response_body), 400
+
+# Busca por id de mensualidad
+@api.route('/mensualidades/<int:payment_id>', methods=['GET'])
+def get_payament(payment_id):
+    paymentId = Payment.query.filter_by(id=payment_id).first()
+
+    if paymentId is None: 
+        response_body = {"msg": "Mensualidad no encontrada"}
+        return jsonify(response_body), 400
+
+    payment = paymentId.serialize()
+    return jsonify(payment), 200
+
+# Busca por id de usuario
+@api.route('/mensualidad/<int:user_id>', methods=['GET'])
+def get_payment_userId(user_id):
+    paymentId = Payment.query.filter_by(id=user_id).first()
+
+    if paymentId is None: 
+        response_body = {"msg": "Mensualidad no encontrada"}
+        return jsonify(response_body), 400
+
+    payment = paymentId.serialize()
+    return jsonify(payment), 200
+
+# Borra un ejercicio
+@api.route('/mensualidades/<int:payment_id>', methods=['DELETE'])
+def deletePayment(payment_id):
+    paymentId= Payment.query.filter_by(id=payment_id).first()
+
+  
+    if paymentId is None: 
+        response_body = {"msg": "Mensualidad no encontrada"}
+        return jsonify(response_body), 400
+
+    db.session.delete(paymentId)
+    db.session.commit()
+    response_body = {"msg": "Mensualidad borrada"}
+    return jsonify(response_body), 200
+
+# Modifica un producto por id
+@api.route('/mensualidades/<int:payment_id>', methods=['PUT'])
+def paymentModif_porId(payment_id):
+    print(payment_id)
+    payment = Payment.query.filter_by(id=payment_id).first()
+    body = json.loads(request.data)
+
+    if payment is None:
+        response_body = {"msg": "No existe la mensualidad"}
+        return jsonify(response_body), 400    
+
+    if "payment_date" in body:
+         payment.payment_date =  body["payment_date"]
+
+    if "payment_amount" in body:
+        payment.payment_amount = body["payment_amount"]
+
+    if "bill_n" in body:
+        payment.bill_n= body["bill_n"]
+
+    if "state" in body:
+        payment.state = body["state"]
+    if "description" in body:
+        payment.description = body["description"]
+
+    db.session.commit()
+
+    response_body = {"msg": "Producto modificado"}
+    return jsonify(response_body), 400
+
+#######################################
+##                                   ##
+##      RUTAS DE RUTINAS             ##
+##                                   ## 
+#######################################

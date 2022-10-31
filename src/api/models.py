@@ -72,7 +72,8 @@ class Product(db.Model):
             "stock": self.stock,
             "sale_price": self.sale_price,
             "photo": self.photo,
-            "purchase_price": self.purchase_price
+            "purchase_price": self.purchase_price,
+            
         }
 
 
@@ -96,7 +97,9 @@ class Exercise(db.Model):
             "exercise_name": self.exercise_name,
             "type_of_muscle": self.type_of_muscle,
             "description": self.description,
-            "photo_exercise": self.photo_exercise
+            "photo_exercise": self.photo_exercise,
+            "routines_id":self.routines_id
+
         }
 
 
@@ -131,6 +134,9 @@ class ShoppingCart(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "user_id":self.user_id,
+            "product_id":self.product_id
+
         }
 
 
@@ -156,7 +162,10 @@ class Routines(db.Model):
             "repetitions": self.repetitions,
             "burden": self.burden,
             "week": self.week,
-            "finish": self.finish
+            "finish": self.finish,
+            
+            "user_id":self.user_id
+
         }
 
 
@@ -168,6 +177,7 @@ class Payment(db.Model):
     payment_amount = db.Column(db.String(80), nullable=False)
     bill_n = db.Column(db.String(80), nullable=False)
     state = db.Column(db.Boolean(), unique=False, nullable=False)
+    description = db.Column(db.String(150), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
@@ -180,7 +190,9 @@ class Payment(db.Model):
             "payment_date": self.payment_date,
             "payment_amount": self.payment_amount,
             "bill_n": self.bill_n,
-            "state": self.state
+            "state": self.state,
+            "description":self.description,
+            "user_id":self.user_id
         }
 
 
@@ -200,5 +212,7 @@ class Outstanding(db.Model):
         return {
             "id": self.id,
             "state": self.state,
-            "amount": self.amount
+            "amount": self.amount,
+            "user_id":self.user_id,
+            "product_id":self.product_id
         }
