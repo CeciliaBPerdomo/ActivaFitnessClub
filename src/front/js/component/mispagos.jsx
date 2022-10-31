@@ -4,33 +4,40 @@ import {Context} from "../store/appContext";
 
 export const MisPagos = () => {
 
+    const {store, actions} = useContext(Context);
+
     return (
         <>
 
             <div className="container">
                 <div>
                     <br/>
-                    <h1>Alumnos</h1>
+                    <h1>Mis pagos</h1>
                 </div>
 
-                {/* Buscar */}
-                <div>
-                    <label htmlFor="exampleDataList" className="form-label">
-                        <h3>Buscar</h3>
-                    </label>
-                    <input className="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar..."/>
-                </div>
 
-                {/* Nuevo Alumno */}
-                <br/>
-                <div className="w-75">
-                    <Link to={"/crearAlumno"}>
-                        <button type="button" className="btn btn-outline-success w-25">
-                            Ingresar nuevo alumno
-                        </button>
-                    </Link>
-                </div>
-                <br/>
+                {/* Listado de pagos */}
+                <table className="table table-hover table-secondary">
+                    <thead>
+                        <tr> {/* Cabezeras */}
+                            <th scope="col">Fecha de ingreso</th>
+                            <th scope="col">Fecha de pago</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+
+                    {/* <tbody> {
+                        store.alumnos.map((item, id) => (
+                            <tr key={id}>
+                                <td>{item.date_of_admission}</td>
+                                <td>{item.payment_date}</td>
+                                <td>{item.payment_amount}</td>
+                                <td>{item.state}</td>
+                                <td></td>
+                            </tr>
+                        )) */}
+                    {/* } </tbody> */} </table>
             </div>
         </>
     )
