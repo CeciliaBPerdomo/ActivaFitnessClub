@@ -1,4 +1,3 @@
-
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -7,31 +6,35 @@ import swal from "sweetalert";
 export const VistaMensualidades = () => {
   const { store, actions } = useContext(Context);
 
-
-return ( 
-<> 
-
-{ /* Buscar */}
-<div>
-    <label htmlFor="exampleDataList" className="form-label">
-        <h3>Buscar</h3>
-    </label>
-    <input className="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar..."/>
-</div> { /* Nueva mensualidad */
-}
-<br/>
-<div className="w-75">
-    <Link to={"/"}>
-        <button type="button" className="btn btn-outline-success w-25">
+  return (
+    <>
+      {/* Buscar */}
+      <div>
+        <label htmlFor="exampleDataList" className="form-label">
+          <h3>Buscar</h3>
+        </label>
+        <input
+          className="form-control"
+          list="datalistOptions"
+          id="exampleDataList"
+          placeholder="Buscar..."
+        />
+      </div>{" "}
+      {/* Nueva mensualidad */}
+      <br />
+      <div className="w-75">
+        <Link to={"/crearMensualidad"}>
+          <button type="button" className="btn btn-outline-success w-25">
             Ingresar nueva mensualidad
-        </button>
-    </Link>
-</div>
-<br/>
-
-<table className="table table-hover table-secondary">
-    <thead>
-        <tr> {/* Cabezeras */}
+          </button>
+        </Link>
+      </div>
+      <br />
+      <table className="table table-hover table-secondary">
+        <thead>
+          <tr>
+            {" "}
+            {/* Cabezeras */}
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Fecha de ingreso</th>
@@ -41,11 +44,13 @@ return (
             <th scope="col">Celular</th>
             <th scope="col">Editar</th>
             <th scope="col">Borrar</th>
-        </tr>
-    </thead>
+          </tr>
+        </thead>
 
-    {/* Listado */}
-    <thead> {/* <tbody>
+        {/* Listado */}
+        <thead>
+          {" "}
+          {/* <tbody>
                {store.alumnos.map((item, id) => (
               <tr key={id}>
                 <td>{item.name}</td>
@@ -57,47 +62,45 @@ return (
                 <td>{item.phone}</td>
 
                 {/* Modificar alumno */}
-        {/* <td> <button type="button" className="btn btn-outline-dark">
+          {/* <td> <button type="button" className="btn btn-outline-dark">
                     <i className="fa fa-pen"></i>
                   </button>
                 </td> */}
-
-        {/* <td> */}
-        {/* Borrar alumno */}
-        {/* <button
+          {/* <td> */}
+          {/* Borrar alumno */}
+          {/* <button
                     type="button"
                     className="btn btn-outline-danger"
                     onClick={(e) => borrar(e, item)}
                   ></button>
                 <td> */}
-        {/* Ver rutina */}
-        {/* <button type="button" className="btn btn-outline-dark">
+          {/* Ver rutina */}
+          {/* <button type="button" className="btn btn-outline-dark">
                     <i className="fa fa-eye"></i>
                   </button>
                 </td>
                 <td> */}
-        {/* Modificar alumno */}
-        {/* <button type="button" className="btn btn-outline-dark">
+          {/* Modificar alumno */}
+          {/* <button type="button" className="btn btn-outline-dark">
                     <i className="fa fa-pen"></i>
                   </button>
                 </td> */}
-
-        {/* <td> */}
-        {/* Borrar alumno */}
-        {/* <button
+          {/* <td> */}
+          {/* Borrar alumno */}
+          {/* <button
                     type="button"
                     className="btn btn-outline-danger"
                     onClick={(e) => borrar(e, item)}
                   > */}
-        {/* value={item} */}
-        {/* <i className="fa fa-trash"></i>
+          {/* value={item} */}
+          {/* <i className="fa fa-trash"></i>
                   </button> */}
-        {/* </td>
+          {/* </td>
               </tr> */}
-        {/* ))}
-          </tbody> */} 
-          
-          </thead>
-</table>
-</>)
-}
+          {/* ))}
+          </tbody> */}
+        </thead>
+      </table>
+    </>
+  );
+};
