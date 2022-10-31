@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 
 # Tablas de la base de datos
-from api.models import db, User
+from api.models import db, User, Exercise
 from api.utils import generate_sitemap, APIException
 import json
 
@@ -160,4 +160,97 @@ def usersModif_porId(user_id):
     response_body = {"msg": "Usuario modificado"}
     return jsonify(response_body), 400
 
-    #RUTAS NUEVO
+    #######################################
+##                                   ##
+##      RUTAS DE USUARIOS            ##
+##                                   ## 
+#######################################
+
+# Muestra todos los ejercicios
+@api.route('/ejercicios', methods=['GET'])
+def getExercise():
+    
+    exercise = Exercise.query.all()
+    results = list(map(lambda x: x.serialize(), exercise))
+    print (results)
+    return jsonify(results), 200
+
+# Alta de un ejercicio
+@api.route('/ejercicios', methods=['POST'])
+def addExercise():
+    body = json.loads(request.data)
+
+    queryNewExercise = Exercise.query.filter_by(exercise_name=body["exercise_name"]).first()
+    
+    if queryNewExercise is None:
+        new_exercise = Exercise(exercise_name=body["exercise_name"],
+        type_of_muscle=body["type_of_muscle"], 
+        description=body["description"], 
+        photo_exercise=body["photo_exercise"])
+        
+        db.session.add(new_exercise)
+        db.session.commit()
+        
+        response_body = {
+            "msg": "Nuevo ejercicio creado" 
+        }
+        return jsonify(new_exercise.serialize()), 200
+    
+    response_body = {
+        "msg": "Ejercicio ya creado" 
+    }
+    return jsonify(response_body), 400
+
+# Busca por id de ejercicio
+@api.route('/ejercicios/<int:exercise_id>', methods=['GET'])
+def get_exercise(exercise_id):
+    exerciseId = Exercise.query.filter_by(id=exercise_id).first()
+
+    if exerciseId is None: 
+        response_body = {"msg": "Ejercicio no encontrado"}
+        return jsonify(response_body), 400
+
+    exercise = exerciseId.serialize()
+    return jsonify(exercise), 200
+# Borra un ejercicio
+@api.route('/ejercicios/<int:exercise_id>', methods=['DELETE'])
+def deleteExercise(exercise_id):
+    exerciseId = Exercise.query.filter_by(id=exercise_id).first()
+
+  
+    if exerciseId is None: 
+        response_body = {"msg": "Ejercicio no encontrado"}
+        return jsonify(response_body), 400
+
+    db.session.delete(exerciseId)
+    db.session.commit()
+    response_body = {"msg": "Ejercicio borrado"}
+    return jsonify(response_body), 200
+
+# Modifica un ejercicio por id
+@api.route('/ejercicios/<int:exercise_id>', methods=['PUT'])
+def exerciseModif_porId(exercise_id):
+    print(exercise_id)
+    exercise = Exercise.query.filter_by(id=exercise_id).first()
+    body = json.loads(request.data)
+
+    if exercise is None:
+        response_body = {"msg": "No existe el ejercicio"}
+        return jsonify(response_body), 400    
+
+    if "exercise_name" in body:
+        exercise.exercise_name =  body["exercise_name"]
+
+    if "type_of_muscle" in body:
+        exercise.type_of_muscle = body["type_of_muscle"]
+
+    if "description" in body:
+        exercise.description = body["description"]
+
+    if "photo_exercise" in body:
+        exercise.photo_exercise = body["photo_exercise"]
+
+    db.session.commit()
+
+    response_body = {"msg": "Ejercicio modificado"}
+    return jsonify(response_body), 400
