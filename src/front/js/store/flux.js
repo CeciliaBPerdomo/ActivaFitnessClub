@@ -22,7 +22,7 @@ const getState = ({
             // ],
             alumnos: [],
             alumno: {},
-            mens: {},
+            mens: [],
         },
         actions: {
             // ************************************************
@@ -98,7 +98,7 @@ const getState = ({
                         "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user/" +
                         id, {}
                     );
-                    console.log(response);
+                    // console.log(response);
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
@@ -113,11 +113,15 @@ const getState = ({
                         "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user/" +
                         id, {}
                     );
+                    // console.log(response.data);
                     setStore({
                         alumno: response.data,
                     });
                 } catch (error) {
                     console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
                 }
             },
 
@@ -132,9 +136,11 @@ const getState = ({
                         "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/mensualidad/" +
                         id, {}
                     );
+                    console.log(response.data);
                     setStore({
                         mens: response.data,
                     });
+                    //console.log(mens);
                 } catch (error) {
                     console.log(error);
                 }

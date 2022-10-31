@@ -113,17 +113,19 @@ export const Alumno = () => {
             <h3>Mensualidad</h3>
           </div>
           <div className="card-body">
-            <div className="row">
-              <div className="col">
-                Fecha de pago: <b>#fecha</b>
+            {store.mens.map((item, id) => (
+              <div className="row" key={id}>
+                <div className="col">
+                  Fecha de pago: <b>{item.payment_date}</b>
+                </div>
+                <div className="col">
+                  Monto: <b>${item.payment_amount}</b>
+                </div>
+                <div className="col">
+                  Factura: <b>{item.bill_n}</b>
+                </div>
               </div>
-              <div className="col">
-                Monto: <b>$#Monto</b>
-              </div>
-              <div className="col">
-                Factura: <b>#factura</b>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="card-footer text-end border-danger">
             <Link to={"/vistaMensualidades/"}>

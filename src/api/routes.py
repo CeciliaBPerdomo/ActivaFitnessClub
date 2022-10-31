@@ -413,15 +413,18 @@ def get_payament(payment_id):
 @api.route('/mensualidad/<int:user_id>', methods=['GET'])
 def get_payment_userId(user_id):
     paymentId = Payment.query.filter_by(user_id=user_id).all()
-    # print(paymentId.serialize())
+    #print(paymentId)
+    results = list(map(lambda x: x.serialize(), paymentId))
+    #print(results)
 
 
     if paymentId is None: 
         response_body = {"msg": "Mensualidad no encontrada"}
         return jsonify(response_body), 400
 
-    payment = paymentId.serialize()
-    return jsonify(payment), 200
+    #payment = list(paymentId)
+    #payment = "ok"
+    return jsonify(results), 200
 
 # Borra un ejercicio
 @api.route('/mensualidades/<int:payment_id>', methods=['DELETE'])
