@@ -22,6 +22,7 @@ const getState = ({
             // ],
             alumnos: [],
             alumno: {},
+            mens: {},
         },
         actions: {
             // ************************************************
@@ -108,7 +109,6 @@ const getState = ({
 
             obtenerAlumnoId: async (id) => {
                 try {
-                    print(id);
                     const response = await axios.get(
                         "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user/" +
                         id, {}
@@ -116,8 +116,24 @@ const getState = ({
                     setStore({
                         alumno: response.data,
                     });
-                    print({
-                        alumno,
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            // ************************************************
+            // 					MENSUALIDADES				 //
+            // ************************************************
+
+            //obtener mensualidad por id de usuario
+            obtenerMensualidadId: async (id) => {
+                try {
+                    const response = await axios.get(
+                        "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/mensualidad/" +
+                        id, {}
+                    );
+                    setStore({
+                        mens: response.data,
                     });
                 } catch (error) {
                     console.log(error);
