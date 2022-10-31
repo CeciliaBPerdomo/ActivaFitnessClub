@@ -8,7 +8,10 @@ export const MisPagos = () => {
 
     return (
         <>
-
+            <br/>
+            <Link to={"mispagos/:theid"}>
+                <button type="button" class="btn btn-success">Agregar pago</button>
+            </Link>
             <div className="container">
                 <div>
                     <br/>
