@@ -3,28 +3,31 @@ import React, {useState, useContext} from "react";
 import {Context} from "../store/appContext";
 
 export const CrearMensualidad = () => {
-    const [nombreEjercicio, setNombreEjercicio] = useState("")
-    const [tipoEjercicio, setTipoEjercicio] = useState("")
-    const [imagen, setImagen] = useState("")
-    const [descripcionEjercicio, setDescripcionEjercicio] = useState("")
+    const [nombreUsuario, setNombreUsuario] = useState("")
+    const [apellido, setApellido] = useState("")
+    const [descripcion, setDescripcion] = useState("")
+    const [fechaPago, setFechaPago] = useState("")
+    const [numeroFactura, setNumeroFactura] = useState("")
+    const [monto, setMonto] = useState("")
 
     const agregarMensualidad = (event) => {
 
         event.preventDefault();
 
-        setNombreEjercicio("")
-        setTipoEjercicio("")
+        setNombreUsuario("")
+        setApellido("")
         setImagen("")
-        setDescripcionEjercicio("")
-
+        setDescripcion("")
+        setFechaPago("")
+        setNumeroFactura("")
+        setMonto("")
     }
 
 
     return (
         <>
-            <p>
-                MENSUALIDAD NUEVA</p>
-            {/* <div className="bg.crearEjercicio">
+
+            <div className="bg.crearEjercicio">
 
                 <br/>
                 <br/>
@@ -34,50 +37,71 @@ export const CrearMensualidad = () => {
                     style={
                         {width: "40rem"}
                 }>
-                    <h5 className="card-header">Crear Ejercicio</h5>
+                    <h5 className="card-header">
+                        Crear Mensualidad
+                    </h5>
 
                     <div className="card-body">
                         <div className="input-group input-group-sm mb-3">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Nombre del ejercicio</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
                             <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
                                 onChange={
-                                    (event) => setNombreEjercicio(event.target.value)
+                                    (event) => setNombreUsuario(event.target.value)
                                 }
-                                value={nombreEjercicio}/>
+                                value={nombreUsuario}/>
                         </div>
-                        <label htmlFor="basic-url" className="form-label">Ingrese URL</label>
+
                         <div className="input-group mb-3">
-                            <span className="input-group-text" id="basic-addon3">Foto</span>
+                            <span className="input-group-text" id="basic-addon3">Apellido</span>
                             <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"
                                 onChange={
-                                    (event) => setImagen(event.target.value)
+                                    (event) => setApellido(event.target.value)
                                 }
-                                value={imagen}/>
+                                value={apellido}/>
                         </div>
                         <div className="input-group input-group-sm mb-3">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Tipo</span>
-                            <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Fecha de pago</span>
+                            <input type="date" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
                                 onChange={
-                                    (event) => setTipoEjercicio(event.target.value)
+                                    (event) => setFechaPago(event.target.value)
                                 }
-                                value={tipoEjercicio}/>
+                                value={fechaPago}/>
                         </div>
-                        <div className="input-group input-group-sm mb-3">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Descripción</span>
-                            <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                        <div className="d-flex">
+                            <div className="input-group input-group-sm mb-3">
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Monto</span>
+                                <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                    onChange={
+                                        (event) => setMonto(event.target.value)
+                                    }
+                                    value={monto}/>
+                            </div>
+                            <div className="input-group input-group-sm mb-3">
+                                <span className="input-group-text" id="inputGroup-factura">Nº Factura</span>
+                                <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                    onChange={
+                                        (event) => setNumeroFactura(event.target.value)
+                                    }
+                                    value={numeroFactura}/>
+                            </div>
+                        </div>
+                        <div className="input-group mb-3">
+                            <span className="input-group-text" id="basic-addon3">Descripción</span>
+                            <input type="text" className="form-control" id="basic-description" aria-describedby="basic-addon3"
                                 onChange={
-                                    (event) => setDescripcionEjercicio(event.target.value)
+                                    (event) => setDescripcion(event.target.value)
                                 }
-                                value={descripcionEjercicio}/>
+                                value={descripcion}/>
                         </div>
 
                         <button type="button" className="btn btn-success"
-                            onClick={agregarEjercicio}>Agregar nuevo ejercicio</button>
+                            onClick={agregarMensualidad}>Agregar nueva mensualidad</button>
 
                     </div>
 
                 </div>
-            </div> */} </>
+            </div>
+        </>
     )
 
 }
