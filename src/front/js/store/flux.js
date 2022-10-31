@@ -21,6 +21,7 @@ const getState = ({
             //     },
             // ],
             alumnos: [],
+            alumno: {},
         },
         actions: {
             // ************************************************
@@ -105,16 +106,23 @@ const getState = ({
                 }
             },
 
-            /* Actualizar lista de alumnos */
-            // actualizarAlumnos: async () => {
-            //     try {
-            //         const response = await axios.post(
-            //             "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user", {}
-            //         );
-            //     } catch (error) {
-            //         console.log(error);
-            //     }
-            // },
+            obtenerAlumnoId: async (id) => {
+                try {
+                    print(id);
+                    const response = await axios.get(
+                        "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user/" +
+                        id, {}
+                    );
+                    setStore({
+                        alumno: response.data,
+                    });
+                    print({
+                        alumno,
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            },
 
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
