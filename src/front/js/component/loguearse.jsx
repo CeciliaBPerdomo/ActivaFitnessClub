@@ -59,7 +59,7 @@ const Log_in = () => {
                                     value={guardadoPassword}
                                     onKeyDown={inputFunction}/>
                             </div>
-                            <Link className="btn btn-secundary mx-2" type="submit" to="">
+                            <Link className="btn btn-secundary mx-2" type="submit" to={"/cambiarcontra"}>
                                 <i>¿Has olvidado de tu contraseña?</i>
                             </Link>
                             <button type="submit" className="btn btn-primary"

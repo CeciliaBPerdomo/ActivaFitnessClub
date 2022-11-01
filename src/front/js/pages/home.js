@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import {Context} from "../store/appContext";
 import {Link} from "react-router-dom"
+import { Footer } from "../component/footer";
 
 
 import "../../styles/home.css";
@@ -10,19 +11,19 @@ export const Home = () => {
 
     return (
         <div className="bg-home vh-100">
-            <div className="d-flex justify-content-between p-3 ">
+            <div className="hstack gap-3 p-5" style={{height: "800px"}}>
 
                 <Link to="/vistaProducto">
-                    <button type="button" className="btn-group btn-secondary text-danger">Productos</button>
+                    <button type="button" className="btn-group btn-info text-dark">Productos</button>
                 </Link>
                 <Link to={"/planes"}>
-                <button type="button" className="btn-group btn-secondary text-danger">Planes</button>
+                <button type="button" className="btn-group btn-info text-dark">Planes</button>
                 </Link>
                 <Link to={"/quienesSomos"}>
-                <button type="button" className="btn-group btn-secondary text-danger">Quienes Somos?</button>
+                <button type="button" className="btn-group btn-info text-dark">Quienes Somos?</button>
                 </Link>
-                <div class="position-absolute top-50 start-50 translate-middle">
-                    <p className="text-white fs-1 fw-semibold">Bienvenidos a Activa</p>
+                <div className="position-absolute top-50 start-50 translate-middle">
+                    <h1 className="display-1 text-danger"><strong>Bienvenidos a Activa Fitness Club</strong></h1>
                 </div>
 
 
