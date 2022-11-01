@@ -2,8 +2,9 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 footer {
-    margin-top: 500px;
+    margin-top: auto;
     width: 100%;
     height: 70px;
     background-color: black;
+    position: relative;
 }

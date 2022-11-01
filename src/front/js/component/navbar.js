@@ -18,14 +18,14 @@ export const Navbar = () => {
                                 src={logo}
                                 style={
                                     {
-                                        maxWidth: "100px",
-                                        maxHeigth: "100px"
+                                        maxWidth: "50px",
+                                        maxHeigth: "50px"
                                     }
                                 }/></Link>
                     </div>
 
 
-                    <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
+                    <div className="collapse navbar-collapse d-flex justify-content-md-end" id="navbarSupportedContent">
 
 
                         <button className="btn btn-ligth " type="submit">
