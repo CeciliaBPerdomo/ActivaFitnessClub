@@ -23,10 +23,10 @@ import {Alumno} from "./component/alumno.jsx";
 import {CrearMensualidad} from "./component/crearMensualidad.jsx";
 import {CrearRutina} from "./component/crearRutina";
 import {PagarMensualidad} from "./component/pagarMensualidad.jsx";
-import { Cambiarcontra } from "./component/cambiarcontra";
+import {Cambiarcontra} from "./component/cambiarcontra";
 import {ModificarAlumno} from "./component/modificarAlumno.jsx";
-import { HomeUsuario } from "./component/homeUsuario";
-import {EditarMensualidad} from "./modificarMensualidades.jsx"
+import {HomeUsuario} from "./component/homeUsuario";
+import {EditarMensualidad} from "./component/modificarMensualidades.jsx"
 // create your first component
 const Layout = () => {
     // the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -74,14 +74,14 @@ const Layout = () => {
                             path="/crearMensualidad"/>
                         <Route element={<CrearRutina/>}
                             path="/crearRutina"/>
-                            <Route element={<Cambiarcontra/>}
+                        <Route element={<Cambiarcontra/>}
                             path="/cambiarcontra"/>
-                        <Route element={<ModificarAlumno/ >}
+                        <Route element={<ModificarAlumno/>}
                             path="/modificarAlumno/:theid"/>
-                            <Route element={<HomeUsuario/>}
+                        <Route element={<HomeUsuario/>}
                             path="/homeUsuario"/>
-                            <Route element={<EditarMensualidad/>}
-                            path="/editarMensualidad:theid"/>
+                        <Route element={<EditarMensualidad/>}
+                            path="/editarMensualidad/:theid"/>
                         <Route element={
                             <h1>Not found!</h1>
                         }/>
