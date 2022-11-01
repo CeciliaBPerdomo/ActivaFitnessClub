@@ -6,8 +6,6 @@ import swal from "sweetalert";
 export const ListaAlumno = () => {
   const { store, actions } = useContext(Context);
 
-  //const [ListaAlumno, setListaAlumnos] = useState([]);
-
   //Inicio
   useEffect(() => {
     actions.obtenerAlumnos();
@@ -67,7 +65,7 @@ export const ListaAlumno = () => {
           <Link to={"/crearAlumno"}>
             <button
               type="button"
-              className="btn btn-outline-success float-end"
+              className="btn btn-outline-danger float-end"
               style={{ marginBottom: "18px" }}
             >
               Ingresar nuevo alumno
@@ -80,16 +78,12 @@ export const ListaAlumno = () => {
         <table className="table table-hover table-secondary">
           <thead>
             <tr className="text-center">
-              {/* Cabezeras */}
+              {/* Cabeceras */}
               <th scope="col">Cedula</th>
               <th scope="col">Nombre</th>
               <th scope="col">Apellido</th>
               <th scope="col">Fecha de nacimiento</th>
               <th scope="col">Fecha de ingreso</th>
-              {/* <th scope="col">Mutualista</th>
-              <th scope="col">Afecciones</th>
-              <th scope="col">Medicamentos</th>
-              <th scope="col">Email</th> */}
               <th scope="col">+Info</th>
               <th scope="col">Rutina</th>
               <th scope="col">Editar</th>
@@ -98,7 +92,6 @@ export const ListaAlumno = () => {
           </thead>
 
           {/* Listado */}
-          {/* <thead> */}
           <tbody className="align-middle text-center">
             {store.alumnos.map((item, id) => (
               <tr key={id}>
@@ -107,10 +100,6 @@ export const ListaAlumno = () => {
                 <td>{item.last_name}</td>
                 <td>{item.birthday}</td>
                 <td>{item.date_of_admission}</td>
-                {/* <td>{item.mutualist}</td>
-                <td>{item.medical_conditions}</td>
-                <td>{item.medicines}</td>
-                <td>{item.email}</td> */}
 
                 {/* Mas informacion */}
                 <td>
@@ -129,9 +118,12 @@ export const ListaAlumno = () => {
                 </td>
                 <td>
                   {/* Modificar alumno */}
-                  <button type="button" className="btn btn-outline-dark">
+                  <Link
+                    to={"/modificarAlumno/" + item.id}
+                    className="btn btn-outline-dark"
+                  >
                     <i className="fa fa-pen"></i>
-                  </button>
+                  </Link>
                 </td>
 
                 <td>
@@ -141,7 +133,6 @@ export const ListaAlumno = () => {
                     className="btn btn-outline-danger"
                     onClick={(e) => borrar(e, item)}
                   >
-                    {/* value={item} */}
                     <i className="fa fa-trash"></i>
                   </button>
                 </td>
