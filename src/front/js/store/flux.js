@@ -140,7 +140,7 @@ const getState = ({
             obtenerMensualidades: async () => {
                 try {
                     const response = await axios.get(
-                        "https://3001-ceciliabper-activafitne-tp3ywjf0q2s.ws-us73.gitpod.io/api/mensualidades", {}
+                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/mensualidades", {}
                     );
                     console.log(response.data);
                     setStore({
