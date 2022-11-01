@@ -355,7 +355,7 @@ export const CrearAlumno = () => {
             <button
               type="submit"
               className="btn btn-outline-danger w-100"
-              style={{ marginTop: "35px" }}
+              style={{ marginTop: "35px", marginBottom: "15px" }}
             >
               Guardar datos
             </button>

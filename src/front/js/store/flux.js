@@ -115,8 +115,56 @@ const getState = ({
                 }
             },
 
+            modificarAlumno: async (
+                id,
+                ci,
+                name,
+                last_name,
+                phone,
+                admission,
+                birthday,
+                mutualist,
+                conditions,
+                medicines,
+                training_goals,
+                mail,
+                password,
+                activities,
+                role,
+                isActive
+            ) => {
+                try {
+                    const response = await axios.put(
+                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user/" +
+                        id, {
+                            ci: ci,
+                            name: name,
+                            last_name: last_name,
+                            phone: phone,
+                            date_of_admission: admission,
+                            birthday: birthday,
+                            mutualist: mutualist,
+                            medical_conditions: conditions,
+                            medicines: medicines,
+                            training_goals: training_goals,
+                            email: mail,
+                            password: password,
+                            activities: activities,
+                            role: role,
+                            is_active: isActive,
+                        }
+                    );
+                    console.log(response.data);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
             // ************************************************
-            // MENSUALIDADES				 //
+            //                  MENSUALIDADES				 //
             // ************************************************
 
             // obtener mensualidad por id de usuario

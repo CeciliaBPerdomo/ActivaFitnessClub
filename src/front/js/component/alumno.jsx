@@ -12,8 +12,6 @@ export const Alumno = () => {
     actions.obtenerMensualidadId(parseInt(params.theid));
   }, []);
 
-  //console.log(store.alumno);
-
   return (
     <>
       <div>
