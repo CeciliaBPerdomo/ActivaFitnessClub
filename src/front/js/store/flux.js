@@ -1,5 +1,5 @@
 import axios from "axios";
-//import json;
+// import json;
 
 const getState = ({
     getStore,
@@ -12,10 +12,11 @@ const getState = ({
             alumnos: [],
             alumno: {},
             mens: [],
+            mensualidades: [],
         },
         actions: {
             // ************************************************
-            // 					ALUMNOS						 //
+            // ALUMNOS						 //
             // ************************************************
 
             /* Crea un nuevo alumno*/
@@ -115,10 +116,10 @@ const getState = ({
             },
 
             // ************************************************
-            // 					MENSUALIDADES				 //
+            // MENSUALIDADES				 //
             // ************************************************
 
-            //obtener mensualidad por id de usuario
+            // obtener mensualidad por id de usuario
             obtenerMensualidadId: async (id) => {
                 try {
                     const response = await axios.get(
@@ -129,9 +130,27 @@ const getState = ({
                     setStore({
                         mens: response.data,
                     });
-                    //console.log(mens);
+                    // console.log(mens);
                 } catch (error) {
                     console.log(error);
+                }
+            },
+
+            /* Listar mensualidades */
+            obtenerMensualidades: async () => {
+                try {
+                    const response = await axios.get(
+                        "https://3001-ceciliabper-activafitne-tp3ywjf0q2s.ws-us73.gitpod.io/api/mensualidades", {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        mensualidades: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
                 }
             },
 
@@ -155,17 +174,18 @@ const getState = ({
                 }
             },
             changeColor: (index, color) => {
-                //get the store
+                // get the store
                 const store = getStore();
 
-                //we have to loop the entire demo array to look for the respective index
-                //and change its color
+                // we have to loop the entire demo array to look for the respective index
+                // and change its color
                 const demo = store.demo.map((elm, i) => {
                     if (i === index) elm.background = color;
+
                     return elm;
                 });
 
-                //reset the global store
+                // reset the global store
                 setStore({
                     demo: demo,
                 });
