@@ -38,7 +38,7 @@ export const CrearMensualidad = () => {
                         {width: "40rem"}
                 }>
                     <h5 className="card-header">
-                        Crear Mensualidad
+                        Nueva mensualidad
                     </h5>
 
                     <div className="card-body">
