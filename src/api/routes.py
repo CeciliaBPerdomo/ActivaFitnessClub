@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 
 # Tablas de la base de datos
-from api.models import db, User, Exercise, Product, Payment
+from api.models import db, User, Exercise, Product, Payment, Routines, ShoppingCart, Sales, Outstanding
 from api.utils import generate_sitemap, APIException
 import json
 
@@ -413,17 +413,14 @@ def get_payament(payment_id):
 @api.route('/mensualidad/<int:user_id>', methods=['GET'])
 def get_payment_userId(user_id):
     paymentId = Payment.query.filter_by(user_id=user_id).all()
-    #print(paymentId)
+    
     results = list(map(lambda x: x.serialize(), paymentId))
-    #print(results)
+    
 
 
     if paymentId is None: 
         response_body = {"msg": "Mensualidad no encontrada"}
         return jsonify(response_body), 400
-
-    #payment = list(paymentId)
-    #payment = "ok"
     return jsonify(results), 200
 
 # Borra un ejercicio
@@ -483,10 +480,11 @@ def getRoutines():
     
     routines = Routines.query.all()
     results = list(map(lambda x: x.serialize(), routines ))
+
     print (results)
     return jsonify(results), 200
 
-# Alta de mensualidad
+# Alta de rutinas
 @api.route('/rutinas', methods=['POST'])
 def addRoutines():
     body = json.loads(request.data)
@@ -526,14 +524,390 @@ def get_routines(routines_id):
     routines= routinesId.serialize()
     return jsonify(routines), 200
 
-# Busca por id de usuario
+# # Busca por id de usuario
 @api.route('/rutina/<int:user_id>', methods=['GET'])
 def get_routines_userId(user_id):
-    routinesId = Routines.query.filter_by(id=user_id).first()
+    routinesId = Routines.query.filter_by(user_id=user_id).all()
+    results = list(map(lambda x: x.serialize(), routinesId))
+   
+
 
     if routinesId is None: 
         response_body = {"msg": "Rutina no encontrada"}
         return jsonify(response_body), 400
+    return jsonify(results), 200
 
-    payment = paymentId.serialize()
-    return jsonify(payment), 200
+#Borra una rutina
+
+@api.route('/rutinas/<int:routines_id>', methods=['DELETE'])
+def deleteRoutines(routines_id):
+    routinesId= Routines.query.filter_by(id=routines_id).first()
+
+  
+    if routinesId is None: 
+        response_body = {"msg": "Rutina no encontrada"}
+        return jsonify(response_body), 400
+
+    db.session.delete(routinesId)
+    db.session.commit()
+    response_body = {"msg": "Rutina borrada"}
+    return jsonify(response_body), 200
+
+# Modifica una rutina por id
+@api.route('/rutinas/<int:routines_id>', methods=['PUT'])
+def routinesModif_porId(routines_id):
+    print(routines_id)
+    routines = Routines.query.filter_by(id=routines_id).first()
+    body = json.loads(request.data)
+
+    if routines is None:
+        response_body = {"msg": "No existe la rutina"}
+        return jsonify(response_body), 400    
+
+    if "series" in body:
+         routines.series =  body["series"]
+
+    if "repetitions" in body:
+        routines.repetitions = body["repetitions"]
+
+    if "burden" in body:
+        routines.burden= body["burden"]
+
+    if "week" in body:
+        routines.week = body["week"]
+    if "user_id" in body:
+        routines.user_id = body["user_id"]
+    if "finish" in body:
+        routines.finish = body["finish"]
+
+    db.session.commit()
+
+    response_body = {"msg": "Rutina modificado"}
+    return jsonify(response_body), 400
+
+#######################################
+##                                   ##
+##      RUTAS DEl CARRITO            ##
+##                                   ## 
+#######################################
+
+
+# Muestra todas las compras
+@api.route('/compras', methods=['GET'])
+def getShoppingCart():
+    
+    shoppingCart = ShoppingCart.query.all()
+    results = list(map(lambda x: x.serialize(), shoppingCart ))
+
+    print (results)
+    return jsonify(results), 200
+
+# Alta de la compra
+@api.route('/compras', methods=['POST'])
+def addShoppingCart():
+    body = json.loads(request.data)
+
+    queryNewShoppingCart= ShoppingCart.query.filter_by(user_id=body["user_id"]).first()
+    
+    if queryNewShoppingCart is None:
+        new_shoppingCart = ShoppingCart(user_id=body["user_id"],
+        product_id=body["product_id"])
+        
+        db.session.add(new_shoppingCart)
+        db.session.commit()
+        
+        response_body = {
+            "msg": "Nueva compra creada" 
+        }
+        return jsonify(new_shoppingCart.serialize()), 200
+    
+    response_body = {
+        "msg": "Compra ya creada" 
+    }
+    return jsonify(response_body), 400
+
+# Busca por id de compra
+@api.route('/compras/<int:shoppingCart_id>', methods=['GET'])
+def get_shoppingCart(shoppingCart_id):
+    shoppingCartId = ShoppingCart.query.filter_by(id=shoppingCart_id).first()
+
+    if shoppingCartId is None: 
+        response_body = {"msg": "Compra no encontrada"}
+        return jsonify(response_body), 400
+
+    shoppingCart= shoppingCartId.serialize()
+    return jsonify(routines), 200
+
+# # Busca por id de usuario
+@api.route('/compra/<int:user_id>', methods=['GET'])
+def get_shoppingCart_userId(user_id):
+    shoppingCartId = ShoppingCart.query.filter_by(user_id=user_id).all()
+    results = list(map(lambda x: x.serialize(), shoppingCartId))
+   
+
+
+    if shoppingCartId is None: 
+        response_body = {"msg": "Compra no encontrada"}
+        return jsonify(response_body), 400
+    return jsonify(results), 200
+
+#Borra una rutina
+
+@api.route('/compras/<int:shoppingCart_id>', methods=['DELETE'])
+def deleteShoppingCart(shoppingCart_id):
+    shoppingCartId= Routines.query.filter_by(id=shoppingCart_id).first()
+
+  
+    if shoppingCartId is None: 
+        response_body = {"msg": "Compra no encontrada"}
+        return jsonify(response_body), 400
+
+    db.session.delete(shoppingCartId)
+    db.session.commit()
+    response_body = {"msg": "Rutina borrada"}
+    return jsonify(response_body), 200
+
+# Modifica una compra por id
+@api.route('/compras/<int:shoppingCart_id>', methods=['PUT'])
+def shoppingCartModif_porId(shoppingCart_id):
+    print(shoppingCart_id)
+    shoppingCart = ShoppingCart.query.filter_by(id=shoppingCart_id).first()
+    body = json.loads(request.data)
+
+    if shoppingCart is None:
+        response_body = {"msg": "No existe la compra"}
+        return jsonify(response_body), 400    
+
+    if "user_id" in body:
+         shoppingCart.user_id =  body["user_id"]
+
+    if "product_id" in body:
+        shoppingCart.product_id = body["product_id"]
+
+    
+
+    db.session.commit()
+
+    response_body = {"msg": "Compra modificado"}
+    return jsonify(response_body), 400
+
+#######################################
+##                                   ##
+##      RUTAS DE VENTAS              ##
+##                                   ## 
+#######################################
+
+# Muestra todas las ventas
+@api.route('/ventas', methods=['GET'])
+def getSales():
+    
+    sales = Sales.query.all()
+    results = list(map(lambda x: x.serialize(), sales ))
+
+    print (results)
+    return jsonify(results), 200
+
+# Alta de ventas
+@api.route('/ventas', methods=['POST'])
+def addSales():
+    body = json.loads(request.data)
+
+    queryNewSales= Sales.query.filter_by(id=body["id"]).first()
+    
+    if queryNewSales is None:
+
+        
+        new_sales = Sales(date=body["date"],id=body["id"],
+        notion=body["notion"],
+        amount=body["amount"])
+        
+        db.session.add(new_sales)
+        db.session.commit()
+        
+        response_body = {
+            "msg": "Nueva venta creada" 
+        }
+        return jsonify(new_sales.serialize()), 200
+    
+    response_body = {
+        "msg": "Venta ya creada" 
+    }
+    return jsonify(response_body), 400
+
+# Busca por id de la venta
+@api.route('/ventas/<int:sales_id>', methods=['GET'])
+def get_sales(sales_id):
+    salesId = Sales.query.filter_by(id=sales_id).first()
+
+    if salesId is None: 
+        response_body = {"msg": "Venta no encontrada"}
+        return jsonify(response_body), 400
+
+    sales= salesId.serialize()
+    return jsonify(routines), 200
+
+#Borra una venta
+
+@api.route('/ventas/<int:sales_id>', methods=['DELETE'])
+def deleteSales(sales_id):
+    salesId= Sales.query.filter_by(id=sales_id).first()
+
+  
+    if salesId is None: 
+        response_body = {"msg": "Venta no encontrada"}
+        return jsonify(response_body), 400
+
+    db.session.delete(salesId)
+    db.session.commit()
+    response_body = {"msg": "Venta borrada"}
+    return jsonify(response_body), 200
+
+# Modifica una venta por id
+@api.route('/ventas/<int:sales_id>', methods=['PUT'])
+def salesModif_porId(sales_id):
+    print(sales_id)
+    sales = Sales.query.filter_by(id=sales_id).first()
+    body = json.loads(request.data)
+
+    if sales is None:
+        response_body = {"msg": "No existe la venta"}
+        return jsonify(response_body), 400    
+
+    if "date" in body:
+         sales.date =  body["date"]
+
+    if "notion" in body:
+        sales.notion = body["notion"]
+    
+    if "amount" in body:
+        sales.amount = body["amount"]
+
+    if "id" in body:
+        sales.id = body["id"]
+
+    
+
+    db.session.commit()
+
+    response_body = {"msg": "Venta modificado"}
+    return jsonify(response_body), 400
+
+#######################################
+##                                   ##
+##      RUTAS DE PENDIENTES          ##
+##                                   ## 
+#######################################
+
+# Muestra pendientes
+@api.route('/pendientes', methods=['GET'])
+def getOutstanding():
+    
+    outstanding = Outstanding.query.all()
+    results = list(map(lambda x: x.serialize(), outstanding ))
+
+    print (results)
+    return jsonify(results), 200
+
+# Alta de pendientes
+@api.route('/pendientes', methods=['POST'])
+def addOutstanding():
+    body = json.loads(request.data)
+
+    queryNewOutstanding= Outstanding.query.filter_by(id=body["id"]).first()
+    
+    if queryNewOutstanding is None:
+
+        
+        new_outstanding = Outstanding(id=body["id"],
+        state=body["state"],
+        amount=body["amount"],user_id=body["user_id"],product_id=body["product_id"])
+        
+        db.session.add(new_outstanding)
+        db.session.commit()
+        
+        response_body = {
+            "msg": "Pendiente creado" 
+        }
+        return jsonify(new_outstanding.serialize()), 200
+    
+    response_body = {
+        "msg": "Pendiente ya creado" 
+    }
+    return jsonify(response_body), 400
+
+# Busca por id de pendientes
+@api.route('/pendientes/<int:outstanding_id>', methods=['GET'])
+def get_outstanding(outstanding_id):
+    outstandingId = Outstanding.query.filter_by(id=outstanding_id).first()
+
+    if outstandingId is None: 
+        response_body = {"msg": "Venta no encontrada"}
+        return jsonify(response_body), 400
+
+    outstanding= outstandingId.serialize()
+    return jsonify(routines), 200
+
+
+# Busca por id de usuario
+@api.route('/pendiente/<int:user_id>', methods=['GET'])
+def get_outstanding_userId(user_id):
+    outstandingId = Outstanding.query.filter_by(user_id=user_id).all()
+    
+    results = list(map(lambda x: x.serialize(), outstandingId))
+    
+
+
+    if outstandingId is None: 
+        response_body = {"msg": "Pendiente no encontrado"}
+        return jsonify(response_body), 400
+    return jsonify(results), 200
+
+#Borra un pendiente
+
+@api.route('/pendientes/<int:outstanding_id>', methods=['DELETE'])
+def deleteOutstanding(outstanding_id):
+    outstandingId= Outstanding.query.filter_by(id=outstanding_id).first()
+
+  
+    if outstandingId is None: 
+        response_body = {"msg": "Pendiente no encontrado"}
+        return jsonify(response_body), 400
+
+    db.session.delete(outstandingId)
+    db.session.commit()
+    response_body = {"msg": "Pendiente borrado"}
+    return jsonify(response_body), 200
+
+# Modifica un pendiente por id
+@api.route('/pendientes/<int:outstanding_id>', methods=['PUT'])
+def outstandingModif_porId(outstanding_id):
+    print(outstanding_id)
+    outstanding = Outstanding.query.filter_by(id=outstanding_id).first()
+    body = json.loads(request.data)
+
+    if outstanding is None:
+        response_body = {"msg": "No existe la venta"}
+        return jsonify(response_body), 400    
+
+    if "id" in body:
+         outstanding.id =  body["id"]
+
+    if "state" in body:
+        outstanding.state = body["state"]
+    
+    if "amount" in body:
+        outstanding.amount = body["amount"]
+
+    if "user_id" in body:
+        outstanding.user_id = body["user_id"]
+
+    if "product_id" in body:
+        outstanding.product_id = body["product_id"]
+
+
+    
+
+    db.session.commit()
+
+    response_body = {"msg": "Pendiente modificado"}
+    return jsonify(response_body), 400
