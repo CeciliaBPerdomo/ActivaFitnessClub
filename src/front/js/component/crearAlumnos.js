@@ -1,9 +1,9 @@
 //import React from "react";
 import React, { useState, useContext } from "react";
+import { Link, useParams } from "react-router-dom";
 
 //import {Link} from "react-router-dom"
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
 
 // Datos: ci, name, last_name, phone, date_of_admission, birthday, mutualist, medical_conditions,
 // medicines, training_goals, email, password, activities, role
@@ -76,11 +76,39 @@ export const CrearAlumno = () => {
         <h1>Ingreso de alumno</h1>
         <br />
 
-        <form onSubmit={registro}>
-          <div className="mb-3">
-            {/* Cedula */}
+        <div>
+          <Link to={"/listaAlumno"}>
+            <button
+              type="button"
+              className="btn btn-outline-danger float-end"
+              style={{ marginBottom: "30px" }}
+            >
+              Listado de alumnos
+            </button>
+          </Link>
+        </div>
+        <br />
+
+        <form onSubmit={registro} style={{ marginTop: "15px" }}>
+          {/* <div className="mb-3">
+        
+            Cedula 
             <label htmlFor="cedula" className="form-label">
               Cedula
+            </label>
+
+            <input
+              type="number"
+              className="form-control"
+              id="inputCedula"
+              onChange={(e) => setCI(e.target.value)}
+              value={ci}
+            />
+          </div> */}
+          {/* Cedula */}
+          <div className="col-md-4">
+            <label htmlFor="validationCustom01" className="form-label">
+              Cedula:
             </label>
 
             <input
@@ -93,12 +121,18 @@ export const CrearAlumno = () => {
           </div>
 
           {/* Nombre */}
-          <div className="mb-3">
-            <label htmlFor="nombre" className="form-label">
+          <div className="col-md-4">
+            {/* <label htmlFor="nombre" className="form-label">
               Nombre
+            </label> */}
+
+            <label htmlFor="validationCustom01" className="form-label">
+              Nombre:
             </label>
+
             <input
               type="text"
+              //className="form-control"
               className="form-control"
               id="inputNombre"
               onChange={(e) => setName(e.target.value)}

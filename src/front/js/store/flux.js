@@ -9,17 +9,6 @@ const getState = ({
     return {
         store: {
             message: null,
-            // demo: [{
-            //         title: "FIRST",
-            //         background: "white",
-            //         initial: "white",
-            //     },
-            //     {
-            //         title: "SECOND",
-            //         background: "white",
-            //         initial: "white",
-            //     },
-            // ],
             alumnos: [],
             alumno: {},
             mens: [],
@@ -49,7 +38,7 @@ const getState = ({
             ) => {
                 try {
                     const response = await axios.post(
-                        "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user", {
+                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user", {
                             ci: ci,
                             name: name,
                             last_name: last_name,
@@ -77,7 +66,7 @@ const getState = ({
             obtenerAlumnos: async () => {
                 try {
                     const response = await axios.get(
-                        "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user", {}
+                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user", {}
                     );
                     //console.log(response.data);
                     setStore({
@@ -95,7 +84,7 @@ const getState = ({
             borrarAlumno: async (id) => {
                 try {
                     const response = await axios.delete(
-                        "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user/" +
+                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user/" +
                         id, {}
                     );
                     // console.log(response);
@@ -110,7 +99,7 @@ const getState = ({
             obtenerAlumnoId: async (id) => {
                 try {
                     const response = await axios.get(
-                        "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/user/" +
+                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user/" +
                         id, {}
                     );
                     // console.log(response.data);
@@ -133,7 +122,7 @@ const getState = ({
             obtenerMensualidadId: async (id) => {
                 try {
                     const response = await axios.get(
-                        "https://3001-ceciliabper-activafitne-i1xxtzgnsuc.ws-us73.gitpod.io/api/mensualidad/" +
+                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/mensualidad/" +
                         id, {}
                     );
                     console.log(response.data);
