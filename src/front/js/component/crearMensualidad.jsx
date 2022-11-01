@@ -2,6 +2,11 @@ import React, {useState, useContext} from "react";
 
 import {Context} from "../store/appContext";
 
+
+// ///////////////////////////////////////////
+// ADMIN PUEDE AGREGAR NUEVAS MENSUALIDADES//
+// /////////////////////////////////////////
+
 export const CrearMensualidad = () => {
     const [nombreUsuario, setNombreUsuario] = useState("")
     const [apellido, setApellido] = useState("")
