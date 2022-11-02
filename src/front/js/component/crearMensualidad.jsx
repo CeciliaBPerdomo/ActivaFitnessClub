@@ -7,11 +7,12 @@ import { Link, useParams } from "react-router-dom";
 // /////////////////////////////////////////
 
 export const CrearMensualidad = () => {
-  const [idUsuario, setId] = useState("");
+  const [idUsuario, setIDUsuario] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [fechaPago, setFechaPago] = useState("");
   const [numeroFactura, setNumeroFactura] = useState("");
   const [monto, setMonto] = useState("");
+  const [state, setState] = useState(true);
 
   const { actions, store } = useContext(Context);
 
@@ -22,6 +23,17 @@ export const CrearMensualidad = () => {
   const agregarMensualidad = (event) => {
     event.preventDefault();
 
+    /* Agrega el pago de la mensualidad */
+    actions.agregarPagoMensualidad(
+      fechaPago,
+      monto,
+      descripcion,
+      numeroFactura,
+      state,
+      idUsuario
+    );
+
+    /* Limpia el formulario */
     setImagen("");
     setDescripcion("");
     setFechaPago("");
@@ -73,7 +85,11 @@ export const CrearMensualidad = () => {
                   <b>Alumno:</b>
                 </label>
 
-                <select className="form-select" id="inputGroupSelect01">
+                <select
+                  className="form-select"
+                  id="inputGroupSelect01"
+                  onChange={(e) => setIDUsuario(e.target.value)}
+                >
                   {store.alumnos.map((item, id) => (
                     <option key={id} value={item.id}>
                       {item.name} {item.last_name}
