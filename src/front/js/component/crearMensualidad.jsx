@@ -13,7 +13,7 @@ export const CrearMensualidad = () => {
   const [numeroFactura, setNumeroFactura] = useState("");
   const [monto, setMonto] = useState("");
 
-  const { actions } = useContext(Context);
+  const { actions, store } = useContext(Context);
 
   useEffect(() => {
     actions.obtenerAlumnos();
@@ -39,7 +39,7 @@ export const CrearMensualidad = () => {
       >
         {/* Titulo */}
         <h1>
-          <i class="fa fa-wallet"></i> Pago de mensualidades
+          <i className="fa fa-wallet"></i> Pago de mensualidades
         </h1>
         <br />
 
@@ -57,14 +57,13 @@ export const CrearMensualidad = () => {
                 <label htmlFor="Alumno" className="form-label">
                   <b>Alumnos:</b>
                 </label>
-                <select
-                  className="form-select"
-                  id="inputGroupSelect01"
-                  //onChange={(e) => setMutualist(e.target.value)}
-                  //value={mutualist}
-                >
-                  <option select>Alumnos</option>
-                  <option value="Alumno"></option>
+
+                <select className="form-select" id="inputGroupSelect01">
+                  {store.alumnos.map((item, id) => (
+                    <option key={id} value={item.value}>
+                      {item.name}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
