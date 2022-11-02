@@ -72,7 +72,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/user", {});
                     // console.log(response.data);
                     setStore({
-                        alumnos: response.data
+                        alumnos: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -104,7 +104,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/user/" + id, {});
                     // console.log(response.data);
                     setStore({
-                        alumno: response.data
+                        alumno: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -172,7 +172,7 @@ const getState = ({
                     );
                     console.log(response.data);
                     setStore({
-                        mens: response.data
+                        mens: response.data,
                     });
                     // console.log(mens);
                 } catch (error) {
@@ -188,7 +188,7 @@ const getState = ({
                     );
                     // console.log(response.data);
                     setStore({
-                        mensualidades: response.data
+                        mensualidades: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -258,18 +258,21 @@ const getState = ({
 
             /* Crea un nuevo ejercicio*/
             crearEjercicio: async (
-                new_exercise,
+                exercise_name,
                 type_of_muscle,
                 description,
-                photo_exercise
+                photo_exercise,
+                video_exercise
             ) => {
                 try {
                     const response = await axios.post(direccion + "/api/ejercicios", {
-                        new_exercise: new_exercise,
+                        exercise_name: exercise_name,
                         type_of_muscle: type_of_muscle,
                         description: description,
                         photo_exercise: photo_exercise,
+                        video_exercise: video_exercise,
                     });
+                    console.log(response);
                     return true;
                 } catch (error) {
                     console.log(error);
@@ -282,7 +285,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/ejercicios", {});
                     console.log(response.data);
                     setStore({
-                        ejercicios: response.data
+                        ejercicios: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -293,15 +296,14 @@ const getState = ({
             },
 
             // obtener ejercicio por Id
-
             obtenerEjercicioId: async (id) => {
                 try {
                     const response = await axios.get(
                         direccion + "/api/ejercicios/" + id, {}
                     );
-                    // console.log(response.data);
+                    console.log(response.data);
                     setStore({
-                        ejercicio: response.data
+                        ejercicio: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -317,7 +319,7 @@ const getState = ({
                     const response = await axios.delete(
                         direccion + "/api/ejercicios/" + id, {}
                     );
-                    // console.log(response);
+                    console.log(response);
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
@@ -329,18 +331,20 @@ const getState = ({
             // Modificar ejercicio
             modificarEjercicio: async (
                 id,
-                new_exercise,
+                exercise_name,
                 type_of_muscle,
                 description,
-                photo_exercise
+                photo_exercise,
+                video_exercise
             ) => {
                 try {
                     const response = await axios.put(
                         direccion + "/api/ejercicios/" + id, {
-                            new_exercise: new_exercise,
+                            exercise_name: exercise_name,
                             type_of_muscle: type_of_muscle,
                             description: description,
                             photo_exercise: photo_exercise,
+                            video_exercise: video_exercise,
                         }
                     );
                     console.log(response.data);
@@ -363,7 +367,7 @@ const getState = ({
                     const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
                     const data = await resp.json();
                     setStore({
-                        message: data.message
+                        message: data.message,
                     });
                     // don't forget to return something, that is how the async resolves
                     return data;
@@ -386,7 +390,7 @@ const getState = ({
 
                 // reset the global store
                 setStore({
-                    demo: demo
+                    demo: demo,
                 });
             },
         },

@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<<< HEAD:migrations/versions/6b6a01565d46_.py
-Revision ID: 6b6a01565d46
+Revision ID: 926144524936
 Revises: 
-Create Date: 2022-11-02 19:47:15.340912
-========
-Revision ID: 8ee6e9dd940a
-Revises: 
-Create Date: 2022-11-02 20:09:30.279930
->>>>>>>> e9376503b04d0591967f319f79c2776eda68e371:migrations/versions/8ee6e9dd940a_.py
+Create Date: 2022-11-02 21:42:18.386841
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/6b6a01565d46_.py
-revision = '6b6a01565d46'
-========
-revision = '8ee6e9dd940a'
->>>>>>>> e9376503b04d0591967f319f79c2776eda68e371:migrations/versions/8ee6e9dd940a_.py
+revision = '926144524936'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -111,7 +101,8 @@ def upgrade():
     sa.Column('exercise_name', sa.String(length=80), nullable=False),
     sa.Column('type_of_muscle', sa.String(length=80), nullable=False),
     sa.Column('description', sa.String(length=80), nullable=False),
-    sa.Column('photo_exercise', sa.String(length=80), nullable=False),
+    sa.Column('photo_exercise', sa.String(length=200), nullable=True),
+    sa.Column('video_exercise', sa.String(length=200), nullable=True),
     sa.Column('routines_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['routines_id'], ['routines.id'], ),
     sa.PrimaryKeyConstraint('id')

@@ -155,8 +155,6 @@ export const CrearMensualidad = () => {
                 <input
                   type="text"
                   className="form-control"
-                  id="basic-description"
-                  aria-describedby="basic-addon3"
                   onChange={(event) => setDescripcion(event.target.value)}
                   value={descripcion}
                 />
