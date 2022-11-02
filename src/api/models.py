@@ -165,12 +165,9 @@ class Routines(db.Model):
             "finish": self.finish,
             
             "user_id":self.user_id
-
         }
 
-
-
-
+# Mensualidades
 class Payment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     payment_date = db.Column(db.String(80), nullable=False)
@@ -193,6 +190,12 @@ class Payment(db.Model):
             "state": self.state,
             "description":self.description,
             "user_id":self.user_id
+        }
+
+    def serializeUser(self):
+        results = User.query.filter_by(id = self.user_id).first()
+        return {
+            "userInfo": results.serialize(),
         }
 
 

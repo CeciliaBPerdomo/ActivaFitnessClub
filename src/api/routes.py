@@ -365,7 +365,7 @@ def productModif_porId(product_id):
 def getPayment():
     
     payment = Payment.query.all()
-    results = list(map(lambda x: x.serialize(), payment ))
+    results = list(map(lambda x: { **x.serializeUser(), **x.serialize() }, payment))
     print (results)
     return jsonify(results), 200
 
