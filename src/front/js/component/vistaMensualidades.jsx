@@ -13,6 +13,7 @@ export const VistaMensualidades = () => {
 
   useEffect(() => {
     actions.obtenerMensualidades();
+    actions.obtenerAlumnos();
   }, []);
 
   const borrar = (e, item) => {
@@ -85,7 +86,8 @@ export const VistaMensualidades = () => {
         <tbody className="align-middle text-center">
           {store.mensualidades.map((item, id) => (
             <tr key={id}>
-              {/* {actions.obtenerAlumnoId(item.user_id)} */}
+              {/* (if (item.user_id == store.alumnos.id)
+              {<td>store.alumnos.name</td>}) */}
               <td>Nombre</td>
               <td>Apellido</td>
               <td>Fecha</td>
@@ -101,7 +103,6 @@ export const VistaMensualidades = () => {
                   </button>
                 </Link>
               </td>
-
               {/* Eliminar */}
               <td>
                 <button
