@@ -26,7 +26,6 @@ export const CrearAlumno = () => {
   const [isActive, setActive] = useState(true);
 
   const { actions } = useContext(Context);
-  //let history = useHistory();
 
   const registro = (e) => {
     e.preventDefault();
