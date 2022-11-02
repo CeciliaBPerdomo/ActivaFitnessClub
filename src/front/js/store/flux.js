@@ -16,6 +16,8 @@ const getState = ({
             alumno: {},
             mens: [],
             mensualidades: [],
+            ejercicios: [],
+            ejercicio: {},
         },
         actions: {
             // ************************************************
@@ -68,9 +70,9 @@ const getState = ({
             obtenerAlumnos: async () => {
                 try {
                     const response = await axios.get(direccion + "/api/user", {});
-                    //console.log(response.data);
+                    // console.log(response.data);
                     setStore({
-                        alumnos: response.data,
+                        alumnos: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -95,12 +97,14 @@ const getState = ({
                 }
             },
 
+            // obtener alumno por Id
+
             obtenerAlumnoId: async (id) => {
                 try {
                     const response = await axios.get(direccion + "/api/user/" + id, {});
                     // console.log(response.data);
                     setStore({
-                        alumno: response.data,
+                        alumno: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -110,6 +114,7 @@ const getState = ({
                 }
             },
 
+            // Modificar alumno
             modificarAlumno: async (
                 id,
                 ci,
@@ -167,7 +172,7 @@ const getState = ({
                     );
                     console.log(response.data);
                     setStore({
-                        mens: response.data,
+                        mens: response.data
                     });
                     // console.log(mens);
                 } catch (error) {
@@ -181,9 +186,9 @@ const getState = ({
                     const response = await axios.get(
                         direccion + "/api/mensualidades", {}
                     );
-                    //console.log(response.data);
+                    // console.log(response.data);
                     setStore({
-                        mensualidades: response.data,
+                        mensualidades: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -231,7 +236,7 @@ const getState = ({
                 state,
                 user_id
             ) => {
-                //payment_date: payment_date,
+                // payment_date: payment_date,
                 try {
                     const response = await axios.post(direccion + "/api/mensualidades", {
                         payment_date: payment_date,
@@ -247,6 +252,106 @@ const getState = ({
                 }
             },
 
+            // ************************************************
+            //                 EJERCICIOS 					 //
+            // ************************************************
+
+            /* Crea un nuevo ejercicio*/
+            crearEjercicio: async (
+                new_exercise,
+                type_of_muscle,
+                description,
+                photo_exercise
+            ) => {
+                try {
+                    const response = await axios.post(direccion + "/api/ejercicios", {
+                        new_exercise: new_exercise,
+                        type_of_muscle: type_of_muscle,
+                        description: description,
+                        photo_exercise: photo_exercise,
+                    });
+                    return true;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            /* Listar ejercicios */
+            obtenerEjercicios: async () => {
+                try {
+                    const response = await axios.get(direccion + "/api/ejercicios", {});
+                    console.log(response.data);
+                    setStore({
+                        ejercicios: response.data
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // obtener ejercicio por Id
+
+            obtenerEjercicioId: async (id) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/ejercicios/" + id, {}
+                    );
+                    // console.log(response.data);
+                    setStore({
+                        ejercicio: response.data
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            /* Borrar ejercicio */
+            borrarEjercicio: async (id) => {
+                try {
+                    const response = await axios.delete(
+                        direccion + "/api/ejercicios/" + id, {}
+                    );
+                    // console.log(response);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // Modificar ejercicio
+            modificarEjercicio: async (
+                id,
+                new_exercise,
+                type_of_muscle,
+                description,
+                photo_exercise
+            ) => {
+                try {
+                    const response = await axios.put(
+                        direccion + "/api/ejercicios/" + id, {
+                            new_exercise: new_exercise,
+                            type_of_muscle: type_of_muscle,
+                            description: description,
+                            photo_exercise: photo_exercise,
+                        }
+                    );
+                    console.log(response.data);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
@@ -258,7 +363,7 @@ const getState = ({
                     const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
                     const data = await resp.json();
                     setStore({
-                        message: data.message,
+                        message: data.message
                     });
                     // don't forget to return something, that is how the async resolves
                     return data;
@@ -281,7 +386,7 @@ const getState = ({
 
                 // reset the global store
                 setStore({
-                    demo: demo,
+                    demo: demo
                 });
             },
         },
