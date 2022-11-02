@@ -53,7 +53,7 @@ export const HomeUsuario = () => {
               <li>
                 <hr className="dropdown-divider"/>
               </li>
-              <Link to={"/login"}>
+              <Link to={"/"}>
                 <li><a className="dropdown-item" href="#">Cerrar Sesión</a></li>
               </Link>
             </ul>
