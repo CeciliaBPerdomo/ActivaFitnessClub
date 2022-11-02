@@ -39,7 +39,7 @@ const getState = ({
             ) => {
                 try {
                     const response = await axios.post(
-                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user", {
+                        "https://3001-ceciliabper-activafitne-eli31wbrf68.ws-us73.gitpod.io/api/user", {
                             ci: ci,
                             name: name,
                             last_name: last_name,
@@ -67,7 +67,7 @@ const getState = ({
             obtenerAlumnos: async () => {
                 try {
                     const response = await axios.get(
-                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user", {}
+                        "https://3001-ceciliabper-activafitne-eli31wbrf68.ws-us73.gitpod.io/api/user", {}
                     );
                     //console.log(response.data);
                     setStore({
@@ -171,7 +171,7 @@ const getState = ({
             obtenerMensualidadId: async (id) => {
                 try {
                     const response = await axios.get(
-                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/mensualidad/" +
+                        "https://3001-ceciliabper-activafitne-eli31wbrf68.ws-us73.gitpod.io/api/mensualidad/" +
                         id, {}
                     );
                     console.log(response.data);
@@ -188,7 +188,7 @@ const getState = ({
             obtenerMensualidades: async () => {
                 try {
                     const response = await axios.get(
-                        "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/mensualidades", {}
+                        "https://3001-ceciliabper-activafitne-eli31wbrf68.ws-us73.gitpod.io/api/mensualidades", {}
                     );
                     //console.log(response.data);
                     setStore({
