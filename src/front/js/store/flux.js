@@ -2,7 +2,7 @@ import axios from "axios";
 // import json;
 
 let direccion =
-    "https://3001-ceciliabper-activafitne-eli31wbrf68.ws-us73.gitpod.io";
+    "https://3001-ceciliabper-activafitne-lz7w3iz3rjk.ws-us73.gitpod.io";
 
 const getState = ({
     getStore,
@@ -19,7 +19,7 @@ const getState = ({
         },
         actions: {
             // ************************************************
-            // ALUMNOS						 //
+            //                  ALUMNOS						 //
             // ************************************************
 
             /* Crea un nuevo alumno*/
@@ -193,6 +193,7 @@ const getState = ({
                 }
             },
 
+            /* Modificar mensualidades */
             modificarMensualidad: async (
                 id,
                 user_id,
@@ -221,6 +222,31 @@ const getState = ({
                 }
             },
 
+            /* Agregar nuevo pago de mensualidad */
+            agregarPagoMensualidad: async (
+                payment_date,
+                payment_amount,
+                description,
+                bill_n,
+                state,
+                user_id
+            ) => {
+                //payment_date: payment_date,
+                try {
+                    const response = await axios.post(direccion + "/api/mensualidades", {
+                        payment_date: payment_date,
+                        payment_amount: payment_amount,
+                        description: description,
+                        bill_n: bill_n,
+                        state: state,
+                        user_id: user_id,
+                    });
+                    console.log(response.data);
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
@@ -240,6 +266,7 @@ const getState = ({
                     console.log("Error loading message from backend", error);
                 }
             },
+
             changeColor: (index, color) => {
                 // get the store
                 const store = getStore();
