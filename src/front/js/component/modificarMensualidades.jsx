@@ -1,5 +1,5 @@
-import React, {useState, useContext, useParams} from "react";
-
+import React, {useState, useContext, useEffect} from "react";
+import {Link, useParams} from "react-router-dom";
 import {Context} from "../store/appContext";
 
 
@@ -46,7 +46,7 @@ export const EditarMensualidad = () => {
                     {width: "40rem"}
             }>
                 <h5 className="card-header">
-                    Nueva mensualidad
+                    Editar mensualidad
                 </h5>
 
                 <div className="card-body">
