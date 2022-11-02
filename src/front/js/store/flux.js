@@ -1,6 +1,9 @@
 import axios from "axios";
 // import json;
 
+let direccion =
+    "https://3001-ceciliabper-activafitne-eli31wbrf68.ws-us73.gitpod.io";
+
 const getState = ({
     getStore,
     getActions,
@@ -12,7 +15,7 @@ const getState = ({
             alumnos: [],
             alumno: {},
             mens: [],
-            mensualidades: []
+            mensualidades: [],
         },
         actions: {
             // ************************************************
@@ -20,9 +23,25 @@ const getState = ({
             // ************************************************
 
             /* Crea un nuevo alumno*/
-            crearAlumno: async (ci, name, last_name, phone, date_of_admission, birthday, mutualist, medical_conditions, medicines, training_goals, email, password, activities, role, is_active) => {
+            crearAlumno: async (
+                ci,
+                name,
+                last_name,
+                phone,
+                date_of_admission,
+                birthday,
+                mutualist,
+                medical_conditions,
+                medicines,
+                training_goals,
+                email,
+                password,
+                activities,
+                role,
+                is_active
+            ) => {
                 try {
-                    const response = await axios.post("https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user", {
+                    const response = await axios.post(direccion + "/api/user", {
                         ci: ci,
                         name: name,
                         last_name: last_name,
@@ -37,7 +56,7 @@ const getState = ({
                         password: password,
                         activities: activities,
                         role: role,
-                        is_active: is_active
+                        is_active: is_active,
                     });
                     return true;
                 } catch (error) {
@@ -48,10 +67,10 @@ const getState = ({
             /* Listar alumnos */
             obtenerAlumnos: async () => {
                 try {
-                    const response = await axios.get("https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user", {});
-                    // console.log(response.data);
+                    const response = await axios.get(direccion + "/api/user", {});
+                    //console.log(response.data);
                     setStore({
-                        alumnos: response.data
+                        alumnos: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -64,7 +83,9 @@ const getState = ({
             /* Borrar alumno */
             borrarAlumno: async (id) => {
                 try {
-                    const response = await axios.delete("https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user/" + id, {});
+                    const response = await axios.delete(
+                        direccion + "/api/user/" + id, {}
+                    );
                     // console.log(response);
                 } catch (error) {
                     console.log(error);
@@ -76,10 +97,10 @@ const getState = ({
 
             obtenerAlumnoId: async (id) => {
                 try {
-                    const response = await axios.get("https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user/" + id, {});
+                    const response = await axios.get(direccion + "/api/user/" + id, {});
                     // console.log(response.data);
                     setStore({
-                        alumno: response.data
+                        alumno: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -89,9 +110,26 @@ const getState = ({
                 }
             },
 
-            modificarAlumno: async (id, ci, name, last_name, phone, admission, birthday, mutualist, conditions, medicines, training_goals, mail, password, activities, role, isActive) => {
+            modificarAlumno: async (
+                id,
+                ci,
+                name,
+                last_name,
+                phone,
+                admission,
+                birthday,
+                mutualist,
+                conditions,
+                medicines,
+                training_goals,
+                mail,
+                password,
+                activities,
+                role,
+                isActive
+            ) => {
                 try {
-                    const response = await axios.put("https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/user/" + id, {
+                    const response = await axios.put(direccion + "/api/user/" + id, {
                         ci: ci,
                         name: name,
                         last_name: last_name,
@@ -106,7 +144,7 @@ const getState = ({
                         password: password,
                         activities: activities,
                         role: role,
-                        is_active: isActive
+                        is_active: isActive,
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -124,10 +162,12 @@ const getState = ({
             // obtener mensualidad por id de usuario
             obtenerMensualidadId: async (id) => {
                 try {
-                    const response = await axios.get("https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/mensualidad/" + id, {});
+                    const response = await axios.get(
+                        direccion + "/api/mensualidad/" + id, {}
+                    );
                     console.log(response.data);
                     setStore({
-                        mens: response.data
+                        mens: response.data,
                     });
                     // console.log(mens);
                 } catch (error) {
@@ -138,10 +178,12 @@ const getState = ({
             /* Listar mensualidades */
             obtenerMensualidades: async () => {
                 try {
-                    const response = await axios.get("https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/mensualidades", {});
-                    // console.log(response.data);
+                    const response = await axios.get(
+                        direccion + "/api/mensualidades", {}
+                    );
+                    //console.log(response.data);
                     setStore({
-                        mensualidades: response.data
+                        mensualidades: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -151,16 +193,25 @@ const getState = ({
                 }
             },
 
-            modificarMensualidad: async (id, user_id, payment_date, bill_n, payment_amount, description) => {
+            modificarMensualidad: async (
+                id,
+                user_id,
+                payment_date,
+                bill_n,
+                payment_amount,
+                description
+            ) => {
                 try {
-                    const response = await axios.put("https://3001-ceciliabper-activafitne-342eyp2q71g.ws-us73.gitpod.io//api/mensualidades/" + id, {
-                        id: id,
-                        user_id: user_id,
-                        payment_date: payment_date,
-                        bill_n: bill_n,
-                        payment_amount: payment_amount,
-                        description: description
-                    });
+                    const response = await axios.put(
+                        direccion + "/api/mensualidades/" + id, {
+                            id: id,
+                            user_id: user_id,
+                            payment_date: payment_date,
+                            bill_n: bill_n,
+                            payment_amount: payment_amount,
+                            description: description,
+                        }
+                    );
                     console.log(response.data);
                 } catch (error) {
                     console.log(error);
@@ -170,18 +221,18 @@ const getState = ({
                 }
             },
 
-
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
             },
 
             getMessage: async () => {
-                try { // fetching data from the backend
+                try {
+                    // fetching data from the backend
                     const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
                     const data = await resp.json();
                     setStore({
-                        message: data.message
+                        message: data.message,
                     });
                     // don't forget to return something, that is how the async resolves
                     return data;
@@ -189,26 +240,24 @@ const getState = ({
                     console.log("Error loading message from backend", error);
                 }
             },
-            changeColor: (index, color) => { // get the store
+            changeColor: (index, color) => {
+                // get the store
                 const store = getStore();
 
                 // we have to loop the entire demo array to look for the respective index
                 // and change its color
                 const demo = store.demo.map((elm, i) => {
-                    if (i === index)
-                        elm.background = color;
-
-
+                    if (i === index) elm.background = color;
 
                     return elm;
                 });
 
                 // reset the global store
                 setStore({
-                    demo: demo
+                    demo: demo,
                 });
-            }
-        }
+            },
+        },
     };
 };
 
