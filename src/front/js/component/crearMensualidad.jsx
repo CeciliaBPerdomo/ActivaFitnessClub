@@ -34,7 +34,6 @@ export const CrearMensualidad = () => {
     );
 
     /* Limpia el formulario */
-    setImagen("");
     setDescripcion("");
     setFechaPago("");
     setNumeroFactura("");
@@ -89,7 +88,9 @@ export const CrearMensualidad = () => {
                   className="form-select"
                   id="inputGroupSelect01"
                   onChange={(e) => setIDUsuario(e.target.value)}
+                  value={idUsuario}
                 >
+                  <option>Seleccionar alumno</option>
                   {store.alumnos.map((item, id) => (
                     <option key={id} value={item.id}>
                       {item.name} {item.last_name}

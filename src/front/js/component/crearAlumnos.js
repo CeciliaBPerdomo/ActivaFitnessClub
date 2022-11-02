@@ -167,6 +167,7 @@ export const CrearAlumno = () => {
                   type="date"
                   className="form-control"
                   id="inputNacimiento"
+                  onChange={(e) => setBirthday(e.target.value)}
                   value={birthday}
                 />
               </div>
