@@ -190,7 +190,7 @@ const getState = ({
                     const response = await axios.get(
                         "https://3001-ceciliabper-activafitne-nmi4dt8tju0.ws-us73.gitpod.io/api/mensualidades", {}
                     );
-                    console.log(response.data);
+                    //console.log(response.data);
                     setStore({
                         mensualidades: response.data,
                     });
