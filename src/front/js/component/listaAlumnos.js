@@ -40,7 +40,7 @@ export const ListaAlumno = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container" style={{ marginBottom: "15px" }}>
         <div>
           <br />
           <h1>

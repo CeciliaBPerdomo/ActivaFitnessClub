@@ -26,7 +26,6 @@ export const CrearAlumno = () => {
   const [isActive, setActive] = useState(true);
 
   const { actions } = useContext(Context);
-  //let history = useHistory();
 
   const registro = (e) => {
     e.preventDefault();
@@ -355,7 +354,7 @@ export const CrearAlumno = () => {
             <button
               type="submit"
               className="btn btn-outline-danger w-100"
-              style={{ marginTop: "35px" }}
+              style={{ marginTop: "35px", marginBottom: "15px" }}
             >
               Guardar datos
             </button>

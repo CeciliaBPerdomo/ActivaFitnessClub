@@ -2,6 +2,12 @@ import React, {useState, useContext, useEffect} from "react";
 import {Link, useParams} from "react-router-dom";
 import {Context} from "../store/appContext";
 
+
+// ///////////////////////////////////////////
+// CLIENTE PUEDE VER LISTADO DE SUS PAGOS  //
+// /////////////////////////////////////////
+
+
 export const MisPagos = () => {
     const {store, actions} = useContext(Context);
     const params = useParams();

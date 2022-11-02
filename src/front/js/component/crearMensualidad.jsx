@@ -1,107 +1,180 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
+import { Link, useParams } from "react-router-dom";
 
-import {Context} from "../store/appContext";
+// ///////////////////////////////////////////
+// ADMIN PUEDE AGREGAR NUEVAS MENSUALIDADES//
+// /////////////////////////////////////////
 
 export const CrearMensualidad = () => {
-    const [nombreUsuario, setNombreUsuario] = useState("")
-    const [apellido, setApellido] = useState("")
-    const [descripcion, setDescripcion] = useState("")
-    const [fechaPago, setFechaPago] = useState("")
-    const [numeroFactura, setNumeroFactura] = useState("")
-    const [monto, setMonto] = useState("")
+  const [idUsuario, setIDUsuario] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [fechaPago, setFechaPago] = useState("");
+  const [numeroFactura, setNumeroFactura] = useState("");
+  const [monto, setMonto] = useState("");
+  const [state, setState] = useState(true);
 
-    const agregarMensualidad = (event) => {
+  const { actions, store } = useContext(Context);
 
-        event.preventDefault();
+  useEffect(() => {
+    actions.obtenerAlumnos();
+  }, []);
 
-        setNombreUsuario("")
-        setApellido("")
-        setImagen("")
-        setDescripcion("")
-        setFechaPago("")
-        setNumeroFactura("")
-        setMonto("")
-    }
+  const agregarMensualidad = (event) => {
+    event.preventDefault();
 
+    /* Agrega el pago de la mensualidad */
+    actions.agregarPagoMensualidad(
+      fechaPago,
+      monto,
+      descripcion,
+      numeroFactura,
+      state,
+      idUsuario
+    );
 
-    return (
-        <>
+    /* Limpia el formulario */
+    setImagen("");
+    setDescripcion("");
+    setFechaPago("");
+    setNumeroFactura("");
+    setMonto("");
+  };
 
-            <div className="bg.crearEjercicio">
+  return (
+    <>
+      <div
+        className="container"
+        style={{ marginTop: "20px", marginBottom: "35px" }}
+      >
+        {/* Titulo */}
+        <h1>
+          <i className="fa fa-wallet"></i> Pago de mensualidades
+        </h1>
+        <br />
 
-                <br/>
-                <br/>
-                <br/>
+        {/* Listado de mensualidades */}
+        <div>
+          <Link to={"/mensualidades"}>
+            <button
+              type="button"
+              className="btn btn-outline-danger float-end"
+              style={{ marginBottom: "20px" }}
+            >
+              Listado de mensualidades
+            </button>
+          </Link>
+        </div>
+        <br />
 
-                <div className="card container-md center"
-                    style={
-                        {width: "40rem"}
-                }>
-                    <h5 className="card-header">
-                        Nueva mensualidad
-                    </h5>
-
-                    <div className="card-body">
-                        <div className="input-group input-group-sm mb-3">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
-                            <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
-                                onChange={
-                                    (event) => setNombreUsuario(event.target.value)
-                                }
-                                value={nombreUsuario}/>
-                        </div>
-
-                        <div className="input-group mb-3">
-                            <span className="input-group-text" id="basic-addon3">Apellido</span>
-                            <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3"
-                                onChange={
-                                    (event) => setApellido(event.target.value)
-                                }
-                                value={apellido}/>
-                        </div>
-                        <div className="input-group input-group-sm mb-3">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Fecha de pago</span>
-                            <input type="date" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
-                                onChange={
-                                    (event) => setFechaPago(event.target.value)
-                                }
-                                value={fechaPago}/>
-                        </div>
-                        <div className="d-flex">
-                            <div className="input-group input-group-sm mb-3">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Monto</span>
-                                <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
-                                    onChange={
-                                        (event) => setMonto(event.target.value)
-                                    }
-                                    value={monto}/>
-                            </div>
-                            <div className="input-group input-group-sm mb-3">
-                                <span className="input-group-text" id="inputGroup-factura">Nº Factura</span>
-                                <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
-                                    onChange={
-                                        (event) => setNumeroFactura(event.target.value)
-                                    }
-                                    value={numeroFactura}/>
-                            </div>
-                        </div>
-                        <div className="input-group mb-3">
-                            <span className="input-group-text" id="basic-addon3">Descripción</span>
-                            <input type="text" className="form-control" id="basic-description" aria-describedby="basic-addon3"
-                                onChange={
-                                    (event) => setDescripcion(event.target.value)
-                                }
-                                value={descripcion}/>
-                        </div>
-
-                        <button type="button" className="btn btn-success"
-                            onClick={agregarMensualidad}>Agregar nueva mensualidad</button>
-
-                    </div>
-
-                </div>
+        <div className="formulario">
+          <form onSubmit={agregarMensualidad}>
+            <div
+              className="container text-start "
+              style={{ marginTop: "10px" }}
+            >
+              <div className="row"></div>
             </div>
-        </>
-    )
 
-}
+            <div
+              className="row"
+              style={{ marginBottom: "15px", marginTop: "25px" }}
+            >
+              <div className="col">
+                <label htmlFor="Alumno" className="form-label">
+                  <b>Alumno:</b>
+                </label>
+
+                <select
+                  className="form-select"
+                  id="inputGroupSelect01"
+                  onChange={(e) => setIDUsuario(e.target.value)}
+                >
+                  {store.alumnos.map((item, id) => (
+                    <option key={id} value={item.id}>
+                      {item.name} {item.last_name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="row" style={{ marginBottom: "15px" }}>
+              <div className="col">
+                <label htmlFor="validationCustom01" className="form-label">
+                  <b>Fecha de pago:</b>
+                </label>
+                <input
+                  type="date"
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm"
+                  onChange={(event) => setFechaPago(event.target.value)}
+                  value={fechaPago}
+                />
+              </div>
+            </div>
+
+            <div className="row" style={{ marginBottom: "15px" }}>
+              <div className="col">
+                <label htmlFor="validationCustom01" className="form-label">
+                  <b>Monto:</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm"
+                  onChange={(event) => setMonto(event.target.value)}
+                  value={monto}
+                />
+              </div>
+
+              <div className="col">
+                <label htmlFor="validationCustom01" className="form-label">
+                  <b>No. de Factura:</b>
+                </label>
+
+                <input
+                  type="text"
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm"
+                  onChange={(event) => setNumeroFactura(event.target.value)}
+                  value={numeroFactura}
+                />
+              </div>
+            </div>
+
+            <div className="row" style={{ marginBottom: "15px" }}>
+              <div className="col">
+                <label htmlFor="validationCustom01" className="form-label">
+                  <b>Comentarios:</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="basic-description"
+                  aria-describedby="basic-addon3"
+                  onChange={(event) => setDescripcion(event.target.value)}
+                  value={descripcion}
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        {/* Boton */}
+        <div style={{ marginBottom: "100px", marginTop: "30px" }}>
+          <button
+            type="button"
+            className="btn btn-outline-danger w-50 float-end"
+            onClick={agregarMensualidad}
+          >
+            Agregar pago nueva mensualidad
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};

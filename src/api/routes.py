@@ -368,7 +368,7 @@ def productModif_porId(product_id):
 def getPayment():
     
     payment = Payment.query.all()
-    results = list(map(lambda x: x.serialize(), payment ))
+    results = list(map(lambda x: { **x.serializeUser(), **x.serialize() }, payment))
     print (results)
     return jsonify(results), 200
 
@@ -938,3 +938,25 @@ def login():
         
     }
     return jsonify(response_body), 200
+
+#######################################
+##                                   ##
+##           PERFIL                  ##
+##                                   ## 
+#######################################
+
+@api.route("/profile", methods=["GET"])
+@jwt_required() #portero de la ruta 
+def protected():
+    # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    login_user = User.query.filter_by(email=current_user).first()
+    if login_user is None:
+        return jsonify({"msg": "User don't exist"}), 404
+    response_body={
+        
+        "user":login_user.serialize()
+        
+    }
+    return jsonify(response_body), 200
+
