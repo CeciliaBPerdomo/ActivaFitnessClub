@@ -7,6 +7,9 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Exercise, Product, Payment, Routines, ShoppingCart, Sales, Outstanding
 from api.utils import generate_sitemap, APIException
 import json
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
 
 api = Blueprint('api', __name__)
 
@@ -911,3 +914,49 @@ def outstandingModif_porId(outstanding_id):
 
     response_body = {"msg": "Pendiente modificado"}
     return jsonify(response_body), 400
+
+#######################################
+##                                   ##
+##           LOGIN                   ##
+##                                   ## 
+#######################################
+
+@api.route("/login", methods=["POST"])
+def login():
+    email = request.json.get("email", None) #Formas de recibir el front
+    password = request.json.get("password", None) #Formas de recibir el front
+    login_user = User.query.filter_by(email=email).first()
+    if login_user is None:
+         return jsonify({"msg":"User dont exist"}), 404
+    if email != login_user.email or password != login_user.password:
+        return jsonify({"msg":'Bad email or password'}), 401
+#crea el acceso y devuelve un token a las personas al loguearse
+    access_token = create_access_token(identity=email)
+    response_body={
+        "access_token":access_token,
+        "user":login_user.serialize()
+        
+    }
+    return jsonify(response_body), 200
+
+#######################################
+##                                   ##
+##           PERFIL                  ##
+##                                   ## 
+#######################################
+
+@api.route("/profile", methods=["GET"])
+@jwt_required() #portero de la ruta 
+def protected():
+    # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    login_user = User.query.filter_by(email=current_user).first()
+    if login_user is None:
+        return jsonify({"msg": "User don't exist"}), 404
+    response_body={
+        
+        "user":login_user.serialize()
+        
+    }
+    return jsonify(response_body), 200
+
