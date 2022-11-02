@@ -202,6 +202,35 @@ const getState = ({
                 }
             },
 
+            modificarMensualidad: async (
+                id,
+                user_id,
+                payment_date,
+                bill_n,
+                payment_amount,
+                description
+            ) => {
+                try {
+                    const response = await axios.put(
+                        "https://3001-ceciliabper-activafitne-342eyp2q71g.ws-us73.gitpod.io//api/mensualidades/" +
+                        id, {
+                            id: id,
+                            user_id: user_id,
+                            payment_date: payment_date,
+                            bill_n: bill_n,
+                            payment_amount: payment_amount,
+                            description: description,
+                        }
+                    );
+                    console.log(response.data);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
