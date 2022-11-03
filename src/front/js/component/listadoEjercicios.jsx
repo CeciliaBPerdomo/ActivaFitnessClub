@@ -33,7 +33,7 @@ export const ListadoEjercicios = () => {
             </div>
             <br/> {/* Crea un nuevo ejercicio */}
             <div>
-                <Link to={"/crearEjericio"}>
+                <Link to={"/crearEjercicio"}>
                     <button type="button" className="btn btn-outline-danger w-50 float-end"
                         style={
                             {marginBottom: "20px"}
@@ -87,15 +87,13 @@ export const ListadoEjercicios = () => {
                             </Link>
                         </td>
 
-                        {/* Modificar alumno */}
-                        <td>
-                            <Link to={
+                        {/* Modificar ejercicio */}
+                        <td> {/* <Link to={
                                     "/modificarAlumno/" + item.id
                                 }
                                 className="btn btn-outline-dark">
                                 <i className="fa fa-pen"></i>
-                            </Link>
-                        </td>
+                            </Link> */} </td>
 
                         <td> {/* Borrar alumno */}
                             <button type="button" className="btn btn-outline-danger"
