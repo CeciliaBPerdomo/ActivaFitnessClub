@@ -80,7 +80,8 @@ export const ListaAlumno = () => {
               <th scope="col">Fecha de nacimiento</th>
               <th scope="col">Fecha de ingreso</th>
               <th scope="col">+Info</th>
-              <th scope="col">Rutina</th>
+              <th scope="col">Rutinas</th>
+              <th scope="col">Crear rutina</th>
               <th scope="col">Editar</th>
               <th scope="col">Borrar</th>
             </tr>
@@ -107,10 +108,24 @@ export const ListaAlumno = () => {
                 </td>
                 <td>
                   {/* Ver rutina */}
-                  <button type="button" className="btn btn-outline-dark">
+                  <Link
+                    to={"/listaRutinaDeAlumno/" + item.id}
+                    className="btn btn-outline-dark"
+                  >
                     <i className="fa fa-eye"></i>
-                  </button>
+                  </Link>
                 </td>
+
+                <td>
+                  {/* Crear rutina */}
+                  <Link
+                    to={"/crearRutina/" + item.id}
+                    className="btn btn-outline-dark"
+                  >
+                    <i class="fa fa-dumbbell"></i>
+                  </Link>
+                </td>
+
                 <td>
                   {/* Modificar alumno */}
                   <Link
