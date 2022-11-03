@@ -28,6 +28,8 @@ import {ModificarAlumno} from "./component/modificarAlumno.jsx";
 import {HomeUsuario} from "./component/homeUsuario";
 import {EditarMensualidad} from "./component/modificarMensualidades.jsx"
 import { HomeAdmin } from "./component/homeAdmin";
+import { Carrito } from "./component/carrito";
+import { ListadoEjercicios } from "./component/listadoEjercicios.jsx";
 // create your first component
 const Layout = () => {
     // the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -85,6 +87,10 @@ const Layout = () => {
                             path="/editarMensualidad/:theid"/>
                             <Route element={<HomeAdmin/>}
                             path="/homeAdmin"/>
+                            <Route element={<Carrito/>}
+                            path="/carrito"/>
+                            <Route element={<ListadoEjercicios/>}
+                            path="/ListadoEjercicios"/>
                         <Route element={
                             <h1>Not found!</h1>
                         }/>
