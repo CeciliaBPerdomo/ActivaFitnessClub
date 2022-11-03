@@ -190,7 +190,6 @@ def addExercise():
         type_of_muscle=body["type_of_muscle"], 
         description=body["description"], 
         photo_exercise=body["photo_exercise"])
-        video_exercise=body["video_exercise"]
         
         db.session.add(new_exercise)
         db.session.commit()
@@ -253,9 +252,6 @@ def exerciseModif_porId(exercise_id):
 
     if "photo_exercise" in body:
         exercise.photo_exercise = body["photo_exercise"]
-
-    if "video_exercise" in body:
-        exercise.video_exercise = body["video_exercise"]
 
     db.session.commit()
 
@@ -409,6 +405,8 @@ def addPayment():
 def get_payament(payment_id):
     paymentId = Payment.query.filter_by(id=payment_id).first()
 
+    # results = list(map(lambda x: { **x.serializeUser(), **x.serialize() }, paymentId)) 
+
     if paymentId is None: 
         response_body = {"msg": "Mensualidad no encontrada"}
         return jsonify(response_body), 400
@@ -419,12 +417,10 @@ def get_payament(payment_id):
 # Busca por id de usuario
 @api.route('/mensualidad/<int:user_id>', methods=['GET'])
 def get_payment_userId(user_id):
-    paymentId = Payment.query.filter_by(user_id=user_id).all()
+    paymentId = Payment.query.filter_by(user_id=user_id).first()
     
     results = list(map(lambda x: x.serialize(), paymentId))
     
-
-
     if paymentId is None: 
         response_body = {"msg": "Mensualidad no encontrada"}
         return jsonify(response_body), 400
