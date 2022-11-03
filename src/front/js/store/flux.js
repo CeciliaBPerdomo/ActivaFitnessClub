@@ -16,7 +16,9 @@ const getState = ({
             mens: [],
             mensualidades: [],
             ejercicios: [],
-            ejercicio: {}
+            ejercicio: {},
+            productos: [],
+            producto: {},
         },
         actions: {
             // ************************************************
@@ -142,6 +144,25 @@ const getState = ({
                 }
             },
 
+            // obtener mensualidad por Id
+            obtenerMensualidadIdMensualidad: async (id) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/mensualidades/" + id, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        mens: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+
             /* Listar mensualidades */
             obtenerMensualidades: async () => {
                 try {
@@ -157,6 +178,22 @@ const getState = ({
                     }
                 }
             },
+
+            /* Borrar mensualidades */
+            borrarMensualidad: async (id) => {
+                try {
+                    const response = await axios.delete(
+                        direccion + "/api/mensualidades/" + id, {}
+                    );
+                    // console.log(response);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
 
             /* Modificar mensualidades */
             modificarMensualidad: async (id, user_id, payment_date, bill_n, payment_amount, description) => {
@@ -280,6 +317,117 @@ const getState = ({
                 }
             },
 
+
+            // ************************************************
+            //                 PRODUCTOS 					 //
+            // ************************************************
+
+            /* Crea nuevo producto*/
+            crearProducto: async (
+                id,
+                name,
+                stock,
+                sale_price,
+                photo,
+                purchase_price,
+
+            ) => {
+                try {
+                    const response = await axios.post(direccion + "/api/productos", {
+                        id: id,
+                        name: name,
+                        stock: stock,
+                        sale_price: sale_price,
+                        photo: photo,
+                        purchase_price: purchase_price,
+
+                    });
+                    return true;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            /* Listar productos */
+            obtenerProducto: async () => {
+                try {
+                    const response = await axios.get(direccion + "/api/productos", {});
+                    console.log(response.data);
+                    setStore({
+                        productos: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // obtener productos por Id
+            obtenerProductoId: async (id) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/productos/" + id, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        productos: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            /* Borrar productos */
+            borrarProducto: async (id) => {
+                try {
+                    const response = await axios.delete(
+                        direccion + "/api/productos/" + id, {}
+                    );
+                    console.log(response);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // Modificar productos
+            modificarProducto: async (
+                id,
+                name,
+                stock,
+                sale_price,
+                photo,
+                purchase_price,
+
+            ) => {
+                try {
+                    const response = await axios.put(
+                        direccion + "/api/productos/" + id, {
+                            id: id,
+                            name: name,
+                            stock: stock,
+                            sale_price: sale_price,
+                            photo: photo,
+                            purchase_price: purchase_price,
+
+                        }
+                    );
+                    console.log(response.data);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
@@ -299,26 +447,17 @@ const getState = ({
                 }
             },
 
-            changeColor: (index, color) => { // get the store
-                const store = getStore();
-
-                // we have to loop the entire demo array to look for the respective index
-                // and change its color
-                const demo = store.demo.map((elm, i) => {
-                    if (i === index)
-                        elm.background = color;
 
 
-                    return elm;
-                });
 
-                // reset the global store
-                setStore({
-                    demo: demo
-                });
-            }
-        }
-    };
-};
+
+        },
+
+    }
+}
+
+// };
+// };
+
 
 export default getState;
