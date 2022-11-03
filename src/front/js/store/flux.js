@@ -20,6 +20,10 @@ const getState = ({
             ejercicio: {},
             productos: [],
             producto: {},
+            rutinas: [],
+            rutina: {},
+            pendientes: [],
+            pendiente: {},
         },
         actions: {
             // ************************************************
@@ -486,6 +490,234 @@ const getState = ({
                         photo: photo,
                         purchase_price: purchase_price,
                     });
+                    console.log(response.data);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // ************************************************
+            //                 RUTINAS  					 //
+            // ************************************************
+
+            /* Crea nueva rutina*/
+            crearRutina: async (
+                id,
+                series,
+                repetitions,
+                burden,
+                week,
+                finish,
+                user_id
+            ) => {
+                try {
+                    const response = await axios.post(direccion + "/api/rutinas", {
+                        id: id,
+                        series: series,
+                        repetitions: repetitions,
+                        burden: burden,
+                        week: week,
+                        finish: finish,
+                        user_id: user_id,
+                    });
+                    return true;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            /* Listar rutinas */
+            obtenerRutina: async () => {
+                try {
+                    const response = await axios.get(direccion + "/api/rutinas", {});
+                    console.log(response.data);
+                    setStore({
+                        rutinas: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // obtener rutina por Id de usuario
+            obtenerRutinaIdUsuario: async (id) => {
+                try {
+                    const response = await axios.get(direccion + "/api/rutina/" + id, {});
+                    console.log(response.data);
+                    setStore({
+                        rutina: response.data,
+                    });
+                    // console.log(mens);
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            // obtener rutina por Id
+            obtenerRutinaId: async (id) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/rutinas/" + id, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        rutinas: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            /* Borrar rutinas */
+            borrarRutina: async (id) => {
+                try {
+                    const response = await axios.delete(
+                        direccion + "/api/rutinas/" + id, {}
+                    );
+                    console.log(response);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // Modificar rutinas
+            modificarRutina: async (
+                id,
+                series,
+                repetitions,
+                burden,
+                week,
+                finish,
+                user_id
+            ) => {
+                try {
+                    const response = await axios.put(direccion + "/api/rutinas/" + id, {
+                        id: id,
+                        series: series,
+                        repetitions: repetitions,
+                        burden: burden,
+                        week: week,
+                        finish: finish,
+                        user_id: user_id,
+                    });
+                    console.log(response.data);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // ************************************************
+            //                 PENDIENTES					 //
+            // ************************************************
+
+            /* Crea nueva rutina*/
+            crearPendiente: async (id, state, amount, user_id, product_id) => {
+                try {
+                    const response = await axios.post(direccion + "/api/pendientes", {
+                        id: id,
+                        state: state,
+                        amount: amount,
+                        user_id: user_id,
+                        product_id: product_id,
+                    });
+                    return true;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            /* Listar pendientes */
+            obtenerPendiente: async () => {
+                try {
+                    const response = await axios.get(direccion + "/api/pendientes", {});
+                    console.log(response.data);
+                    setStore({
+                        pendientes: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // obtener pendientes por Id de usuario
+            obtenerPendientesIdUsuario: async (id) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/pendiente/" + id, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        pendiente: response.data,
+                    });
+                    // console.log(mens);
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            // obtener pendientes por Id
+            obtenerPendienteId: async (id) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/pendientes/" + id, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        pendientes: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            /* Borrar pendientes */
+            borrarPendiente: async (id) => {
+                try {
+                    const response = await axios.delete(
+                        direccion + "/api/pendientes/" + id, {}
+                    );
+                    console.log(response);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // Modificar pendientes
+            modificarPendiente: async (id, state, amount, user_id, product_id) => {
+                try {
+                    const response = await axios.put(
+                        direccion + "/api/pendientes/" + id, {
+                            id: id,
+                            state: state,
+                            amount: amount,
+                            user_id: user_id,
+                            product_id: product_id,
+                        }
+                    );
                     console.log(response.data);
                 } catch (error) {
                     console.log(error);
