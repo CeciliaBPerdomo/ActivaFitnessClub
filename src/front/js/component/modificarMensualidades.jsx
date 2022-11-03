@@ -10,23 +10,33 @@ export const EditarMensualidad = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
-  const [nombreUsuario, setNombreUsuario] = useState("");
-  const [apellido, setApellido] = useState("");
   const [descripcion, setDescripcion] = useState(store.mens.description);
   const [fechaPago, setFechaPago] = useState(store.mens.payment_date);
   const [numeroFactura, setNumeroFactura] = useState(store.mens.bill_n);
   const [monto, setMonto] = useState(store.mens.payment_amount);
+  const [user_id, setUser_id] = useState(store.mens.user_id);
 
   useEffect(() => {
     actions.obtenerMensualidadIdMensualidad(parseInt(params.theid));
   }, []);
 
+  let nombre = store.mens?.userInfo?.name;
+  let apellido = store.mens?.userInfo?.last_name;
+  let nombreCompleto = nombre + " " + apellido;
+
   const modificarMensualidad = (e) => {
     e.preventDefault();
 
-    //let id = parseInt(params.theid);
+    let id = parseInt(params.theid);
 
-    // actions.modificarMensualidad(id, user_id, descripcion, fechaPago, numeroFactura, monto,);
+    actions.modificarMensualidad(
+      id,
+      user_id,
+      fechaPago,
+      numeroFactura,
+      monto,
+      descripcion
+    );
   };
 
   return (
@@ -81,8 +91,7 @@ export const EditarMensualidad = () => {
                 <input
                   type="text"
                   className="form-control"
-                  //onChange={(e) => setMonto(e.target.value)}
-                  //defaultValue={store.mens.payment_amount}
+                  value={nombreCompleto}
                 />
               </div>
             </div>
