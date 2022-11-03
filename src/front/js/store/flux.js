@@ -428,6 +428,37 @@ const getState = ({
                 }
             },
 
+            // ************************************************
+            //                 RUTINAS  					 //
+            // ************************************************
+
+
+            /* Crea nuevo producto*/
+            crearRutina: async (
+                id,
+                name,
+                stock,
+                sale_price,
+                photo,
+                purchase_price,
+
+            ) => {
+                try {
+                    const response = await axios.post(direccion + "/api/productos", {
+                        id: id,
+                        name: name,
+                        stock: stock,
+                        sale_price: sale_price,
+                        photo: photo,
+                        purchase_price: purchase_price,
+
+                    });
+                    return true;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
@@ -446,6 +477,7 @@ const getState = ({
                     console.log("Error loading message from backend", error);
                 }
             },
+
 
 
 
