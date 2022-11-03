@@ -403,22 +403,20 @@ def addPayment():
 # Busca por id de mensualidad
 @api.route('/mensualidades/<int:payment_id>', methods=['GET'])
 def get_payament(payment_id):
+   
     paymentId = Payment.query.filter_by(id=payment_id).first()
-
-    # results = list(map(lambda x: { **x.serializeUser(), **x.serialize() }, paymentId)) 
+    results = paymentId.serialize(), paymentId.serializeUser()
 
     if paymentId is None: 
         response_body = {"msg": "Mensualidad no encontrada"}
         return jsonify(response_body), 400
 
-    payment = paymentId.serialize()
-    return jsonify(payment), 200
+    return jsonify(results), 200
 
 # Busca por id de usuario
 @api.route('/mensualidad/<int:user_id>', methods=['GET'])
 def get_payment_userId(user_id):
     paymentId = Payment.query.filter_by(user_id=user_id).first()
-    
     results = list(map(lambda x: x.serialize(), paymentId))
     
     if paymentId is None: 
@@ -426,7 +424,7 @@ def get_payment_userId(user_id):
         return jsonify(response_body), 400
     return jsonify(results), 200
 
-# Borra un ejercicio
+# Borra una mensualidad
 @api.route('/mensualidades/<int:payment_id>', methods=['DELETE'])
 def deletePayment(payment_id):
     paymentId= Payment.query.filter_by(id=payment_id).first()
@@ -441,7 +439,7 @@ def deletePayment(payment_id):
     response_body = {"msg": "Mensualidad borrada"}
     return jsonify(response_body), 200
 
-# Modifica un producto por id
+# Modifica un mensualidad por id
 @api.route('/mensualidades/<int:payment_id>', methods=['PUT'])
 def paymentModif_porId(payment_id):
     print(payment_id)
