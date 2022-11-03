@@ -17,14 +17,16 @@ export const EditarMensualidad = () => {
   const [numeroFactura, setNumeroFactura] = useState(store.mens.bill_n);
   const [monto, setMonto] = useState(store.mens.payment_amount);
 
-  // useEffect(() => {
-  //     actions.obtenerPaymentId(parseInt(params.theid));
-  // }, []);
+  useEffect(() => {
+    actions.obtenerMensualidadIdMensualidad(parseInt(params.theid));
+  }, []);
+
+  console.log(store.mens.bill_n);
 
   const modificarMensualidad = (e) => {
     e.preventDefault();
 
-    let id = parseInt(params.theid);
+    //let id = parseInt(params.theid);
 
     // actions.modificarMensualidad(id, user_id, descripcion, fechaPago, numeroFactura, monto,);
   };
@@ -41,9 +43,8 @@ export const EditarMensualidad = () => {
         {" "}
         {/* Titulo */}
         <h1>
-          <i className="fa fa-wallet"></i>
-          Editar mensualidad
-        </h1>
+          <i className="fa fa-wallet"></i> Editar mensualidad
+        </h1>{" "}
         <br /> {/* Listado de mensualidades */}
         <div>
           <Link to={"/mensualidades"}>
@@ -57,6 +58,7 @@ export const EditarMensualidad = () => {
           </Link>
         </div>
         <br />
+        {/* Formulario */}
         <div className="formulario">
           <form onSubmit={modificarMensualidad}>
             <div
@@ -94,8 +96,6 @@ export const EditarMensualidad = () => {
                 <input
                   type="date"
                   className="form-control"
-                  aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm"
                   onChange={(e) => setFechaPago(e.target.value)}
                   defaultValue={store.mens.payment_date}
                 />
