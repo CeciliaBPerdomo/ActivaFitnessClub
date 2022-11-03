@@ -99,8 +99,8 @@ class Exercise(db.Model):
             "type_of_muscle": self.type_of_muscle,
             "description": self.description,
             "photo_exercise": self.photo_exercise,
-            "routines_id":self.routines_id
-
+            "routines_id":self.routines_id,
+            "video_exercise": self.video_exercise
         }
 
 
