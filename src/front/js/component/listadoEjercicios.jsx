@@ -88,12 +88,14 @@ export const ListadoEjercicios = () => {
                         </td>
 
                         {/* Modificar ejercicio */}
-                        <td> {/* <Link to={
-                                    "/modificarAlumno/" + item.id
+                        <td>
+                            <Link to={
+                                    "/editarEjercicio/" + item.id
                                 }
                                 className="btn btn-outline-dark">
                                 <i className="fa fa-pen"></i>
-                            </Link> */} </td>
+                            </Link>
+                        </td>
 
                         <td> {/* Borrar alumno */}
                             <button type="button" className="btn btn-outline-danger"
