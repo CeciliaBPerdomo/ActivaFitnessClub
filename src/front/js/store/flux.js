@@ -20,6 +20,9 @@ const getState = ({
             ejercicio: {},
             productos: [],
             producto: {},
+            rutinas: [],
+            rutina: {},
+
         },
         actions: {
             // ************************************************
@@ -500,24 +503,27 @@ const getState = ({
             // ************************************************
 
 
-            /* Crea nuevo producto*/
+            /* Crea nueva rutina*/
             crearRutina: async (
                 id,
-                name,
-                stock,
-                sale_price,
-                photo,
-                purchase_price,
+                series,
+                repetitions,
+                burden,
+                week,
+                finish,
+                user_id
+
 
             ) => {
                 try {
-                    const response = await axios.post(direccion + "/api/productos", {
+                    const response = await axios.post(direccion + "/api/rutinas", {
                         id: id,
-                        name: name,
-                        stock: stock,
-                        sale_price: sale_price,
-                        photo: photo,
-                        purchase_price: purchase_price,
+                        series: series,
+                        repetitions: repetitions,
+                        burden: burden,
+                        week: week,
+                        finish: finish,
+                        user_id: user_id
 
                     });
                     return true;
@@ -525,6 +531,107 @@ const getState = ({
                     console.log(error);
                 }
             },
+
+            /* Listar rutinas */
+            obtenerRutina: async () => {
+                try {
+                    const response = await axios.get(direccion + "/api/rutinas", {});
+                    console.log(response.data);
+                    setStore({
+                        rutinas: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // obtener rutina por Id de usuario
+            obtenerRutinaIdUsuario: async (id) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/rutina/" + id, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        rutina: response.data,
+                    });
+                    // console.log(mens);
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            // obtener rutina por Id
+            obtenerRutinaId: async (id) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/rutinas/" + id, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        rutinas: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            /* Borrar rutinas */
+            borrarRutina: async (id) => {
+                try {
+                    const response = await axios.delete(
+                        direccion + "/api/rutinas/" + id, {}
+                    );
+                    console.log(response);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // Modificar rutinas
+            modificarRutina: async (
+                id,
+                series,
+                repetitions,
+                burden,
+                week,
+                finish,
+                user_id
+            ) => {
+                try {
+                    const response = await axios.put(direccion + "/api/rutinas/" + id, {
+                        id: id,
+                        series: series,
+                        repetitions: repetitions,
+                        burden: burden,
+                        week: week,
+                        finish: finish,
+                        user_id: user_id
+                    });
+                    console.log(response.data);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // ************************************************
+            //                 PENDIENTES					 //
+            // ************************************************
+
+
+
 
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
