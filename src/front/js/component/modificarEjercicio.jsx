@@ -10,25 +10,24 @@ export const EditarEjercicio = () => {
     const {store, actions} = useContext(Context);
     const params = useParams();
 
-    const [nombreEjercicio, setNombreEjercicio] = useState("");
-    const [tipoEjercicio, setTipoEjercicio] = useState("");
-    const [imagen, setImagen] = useState("");
-    const [descripcionEjercicio, setDescripcionEjercicio] = useState("");
-    const [video, setVideo] = useState("");
+    const [nombreEjercicio, setNombreEjercicio] = useState(store.ejercicio.exercise_name);
+    const [tipoEjercicio, setTipoEjercicio] = useState(store.ejercicio.type_of_muscle);
+    const [descripcionEjercicio, setDescripcionEjercicio] = useState(store.ejercicio.description);
+    const [imagen, setImagen] = useState(store.ejercicio.photo_exercise);
+    const [video, setVideo] = useState(store.ejercicio.video_exercise);
 
+    useEffect(() => {
+        actions.obtenerEjercicioId(parseInt(params.theid));
+    }, []);
 
-    const agregarEjercicio = (event) => {
+    const modificarEjercicio = (event) => {
         event.preventDefault();
 
+        let id = parseInt(params.theid);
         // Guarda el formulario
-        actions.crearEjercicio(nombreEjercicio, tipoEjercicio, descripcionEjercicio, imagen, video);
+        actions.modificarEjercicio(id, nombreEjercicio, tipoEjercicio, descripcionEjercicio, imagen, video);
 
-        // Limpia el formulario
-        setNombreEjercicio("");
-        setTipoEjercicio("");
-        setImagen("");
-        setDescripcionEjercicio("");
-        setVideo("");
+
     };
 
     return (<>
@@ -46,7 +45,7 @@ export const EditarEjercicio = () => {
             <br/> {/* Listado de ejercicios */}
             <div>
                 <Link to={"/ListadoEjercicios"}>
-                    <button type="button" className="btn btn-outline-danger w-50 float-end"
+                    <button type="button" className="btn btn-outline-danger w-35 float-end"
                         style={
                             {marginBottom: "20px"}
                     }>
@@ -81,7 +80,9 @@ export const EditarEjercicio = () => {
                                 onChange={
                                     (event) => setNombreEjercicio(event.target.value)
                                 }
-                                value={nombreEjercicio}/>
+                                defaultValue={
+                                    store.ejercicio.exercise_name
+                                }/>
                         </div>
 
                         <div className="col">
@@ -93,7 +94,9 @@ export const EditarEjercicio = () => {
                                 onChange={
                                     (event) => setTipoEjercicio(event.target.value)
                                 }
-                                value={tipoEjercicio}/>
+                                defaultValue={
+                                    store.ejercicio.type_of_muscle
+                                }/>
                         </div>
                     </div>
 
@@ -112,7 +115,9 @@ export const EditarEjercicio = () => {
                                 onChange={
                                     (event) => setDescripcionEjercicio(event.target.value)
                                 }
-                                value={descripcionEjercicio}/>
+                                defaultValue={
+                                    store.ejercicio.description
+                                }/>
                         </div>
                     </div>
 
@@ -132,7 +137,9 @@ export const EditarEjercicio = () => {
                                 onChange={
                                     (event) => setImagen(event.target.value)
                                 }
-                                value={imagen}/>
+                                defaultValue={
+                                    store.ejercicio.photo_exercise
+                                }/>
                         </div>
 
                         <div className="col">
@@ -144,7 +151,9 @@ export const EditarEjercicio = () => {
                                 onChange={
                                     (event) => setVideo(event.target.value)
                                 }
-                                value={video}/>
+                                defaultValue={
+                                    store.ejercicio.video_exercise
+                                }/>
                         </div>
                     </div>
 
@@ -156,9 +165,9 @@ export const EditarEjercicio = () => {
                             }
                     }>
                         <div className="col">
-                            <button type="button" className="btn btn-outline-danger w-50 float-end"
-                                onClick={agregarEjercicio}>
-                                Agregar nuevo ejercicio
+                            <button type="button" className="btn btn-outline-danger w-25 float-end"
+                                onClick={modificarEjercicio}>
+                                Guardar
                             </button>
                         </div>
                     </div>
