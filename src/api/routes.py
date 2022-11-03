@@ -406,7 +406,8 @@ def addPayment():
 def get_payament(payment_id):
    
     paymentId = Payment.query.filter_by(id=payment_id).first()
-    results = paymentId.serialize(), paymentId.serializeUser()
+    results = {**paymentId.serialize(), **paymentId.serializeUser()}
+
 
     if paymentId is None: 
         response_body = {"msg": "Mensualidad no encontrada"}

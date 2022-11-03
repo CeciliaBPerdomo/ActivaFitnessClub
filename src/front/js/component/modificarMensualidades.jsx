@@ -21,8 +21,6 @@ export const EditarMensualidad = () => {
     actions.obtenerMensualidadIdMensualidad(parseInt(params.theid));
   }, []);
 
-  console.log(store.mens.bill_n);
-
   const modificarMensualidad = (e) => {
     e.preventDefault();
 
@@ -45,7 +43,8 @@ export const EditarMensualidad = () => {
         <h1>
           <i className="fa fa-wallet"></i> Editar mensualidad
         </h1>{" "}
-        <br /> {/* Listado de mensualidades */}
+        <br />
+        {/* Listado de mensualidades */}
         <div>
           <Link to={"/mensualidades"}>
             <button

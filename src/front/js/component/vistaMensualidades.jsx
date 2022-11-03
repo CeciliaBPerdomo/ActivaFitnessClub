@@ -14,6 +14,8 @@ export const VistaMensualidades = () => {
     actions.obtenerMensualidades();
   }, []);
 
+  console.log(store.mens);
+
   const borrar = (e, item) => {
     e.preventDefault();
 
@@ -28,7 +30,7 @@ export const VistaMensualidades = () => {
       if (willDelete) {
         swal(`Poof! el alumno ${item.name} ${item.last_name} fue borrado`, {
           icon: "success",
-          //actions: actions.borrarAlumno(item.id),
+          actions: actions.borrarMensualidad(item.id),
         });
       } else {
         swal("Ups! Casi, casi!");
@@ -109,12 +111,13 @@ export const VistaMensualidades = () => {
                     </button>
                   </Link>
                 </td>
+
                 {/* Eliminar */}
                 <td>
                   <button
                     type="button"
                     className="btn btn-outline-danger"
-                    onClick={(e) => borrar(e, item)}
+                    onClick={(e) => borrar(e, item.userInfo)}
                   >
                     <i className="fa fa-trash"></i>
                   </button>
