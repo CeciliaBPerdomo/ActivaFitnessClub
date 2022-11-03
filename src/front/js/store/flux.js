@@ -1,8 +1,7 @@
 import axios from "axios";
 // import json;
 
-let direccion =
-    "https://3001-ceciliabper-activafitne-npxczlu1vck.ws-us73.gitpod.io";
+let direccion = "https://3001-ceciliabper-activafitne-p0pj4px9069.ws-us73.gitpod.io";
 
 const getState = ({
     getStore,
@@ -30,23 +29,7 @@ const getState = ({
             // ************************************************
 
             /* Crea un nuevo alumno*/
-            crearAlumno: async (
-                ci,
-                name,
-                last_name,
-                phone,
-                date_of_admission,
-                birthday,
-                mutualist,
-                medical_conditions,
-                medicines,
-                training_goals,
-                email,
-                password,
-                activities,
-                role,
-                is_active
-            ) => {
+            crearAlumno: async (ci, name, last_name, phone, date_of_admission, birthday, mutualist, medical_conditions, medicines, training_goals, email, password, activities, role, is_active) => {
                 try {
                     const response = await axios.post(direccion + "/api/user", {
                         ci: ci,
@@ -63,7 +46,7 @@ const getState = ({
                         password: password,
                         activities: activities,
                         role: role,
-                        is_active: is_active,
+                        is_active: is_active
                     });
                     return true;
                 } catch (error) {
@@ -77,7 +60,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/user", {});
                     // console.log(response.data);
                     setStore({
-                        alumnos: response.data,
+                        alumnos: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -90,9 +73,7 @@ const getState = ({
             /* Borrar alumno */
             borrarAlumno: async (id) => {
                 try {
-                    const response = await axios.delete(
-                        direccion + "/api/user/" + id, {}
-                    );
+                    const response = await axios.delete(direccion + "/api/user/" + id, {});
                     // console.log(response);
                 } catch (error) {
                     console.log(error);
@@ -109,7 +90,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/user/" + id, {});
                     // console.log(response.data);
                     setStore({
-                        alumno: response.data,
+                        alumno: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -120,24 +101,7 @@ const getState = ({
             },
 
             // Modificar alumno
-            modificarAlumno: async (
-                id,
-                ci,
-                name,
-                last_name,
-                phone,
-                admission,
-                birthday,
-                mutualist,
-                conditions,
-                medicines,
-                training_goals,
-                mail,
-                password,
-                activities,
-                role,
-                isActive
-            ) => {
+            modificarAlumno: async (id, ci, name, last_name, phone, admission, birthday, mutualist, conditions, medicines, training_goals, mail, password, activities, role, isActive) => {
                 try {
                     const response = await axios.put(direccion + "/api/user/" + id, {
                         ci: ci,
@@ -154,7 +118,7 @@ const getState = ({
                         password: password,
                         activities: activities,
                         role: role,
-                        is_active: isActive,
+                        is_active: isActive
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -172,12 +136,10 @@ const getState = ({
             // obtener mensualidad por id de usuario
             obtenerMensualidadId: async (id) => {
                 try {
-                    const response = await axios.get(
-                        direccion + "/api/mensualidad/" + id, {}
-                    );
+                    const response = await axios.get(direccion + "/api/mensualidad/" + id, {});
                     console.log(response.data);
                     setStore({
-                        mens: response.data,
+                        mens: response.data
                     });
                     // console.log(mens);
                 } catch (error) {
@@ -188,12 +150,10 @@ const getState = ({
             // obtener mensualidad por Id
             obtenerMensualidadIdMensualidad: async (id) => {
                 try {
-                    const response = await axios.get(
-                        direccion + "/api/mensualidades/" + id, {}
-                    );
+                    const response = await axios.get(direccion + "/api/mensualidades/" + id, {});
                     console.log(response.data);
                     setStore({
-                        mens: response.data,
+                        mens: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -206,12 +166,10 @@ const getState = ({
             /* Listar mensualidades */
             obtenerMensualidades: async () => {
                 try {
-                    const response = await axios.get(
-                        direccion + "/api/mensualidades", {}
-                    );
+                    const response = await axios.get(direccion + "/api/mensualidades", {});
                     // console.log(response.data);
                     setStore({
-                        mensualidades: response.data,
+                        mensualidades: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -224,9 +182,7 @@ const getState = ({
             /* Borrar mensualidades */
             borrarMensualidad: async (id) => {
                 try {
-                    const response = await axios.delete(
-                        direccion + "/api/mensualidades/" + id, {}
-                    );
+                    const response = await axios.delete(direccion + "/api/mensualidades/" + id, {});
                     // console.log(response);
                 } catch (error) {
                     console.log(error);
@@ -237,25 +193,16 @@ const getState = ({
             },
 
             /* Modificar mensualidades */
-            modificarMensualidad: async (
-                id,
-                user_id,
-                payment_date,
-                bill_n,
-                payment_amount,
-                description
-            ) => {
+            modificarMensualidad: async (id, user_id, payment_date, bill_n, payment_amount, description) => {
                 try {
-                    const response = await axios.put(
-                        direccion + "/api/mensualidades/" + id, {
-                            id: id,
-                            user_id: user_id,
-                            payment_date: payment_date,
-                            bill_n: bill_n,
-                            payment_amount: payment_amount,
-                            description: description,
-                        }
-                    );
+                    const response = await axios.put(direccion + "/api/mensualidades/" + id, {
+                        id: id,
+                        user_id: user_id,
+                        payment_date: payment_date,
+                        bill_n: bill_n,
+                        payment_amount: payment_amount,
+                        description: description
+                    });
                     console.log(response.data);
                 } catch (error) {
                     console.log(error);
@@ -266,15 +213,7 @@ const getState = ({
             },
 
             /* Agregar nuevo pago de mensualidad */
-            agregarPagoMensualidad: async (
-                payment_date,
-                payment_amount,
-                description,
-                bill_n,
-                state,
-                user_id
-            ) => {
-                // payment_date: payment_date,
+            agregarPagoMensualidad: async (payment_date, payment_amount, description, bill_n, state, user_id) => { // payment_date: payment_date,
                 try {
                     const response = await axios.post(direccion + "/api/mensualidades", {
                         payment_date: payment_date,
@@ -282,7 +221,7 @@ const getState = ({
                         description: description,
                         bill_n: bill_n,
                         state: state,
-                        user_id: user_id,
+                        user_id: user_id
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -295,20 +234,14 @@ const getState = ({
             // ************************************************
 
             /* Crea un nuevo ejercicio*/
-            crearEjercicio: async (
-                exercise_name,
-                type_of_muscle,
-                description,
-                photo_exercise,
-                video_exercise
-            ) => {
+            crearEjercicio: async (exercise_name, type_of_muscle, description, photo_exercise, video_exercise) => {
                 try {
                     const response = await axios.post(direccion + "/api/ejercicios", {
                         exercise_name: exercise_name,
                         type_of_muscle: type_of_muscle,
                         description: description,
                         photo_exercise: photo_exercise,
-                        video_exercise: video_exercise,
+                        video_exercise: video_exercise
                     });
                     console.log(response);
                     return true;
@@ -323,7 +256,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/ejercicios", {});
                     console.log(response.data);
                     setStore({
-                        ejercicios: response.data,
+                        ejercicios: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -336,12 +269,10 @@ const getState = ({
             // obtener ejercicio por Id
             obtenerEjercicioId: async (id) => {
                 try {
-                    const response = await axios.get(
-                        direccion + "/api/ejercicios/" + id, {}
-                    );
+                    const response = await axios.get(direccion + "/api/ejercicios/" + id, {});
                     console.log(response.data);
                     setStore({
-                        ejercicio: response.data,
+                        ejercicio: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -354,9 +285,7 @@ const getState = ({
             /* Borrar ejercicio */
             borrarEjercicio: async (id) => {
                 try {
-                    const response = await axios.delete(
-                        direccion + "/api/ejercicios/" + id, {}
-                    );
+                    const response = await axios.delete(direccion + "/api/ejercicios/" + id, {});
                     console.log(response);
                 } catch (error) {
                     console.log(error);
@@ -367,24 +296,15 @@ const getState = ({
             },
 
             // Modificar ejercicio
-            modificarEjercicio: async (
-                id,
-                exercise_name,
-                type_of_muscle,
-                description,
-                photo_exercise,
-                video_exercise
-            ) => {
+            modificarEjercicio: async (id, exercise_name, type_of_muscle, description, photo_exercise, video_exercise) => {
                 try {
-                    const response = await axios.put(
-                        direccion + "/api/ejercicios/" + id, {
-                            exercise_name: exercise_name,
-                            type_of_muscle: type_of_muscle,
-                            description: description,
-                            photo_exercise: photo_exercise,
-                            video_exercise: video_exercise,
-                        }
-                    );
+                    const response = await axios.put(direccion + "/api/ejercicios/" + id, {
+                        exercise_name: exercise_name,
+                        type_of_muscle: type_of_muscle,
+                        description: description,
+                        photo_exercise: photo_exercise,
+                        video_exercise: video_exercise
+                    });
                     console.log(response.data);
                 } catch (error) {
                     console.log(error);
@@ -399,14 +319,7 @@ const getState = ({
             // ************************************************
 
             /* Crea nuevo producto*/
-            crearProducto: async (
-                id,
-                name,
-                stock,
-                sale_price,
-                photo,
-                purchase_price
-            ) => {
+            crearProducto: async (id, name, stock, sale_price, photo, purchase_price) => {
                 try {
                     const response = await axios.post(direccion + "/api/productos", {
                         id: id,
@@ -414,7 +327,7 @@ const getState = ({
                         stock: stock,
                         sale_price: sale_price,
                         photo: photo,
-                        purchase_price: purchase_price,
+                        purchase_price: purchase_price
                     });
                     return true;
                 } catch (error) {
@@ -428,7 +341,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/productos", {});
                     console.log(response.data);
                     setStore({
-                        productos: response.data,
+                        productos: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -441,12 +354,10 @@ const getState = ({
             // obtener productos por Id
             obtenerProductoId: async (id) => {
                 try {
-                    const response = await axios.get(
-                        direccion + "/api/productos/" + id, {}
-                    );
+                    const response = await axios.get(direccion + "/api/productos/" + id, {});
                     console.log(response.data);
                     setStore({
-                        productos: response.data,
+                        productos: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -459,9 +370,7 @@ const getState = ({
             /* Borrar productos */
             borrarProducto: async (id) => {
                 try {
-                    const response = await axios.delete(
-                        direccion + "/api/productos/" + id, {}
-                    );
+                    const response = await axios.delete(direccion + "/api/productos/" + id, {});
                     console.log(response);
                 } catch (error) {
                     console.log(error);
@@ -472,14 +381,7 @@ const getState = ({
             },
 
             // Modificar productos
-            modificarProducto: async (
-                id,
-                name,
-                stock,
-                sale_price,
-                photo,
-                purchase_price
-            ) => {
+            modificarProducto: async (id, name, stock, sale_price, photo, purchase_price) => {
                 try {
                     const response = await axios.put(direccion + "/api/productos/" + id, {
                         id: id,
@@ -487,7 +389,7 @@ const getState = ({
                         stock: stock,
                         sale_price: sale_price,
                         photo: photo,
-                        purchase_price: purchase_price,
+                        purchase_price: purchase_price
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -639,20 +541,19 @@ const getState = ({
             },
 
             getMessage: async () => {
-                try {
-                    // fetching data from the backend
+                try { // fetching data from the backend
                     const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
                     const data = await resp.json();
                     setStore({
-                        message: data.message,
+                        message: data.message
                     });
                     // don't forget to return something, that is how the async resolves
                     return data;
                 } catch (error) {
                     console.log("Error loading message from backend", error);
                 }
-            },
-        },
+            }
+        }
     };
 };
 

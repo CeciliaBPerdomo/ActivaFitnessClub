@@ -189,7 +189,8 @@ def addExercise():
         new_exercise = Exercise(exercise_name=body["exercise_name"],
         type_of_muscle=body["type_of_muscle"], 
         description=body["description"], 
-        photo_exercise=body["photo_exercise"])
+        photo_exercise=body["photo_exercise"],
+        video_exercise=body["video_exercise"])
         
         db.session.add(new_exercise)
         db.session.commit()
