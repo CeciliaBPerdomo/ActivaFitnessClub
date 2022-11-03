@@ -8,7 +8,7 @@ import swal from "sweetalert";
 // <Route element={<ListadoEjercicios/>}
 //path="/ListadoEjercicios"/>
 
-export const ListaEjercicios = () => {
+export const ListadoEjercicios = () => {
   const { store, actions } = useContext(Context);
 
   //Inicio
