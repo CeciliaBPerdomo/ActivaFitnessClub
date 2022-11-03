@@ -109,7 +109,7 @@ export const CrearMensualidad = () => {
                   type="date"
                   className="form-control"
                   aria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-sm"
+                  //aria-describedby="inputGroup-sizing-sm"
                   onChange={(event) => setFechaPago(event.target.value)}
                   value={fechaPago}
                 />
@@ -155,8 +155,6 @@ export const CrearMensualidad = () => {
                 <input
                   type="text"
                   className="form-control"
-                  id="basic-description"
-                  aria-describedby="basic-addon3"
                   onChange={(event) => setDescripcion(event.target.value)}
                   value={descripcion}
                 />

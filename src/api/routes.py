@@ -190,6 +190,7 @@ def addExercise():
         type_of_muscle=body["type_of_muscle"], 
         description=body["description"], 
         photo_exercise=body["photo_exercise"])
+        video_exercise=body["video_exercise"]
         
         db.session.add(new_exercise)
         db.session.commit()
@@ -252,6 +253,9 @@ def exerciseModif_porId(exercise_id):
 
     if "photo_exercise" in body:
         exercise.photo_exercise = body["photo_exercise"]
+
+    if "video_exercise" in body:
+        exercise.video_exercise = body["video_exercise"]
 
     db.session.commit()
 

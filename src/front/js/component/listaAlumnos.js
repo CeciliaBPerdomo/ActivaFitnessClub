@@ -11,11 +11,6 @@ export const ListaAlumno = () => {
     actions.obtenerAlumnos();
   }, []);
 
-  //Pendiente de los cambios
-  // useEffect(() => {
-  //   actions.obtenerAlumnos();
-  // }, [store.alumnos]);
-
   const borrar = (e, item) => {
     e.preventDefault();
 

@@ -84,7 +84,8 @@ class Exercise(db.Model):
     exercise_name = db.Column(db.String(80), nullable=False)
     type_of_muscle = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(80), nullable=False)
-    photo_exercise = db.Column(db.String(80), nullable=False)
+    photo_exercise = db.Column(db.String(200), nullable=True)
+    video_exercise = db.Column(db.String(200), nullable=True)
 
     routines_id = db.Column(db.Integer, db.ForeignKey("routines.id"))
 
