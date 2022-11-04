@@ -10,7 +10,7 @@ export const Home = () => {
     const {store, actions} = useContext(Context);
 
     return (
-        <div className="bg-home vh-100">
+        <div className="bg-home vh-50">
             <div className="hstack gap-3 p-5" style={{height: "800px"}}>
 
                 <Link to="/vistaProducto">

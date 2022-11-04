@@ -14,7 +14,8 @@ const getState = ({
             message: null,
             alumnos: [],
             alumno: {},
-            mens: {},
+            mens: [],
+            mensualidad: {},
             mensualidades: [],
             ejercicios: [],
             ejercicio: {},
@@ -26,6 +27,45 @@ const getState = ({
             pendiente: {},
         },
         actions: {
+            // ************************************************
+            //                 LOGIN     					 //
+            // ************************************************
+
+            login: async (email, password) => {
+                console.log(email, password);
+                try {
+                    const response = await fetch('', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            email: email,
+                            password: password
+                        }),
+                        headers: {
+                            "Content-Type": ''
+                        }
+                    })
+                    if (response.status === 200) {
+                        const data = await response.json()
+                        console.log(data);
+                        localStorage.setItem("token", data.access_token)
+                        setStore({
+                            auth: true
+                        })
+                    } else {
+                        alert("Wrong email or password")
+                    }
+
+
+                } catch (err) {
+                    console.log(err);
+
+
+                }
+            },
+
+
+
+
             // ************************************************
             //                  ALUMNOS						 //
             // ************************************************
@@ -194,7 +234,7 @@ const getState = ({
                     );
                     console.log(response.data);
                     setStore({
-                        mens: response.data,
+                        mensualidad: response.data,
                     });
                 } catch (error) {
                     console.log(error);
