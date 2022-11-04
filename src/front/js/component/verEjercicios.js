@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {EjerciciosTodos} from "../pages/todosEjercicios.jsx";
 
-export const VerEjercicio = (props) => {
+export const VerEjercicio = () => {
 
     return (
         <>
@@ -14,11 +14,11 @@ export const VerEjercicio = (props) => {
 
                 <div className="card">
                     <div className="card-body">
-                        <h1 className="display-6">
+                        <h2 className="display-6">
                             <i className="fa fa-dumbbell"></i>
                             {
                             store.ejercicio.exercise_name
-                        }</h1>
+                        }</h2>
                         <img src={
                                 store.ejercicio.photo_exercise
                             }
