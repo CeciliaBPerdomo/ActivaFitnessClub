@@ -2,7 +2,8 @@ import axios from "axios";
 //import json;
 
 let direccion =
-    "https://3001-ceciliabper-activafitne-z3x64d32yu6.ws-us74.gitpod.io";
+    "https://3001-ceciliabper-activafitne-279w003foqk.ws-us74.gitpod.io";
+"https://3001-ceciliabper-activafitne-z3x64d32yu6.ws-us74.gitpod.io";
 
 const getState = ({
     getStore,
@@ -36,6 +37,33 @@ const getState = ({
             login: async (email, password) => {
 
                 try {
+                    <<
+                    <<
+                    << < HEAD
+                    const response = await fetch("", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            email: email,
+                            password: password,
+                        }),
+                        headers: {
+                            "Content-Type": "",
+                        },
+                    });
+                    if (response.status === 200) {
+                        const data = await response.json();
+                        console.log(data);
+                        localStorage.setItem("token", data.access_token);
+                        setStore({
+                            auth: true,
+                        });
+                    } else {
+                        alert("Wrong email or password");
+                    }
+                } catch (err) {
+                    console.log(err); ===
+                    ===
+                    =
                     console.log(email);
                     const response = await axios.post(direccion + "/api/login", {
                         email: email,
@@ -101,12 +129,11 @@ const getState = ({
                         })
                         console.log(error.response.data.msg)
                     }
-                    return false
+                    return false >>>
+                        >>>
+                        > 591 a8c057dbd85f94dd9764344f551e775f23b63
                 }
             },
-
-
-
 
             // ************************************************
             //                  ALUMNOS						 //
