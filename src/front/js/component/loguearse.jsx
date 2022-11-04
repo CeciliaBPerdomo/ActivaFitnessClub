@@ -18,8 +18,11 @@ const Log_in = () => {
         e.preventDefault()
 
         let logged = actions.login(guardadoEmail, guardadoPassword)
+        // let loggedUsuario = actions.login(guardadoEmail, guardadoPassword)
 
-        logged ? navegacion("/") : null
+        // acces =
+        logged ? navegacion("/homeUsuario") : null
+
 
         setGuardadoEmail("")
         setGuardadoPassword("")
