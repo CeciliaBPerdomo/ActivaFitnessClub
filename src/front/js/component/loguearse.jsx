@@ -1,6 +1,8 @@
 import React, {useContext, useState, useEffect} from "react";
-import {Link, useHistory} from "react-router-dom"
+import {Link} from "react-router-dom"
 import {Context} from "../store/appContext";
+import {useNavigate} from "react-router-dom";
+
 import fondologin from "../../img/fondologin.png"
 import "../../styles/loginn.css";
 
@@ -9,7 +11,7 @@ const Log_in = () => {
     const [guardadoEmail, setGuardadoEmail] = useState("")
     const [guardadoPassword, setGuardadoPassword] = useState("")
     const {actions, store} = useContext(Context);
-    // const history = useHistory()
+    let navegacion = useNavigate()
 
     // Prevenir el envio
     const ingreso = (e) => {
@@ -17,7 +19,7 @@ const Log_in = () => {
 
         let logged = actions.login(guardadoEmail, guardadoPassword)
 
-        logged ? navegacion.push("/") : null
+        logged ? navegacion("/") : null
 
         setGuardadoEmail("")
         setGuardadoPassword("")
@@ -47,7 +49,8 @@ const Log_in = () => {
                                         (e) => setGuardadoEmail(e.target.value)
                                     }
                                     value={guardadoEmail}
-                                    onKeyDown={ingreso}/>
+                                    // onKeyDown={}
+                                />
                                 <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                             </div>
                             <div className="mb-3">
@@ -57,14 +60,15 @@ const Log_in = () => {
                                         (e) => setGuardadoPassword(e.target.value)
                                     }
                                     value={guardadoPassword}
-                                    onKeyDown={ingreso}/>
+                                    // onKeyDown={}
+                                />
                             </div>
                             <Link className="btn btn-secundary mx-2" type="submit"
                                 to={"/cambiarcontra"}>
                                 <i>¿Has olvidado de tu contraseña?</i>
                             </Link>
                             <button type="submit" className="btn btn-primary"
-                                onClick={sumbit}>Submit</button>
+                                onClick={ingreso}>Submit</button>
                         </div>
                     </div>
                 </div>

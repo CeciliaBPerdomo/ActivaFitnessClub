@@ -1,8 +1,8 @@
 import axios from "axios";
-// import json;
+//import json;
 
 let direccion =
-    "https://3001-ceciliabper-activafitne-b2idk7vzyxn.ws-us74.gitpod.io";
+    "https://3001-ceciliabper-activafitne-z3x64d32yu6.ws-us74.gitpod.io";
 
 const getState = ({
     getStore,
@@ -34,11 +34,14 @@ const getState = ({
             // ************************************************
 
             login: async (email, password) => {
+
                 try {
+                    console.log(email);
                     const response = await axios.post(direccion + "/api/login", {
                         email: email,
                         password: password
                     })
+
                     localStorage.setItem('token', response.data.access_token)
                     setStore({
                         auth: true
