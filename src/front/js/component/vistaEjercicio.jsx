@@ -65,8 +65,7 @@ export const VistaEjercicio = () => {
                                 }
                                 controls
                                 playing
-                                muted
-                                onStart></ReactPlayer>
+                                muted></ReactPlayer>
                         </div>
 
                     </ul>

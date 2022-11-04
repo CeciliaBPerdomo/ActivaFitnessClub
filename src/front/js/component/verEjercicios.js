@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {EjerciciosTodos} from "../pages/todosEjercicios.jsx";
 
-export const VerEjercicio = () => {
+export const VerEjercicio = (props) => {
 
     return (
         <>
@@ -13,8 +14,16 @@ export const VerEjercicio = () => {
 
                 <div className="card">
                     <div className="card-body">
-                        <h1 className="display-6">Ejercicios de Pecho</h1>
-                        <img src="https://mejorconsalud.as.com/wp-content/uploads/2021/11/ejercicio-polea-pecho.jpg" className="card-img-top" alt="..."/>
+                        <h1 className="display-6">
+                            <i className="fa fa-dumbbell"></i>
+                            {
+                            store.ejercicio.exercise_name
+                        }</h1>
+                        <img src={
+                                store.ejercicio.photo_exercise
+                            }
+                            className="card-img-top"
+                            alt="..."/>
                     </div>
                     <div className="card-body text-center">
                         <button type="button" className="btn btn-outline-info">

@@ -33,6 +33,9 @@ import {ListadoEjercicios} from "./component/listadoEjercicios.jsx";
 import {EditarEjercicio} from "./component/modificarEjercicio.jsx";
 import {ListaRutinaDeAlumno} from "./component/listaRutinaDeAlumno.jsx";
 import {VistaEjercicio} from "./component/vistaEjercicio.jsx";
+import { ListadoProductos } from "./component/listadoProductos.jsx";
+import { CrearProducto } from "./component/crearProducto";
+import { EditarProducto } from "./component/modificarProducto.jsx";
 
 // create your first component
 const Layout = () => {
@@ -100,6 +103,12 @@ const Layout = () => {
                         path="/ListadoEjercicios"/>
                     <Route element={<ListaRutinaDeAlumno/>}
                         path="/ListaRutinaDeAlumno/:theid"/>
+                        <Route element={<ListadoProductos/>}
+                        path="/ListadoProductos"/>
+                        <Route element={<CrearProducto/>}
+                        path="/crearProducto"/>
+                        <Route element={<EditarProducto/>}
+                        path="/editarProducto/:theid"/>
                     <Route element={
                         <h1>Not found!</h1>
                     }/>
