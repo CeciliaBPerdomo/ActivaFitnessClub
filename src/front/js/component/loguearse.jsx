@@ -1,6 +1,8 @@
 import React, {useContext, useState, useEffect} from "react";
-import {Link, useHistory} from "react-router-dom"
+import {Link} from "react-router-dom"
 import {Context} from "../store/appContext";
+import {useNavigate} from "react-router-dom";
+
 import fondologin from "../../img/fondologin.png"
 import "../../styles/loginn.css";
 
@@ -8,25 +10,25 @@ const Log_in = () => {
 
     const [guardadoEmail, setGuardadoEmail] = useState("")
     const [guardadoPassword, setGuardadoPassword] = useState("")
-
-    // const {actions, store} = useContext(Context)
-    // const history = useHistory()
+    const {actions, store} = useContext(Context);
+    let navegacion = useNavigate()
 
     // Prevenir el envio
-    function inputFunction(e) {
-        if (e.key == 'Enter') {
+    const ingreso = (e) => {
+        e.preventDefault()
 
-            setGuardadoEmail("")
-            setGuardadoPassword("")
-        }
-        console.log(setGuardadoEmail, setGuardadoPassword);
-    }
+        let logged = actions.login(guardadoEmail, guardadoPassword)
 
-    function sumbit() { // faltancosas
+        logged ? navegacion("/") : null
+
         setGuardadoEmail("")
         setGuardadoPassword("")
     }
 
+    // const unirse = (e) => {
+    //     e.preventDefault()
+    //     navegacion.push("/registrarse")
+    // }
     return (
         <>
             <div className="bg-loguearse vh-100">
@@ -47,7 +49,8 @@ const Log_in = () => {
                                         (e) => setGuardadoEmail(e.target.value)
                                     }
                                     value={guardadoEmail}
-                                    onKeyDown={inputFunction}/>
+                                    // onKeyDown={}
+                                />
                                 <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                             </div>
                             <div className="mb-3">
@@ -57,13 +60,15 @@ const Log_in = () => {
                                         (e) => setGuardadoPassword(e.target.value)
                                     }
                                     value={guardadoPassword}
-                                    onKeyDown={inputFunction}/>
+                                    // onKeyDown={}
+                                />
                             </div>
-                            <Link className="btn btn-secundary mx-2" type="submit" to={"/cambiarcontra"}>
+                            <Link className="btn btn-secundary mx-2" type="submit"
+                                to={"/cambiarcontra"}>
                                 <i>¿Has olvidado de tu contraseña?</i>
                             </Link>
                             <button type="submit" className="btn btn-primary"
-                                onClick={sumbit}>Submit</button>
+                                onClick={ingreso}>Submit</button>
                         </div>
                     </div>
                 </div>
