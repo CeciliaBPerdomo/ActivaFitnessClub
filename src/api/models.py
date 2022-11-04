@@ -103,49 +103,49 @@ class Exercise(db.Model):
 
 # Rutinas
 class Routines(db.Model):
-	idRutina = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
 	# Clave foranea de id de usuario
-	user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     # Relacion con la tabla auxiliar Rutina-Ejercicio
-	id_rutina_ejericios = db.relationship('Rutina_Ejercicios', backref="routines", cascade="all, delete-orphan", lazy=True)
+    id_rutina_ejericios = db.relationship("Rutinaejercicios", backref="routines", cascade="all, delete-orphan", lazy=True)
 
-	def __repr__(self):
+    def __repr__(self):
         return f'<Routines {self.id}>'
 
-	def serialize(self):
+    def serialize(self):
         return {
-			"idRutina": self.idRutina,
+			"id": self.id,
 			"user_id": self.user_id
 		}
 
 	# Desearializa los datos del usuario.
-	def serializeUser(self):
+    def serializeUser(self):
         results = User.query.filter_by(id = self.user_id).first()
         return {
             "userInfo": results.serialize(),
         }
 
 # Rutina con sus respectivos ejercicios
-class Rutina_Ejercicios(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
+class Rutinaejercicios(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
 
 	# Clave foranea de la rutina
-	idRutina = Column(db.Integer, db.ForeignKey("routines.id"))
+    idRutina = db.Column(db.Integer, db.ForeignKey("routines.id"))
 
 	# Clave foranea de ejercicios
-	idEjercicios = Column(db.Integer, db.ForeignKey("exercise.id"))
+    idEjercicios = db.Column(db.Integer, db.ForeignKey("exercise.id"))
 
 	# Cantidades del ejercicio
-	series = db.Column(db.Integer, nullable=False)
-	repeticiones = db.Column(db.Integer, nullable=True)
-	carga = db.Column(db.Integer, nullable=True)
-	semana = db.Column(db.Integer, nullable=False)
-	finaliza = db.Column(db.String(15), nullable=False)
+    series = db.Column(db.Integer, nullable=False)
+    repeticiones = db.Column(db.Integer, nullable=True)
+    carga = db.Column(db.Integer, nullable=True)
+    semana = db.Column(db.Integer, nullable=False)
+    finaliza = db.Column(db.String(15), nullable=False)
 
-	def __repr__(self):
-        return f'<Rutina_Ejercicios {self.id}>'
+    def __repr__(self):
+        return f'<Rutinaejercicios {self.id}>'
 
-	def serialize(self):
+    def serialize(self):
         return {
 			"id": self.id,
 			"idRutina": self.IdRutina,
@@ -158,7 +158,7 @@ class Rutina_Ejercicios(db.Model):
 		}
 
 	# Desearializa los datos de los ejercicios.
-	def serializeEjercicios(self):
+    def serializeEjercicios(self):
         results = Exercise.query.filter_by(id = self.idEjercicios).first()
         return {
             "exerciseInfo": results.serialize(),
@@ -205,7 +205,7 @@ class Payment(db.Model):
     payment_amount = db.Column(db.String(80), nullable=False)
     bill_n = db.Column(db.String(80), nullable=False)
     state = db.Column(db.Boolean(), unique=False, nullable=False)
-    description = db.Column(db.String(150), nullable=True)
+    description = db.Column(db.String(150), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
