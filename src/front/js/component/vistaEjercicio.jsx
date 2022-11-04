@@ -53,7 +53,7 @@ export const VistaEjercicio = () => {
                     </div>
                     <ul className="list-group list-group-flush">
 
-                        <div>
+                        <div className="d-flex">
                             <ReactPlayer // style={
                                 //         {
                                 //             width: "370",
@@ -65,24 +65,32 @@ export const VistaEjercicio = () => {
                                 }
                                 controls
                                 playing
-                                muted></ReactPlayer>
+                                muted
+                                onStart></ReactPlayer>
                         </div>
 
                     </ul>
-                    <div className="d-flex justify-content-end " role="group" aria-label="Basic outlined example">
-                        <Link to={
-                            "/vistaEjercicio/" + down
-                        }>
-                            <button className="btn btn-outline-primary">Down</button>
-                        </Link>
-                        <Link to={
-                            "/vistaEjercicio/" + next
-                        }>
-                            <button className="btn btn-outline-primary">Next</button>
-                        </Link>
-                    </div>
+
                 </div>
             </div>
+
+            <br/>
+            <div className="d-flex justify-content-end " role="group" aria-label="Basic outlined example"
+                style={
+                    {marginRight: "70px"}
+            }>
+                <Link to={
+                    "/vistaEjercicio/" + down
+                }>
+                    <button className="btn btn-outline-primary">Down</button>
+                </Link>
+                <Link to={
+                    "/vistaEjercicio/" + next
+                }>
+                    <button className="btn btn-outline-primary">Next</button>
+                </Link>
+            </div>
+            <br/>
         </>
     )
 };

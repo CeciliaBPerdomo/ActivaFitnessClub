@@ -21,16 +21,6 @@ export const VerEjercicio = () => {
                             <i className="fa fa-eye"></i>
                         </button>
                     </div>
-                    <div className="card-footer text-center">
-                        <button type="button" className="btn btn-outline-warning">
-                            <i className="fa fa-pen"></i>
-                        </button>
-                    </div>
-                    <div className="card-footer text-center">
-                        <button type="button" className="btn btn-outline-danger">
-                            <i className="fa fa-trash"></i>
-                        </button>
-                    </div>
                 </div>
 
 
