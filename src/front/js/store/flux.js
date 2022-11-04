@@ -2,7 +2,7 @@ import axios from "axios";
 // import json;
 
 let direccion =
-    "https://3001-ceciliabper-activafitne-b2idk7vzyxn.ws-us74.gitpod.io";
+    "https://3001-ceciliabper-activafitne-279w003foqk.ws-us74.gitpod.io";
 
 const getState = ({
     getStore,
@@ -34,37 +34,30 @@ const getState = ({
             login: async (email, password) => {
                 console.log(email, password);
                 try {
-                    const response = await fetch('', {
-                        method: 'POST',
+                    const response = await fetch("", {
+                        method: "POST",
                         body: JSON.stringify({
                             email: email,
-                            password: password
+                            password: password,
                         }),
                         headers: {
-                            "Content-Type": ''
-                        }
-                    })
+                            "Content-Type": "",
+                        },
+                    });
                     if (response.status === 200) {
-                        const data = await response.json()
+                        const data = await response.json();
                         console.log(data);
-                        localStorage.setItem("token", data.access_token)
+                        localStorage.setItem("token", data.access_token);
                         setStore({
-                            auth: true
-                        })
+                            auth: true,
+                        });
                     } else {
-                        alert("Wrong email or password")
+                        alert("Wrong email or password");
                     }
-
-
                 } catch (err) {
                     console.log(err);
-
-
                 }
             },
-
-
-
 
             // ************************************************
             //                  ALUMNOS						 //
