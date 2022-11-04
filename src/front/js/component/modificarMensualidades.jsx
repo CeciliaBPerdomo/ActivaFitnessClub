@@ -10,18 +10,18 @@ export const EditarMensualidad = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
-  const [descripcion, setDescripcion] = useState(store.mens.description);
-  const [fechaPago, setFechaPago] = useState(store.mens.payment_date);
-  const [numeroFactura, setNumeroFactura] = useState(store.mens.bill_n);
-  const [monto, setMonto] = useState(store.mens.payment_amount);
-  const [user_id, setUser_id] = useState(store.mens.user_id);
+  const [descripcion, setDescripcion] = useState(store.mensualidad.description);
+  const [fechaPago, setFechaPago] = useState(store.mensualidad.payment_date);
+  const [numeroFactura, setNumeroFactura] = useState(store.mensualidad.bill_n);
+  const [monto, setMonto] = useState(store.mensualidad.payment_amount);
+  const [user_id, setUser_id] = useState(store.mensualidad.user_id);
 
   useEffect(() => {
     actions.obtenerMensualidadIdMensualidad(parseInt(params.theid));
   }, []);
 
-  let nombre = store.mens?.userInfo?.name;
-  let apellido = store.mens?.userInfo?.last_name;
+  let nombre = store.mensualidad?.userInfo?.name;
+  let apellido = store.mensualidad?.userInfo?.last_name;
   let nombreCompleto = nombre + " " + apellido;
 
   const modificarMensualidad = (e) => {
@@ -105,7 +105,7 @@ export const EditarMensualidad = () => {
                   type="date"
                   className="form-control"
                   onChange={(e) => setFechaPago(e.target.value)}
-                  defaultValue={store.mens.payment_date}
+                  defaultValue={store.mensualidad.payment_date}
                 />
               </div>
             </div>
@@ -121,7 +121,7 @@ export const EditarMensualidad = () => {
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing-sm"
                   onChange={(e) => setMonto(e.target.value)}
-                  defaultValue={store.mens.payment_amount}
+                  defaultValue={store.mensualidad.payment_amount}
                 />
               </div>
 
@@ -136,7 +136,7 @@ export const EditarMensualidad = () => {
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing-sm"
                   onChange={(e) => setNumeroFactura(e.target.value)}
-                  defaultValue={store.mens.bill_n}
+                  defaultValue={store.mensualidad.bill_n}
                 />
               </div>
             </div>
@@ -152,7 +152,7 @@ export const EditarMensualidad = () => {
                   id="basic-description"
                   aria-describedby="basic-addon3"
                   onChange={(e) => setDescripcion(e.target.value)}
-                  defaultValue={store.mens.description}
+                  defaultValue={store.mensualidad.description}
                 />
               </div>
             </div>

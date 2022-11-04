@@ -9,6 +9,11 @@ export const CrearRutina = () => {
   const [preRutina, setPreRutina] = useState([]);
   const [ejercicio, setEjercicio] = useState([{}]);
 
+  const [series, setSeries] = useState("");
+  const [repeticiones, setRepeticiones] = useState("");
+  const [carga, setCarga] = useState("");
+  //const []
+
   useEffect(() => {
     actions.obtenerAlumnoId(parseInt(params.theid));
     actions.obtenerEjercicios();
