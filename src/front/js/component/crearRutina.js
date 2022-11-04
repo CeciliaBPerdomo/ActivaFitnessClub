@@ -7,7 +7,12 @@ export const CrearRutina = () => {
   const params = useParams();
 
   const [preRutina, setPreRutina] = useState([]);
-  const [ejercicio, setEjercicio] = useState([{}]);
+  const [ejercicio, setEjercicio] = useState([]);
+
+  const [series, setSeries] = useState("");
+  const [repeticiones, setRepeticiones] = useState("");
+  const [carga, setCarga] = useState("");
+  const [semana, setSemana] = useState("");
 
   useEffect(() => {
     actions.obtenerAlumnoId(parseInt(params.theid));
@@ -19,7 +24,15 @@ export const CrearRutina = () => {
   let nombreCompleto = nombre + " " + apellido;
 
   function cargarRutina() {
-    console.log([ejercicio]);
+    // setEjercicio({
+    //   series: series,
+    //   repeticiones: repeticiones,
+    //   carga: carga,
+    //   semana: semana,
+    // });
+    // console.log(ejercicio);
+    //setPreRutina([...preRutina, ejercicio]);
+    //console.log(preRutina);
   }
 
   return (
@@ -92,7 +105,7 @@ export const CrearRutina = () => {
                 <select
                   className="form-select"
                   id="inputGroupSelect01"
-                  onChange={(e) => setEjercicio({ ejercicio: e.target.value })}
+                  //onChange={(e) => setEjercicio({ ejercicio: e.target.value })}
                   //value={idUsuario}
                 >
                   <option>Seleccionar ejercicio</option>
@@ -120,8 +133,8 @@ export const CrearRutina = () => {
                 <input
                   type="text"
                   className="form-control"
-                  onChange={(e) => setEjercicio([{ series: e.target.value }])}
-                  //value={nombreCompleto}
+                  onChange={(e) => setSeries(e.target.value)}
+                  value={series}
                 />
               </div>
 
@@ -132,10 +145,8 @@ export const CrearRutina = () => {
                 <input
                   type="text"
                   className="form-control"
-                  onChange={(e) =>
-                    setEjercicio({ repeticiones: e.target.value })
-                  }
-                  //value={nombreCompleto}
+                  onChange={(e) => setRepeticiones(e.target.value)}
+                  value={repeticiones}
                 />
               </div>
 
@@ -146,7 +157,8 @@ export const CrearRutina = () => {
                 <input
                   type="text"
                   className="form-control"
-                  onChange={(e) => setEjercicio({ carga: e.target.value })}
+                  onChange={(e) => setCarga(e.target.value)}
+                  value={carga}
                 />
               </div>
 
@@ -157,8 +169,8 @@ export const CrearRutina = () => {
 
                 <select
                   className="form-select"
-                  aria-label="Default select example"
-                  onChange={(e) => setEjercicio({ semana: e.target.value })}
+                  onChange={(e) => setSemana(e.target.value)}
+                  value={semana}
                 >
                   <option selected>1, 2, 3 o 4</option>
                   <option value="1">Semana 1</option>
@@ -236,17 +248,6 @@ export const CrearRutina = () => {
           </tbody>
         </table>
         <br />
-
-        {/* Guardar Rutina */}
-        <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button
-            className="btn btn-outline-success w-50"
-            type="button"
-            style={{ marginBottom: "20px" }}
-          >
-            Guardar Rutina
-          </button>
-        </div>
       </div>
     </>
   );
