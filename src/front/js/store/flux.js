@@ -23,7 +23,9 @@ const getState = ({
             rutinas: [],
             rutina: {},
             pendientes: [],
-            pendiente: {}
+            pendiente: {},
+            auth: false,
+            profile: {}
         },
         actions: {
             // ************************************************
@@ -31,34 +33,73 @@ const getState = ({
             // ************************************************
 
             login: async (email, password) => {
-                console.log(email, password);
+
                 try {
-                    const response = await fetch('', {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            email: email,
-                            password: password
-                        }),
-                        headers: {
-                            "Content-Type": ''
+                    console.log(email);
+                    const response = await axios.post(direccion + "/api/login", {
+                        email: email,
+                        password: password
+                    })
+
+                    localStorage.setItem('token', response.data.access_token)
+                    setStore({
+                        auth: true
+                    })
+                    return true;
+                } catch (error) {
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg)
+                    }
+                }
+            },
+
+            // ************************************************
+            //              RUTAS PROTEGIDAS  				 //
+            // ************************************************
+            getProfile: async () => {
+                let accessToken = localStorage.getItem("token")
+                try {
+                    const response = await axios.get(direccion + "/api/profile", {
+                        headers: { // Authorization: Bearer
+                            Authorization: "Bearer " + accessToken
+                        }
+
+                    })
+                    setStore({
+                        profile: response.data.user
+                    })
+                    return true;
+                } catch (error) {
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg)
+                    }
+                }
+            },
+
+
+            // ************************************************
+            //            CHEQUEAR QUE EL TOKEN SEA VALIDO	 //
+            // ************************************************
+            checkValidToken: async () => {
+                let accessToken = localStorage.getItem("token")
+                try {
+                    const response = await axios.get(direccion + "/api/validation", {
+                        headers: { // 'Authorization: Bearer
+                            Authorization: "Bearer " + accessToken
                         }
                     })
-                    if (response.status === 200) {
-                        const data = await response.json()
-                        console.log(data);
-                        localStorage.setItem("token", data.access_token)
+                    setStore({
+                        auth: response.data.status
+                    })
+                    return true
+                } catch (error) {
+                    if (error.code === "ERR_BAD_REQUEST") {
                         setStore({
-                            auth: true
+                            auth: false
                         })
-                    } else {
-                        alert("Wrong email or password")
+                        console.log(error.response.data.msg)
                     }
-
-
-                } catch (err) {
-                    console.log(err);
-
-
+                    return false
                 }
             },
 

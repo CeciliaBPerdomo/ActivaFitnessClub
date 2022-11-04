@@ -415,10 +415,11 @@ def get_payament(payment_id):
 
     return jsonify(results), 200
 
-# Busca por id de usuario
+# Busca todos los pagos por id de usuario 
 @api.route('/mensualidad/<int:user_id>', methods=['GET'])
 def get_payment_userId(user_id):
-    paymentId = Payment.query.filter_by(user_id=user_id).first()
+    paymentId = Payment.query.filter_by(user_id=user_id).all()
+    #print(paymentId)
     results = list(map(lambda x: x.serialize(), paymentId))
     
     if paymentId is None: 
