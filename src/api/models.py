@@ -19,6 +19,7 @@ class User(db.Model):
     activities = db.Column(db.String(80), unique=False, nullable=False)
     role = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    cuota = db.Column(db.Integer, nullable=True)
     
     carrito = db.relationship('ShoppingCart', backref="user", cascade="all, delete-orphan", lazy=True)
     rutinas = db.relationship('Routines', backref="user", cascade="all, delete-orphan", lazy=True)
@@ -76,9 +77,6 @@ class Product(db.Model):
             
         }
 
-
-
-
 class Exercise(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     exercise_name = db.Column(db.String(80), nullable=False)
@@ -103,8 +101,68 @@ class Exercise(db.Model):
             "video_exercise": self.video_exercise
         }
 
+# Rutinas
+class Routines(db.Model):
+	idRutina = db.Column(db.Integer, primary_key=True)
+	# Clave foranea de id de usuario
+	user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    # Relacion con la tabla auxiliar Rutina-Ejercicio
+	id_rutina_ejericios = db.relationship('Rutina_Ejercicios', backref="routines", cascade="all, delete-orphan", lazy=True)
 
+	def __repr__(self):
+        return f'<Routines {self.id}>'
 
+	def serialize(self):
+        return {
+			"idRutina": self.idRutina,
+			"user_id": self.user_id
+		}
+
+	# Desearializa los datos del usuario.
+	def serializeUser(self):
+        results = User.query.filter_by(id = self.user_id).first()
+        return {
+            "userInfo": results.serialize(),
+        }
+
+# Rutina con sus respectivos ejercicios
+class Rutina_Ejercicios(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+
+	# Clave foranea de la rutina
+	idRutina = Column(db.Integer, db.ForeignKey("routines.id"))
+
+	# Clave foranea de ejercicios
+	idEjercicios = Column(db.Integer, db.ForeignKey("exercise.id"))
+
+	# Cantidades del ejercicio
+	series = db.Column(db.Integer, nullable=False)
+	repeticiones = db.Column(db.Integer, nullable=True)
+	carga = db.Column(db.Integer, nullable=True)
+	semana = db.Column(db.Integer, nullable=False)
+	finaliza = db.Column(db.String(15), nullable=False)
+
+	def __repr__(self):
+        return f'<Rutina_Ejercicios {self.id}>'
+
+	def serialize(self):
+        return {
+			"id": self.id,
+			"idRutina": self.IdRutina,
+			"idEjercicios": self.idEjercicios,
+			"series": self.series,
+			"repeticiones": self.repiticiones,
+			"carga": self.carga,
+			"semana": self.semana,
+			"finaliza": self.finaliza
+		}
+
+	# Desearializa los datos de los ejercicios.
+	def serializeEjercicios(self):
+        results = Exercise.query.filter_by(id = self.idEjercicios).first()
+        return {
+            "exerciseInfo": results.serialize(),
+        }
 class Sales(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String(80), nullable=False)
@@ -140,34 +198,6 @@ class ShoppingCart(db.Model):
 
         }
 
-
-
-class Routines(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    series = db.Column(db.String(80), nullable=False)
-    repetitions = db.Column(db.String(80), nullable=False)
-    burden = db.Column(db.String(80), nullable=False)
-    week = db.Column(db.String(80), nullable=False)
-    finish = db.Column(db.String(80), nullable=False)
-
-    excercise_id = db.relationship('Exercise', backref="routines", cascade="all, delete-orphan", lazy=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-
-    def __repr__(self):
-        return f'<Routines {self.id}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "series": self.series,
-            "repetitions": self.repetitions,
-            "burden": self.burden,
-            "week": self.week,
-            "finish": self.finish,
-            
-            "user_id":self.user_id
-        }
-
 # Mensualidades
 class Payment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -175,7 +205,7 @@ class Payment(db.Model):
     payment_amount = db.Column(db.String(80), nullable=False)
     bill_n = db.Column(db.String(80), nullable=False)
     state = db.Column(db.Boolean(), unique=False, nullable=False)
-    description = db.Column(db.String(150), nullable=False)
+    description = db.Column(db.String(150), nullable=True)
 
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
@@ -220,3 +250,30 @@ class Outstanding(db.Model):
             "user_id":self.user_id,
             "product_id":self.product_id
         }
+
+
+#class Routines(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     series = db.Column(db.String(80), nullable=False)
+#     repetitions = db.Column(db.String(80), nullable=False)
+#     burden = db.Column(db.String(80), nullable=False)
+#     week = db.Column(db.String(80), nullable=False)
+#     finish = db.Column(db.String(80), nullable=False)
+
+#     excercise_id = db.relationship('Exercise', backref="routines", cascade="all, delete-orphan", lazy=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+
+#     def __repr__(self):
+#         return f'<Routines {self.id}>'
+
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "series": self.series,
+#             "repetitions": self.repetitions,
+#             "burden": self.burden,
+#             "week": self.week,
+#             "finish": self.finish,
+            
+#             "user_id":self.user_id
+#         }
