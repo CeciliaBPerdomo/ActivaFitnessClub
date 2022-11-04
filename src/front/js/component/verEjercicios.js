@@ -9,7 +9,6 @@ export const VerEjercicio = () => {
     useEffect(() => {
         actions.obtenerEjercicios();
     }, []);
-    console.log(obtenerEjercicios);
 
     return (
         <> {/* Buscar */}
@@ -17,14 +16,24 @@ export const VerEjercicio = () => {
                 <input className="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar por nombre..."/>
             </div>
 
-            <div className="container">
-                <div className="card"
-                    // style={
-                    //     {width: "100%",margin: "20px",borderRadius: "6px", overflow: hidden,background: "#ffff", boxShadow: "0px 1px 10px rgb(0, 0, 0, 0.2)",
-                    //         cursor: "default", transition: "all 400ms ease"}}
-                >
-                    {
-                    store.ejercicios.map((item, id) => (
+            <div className="d-flex">
+                {
+                store.ejercicios.map((item, id) => (
+                    <div className="card"
+                        style={
+                            {
+                                width: "25%",
+                                margin: "20px",
+                                borderRadius: "6px",
+                                overflow: "hidden",
+                                background: "#ffff",
+                                boxShadow: "0px 1px 10px rgb(0, 0, 0, 0.2)",
+                                cursor: "default",
+                                transition: "all 400ms ease"
+                            }
+                    }>
+
+
                         <div className="card-body">
                             <h2 className="display-6"
                                 style={
@@ -45,16 +54,17 @@ export const VerEjercicio = () => {
                                 }
                                 className="card-img-top"
                                 alt="..."/>
+
                         </div>
-                    ))
-                }
-                    <div className="card-body text-center">
-                        <button type="button" className="btn btn-outline-info">
-                            <i className="fa fa-eye"></i>
-                        </button>
+                        <div className="card-body text-center">
+                            <button type="button" className="btn btn-outline-info">
+                                <i className="fa fa-eye"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </div>
+                ))
+            } </div>
+
         </>
     )
 }
