@@ -400,7 +400,6 @@ const getState = ({
             obtenerEjercicios: async () => {
                 try {
                     const response = await axios.get(direccion + "/api/ejercicios", {});
-                    console.log(response.data);
                     setStore({
                         ejercicios: response.data,
                     });
@@ -709,10 +708,53 @@ const getState = ({
                     const response = await axios.get(
                         direccion + "/api/rutinaEjercicio/" + id, {}
                     );
-                    console.log(response.data);
                     setStore({
                         rutinasEjercicios: response.data,
                     });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            /* Agregar ejercicios en rutina*/
+            agregarEjerciciosenRutina: async (
+                idRutina,
+                idEjercicios,
+                series,
+                repeticiones,
+                carga,
+                semana,
+                finaliza
+            ) => {
+                try {
+                    const response = await axios.post(
+                        direccion + "/api/rutinaEjercicio", {
+                            idRutina: idRutina,
+                            idEjercicios: idEjercicios,
+                            series: series,
+                            repeticiones: repeticiones,
+                            carga: carga,
+                            semana: semana,
+                            finaliza: finaliza,
+                        }
+                    );
+                    console.log(response.data);
+                    return true;
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            // Borra ejercicios de la rutina
+            borrarEjerciciosdeRutina: async (id) => {
+                try {
+                    const response = await axios.delete(
+                        direccion + "/api/rutinaEjercicio/" + id, {}
+                    );
+                    console.log(response);
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {

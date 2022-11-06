@@ -60,7 +60,8 @@ def addUser():
         password = body["password"],
         activities = body["activities"],
         role = body["role"],
-        is_active = body["is_active"])
+        is_active = body["is_active"],
+        cuota = body["cuota"])
         
         db.session.add(new_user)
         db.session.commit()
@@ -157,6 +158,10 @@ def usersModif_porId(user_id):
     
     if "is_active" in body:
         usuario.is_active = body["is_active"]
+    
+
+    if "cuota" in body:
+        usuario.is_active = body["cuota"]
 
     db.session.commit()
 
@@ -605,11 +610,51 @@ def get_routinesEjerc(routines_id):
 
     return jsonify(results), 200
 
+# Alta de ejercicios en rutinas
+@api.route('/rutinaEjercicio', methods=['POST'])
+def addRoutinesEjercicio():
+    body = json.loads(request.data)
 
+    queryNewRoutines= Rutinaejercicios.query.filter_by(idRutina=body["idRutina"]).first()
+    
+    if queryNewRoutines is None:
+        response_body = {
+            "msg": "No existe rutina creada" 
+        }
+        return jsonify(response_body), 400
+    
+    new_routines = Rutinaejercicios(
+    idRutina = body["idRutina"],
+    idEjercicios = body["idEjercicios"],
+    series=body["series"],
+    repeticiones=body["repeticiones"], 
+    carga=body["carga"], 
+    semana=body["semana"],
+    finaliza=body["finaliza"])
+        
+    db.session.add(new_routines)
+    db.session.commit()
+        
+    return jsonify(new_routines.serialize()), 200
+    
+# Borra ejercicio de la rutina
+@api.route('/rutinaEjercicio/<int:id>', methods=['DELETE'])
+def deleteRoutinesExercise(id):
+    routinesId= Rutinaejercicios.query.filter_by(id=id).first()
+
+    if routinesId is None: 
+        response_body = {"msg": "Rutina no encontrada"}
+        return jsonify(response_body), 400
+
+    db.session.delete(routinesId)
+    db.session.commit()
+
+    response_body = {"msg": "Ejercicio de la rutina borrada"}
+    return jsonify(response_body), 200
 
 #######################################
 ##                                   ##
-##      RUTAS DEl CARRITO            ##
+##      RUTAS DEL CARRITO            ##
 ##                                   ## 
 #######################################
 

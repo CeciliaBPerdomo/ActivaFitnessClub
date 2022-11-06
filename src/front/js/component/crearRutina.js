@@ -1,18 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import swal from "sweetalert";
 
 export const CrearRutina = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
-  const [preRutina, setPreRutina] = useState([]);
-  const [ejercicio, setEjercicio] = useState([]);
-
+  const [ejercicio, setEjercicio] = useState("");
   const [series, setSeries] = useState("");
   const [repeticiones, setRepeticiones] = useState("");
   const [carga, setCarga] = useState("");
   const [semana, setSemana] = useState("");
+  const [finaliza, setFinaliza] = useState("");
 
   useEffect(() => {
     actions.obtenerAlumnoId(parseInt(params.theid));
@@ -24,7 +24,53 @@ export const CrearRutina = () => {
   let apellido = store.alumno.last_name;
   let nombreCompleto = nombre + " " + apellido;
 
-  function cargarRutina() {}
+  const cargarRutina = (e) => {
+    // Agrega el ejercicio a la rutina actual
+    e.preventDefault();
+
+    let idRutina = parseInt(params.theid);
+    //Guarda
+    actions.agregarEjerciciosenRutina(
+      idRutina,
+      ejercicio,
+      series,
+      repeticiones,
+      carga,
+      semana,
+      finaliza
+    );
+
+    //Limpia el formulario
+    setSeries("");
+    setRepeticiones("");
+    setCarga("");
+    setSemana("");
+    setFinaliza("");
+  };
+
+  //Borrar rutinas
+  const borrarEjercicio = (e, item) => {
+    e.preventDefault()
+
+    swal({
+      title: `Desea borrar el ejercicio: ${item.exerciseInfo.exercise_name}`,
+      text: "Una vez eliminado, no se podra recuperar",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal(`Poof! el ejercicio ${item.exerciseInfo.exercise_name} fue borrado de la rutina`, {
+          icon: "success",
+          actions: actions.borrarEjerciciosdeRutina(item.id),
+        });
+      } else {
+        swal("Ups! Casi, casi!");
+      }
+    });
+
+    
+  }
 
   return (
     <>
@@ -60,7 +106,7 @@ export const CrearRutina = () => {
 
         {/* <div className="d-grid gap-2 d-md-flex justify-content-md-end"></div> */}
         <div className="formulario">
-          <form>
+          <form onSubmit={cargarRutina}>
             <div
               className="container text-start "
               style={{ marginTop: "10px" }}
@@ -96,8 +142,8 @@ export const CrearRutina = () => {
                 <select
                   className="form-select"
                   id="inputGroupSelect01"
-                  //onChange={(e) => setEjercicio({ ejercicio: e.target.value })}
-                  //value={idUsuario}
+                  onChange={(e) => setEjercicio(e.target.value)}
+                  value={ejercicio}
                 >
                   <option>Seleccionar ejercicio</option>
                   {store.ejercicios.map((item, id) => (
@@ -187,7 +233,8 @@ export const CrearRutina = () => {
                   type="date"
                   className="form-control"
                   id="inputNacimiento"
-                  onChange={(e) => setEjercicio({ finaliza: e.target.value })}
+                  onChange={(e) => setFinaliza(e.target.value)}
+                  value={finaliza}
                 />
               </div>
 
@@ -196,7 +243,7 @@ export const CrearRutina = () => {
                   className="btn btn-outline-success float-end w-50"
                   type="button"
                   style={{ marginTop: "31px" }}
-                  onClick={() => cargarRutina()}
+                  onClick={cargarRutina}
                 >
                   Añadir ejercicio
                 </button>
@@ -212,7 +259,7 @@ export const CrearRutina = () => {
                 Ejercicio
               </th>
               <th scope="col" className="text-start">
-                Tipo/Músculo
+                Tipo / Músculo
               </th>
               <th scope="col">Series</th>
               <th scope="col">Repeticiones</th>
@@ -240,7 +287,8 @@ export const CrearRutina = () => {
                 <i className="fa fa-pen"></i>
               </td> */}
                 <td>
-                  <i className="fa fa-trash"></i>
+                  <i className="fa fa-trash"
+                  onClick={(e) => borrarEjercicio(e, item)}></i>
                 </td>
               </tr>
             ))}
