@@ -2,7 +2,7 @@ import axios from "axios";
 //import json;
 
 let direccion =
-    "https://3001-ceciliabper-activafitne-9xkk4va6tb0.ws-us74.gitpod.io";
+    "https://3001-ceciliabper-activafitne-knuu7efjlcq.ws-us74.gitpod.io";
 
 const getState = ({
     getStore,
@@ -27,6 +27,7 @@ const getState = ({
             pendiente: {},
             auth: false,
             profile: {},
+            rutinasEjercicios: [],
         },
         actions: {
             // ************************************************
@@ -699,10 +700,32 @@ const getState = ({
             },
 
             // ************************************************
+            //                 RUTINAS   					 //
+            //             CON EJERCICIOS   		    	 //
+            // ************************************************
+            // obtener los ejercicios de la rutina por Id
+            obtenerRutinaEjercicioId: async (id) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/rutinaEjercicio/" + id, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        rutinasEjercicios: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // ************************************************
             //                 PENDIENTES					 //
             // ************************************************
 
-            /* Crea nueva rutina*/
+            /* Crea nuevo Pendiente*/
             crearPendiente: async (id, state, amount, user_id, product_id) => {
                 try {
                     const response = await axios.post(direccion + "/api/pendientes", {

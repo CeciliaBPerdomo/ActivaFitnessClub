@@ -17,23 +17,14 @@ export const CrearRutina = () => {
   useEffect(() => {
     actions.obtenerAlumnoId(parseInt(params.theid));
     actions.obtenerEjercicios();
+    actions.obtenerRutinaEjercicioId(parseInt(params.theid));
   }, []);
 
   let nombre = store.alumno.name;
   let apellido = store.alumno.last_name;
   let nombreCompleto = nombre + " " + apellido;
 
-  function cargarRutina() {
-    // setEjercicio({
-    //   series: series,
-    //   repeticiones: repeticiones,
-    //   carga: carga,
-    //   semana: semana,
-    // });
-    // console.log(ejercicio);
-    //setPreRutina([...preRutina, ejercicio]);
-    //console.log(preRutina);
-  }
+  function cargarRutina() {}
 
   return (
     <>
@@ -217,34 +208,42 @@ export const CrearRutina = () => {
         <table className="table table-hover table-secondary">
           <thead>
             <tr className="text-center">
-              <th scope="col">Musculo/Tipo</th>
-              <th scope="col">Ejercicio</th>
-              <th scope="col">Serie</th>
+              <th scope="col" className="text-start">
+                Ejercicio
+              </th>
+              <th scope="col" className="text-start">
+                Tipo/Músculo
+              </th>
+              <th scope="col">Series</th>
               <th scope="col">Repeticiones</th>
               <th scope="col">Carga</th>
               <th scope="col">Semana</th>
               <th scope="col">Finaliza</th>
-              <th scope="col">Modificar</th>
+              {/* <th scope="col">Modificar</th> */}
               <th scope="col">Borrar</th>
             </tr>
           </thead>
 
           <tbody className="align-middle text-center">
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
+            {store.rutinasEjercicios.map((item, id) => (
+              <tr key={id}>
+                <td className="text-start">
+                  {item.exerciseInfo.exercise_name}
+                </td>
+                <td className="text-start">{item.exerciseInfo.description}</td>
+                <td>{item.series}</td>
+                <td>{item.repeticiones}</td>
+                <td>{item.carga}</td>
+                <td>{item.semana}</td>
+                <td>{item.finaliza}</td>
+                {/* <td>
                 <i className="fa fa-pen"></i>
-              </td>
-              <td>
-                <i className="fa fa-trash"></i>
-              </td>
-            </tr>
+              </td> */}
+                <td>
+                  <i className="fa fa-trash"></i>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <br />

@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 
 # Tablas de la base de datos
-from api.models import db, User, Exercise, Product, Payment, Routines, ShoppingCart, Sales, Outstanding
+from api.models import db, User, Exercise, Product, Payment, Routines, ShoppingCart, Sales, Outstanding, Rutinaejercicios
 from api.utils import generate_sitemap, APIException
 import json
 from flask_jwt_extended import create_access_token
@@ -534,15 +534,12 @@ def get_routines_userId(user_id):
     routinesId = Routines.query.filter_by(user_id=user_id).all()
     results = list(map(lambda x: x.serialize(), routinesId))
    
-
-
     if routinesId is None: 
         response_body = {"msg": "Rutina no encontrada"}
         return jsonify(response_body), 400
     return jsonify(results), 200
 
 #Borra una rutina
-
 @api.route('/rutinas/<int:routines_id>', methods=['DELETE'])
 def deleteRoutines(routines_id):
     routinesId= Routines.query.filter_by(id=routines_id).first()
@@ -588,6 +585,27 @@ def routinesModif_porId(routines_id):
 
     response_body = {"msg": "Rutina modificado"}
     return jsonify(response_body), 400
+
+#######################################
+##                                   ##
+##      RUTAS DE RUTINAS             ##
+##      CON EJERCICIOS               ##
+##                                   ## 
+#######################################
+# Busca por id de rutina
+@api.route('/rutinaEjercicio/<int:routines_id>', methods=['GET'])
+def get_routinesEjerc(routines_id):
+    #Busca los ejercicios de la rutina por su id
+    rutina = Rutinaejercicios.query.filter_by(idRutina=routines_id).all()
+    results = list(map(lambda x: { **x.serializeEjercicios(), **x.serialize() }, rutina))
+
+    if rutina is None: 
+        response_body = {"msg": "Rutina no encontrada"}
+        return jsonify(response_body), 400
+
+    return jsonify(results), 200
+
+
 
 #######################################
 ##                                   ##
