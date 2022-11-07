@@ -1,11 +1,21 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom"
 import {Context} from "../store/appContext";
 import logo from "../../img/Logo.jpg"
 
 export const Navbar = () => {
 
-    let {store, action} = useContext(Context)
+    let {store, actions} = useContext(Context)
+
+    const [visibilidadBoton, setVisibilidadBoton] = useState("");
+    
+    useEffect(()=> {    
+        if (store.auth === true)  {
+            setVisibilidadBoton("show")    
+        } else  {      
+            setVisibilidadBoton("hidden")    
+        }  
+    })
 
 
     return (
@@ -33,8 +43,8 @@ export const Navbar = () => {
 
                         </button>
                         <hr/>
-                        <Link to="/login">
-                            <button className="btn btn-danger" type="submit">Login</button>
+                        <Link className={"btn btn-outline-danger "+visibilidadBoton} type="submit" to="/login">
+                            Login
                         </Link>
                     </div>
                     <div>

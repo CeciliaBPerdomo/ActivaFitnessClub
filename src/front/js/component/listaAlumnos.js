@@ -91,6 +91,7 @@ export const ListaAlumno = () => {
               <th scope="col">Apellido</th>
               <th scope="col">Fecha de nacimiento</th>
               <th scope="col">Fecha de ingreso</th>
+              <th scope="col">Mensualidad</th>
               <th scope="col">+Info</th>
               <th scope="col">Rutinas</th>
               <th scope="col">Crear rutina</th>
@@ -108,6 +109,7 @@ export const ListaAlumno = () => {
                 <td>{item.last_name}</td>
                 <td>{item.birthday}</td>
                 <td>{item.date_of_admission}</td>
+                <td>${item.cuota}</td>
 
                 {/* Mas informacion */}
                 <td>
