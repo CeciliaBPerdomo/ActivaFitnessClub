@@ -45,7 +45,7 @@ export const VistaMensualidades = () => {
         style={{ marginBottom: "15px", marginTop: "15px" }}
       >
         <h1>
-          <i class="fa fa-wallet"></i> Mensualidades
+          <i className="fa fa-wallet"></i> Mensualidades
         </h1>
         <br />
 

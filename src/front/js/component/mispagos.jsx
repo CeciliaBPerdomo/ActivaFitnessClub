@@ -22,7 +22,7 @@ export const MisPagos = () => {
             <br/> {/* <Link to={
                 "/pagarMensualidad/" + params.theid
             }> */}
-            <button type="button" class="btn btn-success justify-content-md-end float-end"
+            <button type="button" className="btn btn-success justify-content-md-end float-end"
                 style={
                     {marginRight: "70px"}
             }>
