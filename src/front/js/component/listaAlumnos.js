@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 export const ListaAlumno = () => {
   const { store, actions } = useContext(Context);
@@ -10,6 +11,17 @@ export const ListaAlumno = () => {
   useEffect(() => {
     actions.obtenerAlumnos();
   }, []);
+
+  const crearRutina = (e, item) => {
+    e.preventDefault();
+    actions.crearRutina(item.id);
+
+    //let id = store.rutina.id;
+    //console.log(id);
+
+    let navegacion = useNavigate();
+    navegacion("/crearRutina/" + id);
+  };
 
   const borrar = (e, item) => {
     e.preventDefault();
@@ -118,12 +130,13 @@ export const ListaAlumno = () => {
 
                 <td>
                   {/* Crear rutina */}
-                  <Link
-                    to={"/crearRutina/" + item.id}
+                  <button
+                    type="button"
                     className="btn btn-outline-dark"
+                    onClick={(e) => crearRutina(e, item)}
                   >
                     <i class="fa fa-dumbbell"></i>
-                  </Link>
+                  </button>
                 </td>
 
                 <td>
