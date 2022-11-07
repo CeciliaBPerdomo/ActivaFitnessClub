@@ -2,7 +2,7 @@ import axios from "axios";
 // import json;
 
 let direccion =
-    "https://3001-ceciliabper-activafitne-rxiid32wyzn.ws-us74.gitpod.io";
+    "https://3001-ceciliabper-activafitne-e29205aoa4d.ws-us74.gitpod.io";
 
 const getState = ({
     getStore,
