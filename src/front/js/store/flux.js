@@ -1,8 +1,7 @@
 import axios from "axios";
 // import json;
 
-let direccion =
-    "https://3001-ceciliabper-activafitne-e29205aoa4d.ws-us74.gitpod.io";
+let direccion = "https://3001-ceciliabper-activafitne-qtza8pqmdax.ws-us74.gitpod.io";
 
 const getState = ({
     getStore,
@@ -27,7 +26,7 @@ const getState = ({
             pendiente: {},
             auth: false,
             profile: {},
-            rutinasEjercicios: [],
+            rutinasEjercicios: []
         },
         actions: {
             // ************************************************
@@ -592,11 +591,9 @@ const getState = ({
             // obtener los ejercicios de la rutina por Id
             obtenerRutinaEjercicioId: async (id) => {
                 try {
-                    const response = await axios.get(
-                        direccion + "/api/rutinaEjercicio/" + id, {}
-                    );
+                    const response = await axios.get(direccion + "/api/rutinaEjercicio/" + id, {});
                     setStore({
-                        rutinasEjercicios: response.data,
+                        rutinasEjercicios: response.data
                     });
                 } catch (error) {
                     console.log(error);
@@ -607,27 +604,17 @@ const getState = ({
             },
 
             /* Agregar ejercicios en rutina*/
-            agregarEjerciciosenRutina: async (
-                idRutina,
-                idEjercicios,
-                series,
-                repeticiones,
-                carga,
-                semana,
-                finaliza
-            ) => {
+            agregarEjerciciosenRutina: async (idRutina, idEjercicios, series, repeticiones, carga, semana, finaliza) => {
                 try {
-                    const response = await axios.post(
-                        direccion + "/api/rutinaEjercicio", {
-                            idRutina: idRutina,
-                            idEjercicios: idEjercicios,
-                            series: series,
-                            repeticiones: repeticiones,
-                            carga: carga,
-                            semana: semana,
-                            finaliza: finaliza,
-                        }
-                    );
+                    const response = await axios.post(direccion + "/api/rutinaEjercicio", {
+                        idRutina: idRutina,
+                        idEjercicios: idEjercicios,
+                        series: series,
+                        repeticiones: repeticiones,
+                        carga: carga,
+                        semana: semana,
+                        finaliza: finaliza
+                    });
                     console.log(response.data);
                     return true;
                 } catch (error) {
@@ -638,9 +625,7 @@ const getState = ({
             // Borra ejercicios de la rutina
             borrarEjerciciosdeRutina: async (id) => {
                 try {
-                    const response = await axios.delete(
-                        direccion + "/api/rutinaEjercicio/" + id, {}
-                    );
+                    const response = await axios.delete(direccion + "/api/rutinaEjercicio/" + id, {});
                     console.log(response);
                 } catch (error) {
                     console.log(error);
