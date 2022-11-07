@@ -43,7 +43,7 @@ mail_settings = {
     "MAIL_USE_TLS": False,
     "MAIL_USE_SSL": True,
     "MAIL_USERNAME":  'norbissilvera@hotmail.com', #ACA COLOQUEN EL CORREO DE LA APP DEL ALUMN
-    "MAIL_PASSWORD": '1234', #PASSWORD DEL CORREO DE LA APP DEL ALUMNO
+    "MAIL_PASSWORD": '123456', #PASSWORD DEL CORREO DE LA APP DEL ALUMNO
     "MAIL_DEFAULT_SENDER": 'norbissilvera@hotmail.com'
 }
 app.config.update(mail_settings)
