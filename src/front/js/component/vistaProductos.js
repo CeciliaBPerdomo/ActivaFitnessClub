@@ -17,7 +17,7 @@ export const VistaProducto = ()  => {
     </p>
   </div>
         <div>
-        <select class="form-select" aria-label="Default select example">
+        <select className="form-select" aria-label="Default select example">
   <option selected>Seleccionar cantidad</option>
   <option value="1">1</option>
   <option value="2">2</option>
@@ -27,8 +27,8 @@ export const VistaProducto = ()  => {
 </select>
         </div>
         <br />
-        <div><button type="button" class="btn btn-outline-success">Agregar al carrito</button>
-        <button type="button" class="btn-close" aria-label="Close"></button>
+        <div><button type="button" className="btn btn-outline-success">Agregar al carrito</button>
+        <button type="button" className="btn-close" aria-label="Close"></button>
         </div>
                 </div>
                 </div>
@@ -46,7 +46,7 @@ export const VistaProducto = ()  => {
     </p>
   </div>
   <div>
-        <select class="form-select" aria-label="Default select example">
+        <select className="form-select" aria-label="Default select example">
   <option selected>Seleccionar cantidad</option>
   <option value="1">1</option>
   <option value="2">2</option>
@@ -56,8 +56,8 @@ export const VistaProducto = ()  => {
 </select>
         </div>
         <br />
-        <div><button type="button" class="btn btn-outline-success">Agregar al carrito</button>
-        <button type="button" class="btn-close" aria-label="Close"></button>
+        <div><button type="button" className="btn btn-outline-success">Agregar al carrito</button>
+        <button type="button" className="btn-close" aria-label="Close"></button>
         </div>
                 </div>
                 </div>
@@ -75,7 +75,7 @@ export const VistaProducto = ()  => {
     </p>
   </div>
   <div>
-        <select class="form-select" aria-label="Default select example">
+        <select className="form-select" aria-label="Default select example">
   <option selected>Seleccionar cantidad</option>
   <option value="1">1</option>
   <option value="2">2</option>
@@ -85,8 +85,8 @@ export const VistaProducto = ()  => {
 </select>
         </div>
         <br />
-        <div><button type="button" class="btn btn-outline-success">Agregar al carrito</button>
-        <button type="button" class="btn-close" aria-label="Close"></button>        
+        <div><button type="button" className="btn btn-outline-success">Agregar al carrito</button>
+        <button type="button" className="btn-close" aria-label="Close"></button>        
         </div>
                 </div>
                 </div>

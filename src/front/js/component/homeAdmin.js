@@ -9,9 +9,9 @@ export const HomeAdmin = () => {
       <>
 <nav className="navbar navbar-dark bg-danger fixed-top">
   <div className="container-fluid">
-    <a className="navbar-brand" href="login">
+    <Link className="navbar-brand" to="/login">
     <img src={logo} style={{maxWidth: "50px", maxHeigth: "50px"}}/>
-        </a>
+        </Link>
     <button className="navbar-toggler text-black" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span className="navbar-toggler-icon text-black"></span>
     </button>
@@ -22,78 +22,82 @@ export const HomeAdmin = () => {
       </div>
       <div className="offcanvas-body">
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-        <Link to={"/"}>
+        
           <li className="nav-item">
-            <a className="nav-link" aria-current="page" href="#">Rutinas de Clientes</a>
+            <Link className="nav-link" aria-current="page" to="/#">Rutinas de Clientes</Link>
           </li>
-          </Link>
-          <Link to={"/crearRutina"}>
+          
           <li className="nav-item">
-            <a className="nav-link" aria-current="page" href="#">Crear Rutinas</a>
+            <Link className="nav-link" aria-current="page" to="/crearRutina">Crear Rutinas</Link>
           </li>
-          </Link>
           <hr className="text-light" />
-          <Link to={"/"}>
+          
           <li className="nav-item">
-            <a className="nav-link" href="#">Pagos de Clientes</a>
+            <Link className="nav-link" to="/">Pagos de Clientes</Link>
           </li>
-          </Link>
-          <Link to={"/listaAlumno"}>
+          
+          
           <li className="nav-item">
-            <a className="nav-link" href="#">Alumnos</a>
+            <Link className="nav-link" to="/listaAlumno">Alumnos</Link>
           </li>
-          </Link>
-          <Link to={"/crearAlumno"}>
+          
+          
           <li className="nav-item">
-            <a className="nav-link" aria-current="page" href="#">Ingresar Nuevo Alumno</a>
+            <Link className="nav-link" aria-current="page" to="/crearAlumno">Ingresar Nuevo Alumno</Link>
           </li>
-          </Link>
+          
           <hr className="text-light" />
-          <Link to={"/vistaProducto"}>
+          
           <li className="nav-item">
-            <a className="nav-link" href="#">Stock de Productos</a>
+            <Link className="nav-link" to="/vistaProducto">Stock de Productos</Link>
           </li>
-          </Link>
-          <Link to={"/"}>
+          
+          
           <li className="nav-item">
-            <a className="nav-link" aria-current="page" href="#">Carrito</a>
+            <Link className="nav-link" aria-current="page" to="/">Carrito</Link>
           </li>
-          </Link>
+          
           <hr className="text-light" />
-          <Link to={"/verEjercicios"}>
+          
           <li className="nav-item">
-            <a className="nav-link" href="#">Ver Ejercicios</a>
+            <Link className="nav-link" to="/verEjercicios">Ver Ejercicios</Link>
           </li>
-          </Link>
-          <Link to={"/crearEjercicio"}>
+          
+          
           <li className="nav-item">
-            <a className="nav-link" aria-current="page" href="#">Crear Ejercicio</a>
+            <Link className="nav-link" aria-current="page" to="/crearEjercicio">Crear Ejercicio</Link>
           </li>
-          </Link>
+          
           <hr className="text-light" />
-          <Link to={"/"}>
+          
           <li className="nav-item">
-            <a className="nav-link" href="#">Caja</a>
+            <Link className="nav-link" to="/">Caja</Link>
           </li>
-          </Link>
+          
           <hr className="text-light" />
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <Link className="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Otras Opciones
-            </a>
+            </Link>
             <ul className="dropdown-menu dropdown-menu-dark">
-                <Link to={"/quienesSomos"}>
-                    <li><a className="dropdown-item" href="#">Quienes Somos</a></li>
-                </Link>
-                <Link to={"/planes"}>
-                    <li><a className="dropdown-item" href="#">Nuestros Planes</a></li>
-                </Link>
+                
+                    <li>
+                      <Link className="dropdown-item" to="/quienesSomos">Quienes Somos</Link>
+                    </li>
+                
+                
+                    <li>
+                      <Link className="dropdown-item" to="/planes">Nuestros Planes</Link>
+                      </li>
+                
               <li>
                 <hr className="dropdown-divider"/>
               </li>
-              <Link to={"/"}>
-                <li><a className="dropdown-item" href="#">Cerrar Sesión</a></li>
-              </Link>
+              
+                <li>
+                  <Link className="dropdown-item" to="/">Cerrar Sesión</Link>
+                  </li>
+              
             </ul>
           </li>
         </ul>
