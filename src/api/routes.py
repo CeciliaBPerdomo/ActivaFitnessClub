@@ -616,8 +616,10 @@ def get_routinesEjerc(routines_id):
 @api.route('/rutinaEjercicio', methods=['POST'])
 def addRoutinesEjercicio():
     body = json.loads(request.data)
-
     queryNewRoutines= Rutinaejercicios.query.filter_by(idRutina=body["idRutina"]).first()
+    
+    idRutina = body["idRutina"]
+    print(idRutina)
     
     if queryNewRoutines is None:
         response_body = {
