@@ -2,7 +2,7 @@ import axios from "axios";
 // import json;
 
 let direccion =
-    "https://3001-ceciliabper-activafitne-z3x64d32yu6.ws-us74.gitpod.io";
+    "https://3001-ceciliabper-activafitne-e29205aoa4d.ws-us74.gitpod.io";
 
 const getState = ({
     getStore,
@@ -42,12 +42,14 @@ const getState = ({
                         email: email,
                         password: password
                     })
+                    console.log(response);
 
                     localStorage.setItem('token', response.data.access_token)
                     setStore({
-                        auth: true
+                        auth: true,
+                        profile: response.data.user
                     })
-                    return true;
+                    return response.data;
                 } catch (error) {
                     if (error.code === "ERR_BAD_REQUEST") {
                         console.log(error.response.data.msg)

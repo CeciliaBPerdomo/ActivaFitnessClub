@@ -14,18 +14,27 @@ const Log_in = () => {
     let navegacion = useNavigate()
 
     // Prevenir el envio
-    const ingreso = (e) => {
+    const ingreso = async (e) => {
         e.preventDefault()
 
-        let logged = actions.login(guardadoEmail, guardadoPassword)
-        // let loggedUsuario = actions.login(guardadoEmail, guardadoPassword)
+        let logged = await actions.login(guardadoEmail, guardadoPassword)
+        console.log(logged);
 
-        // acces =
-        logged ? navegacion("/homeUsuario") : null
+        if (logged.user.role === "Alumno") {
 
+            navegacion("/homeUsuario")
+        } else if (logged.user.role === "Administrador") {
+            console.log("funciona");
+            navegacion("/homeAdmin")
+
+        } else {
+            null
+        }
 
         setGuardadoEmail("")
         setGuardadoPassword("")
+
+
     }
 
     // const unirse = (e) => {
