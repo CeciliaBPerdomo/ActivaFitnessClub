@@ -15,7 +15,7 @@ export const ListaAlumno = () => {
 
   const crearRutina = async (e, item) => {
     e.preventDefault();
-    //actions.crearRutina(item.id);
+    actions.crearRutina(item.id);
 
     await actions.obtenerUltimoId();
     let idRutina = store.rutina?.id;
