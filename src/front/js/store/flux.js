@@ -1,7 +1,8 @@
 import axios from "axios";
 // import json;
 
-let direccion = "https://3001-ceciliabper-activafitne-qtza8pqmdax.ws-us74.gitpod.io";
+let direccion =
+    "https://3001-ceciliabper-activafitne-rxiid32wyzn.ws-us74.gitpod.io";
 
 const getState = ({
     getStore,
@@ -26,7 +27,7 @@ const getState = ({
             pendiente: {},
             auth: false,
             profile: {},
-            rutinasEjercicios: []
+            rutinasEjercicios: [],
         },
         actions: {
             // ************************************************
@@ -38,14 +39,14 @@ const getState = ({
                     console.log(email);
                     const response = await axios.post(direccion + "/api/login", {
                         email: email,
-                        password: password
+                        password: password,
                     });
                     console.log(response);
 
                     localStorage.setItem("token", response.data.access_token);
                     setStore({
                         auth: true,
-                        profile: response.data.user
+                        profile: response.data.user,
                     });
                     return response.data;
                 } catch (error) {
@@ -62,12 +63,13 @@ const getState = ({
                 let accessToken = localStorage.getItem("token");
                 try {
                     const response = await axios.get(direccion + "/api/profile", {
-                        headers: { // Authorization: Bearer
-                            Authorization: "Bearer " + accessToken
-                        }
+                        headers: {
+                            // Authorization: Bearer
+                            Authorization: "Bearer " + accessToken,
+                        },
                     });
                     setStore({
-                        profile: response.data.user
+                        profile: response.data.user,
                     });
                     return true;
                 } catch (error) {
@@ -84,18 +86,19 @@ const getState = ({
                 let accessToken = localStorage.getItem("token");
                 try {
                     const response = await axios.get(direccion + "/api/validation", {
-                        headers: { // 'Authorization: Bearer
-                            Authorization: "Bearer " + accessToken
-                        }
+                        headers: {
+                            // 'Authorization: Bearer
+                            Authorization: "Bearer " + accessToken,
+                        },
                     });
                     setStore({
-                        auth: response.data.status
+                        auth: response.data.status,
                     });
                     return true;
                 } catch (error) {
                     if (error.code === "ERR_BAD_REQUEST") {
                         setStore({
-                            auth: false
+                            auth: false,
                         });
                         console.log(error.response.data.msg);
                     }
@@ -110,7 +113,7 @@ const getState = ({
             logOut: () => {
                 localStorage.removeItem("token");
                 setStore({
-                    auth: false
+                    auth: false,
                 });
             },
 
@@ -119,7 +122,24 @@ const getState = ({
             // ************************************************
 
             /* Crea un nuevo alumno*/
-            crearAlumno: async (ci, name, last_name, phone, date_of_admission, birthday, mutualist, medical_conditions, medicines, training_goals, email, password, activities, role, is_active, cuota) => {
+            crearAlumno: async (
+                ci,
+                name,
+                last_name,
+                phone,
+                date_of_admission,
+                birthday,
+                mutualist,
+                medical_conditions,
+                medicines,
+                training_goals,
+                email,
+                password,
+                activities,
+                role,
+                is_active,
+                cuota
+            ) => {
                 try {
                     const response = await axios.post(direccion + "/api/user", {
                         ci: ci,
@@ -137,7 +157,7 @@ const getState = ({
                         activities: activities,
                         role: role,
                         is_active: is_active,
-                        cuota: cuota
+                        cuota: cuota,
                     });
                     return true;
                 } catch (error) {
@@ -151,7 +171,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/user", {});
                     // console.log(response.data);
                     setStore({
-                        alumnos: response.data
+                        alumnos: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -164,7 +184,9 @@ const getState = ({
             /* Borrar alumno */
             borrarAlumno: async (id) => {
                 try {
-                    const response = await axios.delete(direccion + "/api/user/" + id, {});
+                    const response = await axios.delete(
+                        direccion + "/api/user/" + id, {}
+                    );
                     // console.log(response);
                     getActions().obtenerAlumnos();
                 } catch (error) {
@@ -182,7 +204,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/user/" + id, {});
                     // console.log(response.data);
                     setStore({
-                        alumno: response.data
+                        alumno: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -193,7 +215,25 @@ const getState = ({
             },
 
             // Modificar alumno
-            modificarAlumno: async (id, ci, name, last_name, phone, admission, birthday, mutualist, conditions, medicines, training_goals, mail, password, activities, role, isActive, cuota) => {
+            modificarAlumno: async (
+                id,
+                ci,
+                name,
+                last_name,
+                phone,
+                admission,
+                birthday,
+                mutualist,
+                conditions,
+                medicines,
+                training_goals,
+                mail,
+                password,
+                activities,
+                role,
+                isActive,
+                cuota
+            ) => {
                 try {
                     const response = await axios.put(direccion + "/api/user/" + id, {
                         ci: ci,
@@ -211,7 +251,7 @@ const getState = ({
                         activities: activities,
                         role: role,
                         is_active: isActive,
-                        cuota: cuota
+                        cuota: cuota,
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -229,10 +269,12 @@ const getState = ({
             // obtener mensualidad por id de usuario
             obtenerMensualidadId: async (id) => {
                 try {
-                    const response = await axios.get(direccion + "/api/mensualidad/" + id, {});
+                    const response = await axios.get(
+                        direccion + "/api/mensualidad/" + id, {}
+                    );
                     console.log(response.data);
                     setStore({
-                        mens: response.data
+                        mens: response.data,
                     });
                     // console.log(mens);
                 } catch (error) {
@@ -243,10 +285,12 @@ const getState = ({
             // obtener mensualidad por Id
             obtenerMensualidadIdMensualidad: async (id) => {
                 try {
-                    const response = await axios.get(direccion + "/api/mensualidades/" + id, {});
+                    const response = await axios.get(
+                        direccion + "/api/mensualidades/" + id, {}
+                    );
                     console.log(response.data);
                     setStore({
-                        mensualidad: response.data
+                        mensualidad: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -259,10 +303,12 @@ const getState = ({
             /* Listar mensualidades */
             obtenerMensualidades: async () => {
                 try {
-                    const response = await axios.get(direccion + "/api/mensualidades", {});
+                    const response = await axios.get(
+                        direccion + "/api/mensualidades", {}
+                    );
                     // console.log(response.data);
                     setStore({
-                        mensualidades: response.data
+                        mensualidades: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -275,7 +321,9 @@ const getState = ({
             /* Borrar mensualidades */
             borrarMensualidad: async (id) => {
                 try {
-                    const response = await axios.delete(direccion + "/api/mensualidades/" + id, {});
+                    const response = await axios.delete(
+                        direccion + "/api/mensualidades/" + id, {}
+                    );
                     // console.log(response);
                 } catch (error) {
                     console.log(error);
@@ -286,16 +334,25 @@ const getState = ({
             },
 
             /* Modificar mensualidades */
-            modificarMensualidad: async (id, user_id, payment_date, bill_n, payment_amount, description) => {
+            modificarMensualidad: async (
+                id,
+                user_id,
+                payment_date,
+                bill_n,
+                payment_amount,
+                description
+            ) => {
                 try {
-                    const response = await axios.put(direccion + "/api/mensualidades/" + id, {
-                        id: id,
-                        user_id: user_id,
-                        payment_date: payment_date,
-                        bill_n: bill_n,
-                        payment_amount: payment_amount,
-                        description: description
-                    });
+                    const response = await axios.put(
+                        direccion + "/api/mensualidades/" + id, {
+                            id: id,
+                            user_id: user_id,
+                            payment_date: payment_date,
+                            bill_n: bill_n,
+                            payment_amount: payment_amount,
+                            description: description,
+                        }
+                    );
                     console.log(response.data);
                 } catch (error) {
                     console.log(error);
@@ -306,7 +363,15 @@ const getState = ({
             },
 
             /* Agregar nuevo pago de mensualidad */
-            agregarPagoMensualidad: async (payment_date, payment_amount, description, bill_n, state, user_id) => { // payment_date: payment_date,
+            agregarPagoMensualidad: async (
+                payment_date,
+                payment_amount,
+                description,
+                bill_n,
+                state,
+                user_id
+            ) => {
+                // payment_date: payment_date,
                 try {
                     const response = await axios.post(direccion + "/api/mensualidades", {
                         payment_date: payment_date,
@@ -314,7 +379,7 @@ const getState = ({
                         description: description,
                         bill_n: bill_n,
                         state: state,
-                        user_id: user_id
+                        user_id: user_id,
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -327,14 +392,20 @@ const getState = ({
             // ************************************************
 
             /* Crea un nuevo ejercicio*/
-            crearEjercicio: async (exercise_name, type_of_muscle, description, photo_exercise, video_exercise) => {
+            crearEjercicio: async (
+                exercise_name,
+                type_of_muscle,
+                description,
+                photo_exercise,
+                video_exercise
+            ) => {
                 try {
                     const response = await axios.post(direccion + "/api/ejercicios", {
                         exercise_name: exercise_name,
                         type_of_muscle: type_of_muscle,
                         description: description,
                         photo_exercise: photo_exercise,
-                        video_exercise: video_exercise
+                        video_exercise: video_exercise,
                     });
                     console.log(response);
                     return true;
@@ -348,7 +419,7 @@ const getState = ({
                 try {
                     const response = await axios.get(direccion + "/api/ejercicios", {});
                     setStore({
-                        ejercicios: response.data
+                        ejercicios: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -361,10 +432,12 @@ const getState = ({
             // obtener ejercicio por Id
             obtenerEjercicioId: async (id) => {
                 try {
-                    const response = await axios.get(direccion + "/api/ejercicios/" + id, {});
+                    const response = await axios.get(
+                        direccion + "/api/ejercicios/" + id, {}
+                    );
                     console.log(response.data);
                     setStore({
-                        ejercicio: response.data
+                        ejercicio: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -377,7 +450,9 @@ const getState = ({
             /* Borrar ejercicio */
             borrarEjercicio: async (id) => {
                 try {
-                    const response = await axios.delete(direccion + "/api/ejercicios/" + id, {});
+                    const response = await axios.delete(
+                        direccion + "/api/ejercicios/" + id, {}
+                    );
                     console.log(response);
                 } catch (error) {
                     console.log(error);
@@ -388,15 +463,24 @@ const getState = ({
             },
 
             // Modificar ejercicio
-            modificarEjercicio: async (id, exercise_name, type_of_muscle, description, photo_exercise, video_exercise) => {
+            modificarEjercicio: async (
+                id,
+                exercise_name,
+                type_of_muscle,
+                description,
+                photo_exercise,
+                video_exercise
+            ) => {
                 try {
-                    const response = await axios.put(direccion + "/api/ejercicios/" + id, {
-                        exercise_name: exercise_name,
-                        type_of_muscle: type_of_muscle,
-                        description: description,
-                        photo_exercise: photo_exercise,
-                        video_exercise: video_exercise
-                    });
+                    const response = await axios.put(
+                        direccion + "/api/ejercicios/" + id, {
+                            exercise_name: exercise_name,
+                            type_of_muscle: type_of_muscle,
+                            description: description,
+                            photo_exercise: photo_exercise,
+                            video_exercise: video_exercise,
+                        }
+                    );
                     console.log(response.data);
                 } catch (error) {
                     console.log(error);
@@ -411,7 +495,14 @@ const getState = ({
             // ************************************************
 
             /* Crea nuevo producto*/
-            crearProducto: async (id, name, stock, sale_price, photo, purchase_price) => {
+            crearProducto: async (
+                id,
+                name,
+                stock,
+                sale_price,
+                photo,
+                purchase_price
+            ) => {
                 try {
                     const response = await axios.post(direccion + "/api/productos", {
                         id: id,
@@ -419,7 +510,7 @@ const getState = ({
                         stock: stock,
                         sale_price: sale_price,
                         photo: photo,
-                        purchase_price: purchase_price
+                        purchase_price: purchase_price,
                     });
                     return true;
                 } catch (error) {
@@ -433,7 +524,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/productos", {});
                     console.log(response.data);
                     setStore({
-                        productos: response.data
+                        productos: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -446,10 +537,12 @@ const getState = ({
             // obtener productos por Id
             obtenerProductoId: async (id) => {
                 try {
-                    const response = await axios.get(direccion + "/api/productos/" + id, {});
+                    const response = await axios.get(
+                        direccion + "/api/productos/" + id, {}
+                    );
                     console.log(response.data);
                     setStore({
-                        productos: response.data
+                        productos: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -462,7 +555,9 @@ const getState = ({
             /* Borrar productos */
             borrarProducto: async (id) => {
                 try {
-                    const response = await axios.delete(direccion + "/api/productos/" + id, {});
+                    const response = await axios.delete(
+                        direccion + "/api/productos/" + id, {}
+                    );
                     console.log(response);
                 } catch (error) {
                     console.log(error);
@@ -473,7 +568,14 @@ const getState = ({
             },
 
             // Modificar productos
-            modificarProducto: async (id, name, stock, sale_price, photo, purchase_price) => {
+            modificarProducto: async (
+                id,
+                name,
+                stock,
+                sale_price,
+                photo,
+                purchase_price
+            ) => {
                 try {
                     const response = await axios.put(direccion + "/api/productos/" + id, {
                         id: id,
@@ -481,7 +583,7 @@ const getState = ({
                         stock: stock,
                         sale_price: sale_price,
                         photo: photo,
-                        purchase_price: purchase_price
+                        purchase_price: purchase_price,
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -500,7 +602,7 @@ const getState = ({
             crearRutina: async (user_id) => {
                 try {
                     const response = await axios.post(direccion + "/api/rutinas", {
-                        user_id: user_id
+                        user_id: user_id,
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -513,7 +615,7 @@ const getState = ({
                 try {
                     const response = await axios.get(direccion + "/api/rutina", {});
                     setStore({
-                        rutina: response.data
+                        rutina: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -529,7 +631,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/rutinas", {});
                     console.log(response.data);
                     setStore({
-                        rutinas: response.data
+                        rutinas: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -545,7 +647,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/rutina/" + id, {});
                     console.log(response.data);
                     setStore({
-                        rutina: response.data
+                        rutina: response.data,
                     });
                     // console.log(mens);
                 } catch (error) {
@@ -556,10 +658,12 @@ const getState = ({
             // obtener rutina por Id
             obtenerRutinaId: async (id) => {
                 try {
-                    const response = await axios.get(direccion + "/api/rutinas/" + id, {});
+                    const response = await axios.get(
+                        direccion + "/api/rutinas/" + id, {}
+                    );
                     console.log(response.data);
                     setStore({
-                        rutinas: response.data
+                        rutinas: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -572,7 +676,9 @@ const getState = ({
             /* Borrar rutinas */
             borrarRutina: async (id) => {
                 try {
-                    const response = await axios.delete(direccion + "/api/rutinas/" + id, {});
+                    const response = await axios.delete(
+                        direccion + "/api/rutinas/" + id, {}
+                    );
                     console.log(response);
                 } catch (error) {
                     console.log(error);
@@ -583,7 +689,15 @@ const getState = ({
             },
 
             // Modificar rutinas
-            modificarRutina: async (id, series, repetitions, burden, week, finish, user_id) => {
+            modificarRutina: async (
+                id,
+                series,
+                repetitions,
+                burden,
+                week,
+                finish,
+                user_id
+            ) => {
                 try {
                     const response = await axios.put(direccion + "/api/rutinas/" + id, {
                         id: id,
@@ -592,7 +706,7 @@ const getState = ({
                         burden: burden,
                         week: week,
                         finish: finish,
-                        user_id: user_id
+                        user_id: user_id,
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -610,9 +724,11 @@ const getState = ({
             // obtener los ejercicios de la rutina por Id
             obtenerRutinaEjercicioId: async (id) => {
                 try {
-                    const response = await axios.get(direccion + "/api/rutinaEjercicio/" + id, {});
+                    const response = await axios.get(
+                        direccion + "/api/rutinaEjercicio/" + id, {}
+                    );
                     setStore({
-                        rutinasEjercicios: response.data
+                        rutinasEjercicios: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -623,17 +739,27 @@ const getState = ({
             },
 
             /* Agregar ejercicios en rutina*/
-            agregarEjerciciosenRutina: async (idRutina, idEjercicios, series, repeticiones, carga, semana, finaliza) => {
+            agregarEjerciciosenRutina: async (
+                idRutina,
+                idEjercicios,
+                series,
+                repeticiones,
+                carga,
+                semana,
+                finaliza
+            ) => {
                 try {
-                    const response = await axios.post(direccion + "/api/rutinaEjercicio", {
-                        idRutina: idRutina,
-                        idEjercicios: idEjercicios,
-                        series: series,
-                        repeticiones: repeticiones,
-                        carga: carga,
-                        semana: semana,
-                        finaliza: finaliza
-                    });
+                    const response = await axios.post(
+                        direccion + "/api/rutinaEjercicio", {
+                            idRutina: idRutina,
+                            idEjercicios: idEjercicios,
+                            series: series,
+                            repeticiones: repeticiones,
+                            carga: carga,
+                            semana: semana,
+                            finaliza: finaliza,
+                        }
+                    );
                     // console.log(response.data);
                     getActions().obtenerRutinaEjercicioId(idRutina);
                     return true;
@@ -645,7 +771,9 @@ const getState = ({
             // Borra ejercicios de la rutina
             borrarEjerciciosdeRutina: async (id) => {
                 try {
-                    const response = await axios.delete(direccion + "/api/rutinaEjercicio/" + id, {});
+                    const response = await axios.delete(
+                        direccion + "/api/rutinaEjercicio/" + id, {}
+                    );
                     // console.log(response);
                     getActions().obtenerRutinaEjercicioId(idRutina);
                 } catch (error) {
@@ -668,7 +796,7 @@ const getState = ({
                         state: state,
                         amount: amount,
                         user_id: user_id,
-                        product_id: product_id
+                        product_id: product_id,
                     });
                     return true;
                 } catch (error) {
@@ -682,7 +810,7 @@ const getState = ({
                     const response = await axios.get(direccion + "/api/pendientes", {});
                     console.log(response.data);
                     setStore({
-                        pendientes: response.data
+                        pendientes: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -695,10 +823,12 @@ const getState = ({
             // obtener pendientes por Id de usuario
             obtenerPendientesIdUsuario: async (id) => {
                 try {
-                    const response = await axios.get(direccion + "/api/pendiente/" + id, {});
+                    const response = await axios.get(
+                        direccion + "/api/pendiente/" + id, {}
+                    );
                     console.log(response.data);
                     setStore({
-                        pendiente: response.data
+                        pendiente: response.data,
                     });
                     // console.log(mens);
                 } catch (error) {
@@ -709,10 +839,12 @@ const getState = ({
             // obtener pendientes por Id
             obtenerPendienteId: async (id) => {
                 try {
-                    const response = await axios.get(direccion + "/api/pendientes/" + id, {});
+                    const response = await axios.get(
+                        direccion + "/api/pendientes/" + id, {}
+                    );
                     console.log(response.data);
                     setStore({
-                        pendientes: response.data
+                        pendientes: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -725,7 +857,9 @@ const getState = ({
             /* Borrar pendientes */
             borrarPendiente: async (id) => {
                 try {
-                    const response = await axios.delete(direccion + "/api/pendientes/" + id, {});
+                    const response = await axios.delete(
+                        direccion + "/api/pendientes/" + id, {}
+                    );
                     console.log(response);
                 } catch (error) {
                     console.log(error);
@@ -738,13 +872,15 @@ const getState = ({
             // Modificar pendientes
             modificarPendiente: async (id, state, amount, user_id, product_id) => {
                 try {
-                    const response = await axios.put(direccion + "/api/pendientes/" + id, {
-                        id: id,
-                        state: state,
-                        amount: amount,
-                        user_id: user_id,
-                        product_id: product_id
-                    });
+                    const response = await axios.put(
+                        direccion + "/api/pendientes/" + id, {
+                            id: id,
+                            state: state,
+                            amount: amount,
+                            user_id: user_id,
+                            product_id: product_id,
+                        }
+                    );
                     console.log(response.data);
                 } catch (error) {
                     console.log(error);
@@ -760,19 +896,20 @@ const getState = ({
             },
 
             getMessage: async () => {
-                try { // fetching data from the backend
+                try {
+                    // fetching data from the backend
                     const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
                     const data = await resp.json();
                     setStore({
-                        message: data.message
+                        message: data.message,
                     });
                     // don't forget to return something, that is how the async resolves
                     return data;
                 } catch (error) {
                     console.log("Error loading message from backend", error);
                 }
-            }
-        }
+            },
+        },
     };
 };
 

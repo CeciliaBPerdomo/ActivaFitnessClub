@@ -88,13 +88,14 @@ export const CrearRutina = () => {
 
         {/* Ver todas las rutinas del alumno */}
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button
+          <Link
+            to={"/ListaRutinaDeAlumno/" + parseInt(params.idAlumno)}
             className="btn btn-outline-success w-25"
             type="button"
             style={{ marginBottom: "20px" }}
           >
             Ver rutinas del alumno
-          </button>
+          </Link>
 
           {/* Listado de todas las rutinas */}
           <button
