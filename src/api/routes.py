@@ -11,6 +11,8 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
+from sqlalchemy import desc
+
 api = Blueprint('api', __name__)
 
 
@@ -482,6 +484,16 @@ def paymentModif_porId(payment_id):
 ##      RUTAS DE RUTINAS             ##
 ##                                   ## 
 #######################################
+
+#Muestra el ultimo id de rutina
+@api.route('/rutina', methods=['GET'])
+def getRoutinesUltimoId():
+    ultimoid = Routines.query.order_by(desc(Routines.id)).first()
+
+    return jsonify(ultimoid.serialize()), 200
+
+    if ultimoid is None:
+        return jsonify("No hay rutinas creadas"), 200
 
 # Muestra todas las rutinas
 @api.route('/rutinas', methods=['GET'])
