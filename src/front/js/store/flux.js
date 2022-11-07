@@ -513,7 +513,7 @@ const getState = ({
                 try {
                     const response = await axios.get(direccion + "/api/rutina", {});
                     setStore({
-                        rutina: response.data,
+                        rutina: response.data
                     });
                 } catch (error) {
                     console.log(error);

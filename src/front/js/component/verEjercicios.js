@@ -11,60 +11,65 @@ export const VerEjercicio = () => {
     }, []);
 
     return (<> {/* Buscar */}
+
+        <br/>
         <div>
-            <input className="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar por nombre..."/>
-        </div>
-
-        <div className="d-flex"> {
-            store.ejercicios.map((item, id) => (<div className="card"
+            <input className="form-control d-flex" list="datalistOptions" id="exampleDataList" placeholder="Buscar por nombre..."
                 style={
-                    {
-                        width: "25%",
-                        margin: "20px",
-                        borderRadius: "6px",
-                        overflow: "hidden",
-                        background: "#ffff",
-                        boxShadow: "0px 1px 10px rgb(0, 0, 0, 0.2)",
-                        cursor: "default",
-                        transition: "all 400ms ease"
-                    }
-            }>
-
-
-                <div className="card-body">
-                    <h2 className="display-6"
-                        style={
-                            {marginBottom: "15px"}
-                    }>
-                        <i className="fa fa-dumbbell"></i>
+                    {width: "30%"}
+                }/>
+        </div>
+        <div className="container">
+            <div className="d-flex row"> {
+                store.ejercicios.map((item, id) => (<div className="card"
+                    style={
                         {
-                        item.exercise_name
-                    }</h2>
-                    <img src={
-                            item.photo_exercise
+                            width: "25%",
+                            margin: "20px",
+                            borderRadius: "6px",
+                            overflow: "hidden",
+                            background: "#ffff",
+                            boxShadow: "0px 1px 10px rgb(0, 0, 0, 0.2)",
+                            cursor: "default",
+                            transition: "all 400ms ease"
                         }
-                        style={
+                }>
+
+
+                    <div className="card-body">
+                        <h2 className="display-6"
+                            style={
+                                {marginBottom: "15px"}
+                        }>
+                            <i className="fa fa-dumbbell"></i>
                             {
-                                width: "100%",
-                                height: "210px"
+                            item.exercise_name
+                        }</h2>
+                        <img src={
+                                item.photo_exercise
                             }
-                        }
-                        className="card-img-top"
-                        alt="..."/>
+                            style={
+                                {
+                                    width: "100%",
+                                    height: "210px"
+                                }
+                            }
+                            className="card-img-top"
+                            alt="..."/>
 
-                </div>
-                <div className="card-body text-center">
+                    </div>
+                    <div className="card-body text-center">
 
-                    <Link type="button" className="btn btn-outline-info"
-                        to={
-                            "/vistaEjercicio/" + item.id
-                    }>
-                        <i className="fa fa-eye"></i>
-                    </Link>
+                        <Link type="button" className="btn btn-outline-info"
+                            to={
+                                "/vistaEjercicio/" + item.id
+                        }>
+                            <i className="fa fa-eye"></i>
+                        </Link>
 
-                </div>
-            </div>))
-        } </div>
-
+                    </div>
+                </div>))
+            } </div>
+        </div>
     </>)
 }
