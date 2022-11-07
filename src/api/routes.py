@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 
 # Tablas de la base de datos
-from api.models import db, User, Exercise, Product, Payment, Routines, ShoppingCart, Sales, Outstanding
+from api.models import db, User, Exercise, Product, Payment, Routines, ShoppingCart, Sales, Outstanding, Rutinaejercicios
 from api.utils import generate_sitemap, APIException
 import json
 from flask_jwt_extended import create_access_token
@@ -60,7 +60,8 @@ def addUser():
         password = body["password"],
         activities = body["activities"],
         role = body["role"],
-        is_active = body["is_active"])
+        is_active = body["is_active"],
+        cuota = body["cuota"])
         
         db.session.add(new_user)
         db.session.commit()
@@ -157,6 +158,10 @@ def usersModif_porId(user_id):
     
     if "is_active" in body:
         usuario.is_active = body["is_active"]
+    
+
+    if "cuota" in body:
+        usuario.is_active = body["cuota"]
 
     db.session.commit()
 
@@ -534,15 +539,12 @@ def get_routines_userId(user_id):
     routinesId = Routines.query.filter_by(user_id=user_id).all()
     results = list(map(lambda x: x.serialize(), routinesId))
    
-
-
     if routinesId is None: 
         response_body = {"msg": "Rutina no encontrada"}
         return jsonify(response_body), 400
     return jsonify(results), 200
 
 #Borra una rutina
-
 @api.route('/rutinas/<int:routines_id>', methods=['DELETE'])
 def deleteRoutines(routines_id):
     routinesId= Routines.query.filter_by(id=routines_id).first()
@@ -591,7 +593,68 @@ def routinesModif_porId(routines_id):
 
 #######################################
 ##                                   ##
-##      RUTAS DEl CARRITO            ##
+##      RUTAS DE RUTINAS             ##
+##      CON EJERCICIOS               ##
+##                                   ## 
+#######################################
+# Busca por id de rutina
+@api.route('/rutinaEjercicio/<int:routines_id>', methods=['GET'])
+def get_routinesEjerc(routines_id):
+    #Busca los ejercicios de la rutina por su id
+    rutina = Rutinaejercicios.query.filter_by(idRutina=routines_id).all()
+    results = list(map(lambda x: { **x.serializeEjercicios(), **x.serialize() }, rutina))
+
+    if rutina is None: 
+        response_body = {"msg": "Rutina no encontrada"}
+        return jsonify(response_body), 400
+
+    return jsonify(results), 200
+
+# Alta de ejercicios en rutinas
+@api.route('/rutinaEjercicio', methods=['POST'])
+def addRoutinesEjercicio():
+    body = json.loads(request.data)
+
+    queryNewRoutines= Rutinaejercicios.query.filter_by(idRutina=body["idRutina"]).first()
+    
+    if queryNewRoutines is None:
+        response_body = {
+            "msg": "No existe rutina creada" 
+        }
+        return jsonify(response_body), 400
+    
+    new_routines = Rutinaejercicios(
+    idRutina = body["idRutina"],
+    idEjercicios = body["idEjercicios"],
+    series=body["series"],
+    repeticiones=body["repeticiones"], 
+    carga=body["carga"], 
+    semana=body["semana"],
+    finaliza=body["finaliza"])
+        
+    db.session.add(new_routines)
+    db.session.commit()
+        
+    return jsonify(new_routines.serialize()), 200
+    
+# Borra ejercicio de la rutina
+@api.route('/rutinaEjercicio/<int:id>', methods=['DELETE'])
+def deleteRoutinesExercise(id):
+    routinesId= Rutinaejercicios.query.filter_by(id=id).first()
+
+    if routinesId is None: 
+        response_body = {"msg": "Rutina no encontrada"}
+        return jsonify(response_body), 400
+
+    db.session.delete(routinesId)
+    db.session.commit()
+
+    response_body = {"msg": "Ejercicio de la rutina borrada"}
+    return jsonify(response_body), 200
+
+#######################################
+##                                   ##
+##      RUTAS DEL CARRITO            ##
 ##                                   ## 
 #######################################
 
