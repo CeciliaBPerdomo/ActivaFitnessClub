@@ -24,6 +24,7 @@ export const CrearAlumno = () => {
   const [activities, setActivities] = useState("");
   const [role, setRole] = useState("");
   const [isActive, setActive] = useState(true);
+  const [cuota, setCuota] = useState("");
 
   const { actions } = useContext(Context);
 
@@ -45,7 +46,8 @@ export const CrearAlumno = () => {
       password,
       activities,
       role,
-      isActive
+      isActive,
+      cuota
     );
 
     {
@@ -66,6 +68,7 @@ export const CrearAlumno = () => {
     setActivities("");
     setRole("");
     setActive("true");
+    setCuota("");
   };
 
   return (
@@ -326,6 +329,19 @@ export const CrearAlumno = () => {
                   <option value="Administrador">Administrador</option>
                   <option value="Usuario Internet">Usuario Internet</option>
                 </select>
+              </div>
+              {/* Cuota */}
+              <div className="col">
+                <label htmlFor="afec_medicas" className="form-label">
+                  <b>Cuota mensual:</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputAfecciones"
+                  onChange={(e) => setCuota(e.target.value)}
+                  value={cuota}
+                />
               </div>
 
               {/* Activo */}

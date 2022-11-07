@@ -34,25 +34,23 @@ const getState = ({
             // ************************************************
 
             login: async (email, password) => {
-
                 try {
-
                     console.log(email);
                     const response = await axios.post(direccion + "/api/login", {
                         email: email,
                         password: password
-                    })
+                    });
                     console.log(response);
 
-                    localStorage.setItem('token', response.data.access_token)
+                    localStorage.setItem("token", response.data.access_token);
                     setStore({
                         auth: true,
                         profile: response.data.user
-                    })
+                    });
                     return response.data;
                 } catch (error) {
                     if (error.code === "ERR_BAD_REQUEST") {
-                        console.log(error.response.data.msg)
+                        console.log(error.response.data.msg);
                     }
                 }
             },
@@ -61,49 +59,47 @@ const getState = ({
             //              RUTAS PROTEGIDAS  				 //
             // ************************************************
             getProfile: async () => {
-                let accessToken = localStorage.getItem("token")
+                let accessToken = localStorage.getItem("token");
                 try {
                     const response = await axios.get(direccion + "/api/profile", {
                         headers: { // Authorization: Bearer
                             Authorization: "Bearer " + accessToken
                         }
-
-                    })
+                    });
                     setStore({
                         profile: response.data.user
-                    })
+                    });
                     return true;
                 } catch (error) {
                     if (error.code === "ERR_BAD_REQUEST") {
-                        console.log(error.response.data.msg)
+                        console.log(error.response.data.msg);
                     }
                 }
             },
-
 
             // ************************************************
             //            CHEQUEAR QUE EL TOKEN SEA VALIDO	 //
             // ************************************************
             checkValidToken: async () => {
-                let accessToken = localStorage.getItem("token")
+                let accessToken = localStorage.getItem("token");
                 try {
                     const response = await axios.get(direccion + "/api/validation", {
                         headers: { // 'Authorization: Bearer
                             Authorization: "Bearer " + accessToken
                         }
-                    })
+                    });
                     setStore({
                         auth: response.data.status
-                    })
-                    return true
+                    });
+                    return true;
                 } catch (error) {
                     if (error.code === "ERR_BAD_REQUEST") {
                         setStore({
                             auth: false
-                        })
-                        console.log(error.response.data.msg)
+                        });
+                        console.log(error.response.data.msg);
                     }
-                    return false
+                    return false;
                 }
             },
 
@@ -112,7 +108,7 @@ const getState = ({
             // ************************************************
 
             /* Crea un nuevo alumno*/
-            crearAlumno: async (ci, name, last_name, phone, date_of_admission, birthday, mutualist, medical_conditions, medicines, training_goals, email, password, activities, role, is_active) => {
+            crearAlumno: async (ci, name, last_name, phone, date_of_admission, birthday, mutualist, medical_conditions, medicines, training_goals, email, password, activities, role, is_active, cuota) => {
                 try {
                     const response = await axios.post(direccion + "/api/user", {
                         ci: ci,
@@ -129,7 +125,8 @@ const getState = ({
                         password: password,
                         activities: activities,
                         role: role,
-                        is_active: is_active
+                        is_active: is_active,
+                        cuota: cuota
                     });
                     return true;
                 } catch (error) {
@@ -158,6 +155,7 @@ const getState = ({
                 try {
                     const response = await axios.delete(direccion + "/api/user/" + id, {});
                     // console.log(response);
+                    getActions().obtenerAlumnos();
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
@@ -184,7 +182,7 @@ const getState = ({
             },
 
             // Modificar alumno
-            modificarAlumno: async (id, ci, name, last_name, phone, admission, birthday, mutualist, conditions, medicines, training_goals, mail, password, activities, role, isActive) => {
+            modificarAlumno: async (id, ci, name, last_name, phone, admission, birthday, mutualist, conditions, medicines, training_goals, mail, password, activities, role, isActive, cuota) => {
                 try {
                     const response = await axios.put(direccion + "/api/user/" + id, {
                         ci: ci,
@@ -201,7 +199,8 @@ const getState = ({
                         password: password,
                         activities: activities,
                         role: role,
-                        is_active: isActive
+                        is_active: isActive,
+                        cuota: cuota
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -615,7 +614,8 @@ const getState = ({
                         semana: semana,
                         finaliza: finaliza
                     });
-                    console.log(response.data);
+                    // console.log(response.data);
+                    getActions().obtenerRutinaEjercicioId(idRutina);
                     return true;
                 } catch (error) {
                     console.log(error);
@@ -626,7 +626,8 @@ const getState = ({
             borrarEjerciciosdeRutina: async (id) => {
                 try {
                     const response = await axios.delete(direccion + "/api/rutinaEjercicio/" + id, {});
-                    console.log(response);
+                    // console.log(response);
+                    getActions().obtenerRutinaEjercicioId(idRutina);
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
