@@ -1,38 +1,75 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import swal from "sweetalert";
 
 export const CrearRutina = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
-  const [preRutina, setPreRutina] = useState([]);
-  const [ejercicio, setEjercicio] = useState([]);
-
+  const [ejercicio, setEjercicio] = useState("");
   const [series, setSeries] = useState("");
   const [repeticiones, setRepeticiones] = useState("");
   const [carga, setCarga] = useState("");
   const [semana, setSemana] = useState("");
+  const [finaliza, setFinaliza] = useState("");
 
   useEffect(() => {
     actions.obtenerAlumnoId(parseInt(params.theid));
     actions.obtenerEjercicios();
+    actions.obtenerRutinaEjercicioId(parseInt(params.theid));
   }, []);
 
   let nombre = store.alumno.name;
   let apellido = store.alumno.last_name;
   let nombreCompleto = nombre + " " + apellido;
 
-  function cargarRutina() {
-    // setEjercicio({
-    //   series: series,
-    //   repeticiones: repeticiones,
-    //   carga: carga,
-    //   semana: semana,
-    // });
-    // console.log(ejercicio);
-    //setPreRutina([...preRutina, ejercicio]);
-    //console.log(preRutina);
+  const cargarRutina = (e) => {
+    // Agrega el ejercicio a la rutina actual
+    e.preventDefault();
+
+    let idRutina = parseInt(params.theid);
+    //Guarda
+    actions.agregarEjerciciosenRutina(
+      idRutina,
+      ejercicio,
+      series,
+      repeticiones,
+      carga,
+      semana,
+      finaliza
+    );
+
+    //Limpia el formulario
+    setSeries("");
+    setRepeticiones("");
+    setCarga("");
+    setSemana("");
+    setFinaliza("");
+  };
+
+  //Borrar rutinas
+  const borrarEjercicio = (e, item) => {
+    e.preventDefault()
+
+    swal({
+      title: `Desea borrar el ejercicio: ${item.exerciseInfo.exercise_name}`,
+      text: "Una vez eliminado, no se podra recuperar",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal(`Poof! el ejercicio ${item.exerciseInfo.exercise_name} fue borrado de la rutina`, {
+          icon: "success",
+          actions: actions.borrarEjerciciosdeRutina(item.id),
+        });
+      } else {
+        swal("Ups! Casi, casi!");
+      }
+    });
+
+    
   }
 
   return (
@@ -69,7 +106,7 @@ export const CrearRutina = () => {
 
         {/* <div className="d-grid gap-2 d-md-flex justify-content-md-end"></div> */}
         <div className="formulario">
-          <form>
+          <form onSubmit={cargarRutina}>
             <div
               className="container text-start "
               style={{ marginTop: "10px" }}
@@ -105,8 +142,8 @@ export const CrearRutina = () => {
                 <select
                   className="form-select"
                   id="inputGroupSelect01"
-                  //onChange={(e) => setEjercicio({ ejercicio: e.target.value })}
-                  //value={idUsuario}
+                  onChange={(e) => setEjercicio(e.target.value)}
+                  value={ejercicio}
                 >
                   <option>Seleccionar ejercicio</option>
                   {store.ejercicios.map((item, id) => (
@@ -196,7 +233,8 @@ export const CrearRutina = () => {
                   type="date"
                   className="form-control"
                   id="inputNacimiento"
-                  onChange={(e) => setEjercicio({ finaliza: e.target.value })}
+                  onChange={(e) => setFinaliza(e.target.value)}
+                  value={finaliza}
                 />
               </div>
 
@@ -205,7 +243,7 @@ export const CrearRutina = () => {
                   className="btn btn-outline-success float-end w-50"
                   type="button"
                   style={{ marginTop: "31px" }}
-                  onClick={() => cargarRutina()}
+                  onClick={cargarRutina}
                 >
                   Añadir ejercicio
                 </button>
@@ -217,34 +255,43 @@ export const CrearRutina = () => {
         <table className="table table-hover table-secondary">
           <thead>
             <tr className="text-center">
-              <th scope="col">Musculo/Tipo</th>
-              <th scope="col">Ejercicio</th>
-              <th scope="col">Serie</th>
+              <th scope="col" className="text-start">
+                Ejercicio
+              </th>
+              <th scope="col" className="text-start">
+                Tipo / Músculo
+              </th>
+              <th scope="col">Series</th>
               <th scope="col">Repeticiones</th>
               <th scope="col">Carga</th>
               <th scope="col">Semana</th>
               <th scope="col">Finaliza</th>
-              <th scope="col">Modificar</th>
+              {/* <th scope="col">Modificar</th> */}
               <th scope="col">Borrar</th>
             </tr>
           </thead>
 
           <tbody className="align-middle text-center">
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
+            {store.rutinasEjercicios.map((item, id) => (
+              <tr key={id}>
+                <td className="text-start">
+                  {item.exerciseInfo.exercise_name}
+                </td>
+                <td className="text-start">{item.exerciseInfo.description}</td>
+                <td>{item.series}</td>
+                <td>{item.repeticiones}</td>
+                <td>{item.carga}</td>
+                <td>{item.semana}</td>
+                <td>{item.finaliza}</td>
+                {/* <td>
                 <i className="fa fa-pen"></i>
-              </td>
-              <td>
-                <i className="fa fa-trash"></i>
-              </td>
-            </tr>
+              </td> */}
+                <td>
+                  <i className="fa fa-trash"
+                  onClick={(e) => borrarEjercicio(e, item)}></i>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <br />

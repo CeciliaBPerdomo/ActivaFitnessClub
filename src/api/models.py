@@ -46,7 +46,8 @@ class User(db.Model):
             "activities": self.activities,
             "role": self.role, 
             "is_active": self.is_active,
-            "ci": self.ci
+            "ci": self.ci, 
+            "cuota": self.cuota
             # "carrito": self.list(map(lambda x: x.serialize(), self.carrito))
         }
 
@@ -86,6 +87,7 @@ class Exercise(db.Model):
     video_exercise = db.Column(db.String(200), nullable=True)
 
     routines_id = db.Column(db.Integer, db.ForeignKey("routines.id"))
+    id_rutina_ejericios = db.relationship("Rutinaejercicios", backref="exercise", cascade="all, delete-orphan", lazy=True)
 
     def __repr__(self):
         return f'<Exercise {self.id}>'
@@ -148,10 +150,10 @@ class Rutinaejercicios(db.Model):
     def serialize(self):
         return {
 			"id": self.id,
-			"idRutina": self.IdRutina,
+			"idRutina": self.idRutina,
 			"idEjercicios": self.idEjercicios,
 			"series": self.series,
-			"repeticiones": self.repiticiones,
+			"repeticiones": self.repeticiones,
 			"carga": self.carga,
 			"semana": self.semana,
 			"finaliza": self.finaliza
