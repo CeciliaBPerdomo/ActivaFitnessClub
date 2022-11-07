@@ -126,7 +126,8 @@ const getState = ({
                 password,
                 activities,
                 role,
-                is_active
+                is_active,
+                cuota
             ) => {
                 try {
                     const response = await axios.post(direccion + "/api/user", {
@@ -145,6 +146,7 @@ const getState = ({
                         activities: activities,
                         role: role,
                         is_active: is_active,
+                        cuota: cuota,
                     });
                     return true;
                 } catch (error) {
@@ -175,6 +177,7 @@ const getState = ({
                         direccion + "/api/user/" + id, {}
                     );
                     // console.log(response);
+                    getActions().obtenerAlumnos();
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
@@ -217,7 +220,8 @@ const getState = ({
                 password,
                 activities,
                 role,
-                isActive
+                isActive,
+                cuota
             ) => {
                 try {
                     const response = await axios.put(direccion + "/api/user/" + id, {
@@ -236,6 +240,7 @@ const getState = ({
                         activities: activities,
                         role: role,
                         is_active: isActive,
+                        cuota: cuota,
                     });
                     console.log(response.data);
                 } catch (error) {
@@ -743,7 +748,7 @@ const getState = ({
                             finaliza: finaliza,
                         }
                     );
-                    console.log(response.data);
+                    //console.log(response.data);
                     getActions().obtenerRutinaEjercicioId(idRutina);
                     return true;
                 } catch (error) {
@@ -757,7 +762,8 @@ const getState = ({
                     const response = await axios.delete(
                         direccion + "/api/rutinaEjercicio/" + id, {}
                     );
-                    console.log(response);
+                    //console.log(response);
+                    getActions().obtenerRutinaEjercicioId(idRutina);
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
