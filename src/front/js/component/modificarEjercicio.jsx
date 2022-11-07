@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from "react";
 import {Link, useParams} from "react-router-dom";
 import {Context} from "../store/appContext";
+import swal from "sweetalert";
 
 // ///////////////////////////////////////////
 // ADMIN PUEDE MODIFICAR LOS EJERCICIOS   //
@@ -21,6 +22,11 @@ export const EditarEjercicio = () => {
     }, []);
 
     const modificarEjercicio = (event) => {
+        swal({
+            title: "Ejercicio Modificado",
+            icon: "success",
+            button: "Aceptar"
+          })
         event.preventDefault();
 
         let id = parseInt(params.theid);
@@ -166,7 +172,7 @@ export const EditarEjercicio = () => {
                     }>
                         <div className="col">
                             <button type="button" className="btn btn-outline-danger w-25 float-end"
-                                onClick={modificarEjercicio}>
+                                onClick={()=>modificarEjercicio()}>
                                 Guardar
                             </button>
                         </div>
