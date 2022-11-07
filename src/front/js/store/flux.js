@@ -611,7 +611,19 @@ const getState = ({
             },
 
             /* Ultimo id de rutina */
-            obtenerUltimoId: async () => {},
+            obtenerUltimoId: async () => {
+                try {
+                    const response = await axios.get(direccion + "/api/rutina", {});
+                    setStore({
+                        rutina: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
 
             /* Listar rutinas */
             obtenerRutina: async () => {
