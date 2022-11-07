@@ -2,7 +2,7 @@ import axios from "axios";
 // import json;
 
 let direccion =
-    "https://3001-ceciliabper-activafitne-e29205aoa4d.ws-us74.gitpod.io";
+    "https://3001-ceciliabper-activafitne-ndgh7wl4ehu.ws-us74.gitpod.io";
 
 const getState = ({
     getStore,
@@ -110,12 +110,11 @@ const getState = ({
             //                 LOG OUT  					 //
             // ************************************************
 
-
             logOut: () => {
-                localStorage.removeItem("token")
+                localStorage.removeItem("token");
                 setStore({
-                    auth: false
-                })
+                    auth: false,
+                });
             },
 
             // ************************************************
@@ -600,26 +599,12 @@ const getState = ({
             // ************************************************
 
             /* Crea nueva rutina*/
-            crearRutina: async (
-                id,
-                series,
-                repetitions,
-                burden,
-                week,
-                finish,
-                user_id
-            ) => {
+            crearRutina: async (user_id) => {
                 try {
                     const response = await axios.post(direccion + "/api/rutinas", {
-                        id: id,
-                        series: series,
-                        repetitions: repetitions,
-                        burden: burden,
-                        week: week,
-                        finish: finish,
                         user_id: user_id,
                     });
-                    return true;
+                    console.log(response.data);
                 } catch (error) {
                     console.log(error);
                 }

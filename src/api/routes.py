@@ -500,26 +500,16 @@ def addRoutines():
 
     queryNewRoutines= Routines.query.filter_by(user_id=body["user_id"]).first()
     
-    if queryNewRoutines is None:
-        new_routines = Routines(series=body["series"],
-        repetitions=body["repetitions"], 
-        burden=body["burden"], 
-        week=body["week"],
-        user_id=body["user_id"],
-        finish=body["finish"])
+    if queryNewRoutines:
+        new_routines = Routines(user_id=body["user_id"])
         
         db.session.add(new_routines)
         db.session.commit()
         
-        response_body = {
-            "msg": "Nueva rutina creada" 
-        }
+        response_body = {"msg": "Nueva rutina creada"}
         return jsonify(new_routines.serialize()), 200
     
-    response_body = {
-        "msg": "Rutina ya creada" 
-    }
-    return jsonify(response_body), 400
+    return jsonify("No existe el usuario"), 400
 
 # Busca por id de rutina
 @api.route('/rutinas/<int:routines_id>', methods=['GET'])
