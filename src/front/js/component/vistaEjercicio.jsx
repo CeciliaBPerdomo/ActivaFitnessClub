@@ -26,8 +26,8 @@ export const VistaEjercicio = () => {
     }, [params.theid]);
 
 
-    return (
-        <>
+    return (<>
+        <div>
             <br/> {/* Titulo */}
             <h1 className="justify-content-center d-flex">
                 <i className="fa fa-dumbbell"></i>
@@ -35,31 +35,62 @@ export const VistaEjercicio = () => {
                 store.ejercicio.exercise_name
             } </h1>
             <br/>
+
+
             <div className="justify-content-center d-flex">
                 <div className="card"
                     style={
-                        {width: "40rem"}
-                }>
-                    <img src={
-                            store.ejercicio.photo_exercise
+                        {
+
+                            width: "47%",
+                            display: "flex",
+                            margin: "auto",
+                            borderRadius: "7px",
+                            boxShadow: "0px 14px 32px 0px rgb(0, 0, 0, 0.5)",
+                            overflow: "hidden",
+                            boxSizing: "border-box"
                         }
-                        className="card-img-top"
-                        alt="..."/>
-                    <div className="card-body">
-                        <p className="card-text">
+
+                }>
+                    <div style={
+                        {borderRadius: "10 5 5 5 5"}
+                    }>
+                        <img src={
+                                store.ejercicio.photo_exercise
+                            }
+                            className="card-img-top"
+                            alt="..."/>
+                    </div>
+                    <div className="card-body"
+                        style={
+                            {width: "50%"}
+                    }>
+                        <h5 style={
                             {
+                                marginLeft: "38px",
+                                fontSize: "34px",
+                                paddingTop: "10px"
+                            }
+                        }>Descripción</h5>
+                        <p className="card-text"
+                            style={
+                                {
+                                    fontSize: "20px",
+                                    paddingTop: "10px"
+                                }
+                        }> {
                             store.ejercicio.description
                         }</p>
                     </div>
                     <ul className="list-group list-group-flush">
 
                         <div className="d-flex">
-                            <ReactPlayer // style={
-                                //         {
-                                //             width: "370",
-                                //             height: "215"
-                                //         }
-                                //     }
+                            <ReactPlayer style={
+                                    {
+                                        width: "100%",
+                                        height: "100%"
+                                    }
+                                }
                                 url={
                                     store.ejercicio.video_exercise
                                 }
@@ -74,22 +105,27 @@ export const VistaEjercicio = () => {
             </div>
 
             <br/>
-            <div className="d-flex justify-content-end " role="group" aria-label="Basic outlined example"
-                style={
-                    {marginRight: "70px"}
-            }>
+            <div className="btn " role="group" aria-label="Basic outlined example"
+                //     style={
+                //         {marginRight: "70px"}
+                // }
+            >
                 <Link to={
                     "/vistaEjercicio/" + down
                 }>
-                    <button className="btn btn-outline-primary">Down</button>
+                    <button className="btn btn-dark float-left"
+                        style={
+                            {}
+                    }>Down</button>
                 </Link>
                 <Link to={
                     "/vistaEjercicio/" + next
                 }>
-                    <button className="btn btn-outline-primary">Next</button>
+                    <button className="btn btn-dark float-right">Next</button>
                 </Link>
             </div>
             <br/>
-        </>
-    )
+
+        </div>
+    </>)
 };
