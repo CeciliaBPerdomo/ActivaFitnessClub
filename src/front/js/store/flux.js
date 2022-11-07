@@ -745,7 +745,7 @@ const getState = ({
                             finaliza: finaliza,
                         }
                     );
-                    //console.log(response.data);
+                    // console.log(response.data);
                     getActions().obtenerRutinaEjercicioId(idRutina);
                     return true;
                 } catch (error) {
@@ -759,7 +759,7 @@ const getState = ({
                     const response = await axios.delete(
                         direccion + "/api/rutinaEjercicio/" + id, {}
                     );
-                    //console.log(response);
+                    // console.log(response);
                     getActions().obtenerRutinaEjercicioId(idRutina);
                 } catch (error) {
                     console.log(error);
