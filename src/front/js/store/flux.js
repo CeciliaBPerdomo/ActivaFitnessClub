@@ -2,7 +2,7 @@ import axios from "axios";
 // import json;
 
 let direccion =
-    "https://3001-ceciliabper-activafitne-ndgh7wl4ehu.ws-us74.gitpod.io";
+    "https://3001-ceciliabper-activafitne-rxiid32wyzn.ws-us74.gitpod.io";
 
 const getState = ({
     getStore,
@@ -609,6 +609,9 @@ const getState = ({
                     console.log(error);
                 }
             },
+
+            /* Ultimo id de rutina */
+            obtenerUltimoId: async () => {},
 
             /* Listar rutinas */
             obtenerRutina: async () => {

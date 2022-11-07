@@ -65,7 +65,7 @@ export const Alumno = () => {
                   Mail: <b>{store.alumno.email}</b>
                 </div>
                 <div className="col">
-                  Mensualidad: <b>$</b>
+                  Mensualidad: <b>${store.alumno.cuota}</b>
                 </div>
                 <div className="col"></div>
               </div>
