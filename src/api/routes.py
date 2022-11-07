@@ -650,6 +650,26 @@ def deleteRoutinesExercise(id):
     response_body = {"msg": "Ejercicio de la rutina borrada"}
     return jsonify(response_body), 200
 
+#Lista las rutinas de un alumno
+@api.route('/rutinaEjercicioId/<int:idUsuario>', methods=['GET'])
+def get_routinesEjercbyId(idUsuario):
+    #Busca las rutinas por alumno
+    rutina = Routines.query.filter_by(user_id = idUsuario).all()
+    rutina = list(map(lambda x: x.serialize(), rutina))
+        
+    for rutine in rutina:
+        print(rutine)
+        rutinas = Rutinaejercicios.query.filter_by(idRutina = rutine).all()
+        results = list(map(lambda x: { **x.serializeEjercicios(), **x.serialize() }, rutinas))
+    
+
+    if rutina is None: 
+        response_body = {"msg": "Rutina no encontrada"}
+        return jsonify(response_body), 400
+
+    return jsonify(results), 200
+
+
 #######################################
 ##                                   ##
 ##      RUTAS DEL CARRITO            ##
@@ -709,15 +729,12 @@ def get_shoppingCart_userId(user_id):
     shoppingCartId = ShoppingCart.query.filter_by(user_id=user_id).all()
     results = list(map(lambda x: x.serialize(), shoppingCartId))
    
-
-
     if shoppingCartId is None: 
         response_body = {"msg": "Compra no encontrada"}
         return jsonify(response_body), 400
     return jsonify(results), 200
 
-#Borra una rutina
-
+#Borra una compra
 @api.route('/compras/<int:shoppingCart_id>', methods=['DELETE'])
 def deleteShoppingCart(shoppingCart_id):
     shoppingCartId= Routines.query.filter_by(id=shoppingCart_id).first()
