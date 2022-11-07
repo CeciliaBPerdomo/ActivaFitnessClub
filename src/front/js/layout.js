@@ -33,9 +33,10 @@ import {ListadoEjercicios} from "./component/listadoEjercicios.jsx";
 import {EditarEjercicio} from "./component/modificarEjercicio.jsx";
 import {ListaRutinaDeAlumno} from "./component/listaRutinaDeAlumno.jsx";
 import {VistaEjercicio} from "./component/vistaEjercicio.jsx";
-import { ListadoProductos } from "./component/listadoProductos.jsx";
-import { CrearProducto } from "./component/crearProducto";
-import { EditarProducto } from "./component/modificarProducto.jsx";
+import {ListadoProductos} from "./component/listadoProductos.jsx";
+import {CrearProducto} from "./component/crearProducto";
+import {EditarProducto} from "./component/modificarProducto.jsx";
+
 
 // create your first component
 const Layout = () => {
@@ -43,80 +44,82 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
-    return (<div>
-        <BrowserRouter basename={basename}>
-            <ScrollToTop>
-                <Navbar/>
+    return (
+        <div>
+            <BrowserRouter basename={basename}>
+                <ScrollToTop>
+                    <Navbar/>
 
-                <Routes>
-                    <Route element={<Home/>}
-                        path="/"/>
-                    <Route element={<QuienesSomos/>}
-                        path="/quienesSomos"/>
-                    <Route element={<Planes/>}
-                        path="/planes"/>
-                    <Route element={<Demo/>}
-                        path="/demo"/>
-                    <Route element={<CrearAlumno/>}
-                        path="/crearAlumno"/>
-                    <Route element={<ListaAlumno/>}
-                        path="/listaAlumno"/>
-                    <Route element={<VistaProducto/>}
-                        path="/vistaProducto"/>
-                    <Route element={<CrearEjercicio/>}
-                        path="/crearEjercicio"/>
-                    <Route element={<EditarEjercicio/>}
-                        path="/editarEjercicio/:theid"/>
-                    <Route element={<VistaEjercicio/>}
-                        path="/vistaEjercicio/:theid"/>
-                    <Route element={<Log_in/>}
-                        path="/login"/>
-                    <Route element={<Single/>}
-                        path="/single/:theid"/>
-                    <Route element={<MisPagos/>}
-                        path="/mispagos/:theid"/>
-                    <Route element={<PagarMensualidad/>}
-                        path="/pagarMensualidad/:theid"/>
-                    <Route element={<VistaMensualidades/>}
-                        path="/mensualidades"/>
-                    <Route element={<VerEjercicio/>}
-                        path="/verEjercicios"/>
-                    <Route element={<Alumno/>}
-                        path="/alumno/:theid"/>
-                    <Route element={<CrearMensualidad/>}
-                        path="/crearMensualidad"/>
-                    <Route element={<CrearRutina/>}
-                        path="/crearRutina/:theid"/>
-                    <Route element={<Cambiarcontra/>}
-                        path="/cambiarcontra"/>
-                    <Route element={<ModificarAlumno/>}
-                        path="/modificarAlumno/:theid"/>
-                    <Route element={<HomeUsuario/>}
-                        path="/homeUsuario"/>
-                    <Route element={<EditarMensualidad/>}
-                        path="/editarMensualidad/:theid"/>
-                    <Route element={<HomeAdmin/>}
-                        path="/homeAdmin"/>
-                    <Route element={<Carrito/>}
-                        path="/carrito"/>
-                    <Route element={<ListadoEjercicios/>}
-                        path="/ListadoEjercicios"/>
-                    <Route element={<ListaRutinaDeAlumno/>}
-                        path="/ListaRutinaDeAlumno/:theid"/>
+                    <Routes>
+                        <Route element={<Home/>}
+                            path="/"/>
+                        <Route element={<QuienesSomos/>}
+                            path="/quienesSomos"/>
+                        <Route element={<Planes/>}
+                            path="/planes"/>
+                        <Route element={<Demo/>}
+                            path="/demo"/>
+                        <Route element={<CrearAlumno/>}
+                            path="/crearAlumno"/>
+                        <Route element={<ListaAlumno/>}
+                            path="/listaAlumno"/>
+                        <Route element={<VistaProducto/>}
+                            path="/vistaProducto"/>
+                        <Route element={<CrearEjercicio/>}
+                            path="/crearEjercicio"/>
+                        <Route element={<EditarEjercicio/>}
+                            path="/editarEjercicio/:theid"/>
+                        <Route element={<VistaEjercicio/>}
+                            path="/vistaEjercicio/:theid"/>
+                        <Route element={<Log_in/>}
+                            path="/login"/>
+                        <Route element={<Single/>}
+                            path="/single/:theid"/>
+                        <Route element={<MisPagos/>}
+                            path="/mispagos/:theid"/>
+                        <Route element={<PagarMensualidad/>}
+                            path="/pagarMensualidad/:theid"/>
+                        <Route element={<VistaMensualidades/>}
+                            path="/mensualidades"/>
+                        <Route element={<VerEjercicio/>}
+                            path="/verEjercicios"/>
+                        <Route element={<Alumno/>}
+                            path="/alumno/:theid"/>
+                        <Route element={<CrearMensualidad/>}
+                            path="/crearMensualidad"/>
+                        <Route element={<CrearRutina/>}
+                            path="/crearRutina/:theid"/>
+                        <Route element={<Cambiarcontra/>}
+                            path="/cambiarcontra"/>
+                        <Route element={<ModificarAlumno/>}
+                            path="/modificarAlumno/:theid"/>
+                        <Route element={<HomeUsuario/>}
+                            path="/homeUsuario"/>
+                        <Route element={<EditarMensualidad/>}
+                            path="/editarMensualidad/:theid"/>
+                        <Route element={<HomeAdmin/>}
+                            path="/homeAdmin"/>
+                        <Route element={<Carrito/>}
+                            path="/carrito"/>
+                        <Route element={<ListadoEjercicios/>}
+                            path="/ListadoEjercicios"/>
+                        <Route element={<ListaRutinaDeAlumno/>}
+                            path="/ListaRutinaDeAlumno/:theid"/>
                         <Route element={<ListadoProductos/>}
-                        path="/ListadoProductos"/>
+                            path="/ListadoProductos"/>
                         <Route element={<CrearProducto/>}
-                        path="/crearProducto"/>
+                            path="/crearProducto"/>
                         <Route element={<EditarProducto/>}
-                        path="/editarProducto/:theid"/>
-                    <Route element={
-                        <h1>Not found!</h1>
-                    }/>
-                </Routes>
-                <Footer/>
-            </ScrollToTop>
-        </BrowserRouter>
-    </div>);
+                            path="/editarProducto/:theid"/>
+                        <Route element={
+                            <h1>Not found!</h1>
+                        }/>
+                    </Routes>
+                    <Footer/>
+                </ScrollToTop>
+            </BrowserRouter>
+        </div>
+    );
 };
 
 export default injectContext(Layout);

@@ -1,5 +1,5 @@
 import axios from "axios";
-//import json;
+// import json;
 
 let direccion =
     "https://3001-ceciliabper-activafitne-ndgh7wl4ehu.ws-us74.gitpod.io";
@@ -41,12 +41,14 @@ const getState = ({
                         email: email,
                         password: password,
                     });
+                    console.log(response);
 
                     localStorage.setItem("token", response.data.access_token);
                     setStore({
                         auth: true,
+                        profile: response.data.user,
                     });
-                    return true;
+                    return response.data;
                 } catch (error) {
                     if (error.code === "ERR_BAD_REQUEST") {
                         console.log(error.response.data.msg);
@@ -62,7 +64,7 @@ const getState = ({
                 try {
                     const response = await axios.get(direccion + "/api/profile", {
                         headers: {
-                            //Authorization: Bearer
+                            // Authorization: Bearer
                             Authorization: "Bearer " + accessToken,
                         },
                     });
