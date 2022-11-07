@@ -48,7 +48,7 @@ export const HomeUsuario = () => {
                                 }>Mis Pagos</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="#">Ir al Carrito</Link>
+                                <Link className="nav-link" to="/verEjercicios">Ejercicios</Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <Link className="nav-link dropdown-toggle" to="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
