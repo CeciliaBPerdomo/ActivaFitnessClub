@@ -1,7 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint
+from flask import Flask, request, jsonify, url_for, Blueprint, current_app #importamos current_app
 
 # Tablas de la base de datos
 from api.models import db, User, Exercise, Product, Payment, Routines, ShoppingCart, Sales, Outstanding, Rutinaejercicios
@@ -10,7 +10,11 @@ import json
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
-
+#importamos Message() de flask_mail
+from flask_mail import Message 
+#importamos ramdom y string para generar una clave aleatoria nueva
+import random 
+import string
 from sqlalchemy import desc
 
 api = Blueprint('api', __name__)
@@ -616,15 +620,7 @@ def get_routinesEjerc(routines_id):
 @api.route('/rutinaEjercicio', methods=['POST'])
 def addRoutinesEjercicio():
     body = json.loads(request.data)
-
-    queryNewRoutines= Rutinaejercicios.query.filter_by(idRutina=body["idRutina"]).first()
-    
-    if queryNewRoutines is None:
-        response_body = {
-            "msg": "No existe rutina creada" 
-        }
-        return jsonify(response_body), 400
-    
+        
     new_routines = Rutinaejercicios(
     idRutina = body["idRutina"],
     idEjercicios = body["idEjercicios"],
@@ -1026,3 +1022,30 @@ def protected():
     }
     return jsonify(response_body), 200
 
+#######################################
+##                                   ##
+# RECUPERACION CONTRASEÑA OLVIDADA   ##
+##                                   ## 
+#######################################
+
+
+
+@api.route("/contraseña", methods=["POST"])
+def forgotpassword():
+    recover_email = request.json['email']
+    recover_password = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(8)) #clave aleatoria nueva
+   
+    if not recover_email:
+        return jsonify({"msg": "Debe ingresar el correo"}), 401
+	#busco si el correo existe en mi base de datos
+    user = User.query.filter_by(email=recover_email).first()
+    if recover_email != user.email:
+        return jsonify({"msg": "El correo ingresado no existe en nuestros registros"}), 400
+    #si existe guardo la nueva contraseña aleatoria
+    user.password = recover_password
+    db.session.commit()
+	#luego se la envio al usuario por correo para que pueda ingresar
+    msg = Message("Hi", recipients=[recover_email])
+    msg.html = f"""<h1>Su nueva contraseña es: {recover_password}</h1>"""
+    current_app.mail.send(msg)
+    return jsonify({"msg": "Su nueva clave ha sido enviada al correo electrónico ingresado"}), 200

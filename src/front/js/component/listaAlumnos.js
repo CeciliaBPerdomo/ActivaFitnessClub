@@ -6,21 +6,22 @@ import { useNavigate } from "react-router-dom";
 
 export const ListaAlumno = () => {
   const { store, actions } = useContext(Context);
+  let navegacion = useNavigate();
 
   //Inicio
   useEffect(() => {
     actions.obtenerAlumnos();
   }, []);
 
-  const crearRutina = (e, item) => {
+  const crearRutina = async (e, item) => {
     e.preventDefault();
-    actions.crearRutina(item.id);
+    //actions.crearRutina(item.id);
 
-    //let id = store.rutina.id;
-    //console.log(id);
+    await actions.obtenerUltimoId();
+    let idRutina = store.rutina?.id;
+    let idUsuario = store.rutina?.user_id;
 
-    let navegacion = useNavigate();
-    navegacion("/crearRutina/" + id);
+    navegacion("/crearRutina/" + idRutina + "/" + idUsuario);
   };
 
   const borrar = (e, item) => {

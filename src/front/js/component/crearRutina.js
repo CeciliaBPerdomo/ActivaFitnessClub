@@ -15,7 +15,7 @@ export const CrearRutina = () => {
   const [finaliza, setFinaliza] = useState("");
 
   useEffect(() => {
-    actions.obtenerAlumnoId(parseInt(params.theid));
+    actions.obtenerAlumnoId(parseInt(params.idAlumno));
     actions.obtenerEjercicios();
     actions.obtenerRutinaEjercicioId(parseInt(params.theid));
   }, []);
@@ -29,6 +29,7 @@ export const CrearRutina = () => {
     e.preventDefault();
 
     let idRutina = parseInt(params.theid);
+
     //Guarda
     actions.agregarEjerciciosenRutina(
       idRutina,
@@ -50,7 +51,7 @@ export const CrearRutina = () => {
 
   //Borrar rutinas
   const borrarEjercicio = (e, item) => {
-    e.preventDefault()
+    e.preventDefault();
 
     swal({
       title: `Desea borrar el ejercicio: ${item.exerciseInfo.exercise_name}`,
@@ -60,17 +61,18 @@ export const CrearRutina = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        swal(`Poof! el ejercicio ${item.exerciseInfo.exercise_name} fue borrado de la rutina`, {
-          icon: "success",
-          actions: actions.borrarEjerciciosdeRutina(item.id),
-        });
+        swal(
+          `Poof! el ejercicio ${item.exerciseInfo.exercise_name} fue borrado de la rutina`,
+          {
+            icon: "success",
+            actions: actions.borrarEjerciciosdeRutina(item.id),
+          }
+        );
       } else {
         swal("Ups! Casi, casi!");
       }
     });
-
-    
-  }
+  };
 
   return (
     <>
@@ -287,8 +289,10 @@ export const CrearRutina = () => {
                 <i className="fa fa-pen"></i>
               </td> */}
                 <td>
-                  <i className="fa fa-trash"
-                  onClick={(e) => borrarEjercicio(e, item)}></i>
+                  <i
+                    className="fa fa-trash"
+                    onClick={(e) => borrarEjercicio(e, item)}
+                  ></i>
                 </td>
               </tr>
             ))}
