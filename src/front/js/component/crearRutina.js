@@ -29,6 +29,7 @@ export const CrearRutina = () => {
     e.preventDefault();
 
     let idRutina = parseInt(params.theid);
+
     //Guarda
     actions.agregarEjerciciosenRutina(
       idRutina,
