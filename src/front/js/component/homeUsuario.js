@@ -70,7 +70,10 @@ export const HomeUsuario = () => {
                                     </li>
                                     <Link to={"/"}>
                                         <li>
-                                            <Link className="dropdown-item" to="">Cerrar Sesión</Link>
+                                            <button className="dropdown-item"
+                                                onClick={
+                                                    () => actions.logOut()
+                                            }>Cerrar Sesión</button>
                                         </li>
                                     </Link>
                                 </ul>
