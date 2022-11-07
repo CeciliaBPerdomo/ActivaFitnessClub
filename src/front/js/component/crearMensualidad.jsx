@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 // ///////////////////////////////////////////
 // ADMIN PUEDE AGREGAR NUEVAS MENSUALIDADES//
@@ -21,6 +22,11 @@ export const CrearMensualidad = () => {
   }, []);
 
   const agregarMensualidad = (event) => {
+    swal({
+      title: `Mensualidad Creada`,
+      icon: "success",
+      button: "Aceptar"
+    })
     event.preventDefault();
 
     /* Agrega el pago de la mensualidad */
@@ -168,7 +174,7 @@ export const CrearMensualidad = () => {
           <button
             type="button"
             className="btn btn-outline-danger w-50 float-end"
-            onClick={agregarMensualidad}
+            onClick={()=>agregarMensualidad()}
           >
             Agregar pago nueva mensualidad
           </button>
