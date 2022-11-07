@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 export const CrearEjercicio = () => {
   const [nombreEjercicio, setNombreEjercicio] = useState("");
@@ -12,6 +13,11 @@ export const CrearEjercicio = () => {
   const { actions } = useContext(Context);
 
   const agregarEjercicio = (event) => {
+    swal({
+      title: "Ejercicio Creado",
+      icon: "success",
+      button: "Aceptar"
+    })
     event.preventDefault();
 
     //Guarda el formulario
@@ -157,7 +163,7 @@ export const CrearEjercicio = () => {
                 <button
                   type="button"
                   className="btn btn-outline-danger w-50 float-end"
-                  onClick={agregarEjercicio}
+                  onClick={()=>agregarEjercicio()}
                 >
                   Agregar nuevo ejercicio
                 </button>

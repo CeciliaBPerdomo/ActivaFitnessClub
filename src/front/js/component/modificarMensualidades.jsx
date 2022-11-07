@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import swal from "sweetalert";
 
 // ///////////////////////////////////////////
 // ADMIN PUEDE MODIFICAR LAS MENSUALIDADES //
@@ -25,6 +26,11 @@ export const EditarMensualidad = () => {
   let nombreCompleto = nombre + " " + apellido;
 
   const modificarMensualidad = (e) => {
+    swal({
+      title: `Mensualidad Modificada`,
+      icon: "success",
+      button: "Aceptar"
+    })
     e.preventDefault();
 
     let id = parseInt(params.theid);
@@ -168,7 +174,7 @@ export const EditarMensualidad = () => {
           <button
             type="button"
             className="btn btn-outline-danger w-50 float-end"
-            onClick={modificarMensualidad}
+            onClick={()=>modificarMensualidad()}
           >
             Guardar modificación
           </button>
