@@ -54,26 +54,32 @@ export const ListaRutinaDeAlumno = () => {
           {/* Listado */}
           <tbody className="align-middle text-center">
             {store.rutinasEjercicios.length > 0
-              ? store.rutinasEjercicios.map((item, id) => (
-                  <tr key={id}>
-                    <td>{item.idRutina}</td>
-                    <td>{item.results.finaliza}</td>
-                    {/* {item.userRutinas.map((ejer, idRutina) => (
-                      //<thead>
-                      //<tr key={idRutina}>
-                      <React.Fragment key={idRutina}>
-                        <td>{ejer.finaliza}</td>
-                        <td>{ejer.idEjercicios}</td>
-                        <td>{ejer.semana}</td>
-                        <td>{ejer.series}</td>
-                        <td>{ejer.repeticiones}</td>
-                        <td>{ejer.carga}</td>
-                        <td>
-                          <i className="fa fa-eye"></i>
-                        </td>
-                      </React.Fragment>
-                    ))} */}
-                  </tr>
+              ? store.rutinasEjercicios.map((item) => (
+                  <>
+                    <tr>
+                      <th colSpan="7">Rutina: {item.idRutina}</th>
+                    </tr>
+                    <>
+                      {item.results.map((dato) => (
+                        <tr>
+                          <td>{dato.finaliza}</td>
+                          <td>{dato.exerciseInfo.exercise_name}</td>
+                          <td>{dato.semana}</td>
+                          <td>{dato.series}</td>
+                          <td>{dato.repeticiones}</td>
+                          <td>{dato.carga}</td>
+                          <td>
+                            <Link
+                              to={"/vistaEjercicio/" + dato.idEjercicios}
+                              className="btn btn-outline-dark"
+                            >
+                              <i className="fa fa-eye"></i>
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
+                    </>
+                  </>
                 ))
               : null}
           </tbody>
