@@ -167,7 +167,6 @@ const getState = ({
             obtenerAlumnos: async () => {
                 try {
                     const response = await axios.get(direccion + "/api/user", {});
-                    // console.log(response.data);
                     setStore({
                         alumnos: response.data,
                     });
@@ -200,7 +199,6 @@ const getState = ({
             obtenerAlumnoId: async (id) => {
                 try {
                     const response = await axios.get(direccion + "/api/user/" + id, {});
-                    // console.log(response.data);
                     setStore({
                         alumno: response.data,
                     });
@@ -251,7 +249,7 @@ const getState = ({
                         is_active: isActive,
                         cuota: cuota,
                     });
-                    console.log(response.data);
+                    //console.log(response.data);
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
