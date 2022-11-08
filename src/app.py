@@ -13,7 +13,7 @@ from api.admin import setup_admin
 from api.commands import setup_commands
 from flask_jwt_extended import JWTManager
 #IMPORTAR LA FUNCION Mail() de flask_mail
-from flask_mail import Mail 
+from flask_mail import Mail, Message
 
 #from models import Person
 
