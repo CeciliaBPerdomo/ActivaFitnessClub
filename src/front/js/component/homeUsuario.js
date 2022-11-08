@@ -55,27 +55,28 @@ export const HomeUsuario = () => {
                                     Otras Opciones
                                 </Link>
                                 <ul className="dropdown-menu dropdown-menu-dark">
-                                    <Link to={"/quienesSomos"}>
                                         <li>
-                                            <Link className="dropdown-item" to="">Quienes Somos</Link>
+                                            <Link className="dropdown-item" to="/quienesSomos">Quienes Somos</Link>
                                         </li>
-                                    </Link>
-                                    <Link to={"/planes"}>
+                                    
+                                    
                                         <li>
-                                            <Link className="dropdown-item" to="">Nuestros Planes</Link>
+                                            <Link className="dropdown-item" to="/planes">Nuestros Planes</Link>
                                         </li>
-                                    </Link>
+                                    
                                     <li>
                                         <hr className="dropdown-divider"/>
                                     </li>
-                                    <Link to={"/"}>
+                                    
                                         <li>
+                                        <Link to={"/"}>
                                             <button className="dropdown-item"
                                                 onClick={
                                                     () => actions.logOut()
                                             }>Cerrar Sesión</button>
+                                        </Link>
                                         </li>
-                                    </Link>
+                                    
                                 </ul>
                             </li>
                         </ul>

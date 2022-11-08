@@ -43,9 +43,9 @@ export const Navbar = () => {
 
                         </button>
                         <hr/>
-                        <Link className={"btn btn-outline-danger "+visibilidadBoton} type="submit" to="/login">
+                        {/* <Link className={"btn btn-outline-danger "+visibilidadBoton} type="submit" to="/login">
                             Login
-                        </Link>
+                        </Link> */}
                     </div>
                     <div>
                         <button className="btn btn-ligth d-flex flex-row-reverse" type="submit">
