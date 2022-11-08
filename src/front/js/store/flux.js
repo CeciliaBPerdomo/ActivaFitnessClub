@@ -114,6 +114,27 @@ const getState = ({
                     auth: false,
                 });
             },
+            // ************************************************
+            //                 CAMBIO DE CONTRASEÑA  		 //
+            // ************************************************
+            cambioPass: async (email) => {
+                try {
+
+                    const response = await axios.post(direccion + "/api/cambiarcontra", {
+                        email: email,
+
+                    });
+                    if (response.status === 200) {
+                        console.log("Se envió la contraseña");
+                    }
+
+                } catch (error) {
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
 
             // ************************************************
             //                  ALUMNOS						 //

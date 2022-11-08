@@ -11,7 +11,7 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 #importamos Message() de flask_mail
-from flask_mail import Message 
+from flask_mail import Message, Mail
 #importamos ramdom y string para generar una clave aleatoria nueva
 import random 
 import string
@@ -1042,7 +1042,7 @@ def protected():
 
 
 @api.route("/cambiarcontra", methods=["POST"])
-def forgotpassword():
+def cambiarContra():
     recover_email = request.json['email']
     recover_password = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(8)) #clave aleatoria nueva
    
@@ -1057,6 +1057,7 @@ def forgotpassword():
     db.session.commit()
 	#luego se la envio al usuario por correo para que pueda ingresar
     msg = Message("Hi", recipients=[recover_email])
+    msg.recipients=[recover_email]
     msg.html = f"""<h3>Hola:</h3> 
     <p>Si recibió este correo es porque hizo una solicitud de recuperacion de contraseña para su cuenta, para recuperarla, ingrese la siguiente clave: {recover_password}</p>"""
     current_app.mail.send(msg)
