@@ -734,6 +734,24 @@ const getState = ({
                 }
             },
 
+            // obtener los ejercicios de la rutina por Id de usuario
+            obtenerRutinaEjercicioIdUser: async (id) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/rutinaEjercicioId/" + id, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        rutinasEjercicios: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
             /* Agregar ejercicios en rutina*/
             agregarEjerciciosenRutina: async (
                 idRutina,
