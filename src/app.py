@@ -38,10 +38,10 @@ CORS(app)
 
 #CONFIGURACION EMAIL
 mail_settings = {
-    "MAIL_SERVER": 'smtp.gmail.com',
+    "MAIL_SERVER": 'smtp.mailtrap.io',
     "MAIL_PORT":  2525,
-    "MAIL_USE_TLS": False,
-    "MAIL_USE_SSL": True,
+    "MAIL_USE_TLS": True,
+    "MAIL_USE_SSL": False,
     "MAIL_USERNAME":  '8b6c3a3f6be49b', #ACA COLOQUEN EL CORREO DE LA APP DEL ALUMN
     "MAIL_PASSWORD": '38b846c13d32a1', #PASSWORD DEL CORREO DE LA APP DEL ALUMNO
     "MAIL_DEFAULT_SENDER": '8b6c3a3f6be49b'
@@ -53,7 +53,7 @@ app.mail= mail
 #FIN CONFIGURACION EMAIL
 
 # Setup the Flask-JWT-Extended extension
-app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET")  # Change this!
 jwt = JWTManager(app)
 
 # add the admin
