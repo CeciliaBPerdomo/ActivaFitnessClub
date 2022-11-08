@@ -11,6 +11,8 @@ export const ListaRutinaDeAlumno = () => {
     actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
   }, []);
 
+  console.log(store.rutinasEjercicios);
+
   return (
     <>
       <div className="container" style={{ marginBottom: "25px" }}>
@@ -54,15 +56,23 @@ export const ListaRutinaDeAlumno = () => {
             {store.rutinasEjercicios.length > 0
               ? store.rutinasEjercicios.map((item, id) => (
                   <tr key={id}>
-                    <td>{item.userRutinas.finaliza}</td>
-                    <td>{item.userRutinas?.idEjercicios}</td>
-                    <td>{item.userRutinas?.semana}</td>
-                    <td>{item.userRutinas?.series}</td>
-                    <td>{item.userRutinas?.repeticiones}</td>
-                    <td>{item.userRutinas?.carga}</td>
-                    <td>
-                      <i className="fa fa-eye"></i>
-                    </td>
+                    <td>{item.idRutina}</td>
+                    <td>{item.results.finaliza}</td>
+                    {/* {item.userRutinas.map((ejer, idRutina) => (
+                      //<thead>
+                      //<tr key={idRutina}>
+                      <React.Fragment key={idRutina}>
+                        <td>{ejer.finaliza}</td>
+                        <td>{ejer.idEjercicios}</td>
+                        <td>{ejer.semana}</td>
+                        <td>{ejer.series}</td>
+                        <td>{ejer.repeticiones}</td>
+                        <td>{ejer.carga}</td>
+                        <td>
+                          <i className="fa fa-eye"></i>
+                        </td>
+                      </React.Fragment>
+                    ))} */}
                   </tr>
                 ))
               : null}
