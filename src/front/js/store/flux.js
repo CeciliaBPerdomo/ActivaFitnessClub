@@ -1,8 +1,6 @@
 import axios from "axios";
-// import json;
 
-let direccion =
-    "https://3001-ceciliabper-activafitne-e29205aoa4d.ws-us74.gitpod.io";
+let direccion = process.env.BACKEND_URL;
 
 const getState = ({
     getStore,

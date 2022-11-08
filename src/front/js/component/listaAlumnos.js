@@ -138,7 +138,7 @@ export const ListaAlumno = () => {
                     className="btn btn-outline-dark"
                     onClick={(e) => crearRutina(e, item)}
                   >
-                    <i class="fa fa-dumbbell"></i>
+                    <i className="fa fa-dumbbell"></i>
                   </button>
                 </td>
 
