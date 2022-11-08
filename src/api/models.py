@@ -131,7 +131,7 @@ class Routines(db.Model):
         results = Rutinaejercicios.query.filter_by(idRutina = self.id).all()
         rutinas = list(map(lambda x: x.serialize(), results))
         return {
-            "userRutinas": rutinas
+            "results": rutinas, "idRutina": self.id
         }
 
 # Rutina con sus respectivos ejercicios
