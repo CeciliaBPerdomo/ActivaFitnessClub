@@ -127,6 +127,13 @@ class Routines(db.Model):
             "userInfo": results.serialize(),
         }
 
+    def serializeRutinas(self):
+        results = Rutinaejercicios.query.filter_by(idRutina = self.id).all()
+        rutinas = list(map(lambda x: x.serialize(), results))
+        return {
+            "userRutinas": rutinas
+        }
+
 # Rutina con sus respectivos ejercicios
 class Rutinaejercicios(db.Model):
     id = db.Column(db.Integer, primary_key=True)

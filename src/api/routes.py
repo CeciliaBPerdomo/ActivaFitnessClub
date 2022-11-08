@@ -655,19 +655,13 @@ def deleteRoutinesExercise(id):
 def get_routinesEjercbyId(idUsuario):
     #Busca las rutinas por alumno
     rutina = Routines.query.filter_by(user_id = idUsuario).all()
-    rutina = list(map(lambda x: x.serialize(), rutina))
+    rutina = list(map(lambda x: x.serializeRutinas(), rutina))
         
-    for rutine in rutina:
-        print(rutine)
-        rutinas = Rutinaejercicios.query.filter_by(idRutina = rutine).all()
-        results = list(map(lambda x: { **x.serializeEjercicios(), **x.serialize() }, rutinas))
-    
-
     if rutina is None: 
         response_body = {"msg": "Rutina no encontrada"}
         return jsonify(response_body), 400
 
-    return jsonify(results), 200
+    return jsonify(rutina), 200
 
 
 #######################################
