@@ -656,7 +656,7 @@ def get_routinesEjercbyId(idUsuario):
     #Busca las rutinas por alumno
     rutina = Routines.query.filter_by(user_id = idUsuario).all()
     rutina = list(map(lambda x: x.serializeRutinas(), rutina))
-        
+
     if rutina is None: 
         response_body = {"msg": "Rutina no encontrada"}
         return jsonify(response_body), 400
@@ -1060,5 +1060,5 @@ def cambiarContra():
     msg.recipients=[recover_email]
     msg.html = f"""<h3>Hola:</h3> 
     <p>Si recibió este correo es porque hizo una solicitud de recuperacion de contraseña para su cuenta, para recuperarla, ingrese la siguiente clave: {recover_password}</p>"""
-    current_app.mail.send(msg)
+    current_app.mail.connect.send(msg)
     return jsonify({"msg": "Su nueva clave ha sido enviada al correo electrónico ingresado"}), 200

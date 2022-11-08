@@ -129,7 +129,8 @@ class Routines(db.Model):
 
     def serializeRutinas(self):
         results = Rutinaejercicios.query.filter_by(idRutina = self.id).all()
-        rutinas = list(map(lambda x: x.serialize(), results))
+        #rutinas = list(map(lambda x: x.serialize(), results))
+        rutinas = list(map(lambda x: { **x.serializeEjercicios(), **x.serialize() }, results))
         return {
             "results": rutinas, "idRutina": self.id
         }
