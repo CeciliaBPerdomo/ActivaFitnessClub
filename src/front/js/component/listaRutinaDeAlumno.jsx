@@ -8,6 +8,7 @@ export const ListaRutinaDeAlumno = () => {
 
   useEffect(() => {
     actions.obtenerAlumnoId(parseInt(params.theid));
+    actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
   }, []);
 
   return (
@@ -47,6 +48,25 @@ export const ListaRutinaDeAlumno = () => {
               <th scope="col">Ver Ejercicio</th>
             </tr>
           </thead>
+
+          {/* Listado */}
+          <tbody className="align-middle text-center">
+            {store.rutinasEjercicios.length > 0
+              ? store.rutinasEjercicios.map((item, id) => (
+                  <tr key={id}>
+                    <td>{item.userRutinas.finaliza}</td>
+                    <td>{item.userRutinas?.idEjercicios}</td>
+                    <td>{item.userRutinas?.semana}</td>
+                    <td>{item.userRutinas?.series}</td>
+                    <td>{item.userRutinas?.repeticiones}</td>
+                    <td>{item.userRutinas?.carga}</td>
+                    <td>
+                      <i className="fa fa-eye"></i>
+                    </td>
+                  </tr>
+                ))
+              : null}
+          </tbody>
         </table>
       </div>
     </>

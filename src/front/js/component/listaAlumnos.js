@@ -21,8 +21,6 @@ export const ListaAlumno = () => {
     let idRutina = store.rutina?.id;
     let idUsuario = store.rutina?.user_id;
 
-    console.log(idRutina, idUsuario);
-
     navegacion("/crearRutina/" + idRutina + "/" + idUsuario);
   };
 
