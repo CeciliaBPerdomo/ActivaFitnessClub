@@ -39,12 +39,12 @@ CORS(app)
 #CONFIGURACION EMAIL
 mail_settings = {
     "MAIL_SERVER": 'smtp.gmail.com',
-    "MAIL_PORT":  465,
+    "MAIL_PORT":  2525,
     "MAIL_USE_TLS": False,
     "MAIL_USE_SSL": True,
-    "MAIL_USERNAME":  'norbissilvera@hotmail.com', #ACA COLOQUEN EL CORREO DE LA APP DEL ALUMN
-    "MAIL_PASSWORD": '1234', #PASSWORD DEL CORREO DE LA APP DEL ALUMNO
-    "MAIL_DEFAULT_SENDER": 'norbissilvera@hotmail.com'
+    "MAIL_USERNAME":  '8b6c3a3f6be49b', #ACA COLOQUEN EL CORREO DE LA APP DEL ALUMN
+    "MAIL_PASSWORD": '38b846c13d32a1', #PASSWORD DEL CORREO DE LA APP DEL ALUMNO
+    "MAIL_DEFAULT_SENDER": '8b6c3a3f6be49b'
 }
 app.config.update(mail_settings)
 mail = Mail(app)

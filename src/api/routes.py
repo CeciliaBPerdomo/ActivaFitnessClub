@@ -1047,7 +1047,7 @@ def protected():
 
 
 
-@api.route("/contraseña", methods=["POST"])
+@api.route("/cambiarcontra", methods=["POST"])
 def forgotpassword():
     recover_email = request.json['email']
     recover_password = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(8)) #clave aleatoria nueva
