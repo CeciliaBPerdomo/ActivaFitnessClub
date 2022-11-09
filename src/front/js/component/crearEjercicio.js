@@ -13,21 +13,22 @@ export const CrearEjercicio = () => {
   const { actions } = useContext(Context);
 
   const agregarEjercicio = (event) => {
+    //event.preventDefault();
+
     swal({
       title: "Ejercicio Creado",
       icon: "success",
-      button: "Aceptar"
-    })
-    event.preventDefault();
+      button: "Aceptar",
 
-    //Guarda el formulario
-    actions.crearEjercicio(
-      nombreEjercicio,
-      tipoEjercicio,
-      descripcionEjercicio,
-      imagen,
-      video
-    );
+      //Guarda el formulario
+      actions: actions.crearEjercicio(
+        nombreEjercicio,
+        tipoEjercicio,
+        descripcionEjercicio,
+        imagen,
+        video
+      ),
+    });
 
     // Limpia el formulario
     setNombreEjercicio("");
@@ -163,7 +164,7 @@ export const CrearEjercicio = () => {
                 <button
                   type="button"
                   className="btn btn-outline-danger w-50 float-end"
-                  onClick={()=>agregarEjercicio()}
+                  onClick={() => agregarEjercicio()}
                 >
                   Agregar nuevo ejercicio
                 </button>
