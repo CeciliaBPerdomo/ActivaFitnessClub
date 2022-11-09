@@ -24,7 +24,7 @@ const Log_in = () => {
 
             navegacion("/homeUsuario")
         } else if (logged.user.role === "Administrador") {
-            console.log("funciona");
+
             navegacion("/homeAdmin")
 
         } else {
@@ -37,10 +37,7 @@ const Log_in = () => {
 
     }
 
-    // const unirse = (e) => {
-    //     e.preventDefault()
-    //     navegacion.push("/registrarse")
-    // }
+
     return (
         <>
             <div className="bg-loguearse vh-100">
