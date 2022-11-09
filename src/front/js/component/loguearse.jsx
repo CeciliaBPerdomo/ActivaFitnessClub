@@ -54,8 +54,23 @@ const Log_in = () => {
                             {width: "23rem"}
                     }>
                         <div className="card-body">
+                            {/* Titulo */}
+                            <div className="titulo"
+                                style={
+                                    {marginTop: "25px"}
+                            }>
+                                <h1 style={
+                                    {
+                                        justifyContent: "center",
+                                        display: "flex"
+                                    }
+                                }>
+
+                                    Iniciar sesión
+                                </h1>
+                            </div>
                             <div className="mb-3">
-                                <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                                <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
                                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                                     onChange={
                                         (e) => setGuardadoEmail(e.target.value)
@@ -63,10 +78,10 @@ const Log_in = () => {
                                     value={guardadoEmail}
                                     // onKeyDown={}
                                 />
-                                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                                <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
                                 <input type="password" className="form-control" id="exampleInputPassword1"
                                     onChange={
                                         (e) => setGuardadoPassword(e.target.value)
@@ -75,12 +90,20 @@ const Log_in = () => {
                                     // onKeyDown={}
                                 />
                             </div>
-                            <Link className="btn btn-secundary mx-2" type="submit"
-                                to={"/cambiarcontra"}>
-                                <i>¿Has olvidado de tu contraseña?</i>
-                            </Link>
-                            <button type="submit" className="btn btn-primary"
-                                onClick={ingreso}>Submit</button>
+                            <div style={
+                                {
+                                    display: "d-flex",
+                                    justifyContent: "center",
+                                    alignContent: "center"
+                                }
+                            }>
+                                <Link className="btn btn-secundary mx-2" type="submit"
+                                    to={"/cambiarcontra"}>
+                                    <i>¿Has olvidado de tu contraseña?</i>
+                                </Link>
+                                <button type="submit" className="btn btn-primary d-flex content-justify-center"
+                                    onClick={ingreso}>Ingresar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
