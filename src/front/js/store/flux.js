@@ -119,22 +119,18 @@ const getState = ({
             // ************************************************
             cambioPass: async (email) => {
                 try {
-
                     const response = await axios.post(direccion + "/api/cambiarcontra", {
                         email: email,
-
                     });
                     if (response.status === 200) {
                         console.log("Se envió la contraseña");
                     }
-
                 } catch (error) {
                     if (error.code === "ERR_BAD_REQUEST") {
                         console.log(error.response.data.msg);
                     }
                 }
             },
-
 
             // ************************************************
             //                  ALUMNOS						 //
@@ -512,17 +508,9 @@ const getState = ({
             // ************************************************
 
             /* Crea nuevo producto*/
-            crearProducto: async (
-                id,
-                name,
-                stock,
-                sale_price,
-                photo,
-                purchase_price
-            ) => {
+            crearProducto: async (name, stock, sale_price, photo, purchase_price) => {
                 try {
                     const response = await axios.post(direccion + "/api/productos", {
-                        id: id,
                         name: name,
                         stock: stock,
                         sale_price: sale_price,
@@ -539,7 +527,6 @@ const getState = ({
             obtenerProducto: async () => {
                 try {
                     const response = await axios.get(direccion + "/api/productos", {});
-                    console.log(response.data);
                     setStore({
                         productos: response.data,
                     });
@@ -559,7 +546,7 @@ const getState = ({
                     );
                     console.log(response.data);
                     setStore({
-                        productos: response.data,
+                        producto: response.data,
                     });
                 } catch (error) {
                     console.log(error);
@@ -576,6 +563,7 @@ const getState = ({
                         direccion + "/api/productos/" + id, {}
                     );
                     console.log(response);
+                    getActions().obtenerProducto();
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
@@ -602,7 +590,8 @@ const getState = ({
                         photo: photo,
                         purchase_price: purchase_price,
                     });
-                    console.log(response.data);
+                    //console.log(response.data);
+                    getActions().obtenerProducto();
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
