@@ -428,6 +428,59 @@ export const Home = () => {
           </div>
         </div>
       </div>
+
+      <div
+        className="container"
+        style={{ marginTop: "60px", marginBottom: "60px" }}
+      >
+        <div
+          className="container"
+          style={{
+            width: "1200px",
+            height: "300px",
+            display: "flex",
+            alignContent: "center",
+            backgroundColor: "#d2dae2",
+            position: "relative",
+            borderBox: "none",
+          }}
+        >
+          <div
+            className="container"
+            style={{
+              width: "40%",
+              height: "100%",
+            }}
+          >
+            <img
+              src="https://cdns3.fitfit.fitness/uy/media/items/540x280/17238-Activa-Fitness-Club-yYffJ.jpg"
+              style={{
+                width: "375px",
+                marginTop: "40px",
+                position: "relative",
+                filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
+              }}
+            />
+          </div>
+          <div
+            className="container text"
+            style={{
+              widht: "60%",
+              position: "relative",
+              margin: "5px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "50px",
+              }}
+            >
+              Donde nos Encontramos
+            </p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.351810195052!2d-57.8423841850913!3d-34.46859845786764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a313f2236d1c15%3A0x6c5d7dcbab5d10d6!2sActiva%20Fitness%20Club!5e0!3m2!1ses!2suy!4v1668024931885!5m2!1ses!2suy" width="400" height="200" style={{border:"0", marginLeft:"50px"}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
