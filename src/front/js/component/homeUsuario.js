@@ -18,7 +18,7 @@ export const HomeUsuario = () => {
   
 </nav> */}
         <nav className="navbar navbar-dark bg-dark fixed-top">
-            <div className="container-fluid">
+            <div className="container">
                 <Link className="navbar-brand" to="/login">
                     <img src={logo}
                         style={
@@ -31,6 +31,29 @@ export const HomeUsuario = () => {
                 <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                     <span className="navbar-toggler-icon"></span>
                 </button>
+                <ul className="nav justify-content-end">
+  <li className="nav-item">
+    <a className="nav-link active text-white" aria-current="page" href="#">Home</a>
+  </li>
+  <li className="nav-item">
+    <a className="nav-link text-white" href="/vistaEjercicio/1">Ejercicios</a>
+  </li>
+  <li className="nav-item">
+    <a className="nav-link text-white" href="#">Productos</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Tú Opciones de Usuario</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Mi Rutina</a></li>
+      <li><a class="dropdown-item" href="#">Mis Pagos</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+  </li>
+  <li className="nav-item">
+    <a className="nav-link text-white" href="/">Cerrar Sesión</a>
+  </li>
+</ul>
                 <div className="offcanvas offcanvas-end text-bg-dark bg-danger" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                     <div className="offcanvas-header text-light">
                         <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">Bienvenido Usuario</h5>

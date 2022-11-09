@@ -8,10 +8,11 @@ export const HomeAdmin = () => {
     return (
       <>
 <nav className="navbar navbar-dark bg-danger fixed-top">
-  <div className="container-fluid">
+  <div className="container">
     <Link className="navbar-brand" to="/login">
     <img src={logo} style={{maxWidth: "50px", maxHeigth: "50px"}}/>
         </Link>
+        
     <button className="navbar-toggler text-black" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span className="navbar-toggler-icon text-black"></span>
     </button>
@@ -27,9 +28,6 @@ export const HomeAdmin = () => {
             <Link className="nav-link" aria-current="page" to="/#">Rutinas de Clientes</Link>
           </li>
           
-          <li className="nav-item">
-            <Link className="nav-link" aria-current="page" to="/crearRutina">Crear Rutinas</Link>
-          </li>
           <hr className="text-light" />
           
           <li className="nav-item">
@@ -113,6 +111,7 @@ export const HomeAdmin = () => {
     </div>
   </div>
 </nav>
+
             <div className="bg-homeAdmi vh-100">
             <div className="hstack gap-3 p-5" style={{height: "800px"}}>
 
