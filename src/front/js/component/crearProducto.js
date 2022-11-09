@@ -15,13 +15,7 @@ export const CrearProducto = () => {
     event.preventDefault();
 
     //Guarda el formulario
-    actions.crearProducto(
-      nombreProducto,
-      stock,
-      compra,
-      imagen,
-      venta
-    );
+    actions.crearProducto(nombreProducto, stock, compra, imagen, venta);
 
     // Limpia el formulario
     setNombreProducto("");
@@ -38,9 +32,7 @@ export const CrearProducto = () => {
         style={{ marginTop: "20px", marginBottom: "35px" }}
       >
         {/* Titulo */}
-        <h1>
-             Carga de productos
-        </h1>
+        <h1>Carga de productos</h1>
         <br />
 
         {/* Listado de productos */}
@@ -82,7 +74,12 @@ export const CrearProducto = () => {
                   value={nombreProducto}
                 />
               </div>
+            </div>
 
+            <div
+              className="row"
+              style={{ marginBottom: "15px", marginTop: "25px" }}
+            >
               <div className="col">
                 <label htmlFor="nombre" className="form-label">
                   <b>Stock:</b>
@@ -95,12 +92,7 @@ export const CrearProducto = () => {
                   value={stock}
                 />
               </div>
-            </div>
 
-            <div
-              className="row"
-              style={{ marginBottom: "15px", marginTop: "25px" }}
-            >
               <div className="col">
                 <label htmlFor="nombre" className="form-label">
                   <b>Precio de Compra:</b>
@@ -108,10 +100,22 @@ export const CrearProducto = () => {
                 <input
                   type="text"
                   className="form-control"
-                  onChange={(event) =>
-                    setCompra(event.target.value)
-                  }
+                  onChange={(event) => setCompra(event.target.value)}
                   value={compra}
+                />
+              </div>
+
+              <div className="col">
+                <label htmlFor="nombre" className="form-label">
+                  <b>Precio de Venta:</b>
+                </label>
+
+                <input
+                  type="text"
+                  className="form-control"
+                  id="basic-url"
+                  onChange={(event) => setVenta(event.target.value)}
+                  value={venta}
                 />
               </div>
             </div>
@@ -131,20 +135,6 @@ export const CrearProducto = () => {
                   id="basic-url"
                   onChange={(event) => setImagen(event.target.value)}
                   value={imagen}
-                />
-              </div>
-
-              <div className="col">
-                <label htmlFor="nombre" className="form-label">
-                  <b>Precio de Venta:</b>
-                </label>
-
-                <input
-                  type="text"
-                  className="form-control"
-                  id="basic-url"
-                  onChange={(event) => setVenta(event.target.value)}
-                  value={venta}
                 />
               </div>
             </div>
