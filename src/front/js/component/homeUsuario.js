@@ -47,9 +47,9 @@ export const HomeUsuario = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white" href="#">
+              <Link className="nav-link text-white" to="/vistaProducto">
                 Productos
-              </a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <a
@@ -63,9 +63,9 @@ export const HomeUsuario = () => {
               </a>
               <ul className="dropdown-menu bg-danger">
                 <li>
-                  <a className="dropdown-item text-black" href="#">
+                  <Link className="dropdown-item text-black" to="/ListaRutinaDeAlumno/1">
                     Mi Rutina
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item text-black" to={"/mispagos/" + store.profile.id}>

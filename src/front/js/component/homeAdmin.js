@@ -52,10 +52,26 @@ export const HomeAdmin = () => {
     <Link className="navbar-brand" to="/login">
     <img src={logo} style={{maxWidth: "50px", maxHeigth: "50px"}}/>
         </Link>
-        
-    <button className="navbar-toggler text-black" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <Link class="nav-link active text-black" aria-current="page" to="/listaAlumno">Alumnos</Link>
+  </li>
+  <li class="nav-item">
+    <Link class="nav-link text-black" to="/ListadoEjercicios">Ejercicios</Link>
+  </li>
+  <li class="nav-item">
+    <Link class="nav-link text-black" to="/ListadoProductos">Productos</Link>
+  </li>
+  <li className="nav-item">
+              <Link className="nav-link link-light" onClick={() => actions.logOut()} to="/">
+                Cerrar Sesión
+              </Link>
+            </li>
+            <button className="navbar-toggler text-black " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span className="navbar-toggler-icon text-black"></span>
     </button>
+</ul>
     <div className="offcanvas offcanvas-end text-bg-dark bg-black" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div className="offcanvas-header text-light">
         <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">Bienvenido Admin</h5>
@@ -65,7 +81,7 @@ export const HomeAdmin = () => {
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
         
           <li className="nav-item">
-            <Link className="nav-link" aria-current="page" to="/#">Rutinas de Clientes</Link>
+            <Link className="nav-link" aria-current="page" to="/ListaRutinaDeAlumno/1">Rutinas de Clientes</Link>
           </li>
           
           <hr className="text-light" />
@@ -73,13 +89,7 @@ export const HomeAdmin = () => {
           <li className="nav-item">
             <Link className="nav-link" to="/">Pagos de Clientes</Link>
           </li>
-          
-          
-          <li className="nav-item">
-            <Link className="nav-link" to="/listaAlumno">Alumnos</Link>
-          </li>
-          
-          
+        
           <li className="nav-item">
             <Link className="nav-link" aria-current="page" to="/crearAlumno">Ingresar Nuevo Alumno</Link>
           </li>
@@ -174,6 +184,7 @@ export const HomeAdmin = () => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };
