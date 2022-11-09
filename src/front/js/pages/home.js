@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import logo from "../../img/Logo.jpg";
+import logo from "../../img/Logo.png";
 import { Footer } from "../component/footer";
 import pesawebp from "../../img/pesa.webp";
 import ReactPlayer from "react-player";
