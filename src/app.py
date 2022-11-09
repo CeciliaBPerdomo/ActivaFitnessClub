@@ -14,7 +14,7 @@ from api.commands import setup_commands
 from flask_jwt_extended import JWTManager
 #IMPORTAR LA FUNCION Mail() de flask_mail
 from flask_mail import Mail, Message
-
+from datetime import timedelta
 #from models import Person
 
 ENV = os.getenv("FLASK_ENV")
@@ -55,6 +55,7 @@ app.mail= mail
 # Setup the Flask-JWT-Extended extension
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET")  # Change this!
 jwt = JWTManager(app)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=24)
 
 # add the admin
 setup_admin(app)

@@ -37,10 +37,7 @@ const Log_in = () => {
 
     }
 
-    // const unirse = (e) => {
-    //     e.preventDefault()
-    //     navegacion.push("/registrarse")
-    // }
+
     return (
         <>
             <div className="bg-loguearse vh-100">
