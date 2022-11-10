@@ -37,10 +37,15 @@ const Log_in = () => {
 
     }
 
-    // const unirse = (e) => {
-    //     e.preventDefault()
-    //     navegacion.push("/registrarse")
-    // }
+    const DisplayingErrorMessagesSchema = Yup.object().shape({
+        email: Yup.string().email('Invalid email').required('Required'),
+        password: Yup.string()
+          .min(2, 'Too Short!')
+          .max(50, 'Too Long!')
+          .required('Required'),  
+      });
+    
+
     return (
         <>
             <div className="bg-loguearse vh-100">
@@ -69,6 +74,7 @@ const Log_in = () => {
                                     Iniciar sesión
                                 </h1>
                             </div>
+                            <div>
                             <div className="mb-3">
                                 <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
                                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -89,6 +95,7 @@ const Log_in = () => {
                                     value={guardadoPassword}
                                     // onKeyDown={}
                                 />
+                            </div>
                             </div>
                             <div style={
                                 {
