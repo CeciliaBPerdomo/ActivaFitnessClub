@@ -1,97 +1,94 @@
-import React from "react";
-import {Link} from "react-router-dom"
+import React, {useState, useContext, useEffect} from "react";
+import {Link} from "react-router-dom";
+import {Context} from "../store/appContext";
 
-export const VistaProducto = ()  => {
+
+export const VistaProducto = () => {
+    const [cantidadProducto, setCantidadProducto] = useState("")
+    const {actions, store} = useContext(Context);
+    console.log(store.productos);
+
+    const agregar = async (e) => {
+        e.preventDefault()
+
+        console.log(cantidadProducto);
+
+
+    }
+
+    useEffect(() => {
+        actions.obtenerProducto();
+    }, []);
+
+
     return (
-        <> 
-        <div className="container row">
-        <div className="col-sm-4">
-            <div className="card text-center" style={{width:'18rem'}}>
-                    <img src="https://canillalibre.uy/wp-content/uploads/2020/11/Agua-Nativa-Sin-Gas-1-Litro-Pack-x6239-300x300.jpg" className="card-img-top" alt="..."/>
-                <div className="card-body">
-                    <h5 className="card-title">Agua Nativa</h5>
-                    <p>$100</p>
-                    <div>
-    <p>
-      Stock del Producto
-    </p>
-  </div>
-        <div>
-        <select className="form-select" aria-label="Default select example">
-  <option selected>Seleccionar cantidad</option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>
-        </div>
-        <br />
-        <div><button type="button" className="btn btn-outline-success">Agregar al carrito</button>
-        <button type="button" className="btn-close" aria-label="Close"></button>
-        </div>
-                </div>
-                </div>
-            </div>
+        <>
+            <div style={
+                {backgroundColor: ""}
+            }>
+                <hr/>
 
-            <div className="col-sm-4">
-            <div className="card text-center" style={{width:'18rem'}}>
-                    <img src="https://geant.vteximg.com.br/arquivos/ids/287383-200-200/669252.jpg?v=637703307400600000" className="card-img-top" alt="..."/>
-                <div className="card-body">
-                    <h5 className="card-title">Barrita de Cereales</h5>
-                    <p>$100</p>
-                    <div>
-    <p>
-      Stock del Producto
-    </p>
-  </div>
-  <div>
-        <select className="form-select" aria-label="Default select example">
-  <option selected>Seleccionar cantidad</option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>
-        </div>
-        <br />
-        <div><button type="button" className="btn btn-outline-success">Agregar al carrito</button>
-        <button type="button" className="btn-close" aria-label="Close"></button>
-        </div>
+                <div className="text-center">
+                    <h3 className="fw-lighter">Productos</h3>
                 </div>
+                <hr/>
+                <div className="d-flex justify-content-center">
+
+                    <div className="container row">
+                        {
+                        store.productos.map((item, id) => (
+                            <div className="col-sm-4"
+                                key={id}
+                                style={
+                                    {marginBottom: "70px"}
+                            }>
+
+                                <div className="card border-success text-center"
+                                    style={
+                                        {width: '18rem'}
+                                }>
+                                    <br/>
+                                    <br/>
+                                    <div clasName="rounded mx-auto d-block">
+
+                                        <img src={
+                                                item.photo
+                                            }
+                                            className="rounded"
+                                            alt="..."
+                                            style={
+                                                {width: "70px"}
+                                            }/>
+                                    </div>
+                                    <div className="card-body">
+                                        <h5 className="card-title">
+                                            {
+                                            item.name
+                                        }</h5>
+                                        <p>$ {
+                                            item.purchase_price
+                                        }</p>
+                                        <div>
+                                            <p>
+                                                Cantidad: {
+                                                item.stock
+                                            } </p>
+                                        </div>
+                                        <div></div>
+                                        <br/>
+                                        <div>
+                                            <button type="button" className="btn btn-outline-success"
+                                                onClick={agregar}>Agregar al carrito</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        ))
+                    } </div>
                 </div>
             </div>
-            
-            <div className="col-sm-4">
-            <div className="card text-center" style={{width:'18rem'}}>
-                    <img src="https://valsegura.com/wp-content/uploads/2016/02/powerade-ion-icestorm-200x200.jpg" className="card-img-top" alt="..."/>
-                <div className="card-body">
-                    <h5 className="card-title">Powerade</h5>
-                    <p>$100</p>
-                    <div>
-    <p>
-      Stock del Producto
-    </p>
-  </div>
-  <div>
-        <select className="form-select" aria-label="Default select example">
-  <option selected>Seleccionar cantidad</option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>
-        </div>
-        <br />
-        <div><button type="button" className="btn btn-outline-success">Agregar al carrito</button>
-        <button type="button" className="btn-close" aria-label="Close"></button>        
-        </div>
-                </div>
-                </div>
-            </div>
-        </div>
         </>
     )
 }
