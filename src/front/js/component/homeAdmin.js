@@ -53,15 +53,15 @@ export const HomeAdmin = () => {
     <img src={logo} style={{maxWidth: "50px", maxHeigth: "50px"}}/>
         </Link>
       
-    <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <Link class="nav-link active text-black" aria-current="page" to="/listaAlumno">Alumnos</Link>
+    <ul className="nav justify-content-end">
+  <li className="nav-item">
+    <Link className="nav-link active text-black" aria-current="page" to="/listaAlumno">Alumnos</Link>
   </li>
-  <li class="nav-item">
-    <Link class="nav-link text-black" to="/ListadoEjercicios">Ejercicios</Link>
+  <li className="nav-item">
+    <Link className="nav-link text-black" to="/ListadoEjercicios">Ejercicios</Link>
   </li>
-  <li class="nav-item">
-    <Link class="nav-link text-black" to="/ListadoProductos">Productos</Link>
+  <li className="nav-item">
+    <Link className="nav-link text-black" to="/ListadoProductos">Productos</Link>
   </li>
   <li className="nav-item">
               <Link className="nav-link link-light" onClick={() => actions.logOut()} to="/">
