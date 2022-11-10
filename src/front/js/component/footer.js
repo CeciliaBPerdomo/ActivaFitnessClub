@@ -33,6 +33,34 @@ export const Footer = () => (
               }
             />
           </button>
+          <button className="bg-dark center rounded p-0">
+            <img
+              className="center rounded"
+              src="https://cdn.pixabay.com/photo/2021/06/15/12/17/instagram-6338401_1280.png"
+              style={{
+                maxWidth: "30px",
+                maxHeigth: "30px",
+              }}
+              onClick={() =>
+                (window.location.href =
+                  "https://www.instagram.com/activafitnessclub/?hl=es")
+              }
+            />
+          </button>
+          <button className="bg-dark center rounded p-0">
+            <img
+              className="center rounded"
+              src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-3-1.png"
+              style={{
+                maxWidth: "30px",
+                maxHeigth: "30px",
+              }}
+              onClick={() =>
+                (window.location.href =
+                  "https://www.facebook.com/activafitnessclub2020/")
+              }
+            />
+          </button>
         </div>
 </div>
 </div>
