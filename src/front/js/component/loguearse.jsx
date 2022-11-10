@@ -24,7 +24,7 @@ const Log_in = () => {
 
             navegacion("/homeUsuario")
         } else if (logged.user.role === "Administrador") {
-            console.log("funciona");
+
             navegacion("/homeAdmin")
 
         } else {
@@ -37,14 +37,6 @@ const Log_in = () => {
 
     }
 
-    const DisplayingErrorMessagesSchema = Yup.object().shape({
-        email: Yup.string().email('Invalid email').required('Required'),
-        password: Yup.string()
-          .min(2, 'Too Short!')
-          .max(50, 'Too Long!')
-          .required('Required'),  
-      });
-    
 
     return (
         <>
