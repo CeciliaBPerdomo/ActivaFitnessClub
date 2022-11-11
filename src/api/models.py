@@ -194,8 +194,12 @@ class Sales(db.Model):
 
 class ShoppingCart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    idCarrito = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    #Productos
     product_id = db.Column(db.Integer, db.ForeignKey("product.id"))
+    cantidad = db.Column(db.Integer, nullable=False)
+    precio = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return f'<Producto {self.id}>'
@@ -203,9 +207,11 @@ class ShoppingCart(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "idCarrito": self.idCarrito,
             "user_id":self.user_id,
-            "product_id":self.product_id
-
+            "product_id":self.product_id, 
+            "cantidad": self.cantidad,
+            "precio": self.precio
         }
 
 # Mensualidades

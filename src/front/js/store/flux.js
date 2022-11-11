@@ -826,6 +826,31 @@ const getState = ({
             },
 
             // ************************************************
+            //                 CARRITO  					 //
+            //                DE COMPRAS                     //
+            // ************************************************
+            /* Agrega productos al carrito */
+            agregarProdCarrito: async (
+                user_id,
+                idCarrito,
+                product_id,
+                cantidad,
+                precio
+            ) => {
+                try {
+                    await axios.post(direccion + "/api/compras", {
+                        user_id: user_id,
+                        idCarrito: idCarrito,
+                        product_id: product_id,
+                        cantidad: cantidad,
+                        precio: precio,
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            // ************************************************
             //                 PENDIENTES					 //
             // ************************************************
 

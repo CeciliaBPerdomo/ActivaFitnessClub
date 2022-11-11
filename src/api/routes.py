@@ -46,7 +46,6 @@ def handle_hello():
 def createPreference():
     body = json.loads(request.data)
     cuota = body["cuota"]
-    print(cuota)
 # Crea un ítem en la preferencia
     preference_data = {
         "items": [
@@ -730,22 +729,23 @@ def addShoppingCart():
     queryNewShoppingCart= ShoppingCart.query.filter_by(user_id=body["user_id"]).first()
     
     if queryNewShoppingCart is None:
-        new_shoppingCart = ShoppingCart(user_id=body["user_id"],
-        product_id=body["product_id"])
-        
-        db.session.add(new_shoppingCart)
-        db.session.commit()
-        
-        response_body = {
-            "msg": "Nueva compra creada" 
-        }
-        return jsonify(new_shoppingCart.serialize()), 200
-    
-    response_body = {
-        "msg": "Compra ya creada" 
-    }
-    return jsonify(response_body), 400
+        response_body = {"msg": "No existe el usuario"}
+        return jsonify(response_body), 400
 
+    new_shoppingCart = ShoppingCart(
+    user_id=body["user_id"],
+    idCarrito=body["idCarrito"],
+    product_id=body["product_id"],
+    cantidad=body["cantidad"],
+    precio=body["precio"]
+    )
+        
+    db.session.add(new_shoppingCart)
+    db.session.commit()
+        
+    response_body = {"msg": "Producto agregado al carrito"}
+    return jsonify(new_shoppingCart.serialize()), 200
+    
 # Busca por id de compra
 @api.route('/compras/<int:shoppingCart_id>', methods=['GET'])
 def get_shoppingCart(shoppingCart_id):
