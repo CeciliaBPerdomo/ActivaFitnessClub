@@ -7,4 +7,12 @@
     padding-top: 5px;
     padding-left: 100px;
     bottom: 0;
+    align-self: flex-end;
+}
+
+body {
+    background: linear-gradient(to right, #c23616, black);
+    width: 100%;
+    height: 100%;
+    background-position-x: center;
 }

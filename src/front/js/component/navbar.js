@@ -37,21 +37,21 @@ export const Navbar = () => {
             className="collapse navbar-collapse d-flex justify-content-md-end"
             id="navbarSupportedContent"
           >
-            <button className="btn btn-ligth " type="submit">
+            {/* <button className="btn btn-ligth " type="submit">
               <i className="bi bi-calendar3"></i>
-            </button>
+            </button> */}
             <hr />
             {/* <Link className={"btn btn-outline-danger "+visibilidadBoton} type="submit" to="/login">
                             Login
                         </Link> */}
           </div>
           <div>
-            <button
+            {/* <button
               className="btn btn-ligth d-flex flex-row-reverse"
               type="submit"
             >
               <i className="bi bi-question-circle"></i>
-            </button>
+            </button> */}
           </div>
         </div>
       </nav>
