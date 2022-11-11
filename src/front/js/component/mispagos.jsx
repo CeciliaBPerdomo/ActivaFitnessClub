@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import titulo from "../../img/Cabeceras/pagos.jpg";
 
 // ///////////////////////////////////////////
 // CLIENTE PUEDE VER LISTADO DE SUS PAGOS  //
@@ -12,12 +13,16 @@ export const MisPagos = () => {
 
   useEffect(() => {
     actions.obtenerMensualidadId(parseInt(params.theid));
-    actions.obtenerAlumnoId(parseInt(params.theid));
-    actions.pagoMercadoPago();
+
+    const getInfo = async () => {
+      let { cuota } = await actions.obtenerAlumnoId(parseInt(params.theid));
+      //Mercado pago
+      actions.pagoMercadoPago(cuota);
+    };
+    getInfo();
   }, []);
 
   const pagoMercadoPago = () => {
-    console.log(store?.mercadopago);
     window.location.replace(store?.mercadopago.sandbox_init_point);
   };
 
@@ -27,7 +32,7 @@ export const MisPagos = () => {
       <button
         type="button"
         className="btn btn-outline-danger justify-content-md-end float-end"
-        style={{ marginRight: "70px" }}
+        style={{ marginRight: "125px" }}
         onClick={pagoMercadoPago}
       >
         Pagar mensualidad on-line
@@ -36,6 +41,7 @@ export const MisPagos = () => {
       <div className="container">
         <div>
           <br />
+          {/* <img src={titulo} style={{ width: "75%", height: "150px" }} /> */}
           <h1>Mis pagos</h1>
           <br />
         </div>
@@ -44,24 +50,32 @@ export const MisPagos = () => {
         <table className="table table-hover table-secondary">
           <thead>
             <tr>
-              {" "}
               {/* Cabezeras */}
-              <th scope="col">Fecha de ingreso</th>
-              <th scope="col">Fecha de pago</th>
-              <th scope="col">Monto</th>
-              <th scope="col">Factura</th>
+              <th scope="col" className="text-center">
+                Fecha de ingreso
+              </th>
+              <th scope="col" className="text-center">
+                Fecha de pago
+              </th>
+              <th scope="col" className="text-center">
+                Monto
+              </th>
+              <th scope="col" className="text-center">
+                Factura
+              </th>
               <th scope="col">Descripción</th>
             </tr>
           </thead>
 
           <tbody>
-            {" "}
             {store.mens.map((item, id) => (
               <tr key={id}>
-                <td>{store.alumno.date_of_admission}</td>
-                <td>{item.payment_date}</td>
-                <td>{item.payment_amount}</td>
-                <td>{item.bill_n}</td>
+                <td className="text-center">
+                  {store.alumno.date_of_admission}
+                </td>
+                <td className="text-center">{item.payment_date}</td>
+                <td className="text-center">$ {item.payment_amount}</td>
+                <td className="text-center">{item.bill_n}</td>
                 <td>{item.description}</td>
               </tr>
             ))}{" "}
