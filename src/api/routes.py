@@ -45,14 +45,15 @@ def handle_hello():
 @api.route('/createPreference', methods=['POST'])
 def createPreference():
     body = json.loads(request.data)
-
+    cuota = body["cuota"]
+    print(cuota)
 # Crea un ítem en la preferencia
     preference_data = {
         "items": [
             {
                 "title": "Pagos on-line Activa Fitness",
                 "quantity": 1,
-                "unit_price": 75.76,
+                "unit_price": cuota
             }
         ], 
         # Adonde te re-dirige en caso de exito total / o no
@@ -67,11 +68,7 @@ def createPreference():
     preference_response = sdk.preference().create(preference_data)
     preference = preference_response["response"]
     return preference
-    print(preference)
-
-    #return jsonify(new_user.serialize()), 200 
-
-    
+   
 
 #######################################
 ##                                   ##

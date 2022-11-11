@@ -32,10 +32,12 @@ const getState = ({
             // ************************************************
             //                 MERCADO PAGO  				 //
             // ************************************************
-            pagoMercadoPago: async ( /*aca deberian ir los productos */ ) => {
+            pagoMercadoPago: async (cuota) => {
                 try {
                     const response = await axios.post(
-                        direccion + "/api/createPreference", {}
+                        direccion + "/api/createPreference", {
+                            cuota: cuota,
+                        }
                     );
                     setStore({
                         mercadopago: response.data,
@@ -235,6 +237,7 @@ const getState = ({
                     setStore({
                         alumno: response.data,
                     });
+                    return response.data;
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
