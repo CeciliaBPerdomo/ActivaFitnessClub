@@ -16,6 +16,7 @@ export const Producto = () => {
         <div style={{ marginBottom: "10px", marginTop: "10px" }}>
           <h1>Producto:</h1>
           <br />
+
           <Link to={"/ListadoProductos"}>
             <button
               type="button"
