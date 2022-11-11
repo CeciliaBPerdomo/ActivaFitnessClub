@@ -37,6 +37,7 @@ import { ListadoProductos } from "./component/listadoProductos.jsx";
 import { CrearProducto } from "./component/crearProducto";
 import { EditarProducto } from "./component/modificarProducto.jsx";
 import { Producto } from "./component/producto.jsx";
+import { Calendario } from "./component/calendario.jsx";
 
 // create your first component
 const Layout = () => {
@@ -100,6 +101,7 @@ const Layout = () => {
             <Route element={<CrearProducto />} path="/crearProducto" />
             <Route element={<EditarProducto />} path="/editarProducto/:theid" />
             <Route element={<Producto />} path="/producto/:theid" />
+            <Route element={<Calendario />} path="/calendario" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

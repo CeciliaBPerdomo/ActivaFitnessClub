@@ -47,10 +47,9 @@ export const Home = () => {
             className="collapse navbar-collapse d-flex justify-content-md-end"
             id="navbarSupportedContent"
           >
-            <button className="btn btn-ligth " type="submit">
+            {/* <button className="btn btn-ligth " type="submit">
               <i className="bi bi-calendar3"></i>
-            </button>
-            <hr />
+            </button> */}
             <Link to="/login">
               <button className="btn btn-danger" type="submit">
                 Login
@@ -127,7 +126,7 @@ export const Home = () => {
       {/* FIN DE PORTADA */}
       {/* Filosofia */}
       <div
-        className="container "
+        className="container"
         style={{ marginTop: "60px", marginBottom: "30px" }}
       >
         <div
