@@ -26,8 +26,26 @@ const getState = ({
             auth: false,
             profile: {},
             rutinasEjercicios: [],
+            mercadopago: {},
         },
         actions: {
+            // ************************************************
+            //                 MERCADO PAGO  				 //
+            // ************************************************
+            pagoMercadoPago: async ( /*aca deberian ir los productos */ ) => {
+                try {
+                    const response = await axios.post(
+                        direccion + "/api/createPreference", {}
+                    );
+                    setStore({
+                        mercadopago: response.data,
+                    });
+                    console.log(response.data);
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
             // ************************************************
             //                 LOGIN     					 //
             // ************************************************
@@ -39,8 +57,6 @@ const getState = ({
                         email: email,
                         password: password,
                     });
-                    console.log(response);
-
                     localStorage.setItem("token", response.data.access_token);
                     setStore({
                         auth: true,
@@ -285,7 +301,6 @@ const getState = ({
                     const response = await axios.get(
                         direccion + "/api/mensualidad/" + id, {}
                     );
-                    console.log(response.data);
                     setStore({
                         mens: response.data,
                     });
@@ -544,7 +559,6 @@ const getState = ({
                     const response = await axios.get(
                         direccion + "/api/productos/" + id, {}
                     );
-                    console.log(response.data);
                     setStore({
                         producto: response.data,
                     });
