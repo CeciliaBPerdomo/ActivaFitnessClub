@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import logo from "../../img/Logo.png";
 import "../../styles/homeAdmi.css";
 
@@ -55,19 +55,24 @@ export const HomeAdmin = () => {
       
     <ul className="nav justify-content-end">
   <li className="nav-item">
-    <Link className="nav-link active text-black" aria-current="page" to="/listaAlumno">Alumnos</Link>
+    <Link className="nav-link active text-black" aria-current="page" to="/listaAlumno"><strong>Alumnos</strong></Link>
   </li>
   <li className="nav-item">
-    <Link className="nav-link text-black" to="/ListadoEjercicios">Ejercicios</Link>
+    <Link className="nav-link text-black" to="/ListadoEjercicios"><strong>Ejercicios</strong></Link>
   </li>
   <li className="nav-item">
-    <Link className="nav-link text-black" to="/ListadoProductos">Productos</Link>
+    <Link className="nav-link text-black" to="/ListadoProductos"><strong>Productos</strong></Link>
   </li>
   <li className="nav-item">
               <Link className="nav-link link-light" onClick={() => actions.logOut()} to="/">
-                Cerrar Sesión
+              <strong>Cerrar Sesión</strong>
               </Link>
             </li>
+            <li className="nav-item">
+    <Link className="nav-link active text-black" aria-current="page" to="/calendario">
+              <i className="bi bi-calendar3"></i>
+    </Link>
+  </li>
             <button className="navbar-toggler text-black " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span className="navbar-toggler-icon text-black"></span>
     </button>
@@ -77,7 +82,21 @@ export const HomeAdmin = () => {
         <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">Bienvenido Admin</h5>
         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
+      <hr className="text-light" />
       <div className="offcanvas-body">
+      {/* <form className="d-flex mt-3" role="search">
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Buscar"
+                  aria-label="Buscar"
+              
+                />
+                <button className="btn btn-success" type="submit">
+                <i className="fas fa-search"></i>
+                </button>
+              </form>
+              <hr className="text-light" /> */}
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
         
           <li className="nav-item">
@@ -102,7 +121,7 @@ export const HomeAdmin = () => {
           
           
           <li className="nav-item">
-            <Link className="nav-link" aria-current="page" to="/">Carrito</Link>
+            <Link className="nav-link" aria-current="page" to="/carrito">Carrito</Link>
           </li>
           
           <hr className="text-light" />
@@ -123,47 +142,7 @@ export const HomeAdmin = () => {
           </li>
           
           <hr className="text-light" />
-          <li className="nav-item dropdown">
-            <Link className="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Otras Opciones
-            </Link>
-            <ul className="dropdown-menu dropdown-menu-dark">
-                
-                    <li>
-                      <Link className="dropdown-item" to="/quienesSomos">
-                        Quienes Somos
-                      </Link>
-                    </li>
-
-                    <li>
-                      <Link className="dropdown-item" to="/planes">
-                        Nuestros Planes
-                      </Link>
-                    </li>
-
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-
-                    <li>
-                      <Link className="dropdown-item" to="/">
-                        Cerrar Sesión
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
               </ul>
-              <form className="d-flex mt-3" role="search">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-success" type="submit">
-                  Search
-                </button>
-              </form>
               <br />
               {/* <div className="embed-responsive embed-responsive-16by9">
         <iframe width="370" height="215" src="https://www.youtube.com/embed/ag9EWDlrPR4" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
