@@ -70,7 +70,7 @@ export const Home = () => {
       {/* FIN DE NAVBAR */}
       {/* COMIENZO PORTADA */}
       <div
-        className="container "
+        className="container"
         style={{
           width: "1200px",
           height: "500px",
