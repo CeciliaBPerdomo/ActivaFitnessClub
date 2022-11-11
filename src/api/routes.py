@@ -16,6 +16,13 @@ from flask_mail import Message, Mail
 import random 
 import string
 from sqlalchemy import desc
+import os
+
+# SDK de Mercado Pago
+import mercadopago
+# Agrega credenciales
+sdk = mercadopago.SDK(os.getenv('ACCESS_TOKEN'))
+
 
 api = Blueprint('api', __name__)
 
@@ -24,10 +31,47 @@ api = Blueprint('api', __name__)
 def handle_hello():
 
     response_body = {
-        "message": "Probando el back - Ceci"
+        "message": "Probando el back"
     }
 
     return jsonify(response_body), 200
+
+#######################################
+##                                   ##
+##      MERCADO PAGO                 ##
+##                                   ## 
+#######################################
+
+@api.route('/createPreference', methods=['POST'])
+def createPreference():
+    body = json.loads(request.data)
+
+# Crea un ítem en la preferencia
+    preference_data = {
+        "items": [
+            {
+                "title": "Pagos on-line Activa Fitness",
+                "quantity": 1,
+                "unit_price": 75.76,
+            }
+        ], 
+        # Adonde te re-dirige en caso de exito total / o no
+        "back_urls": {
+	     	"success": "https://3000-ceciliabper-activafitne-6190l7lo399.ws-us75.gitpod.io/",
+	 		"failure": "https://3000-ceciliabper-activafitne-6190l7lo399.ws-us75.gitpod.io/",
+	 		"pending": "https://3000-ceciliabper-activafitne-6190l7lo399.ws-us75.gitpod.io/"
+	     },
+        "auto_return": "approved"
+    }
+
+    preference_response = sdk.preference().create(preference_data)
+    preference = preference_response["response"]
+    return preference
+    print(preference)
+
+    #return jsonify(new_user.serialize()), 200 
+
+    
 
 #######################################
 ##                                   ##
