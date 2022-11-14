@@ -27,6 +27,7 @@ const getState = ({
             profile: {},
             rutinasEjercicios: [],
             mercadopago: {},
+            carrito: [],
         },
         actions: {
             // ************************************************
@@ -826,6 +827,64 @@ const getState = ({
             },
 
             // ************************************************
+            //                 CARRITO  					 //
+            //                DE COMPRAS                     //
+            // ************************************************
+            /* Agrega productos al carrito */
+            agregarProdCarrito: async (
+                user_id,
+                idCarrito,
+                product_id,
+                cantidad,
+                precio
+            ) => {
+                try {
+                    await axios.post(direccion + "/api/compras", {
+                        user_id: user_id,
+                        idCarrito: idCarrito,
+                        product_id: product_id,
+                        cantidad: cantidad,
+                        precio: precio,
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
+            //Mostrar todos los productos del carrito
+            obtenerCarrito: async (idCarrito) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/compras/" + idCarrito, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        carrito: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // Borra productos del carrito
+            borrarProductoCarrito: async (idCarrito, idProducto) => {
+                try {
+                    await axios.delete(
+                        direccion + "/api/compra/" + idCarrito + "/" + idProducto, {}
+                    );
+                    getActions().obtenerCarrito(idCarrito);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // ************************************************
             //                 PENDIENTES					 //
             // ************************************************
 
@@ -953,8 +1012,5 @@ const getState = ({
         },
     };
 };
-
-// };
-// };
 
 export default getState;
