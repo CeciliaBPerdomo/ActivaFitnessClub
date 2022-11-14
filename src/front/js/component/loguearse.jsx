@@ -6,19 +6,22 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import fondologin from "../../img/fondologin.png";
 import "../../styles/loginn.css";
+
 // Validacion formulario
 const signupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().required("Required"),
 });
+
 function Log_in() {
-  // const [guardadoEmail, setGuardadoEmail] = useState("");
-  // const [guardadoPassword, setGuardadoPassword] = useState("");
-  // const {actions, store} = useContext(Context);
-  // let navegacion = useNavigate();
-  // // Prevenir el envio
+  const [guardadoEmail, setGuardadoEmail] = useState("");
+  const [guardadoPassword, setGuardadoPassword] = useState("");
+  const { actions, store } = useContext(Context);
+  let navegacion = useNavigate();
+
+  // Prevenir el envio
   const ingreso = async (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     let logged = await actions.login(values.email, values.password);
     console.log(logged);
     if (logged.user.role === "Alumno") {
@@ -28,7 +31,6 @@ function Log_in() {
     } else {
       null;
     }
-   
   };
   return (
     <div className="bg-loguearse vh-100">
@@ -51,8 +53,8 @@ function Log_in() {
                 password: "",
               }}
               validationSchema={signupSchema}
-              onSubmit={(values) => {ingreso()
-                console.log(values);
+              onSubmit={() => {
+                ingreso();
               }}
             >
               {({ errors, touched }) => (
@@ -106,7 +108,6 @@ function Log_in() {
                     <button
                       type="submit"
                       className="btn btn-primary d-flex content-justify-center"
-                      
                     >
                       Ingresar
                     </button>
