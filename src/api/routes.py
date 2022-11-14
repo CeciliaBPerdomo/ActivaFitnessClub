@@ -714,7 +714,6 @@ def get_routinesEjercbyId(idUsuario):
 # Muestra todas las compras
 @api.route('/compras', methods=['GET'])
 def getShoppingCart():
-    
     shoppingCart = ShoppingCart.query.all()
     results = list(map(lambda x: x.serialize(), shoppingCart ))
 
@@ -726,7 +725,7 @@ def getShoppingCart():
 def addShoppingCart():
     body = json.loads(request.data)
 
-    queryNewShoppingCart= ShoppingCart.query.filter_by(user_id=body["user_id"]).first()
+    queryNewShoppingCart= User.query.filter_by(id=body["user_id"]).first()
     
     if queryNewShoppingCart is None:
         response_body = {"msg": "No existe el usuario"}
@@ -749,14 +748,14 @@ def addShoppingCart():
 # Busca por id de compra
 @api.route('/compras/<int:shoppingCart_id>', methods=['GET'])
 def get_shoppingCart(shoppingCart_id):
-    shoppingCartId = ShoppingCart.query.filter_by(id=shoppingCart_id).first()
+    shoppingCartId = ShoppingCart.query.filter_by(idCarrito=shoppingCart_id).all()
+    results = list(map(lambda x: {**x.serializeProductos(), **x.serialize()}, shoppingCartId))
 
-    if shoppingCartId is None: 
+    if results is None: 
         response_body = {"msg": "Compra no encontrada"}
         return jsonify(response_body), 400
 
-    shoppingCart= shoppingCartId.serialize()
-    return jsonify(routines), 200
+    return jsonify(results), 200
 
 # # Busca por id de usuario
 @api.route('/compra/<int:user_id>', methods=['GET'])
@@ -772,9 +771,8 @@ def get_shoppingCart_userId(user_id):
 #Borra una compra
 @api.route('/compras/<int:shoppingCart_id>', methods=['DELETE'])
 def deleteShoppingCart(shoppingCart_id):
-    shoppingCartId= Routines.query.filter_by(id=shoppingCart_id).first()
-
-  
+    shoppingCartId= ShoppingCart.query.filter_by(id=shoppingCart_id).first()
+ 
     if shoppingCartId is None: 
         response_body = {"msg": "Compra no encontrada"}
         return jsonify(response_body), 400
@@ -783,6 +781,23 @@ def deleteShoppingCart(shoppingCart_id):
     db.session.commit()
     response_body = {"msg": "Rutina borrada"}
     return jsonify(response_body), 200
+
+#Borra un producto del carrito de compra
+@api.route('/compra/<int:shoppingCart_id>/<int:productid>', methods=['DELETE'])
+def deleteProductShoppingCart(shoppingCart_id, productid):
+    shoppingCartId= ShoppingCart.query.filter_by(id=shoppingCart_id).first()
+    shoppingCartId = shoppingCartId.query.filter_by(product_id=productid).first()
+ 
+    if shoppingCartId is None: 
+        response_body = {"msg": "Producto no encontrado"}
+        return jsonify(response_body), 400
+
+    db.session.delete(shoppingCartId)
+    db.session.commit()
+
+    response_body = {"msg": "Producto borrado del carrito"}
+    return jsonify(response_body), 200
+
 
 # Modifica una compra por id
 @api.route('/compras/<int:shoppingCart_id>', methods=['PUT'])
@@ -800,8 +815,6 @@ def shoppingCartModif_porId(shoppingCart_id):
 
     if "product_id" in body:
         shoppingCart.product_id = body["product_id"]
-
-    
 
     db.session.commit()
 
