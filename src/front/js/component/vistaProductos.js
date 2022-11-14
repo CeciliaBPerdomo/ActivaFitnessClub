@@ -13,7 +13,7 @@ export const VistaProducto = () => {
     actions.obtenerAlumnoId(1);
   }, []);
 
-  const agregar = async (e, producto) => {
+  const agregar = (e, producto) => {
     e.preventDefault();
 
     //Datos que se envian
@@ -36,15 +36,17 @@ export const VistaProducto = () => {
 
         {/* Finaliza la compra */}
         <div style={{ marginBottom: "60px", marginTop: "0px" }}>
-          <button
-            type="button"
-            className="btn btn-outline-danger float-end"
-            style={{
-              marginRight: "10px",
-            }}
-          >
-            Finalizar compra
-          </button>
+          <Link to="/carrito/">
+            <button
+              type="button"
+              className="btn btn-outline-danger float-end"
+              style={{
+                marginRight: "10px",
+              }}
+            >
+              Finalizar compra
+            </button>
+          </Link>
         </div>
         <hr />
         <div className="text-center">
@@ -76,7 +78,7 @@ export const VistaProducto = () => {
                       <i className="fa fa-cart-plus"></i>
                     </button>
                   </div>
-                  <div clasName="rounded mx-auto d-block">
+                  <div className="rounded mx-auto d-block">
                     <img
                       src={item.photo}
                       className="rounded"

@@ -180,7 +180,7 @@ class Sales(db.Model):
     amount = db.Column(db.String(80), nullable=False)
 
     def __repr__(self):
-        return f'<Producto {self.id}>'
+        return f'<Sales {self.id}>'
 
     def serialize(self):
         return {
@@ -190,8 +190,7 @@ class Sales(db.Model):
             "amount": self.amount
         }
 
-
-
+# Carrito de compras
 class ShoppingCart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     idCarrito = db.Column(db.Integer, nullable=False)
@@ -202,7 +201,7 @@ class ShoppingCart(db.Model):
     precio = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return f'<Producto {self.id}>'
+        return f'<ShoppingCart {self.id}>'
 
     def serialize(self):
         return {
@@ -212,6 +211,12 @@ class ShoppingCart(db.Model):
             "product_id":self.product_id, 
             "cantidad": self.cantidad,
             "precio": self.precio
+        }
+    
+    def serializeProductos(self):
+        results = Product.query.filter_by(id = self.product_id).first()
+        return {
+            "productInfo": results.serialize(),
         }
 
 # Mensualidades
@@ -266,30 +271,3 @@ class Outstanding(db.Model):
             "user_id":self.user_id,
             "product_id":self.product_id
         }
-
-
-#class Routines(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     series = db.Column(db.String(80), nullable=False)
-#     repetitions = db.Column(db.String(80), nullable=False)
-#     burden = db.Column(db.String(80), nullable=False)
-#     week = db.Column(db.String(80), nullable=False)
-#     finish = db.Column(db.String(80), nullable=False)
-
-#     excercise_id = db.relationship('Exercise', backref="routines", cascade="all, delete-orphan", lazy=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-
-#     def __repr__(self):
-#         return f'<Routines {self.id}>'
-
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "series": self.series,
-#             "repetitions": self.repetitions,
-#             "burden": self.burden,
-#             "week": self.week,
-#             "finish": self.finish,
-            
-#             "user_id":self.user_id
-#         }
