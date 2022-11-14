@@ -6,7 +6,6 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import fondologin from "../../img/fondologin.png";
 import "../../styles/loginn.css";
-
 // Validacion formulario
 const signupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -17,7 +16,23 @@ function Log_in() {
   // const [guardadoPassword, setGuardadoPassword] = useState("");
   const { actions, store } = useContext(Context);
   let navegacion = useNavigate();
+  // // Prevenir el envio
 
+  // const ingreso = async (e) => {
+  //   e.preventDefault();
+  //   let logged = await actions.login(
+  //     values.email,
+  //     store.profile?.password
+  //   );
+  //   console.log(logged);
+  //   if (logged.user.role === "Alumno") {
+  //     navegacion("/homeUsuario");
+  //   } else if (logged.user.role === "Administrador") {
+  //     navegacion("/homeAdmin");
+  //   } else {
+  //     null;
+  //   }
+  // };
   return (
     <div className="bg-loguearse vh-100">
       <div style={{ width: "100%" }} className="d-flex justify-content-center">
@@ -64,10 +79,10 @@ function Log_in() {
                       className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                    />{" "}
+                    />
                     {touched.email && errors.email && (
                       <div className="text-danger">{errors.email}</div>
-                    )}{" "}
+                    )}
                   </div>
                   <div className="mb-3">
                     <label
@@ -81,10 +96,10 @@ function Log_in() {
                       type="password"
                       className="form-control"
                       id="exampleInputPassword1"
-                    />{" "}
+                    />
                     {touched.password && errors.password && (
                       <div className="text-danger">{errors.password}</div>
-                    )}{" "}
+                    )}
                   </div>
                   <div
                     style={{
@@ -108,7 +123,7 @@ function Log_in() {
                     </button>
                   </div>
                 </Form>
-              )}{" "}
+              )}
             </Formik>
           </div>
         </div>
