@@ -28,6 +28,7 @@ const getState = ({
             rutinasEjercicios: [],
             mercadopago: {},
             carrito: [],
+            idCarrito: {},
         },
         actions: {
             // ************************************************
@@ -876,6 +877,23 @@ const getState = ({
                         direccion + "/api/compra/" + idCarrito + "/" + idProducto, {}
                     );
                     getActions().obtenerCarrito(idCarrito);
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            //Crea el id del Carrito (si dios me ayuda)
+            crearIdCarrito: async (idUsuario) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/compra/" + idUsuario, {}
+                    );
+                    setStore({
+                        idCarrito: response.data.idCarrito + 1,
+                    });
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {

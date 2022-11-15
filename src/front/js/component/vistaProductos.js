@@ -9,16 +9,21 @@ export const VistaProducto = () => {
 
   useEffect(() => {
     actions.obtenerProducto();
-    //actions.obtenerAlumnoId(parseInt(params.theid))
-    actions.obtenerAlumnoId(1);
+    actions.obtenerAlumnoId(parseInt(params.theid));
+
+    const getInfo = async () => {
+      await actions.crearIdCarrito(store.alumno.id);
+    };
+    getInfo();
   }, []);
 
+  let idCarrito = 2;
   const agregar = (e, producto) => {
     e.preventDefault();
 
     //Datos que se envian
     let idAlumno = store.alumno.id;
-    let idCarrito = 1;
+    //let idCarrito = store.idCarrito;
     let idProd = producto.id;
     let cantidad = 1;
     let precio = producto.sale_price;
@@ -36,7 +41,7 @@ export const VistaProducto = () => {
 
         {/* Finaliza la compra */}
         <div style={{ marginBottom: "60px", marginTop: "0px" }}>
-          <Link to="/carrito/">
+          <Link to={"/carrito/" + idCarrito}>
             <button
               type="button"
               className="btn btn-outline-danger float-end"
