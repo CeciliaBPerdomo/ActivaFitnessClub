@@ -9,13 +9,12 @@ export const Carrito = () => {
   let total = 0;
 
   useEffect(() => {
-    //actions.obtenerCarrito(parseInt(params.theid))
-    // Datos del usuario
     const getInfo = async () => {
-      //await actions.obtenerAlumnoId(parseInt(store.carrito.user_id));
-      await actions.obtenerAlumnoId(1);
-      let idCarrito = 1;
-      await actions.obtenerCarrito(idCarrito);
+      //let idCarrito = 2;
+      await actions.obtenerCarrito(parseInt(params.theid));
+      //await actions.obtenerCarrito(idCarrito);
+      // Datos del usuario
+      await actions.obtenerAlumnoId(parseInt(store.carrito.user_id));
     };
 
     getInfo();
@@ -54,7 +53,7 @@ export const Carrito = () => {
           <div className="col" style={{ marginBottom: "25px" }}>
             <div className="card">
               <div className="card-header">
-                <h2> Carrito de compras</h2>
+                <h2>Carrito de compras</h2>
               </div>
               <ul className="list-group list-group-flush">
                 <div className="card mb-3">
@@ -64,7 +63,7 @@ export const Carrito = () => {
                       className="row g-0"
                       style={{ marginBottom: "15px" }}
                     >
-                      <div className="col-md-2">
+                      <div className="col-md-2" style={{ marginTop: "10px" }}>
                         <img
                           src={item.productInfo.photo}
                           className="card-img-top"

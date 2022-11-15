@@ -90,7 +90,7 @@ const Layout = () => {
               path="/editarMensualidad/:theid"
             />
             <Route element={<HomeAdmin />} path="/homeAdmin" />
-            <Route element={<Carrito />} path="/carrito" />
+            <Route element={<Carrito />} path="/carrito/:theid" />
             <Route element={<ListadoEjercicios />} path="/ListadoEjercicios" />
             <Route
               element={<ListaRutinaDeAlumno />}
