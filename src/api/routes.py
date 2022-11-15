@@ -18,6 +18,7 @@ import string
 from sqlalchemy import desc
 import os
 
+
 # SDK de Mercado Pago
 import mercadopago
 # Agrega credenciales
@@ -90,6 +91,10 @@ def addUser():
     body = json.loads(request.data)
 
     queryNewUser = User.query.filter_by(email=body["email"]).first()
+
+    #Password
+    pw_hash = current_app.bcrypt.generate_password_hash(body["password"]).decode("utf-8")
+    print(pw_hash)
     
     if queryNewUser is None:
         new_user = User(ci=body["ci"],
@@ -103,7 +108,7 @@ def addUser():
         medicines = body["medicines"],
         training_goals = body["training_goals"],
         email = body["email"], 
-        password = body["password"],
+        password = pw_hash,
         activities = body["activities"],
         role = body["role"],
         is_active = body["is_active"],
@@ -1054,12 +1059,18 @@ def outstandingModif_porId(outstanding_id):
 def login():
     email = request.json.get("email", None) #Formas de recibir el front
     password = request.json.get("password", None) #Formas de recibir el front
+
     login_user = User.query.filter_by(email=email).first()
+
     if login_user is None:
          return jsonify({"msg":"User dont exist"}), 404
-    if email != login_user.email or password != login_user.password:
+
+    checkPass = current_app.bcrypt.check_password_hash(login_user.password, password)
+
+    if email != login_user.email or not checkPass:
         return jsonify({"msg":'Bad email or password'}), 401
-#crea el acceso y devuelve un token a las personas al loguearse
+
+    #crea el acceso y devuelve un token a las personas al loguearse
     access_token = create_access_token(identity=email)
     response_body={
         "access_token":access_token,

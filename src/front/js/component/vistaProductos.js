@@ -89,7 +89,7 @@ export const VistaProducto = () => {
                       className="rounded"
                       style={{
                         width: "200px",
-                        height: "150px",
+                        height: "175px",
                         marginTop: "10px",
                       }}
                     />
