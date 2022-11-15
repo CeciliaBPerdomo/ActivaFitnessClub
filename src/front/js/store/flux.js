@@ -894,6 +894,7 @@ const getState = ({
                     setStore({
                         idCarrito: response.data.idCarrito + 1,
                     });
+                    return response.data.idCarrito + 1;
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
