@@ -17,6 +17,10 @@ from flask_mail import Mail, Message
 from datetime import timedelta
 #from models import Person
 
+#Encriptacion de la password
+from flask_bcrypt import Bcrypt
+
+
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
@@ -56,6 +60,10 @@ app.mail= mail
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET")  # Change this!
 jwt = JWTManager(app)
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=24)
+
+# Clave
+bcrypt = Bcrypt(app)
+app.bcrypt = bcrypt
 
 # add the admin
 setup_admin(app)

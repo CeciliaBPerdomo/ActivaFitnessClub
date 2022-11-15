@@ -63,7 +63,10 @@ export const Carrito = () => {
                       className="row g-0"
                       style={{ marginBottom: "15px" }}
                     >
-                      <div className="col-md-2" style={{ marginTop: "10px" }}>
+                      <div
+                        className="col-md-2"
+                        style={{ marginTop: "10px", marginLeft: "15px" }}
+                      >
                         <img
                           src={item.productInfo.photo}
                           className="card-img-top"
