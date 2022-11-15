@@ -12,18 +12,19 @@ export const VistaProducto = () => {
     actions.obtenerAlumnoId(parseInt(params.theid));
 
     const getInfo = async () => {
-      await actions.crearIdCarrito(store.alumno.id);
+      let { id } = await actions.obtenerAlumnoId(parseInt(params.theid));
+      await actions.crearIdCarrito(id);
     };
+
     getInfo();
   }, []);
 
-  let idCarrito = 2;
   const agregar = (e, producto) => {
     e.preventDefault();
 
     //Datos que se envian
     let idAlumno = store.alumno.id;
-    //let idCarrito = store.idCarrito;
+    let idCarrito = store.idCarrito;
     let idProd = producto.id;
     let cantidad = 1;
     let precio = producto.sale_price;
@@ -41,7 +42,7 @@ export const VistaProducto = () => {
 
         {/* Finaliza la compra */}
         <div style={{ marginBottom: "60px", marginTop: "0px" }}>
-          <Link to={"/carrito/" + idCarrito}>
+          <Link to={"/carrito/" + store.idCarrito}>
             <button
               type="button"
               className="btn btn-outline-danger float-end"

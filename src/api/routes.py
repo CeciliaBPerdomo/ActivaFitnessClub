@@ -773,7 +773,7 @@ def get_shoppingCart_userId(userid):
         return jsonify(ultimoid.serialize()), 200
     
     #Existe el carrito para ese usuario
-    return jsonify(results), 200
+    return jsonify(queryNewShoppingCart.serialize()), 200
 
 #Borra una compra
 @api.route('/compras/<int:shoppingCart_id>', methods=['DELETE'])
