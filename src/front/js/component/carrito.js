@@ -7,12 +7,11 @@ export const Carrito = () => {
   const { actions, store } = useContext(Context);
   const params = useParams();
   let total = 0;
+  const [cantidad, setCantidad] = useState(1);
 
   useEffect(() => {
     const getInfo = async () => {
-      //let idCarrito = 2;
       await actions.obtenerCarrito(parseInt(params.theid));
-      //await actions.obtenerCarrito(idCarrito);
       // Datos del usuario
       await actions.obtenerAlumnoId(parseInt(store.carrito.user_id));
     };
@@ -34,6 +33,11 @@ export const Carrito = () => {
     //Mercado pago
     await actions.pagoMercadoPago(total);
     window.location.replace(store?.mercadopago.sandbox_init_point);
+  };
+
+  const cambioCantidad = (cantidad, item) => {
+    console.log(cantidad);
+    console.log(item);
   };
 
   return (
@@ -84,10 +88,15 @@ export const Carrito = () => {
                           <select
                             className="form-select"
                             id="inputGroupSelect01"
+                            onChange={(e) => setCantidad(e.target.value)}
+                            value={cantidad}
+                            onClick={() => cambioCantidad(cantidad, item)}
                           >
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                           </select>
                         </div>
                       </div>
@@ -147,7 +156,7 @@ export const Carrito = () => {
                       <button
                         type="button"
                         className="btn btn-outline-success w-50 float-end"
-                        style={{ marginRight: "35px" }}
+                        style={{ marginRight: "35px", marginTop: "15px" }}
                         onClick={mp}
                       >
                         Finalizar compra (pago on-line)

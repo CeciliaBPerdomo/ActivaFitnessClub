@@ -530,7 +530,7 @@ const getState = ({
             /* Crea nuevo producto*/
             crearProducto: async (name, stock, sale_price, photo, purchase_price) => {
                 try {
-                    const response = await axios.post(direccion + "/api/productos", {
+                    await axios.post(direccion + "/api/productos", {
                         name: name,
                         stock: stock,
                         sale_price: sale_price,

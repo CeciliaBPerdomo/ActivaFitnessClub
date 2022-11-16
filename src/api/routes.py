@@ -828,6 +828,26 @@ def shoppingCartModif_porId(shoppingCart_id):
     response_body = {"msg": "Compra modificado"}
     return jsonify(response_body), 400
 
+
+# Modifica la cantidad del producto en el carrito
+@api.route('/comprasCarrito/<int:shoppingCart_id>/<int:productid>', methods=['PUT'])
+def modificaCantidad(shoppingCart_id, productid):
+    #Filtra por el id carrito
+    shoppingCartId = ShoppingCart.query.filter_by(idCarrito=shoppingCart_id).first()
+
+    #Filtra por el id de producto en ese carrito
+    carrito = shoppingCartId.query.filter_by(product_id=productid).first()
+    
+    #Los cambios que llegan atraves del body
+    body = json.loads(request.data)
+
+    if "cantidad" in body:
+        carrito.cantidad = body["cantidad"]
+   
+    db.session.commit()
+    return jsonify(carrito.serialize()), 200
+
+
 #######################################
 ##                                   ##
 ##      RUTAS DE VENTAS              ##

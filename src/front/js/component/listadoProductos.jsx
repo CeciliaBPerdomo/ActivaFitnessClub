@@ -67,7 +67,7 @@ export const ListadoProductos = () => {
           </Link>
         </div>
         <br /> {/* Listado de producto */}
-        <table className="table table-hover">
+        <table className="table table-hover" style={{ color: "white" }}>
           <thead>
             <tr className="text-center">
               {" "}
@@ -101,6 +101,7 @@ export const ListadoProductos = () => {
                   <Link
                     to={"/producto/" + item.id}
                     className="btn btn-outline-dark"
+                    style={{ color: "white" }}
                   >
                     <i className="fa fa-eye"></i>
                   </Link>
@@ -110,6 +111,7 @@ export const ListadoProductos = () => {
                   <Link
                     to={"/editarProducto/" + item.id}
                     className="btn btn-outline-dark"
+                    style={{ color: "white" }}
                   >
                     <i className="fa fa-pen"></i>
                   </Link>
