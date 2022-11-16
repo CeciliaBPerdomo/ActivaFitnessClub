@@ -22,23 +22,21 @@ export const CrearMensualidad = () => {
   }, []);
 
   const agregarMensualidad = (event) => {
-    swal({
-      title: `Mensualidad Creada`,
-      icon: "success",
-      button: "Aceptar"
-    })
     event.preventDefault();
-
-    /* Agrega el pago de la mensualidad */
-    actions.agregarPagoMensualidad(
-      fechaPago,
-      monto,
-      descripcion,
-      numeroFactura,
-      state,
-      idUsuario
-    );
-
+    swal({
+      title: "Mensualidad Creada",
+      icon: "success",
+      button: "Aceptar",
+      /* Agrega el pago de la mensualidad */
+      actions: actions.agregarPagoMensualidad(
+        fechaPago,
+        monto,
+        descripcion,
+        numeroFactura,
+        state,
+        idUsuario
+      ),
+    });
     /* Limpia el formulario */
     setDescripcion("");
     setFechaPago("");
@@ -174,7 +172,7 @@ export const CrearMensualidad = () => {
           <button
             type="button"
             className="btn btn-outline-danger w-50 float-end"
-            onClick={()=>agregarMensualidad()}
+            onClick={() => agregarMensualidad()}
           >
             Agregar pago nueva mensualidad
           </button>

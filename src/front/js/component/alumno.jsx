@@ -81,7 +81,7 @@ export const Alumno = () => {
         </div>
 
         {/* Rutina actual del alumno */}
-        <div
+        {/* <div
           className="card text-start border-success"
           style={{ margin: "35px" }}
         >
@@ -93,14 +93,14 @@ export const Alumno = () => {
 
             <div className="container text-start">Rutina!</div>
           </div>
-          <div className="card-footer text-end border-success">
-            {/* <Link to={"/listaAlumno"}> */}
-            <button type="button" className="btn btn-outline-success">
+          <div className="card-footer text-end border-success"> */}
+        {/* <Link to={"/listaAlumno"}> */}
+        {/* <button type="button" className="btn btn-outline-success">
               Listado de rutinas
-            </button>
-            {/* </Link> */}
-          </div>
-        </div>
+            </button> */}
+        {/* </Link> */}
+        {/* </div>
+        </div> */}
 
         {/* Mensualidades */}
         <div
@@ -126,7 +126,7 @@ export const Alumno = () => {
             ))}
           </div>
           <div className="card-footer text-end border-danger">
-            <Link to={"/vistaMensualidades/"}>
+            <Link to={"/mensualidades/"}>
               <button type="button" className="btn btn-outline-danger">
                 Listado de mensualidades
               </button>
