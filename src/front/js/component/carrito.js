@@ -36,8 +36,7 @@ export const Carrito = () => {
   };
 
   const cambioCantidad = (cantidad, item) => {
-    console.log(cantidad);
-    console.log(item);
+    actions.modificarCantidad(item.idCarrito, item.product_id, cantidad);
   };
 
   return (

@@ -386,7 +386,6 @@ const getState = ({
                             description: description,
                         }
                     );
-                    console.log(response.data);
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
@@ -895,6 +894,24 @@ const getState = ({
                         idCarrito: response.data.idCarrito + 1,
                     });
                     return response.data.idCarrito + 1;
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
+            // Modifica la cantidad de producto que se va a comprar
+            modificarCantidad: async (idCarrito, idProducto, cantidad) => {
+                try {
+                    const response = await axios.put(
+                        direccion + "/api/comprasCarrito/" + idCarrito + "/" + idProducto, {
+                            cantidad: cantidad,
+                        }
+                    );
+                    console.log(response.data);
+                    getActions().obtenerCarrito(idCarrito);
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
