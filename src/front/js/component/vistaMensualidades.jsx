@@ -50,7 +50,7 @@ export const VistaMensualidades = () => {
         <br />
 
         {/* Buscar */}
-        <div className="w-75">
+        <div>
           <input
             className="form-control"
             list="datalistOptions"
@@ -60,14 +60,29 @@ export const VistaMensualidades = () => {
         </div>
         {/* Nueva mensualidad */}
         <br />
-        <div className="w-75">
+        <div>
           <Link to={"/crearMensualidad"}>
             <button
               type="button"
-              className="btn btn-outline-success w-50 float-end"
-              style={{ marginBottom: "15px" }}
+              className="btn btn-outline-danger w-25 float-end"
+              style={{ marginBottom: "25px", color: "white" }}
             >
-              Ingresar nuevo pago de mensualidad
+              Pago de mensualidad
+            </button>
+          </Link>
+
+          {/* Ver listado de alumnos */}
+          <Link to={"/listaAlumno"}>
+            <button
+              type="button"
+              className="btn btn-outline-danger w-25 float-end"
+              style={{
+                marginBottom: "25px",
+                color: "white",
+                marginRight: "25px",
+              }}
+            >
+              Listado de alumnos
             </button>
           </Link>
         </div>
@@ -75,7 +90,7 @@ export const VistaMensualidades = () => {
 
         {/* Listado de mensualidades */}
         <table
-          className="table table-hover table-secondary w-75"
+          className="table table-hover table-secondary"
           style={{ marginBottom: "25px" }}
         >
           <thead>

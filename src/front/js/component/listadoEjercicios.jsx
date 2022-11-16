@@ -3,11 +3,6 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import swal from "sweetalert";
 
-// layout:
-// import { ListadoEjercicios } from "./component/listadoEjercicios.jsx";
-// <Route element={<ListadoEjercicios/>}
-// path="/ListadoEjercicios"/>
-
 export const ListadoEjercicios = () => {
   const { store, actions } = useContext(Context);
 
@@ -44,7 +39,7 @@ export const ListadoEjercicios = () => {
             <button
               type="button"
               className="btn btn-outline-danger w-50 float-end"
-              style={{ marginBottom: "20px" }}
+              style={{ marginBottom: "20px", color: "white" }}
             >
               Crear nuevo ejercicio
             </button>
@@ -66,7 +61,6 @@ export const ListadoEjercicios = () => {
             </tr>
           </thead>
 
-          {/* Listado */}
           {/* Listado */}
           <tbody className="align-middle text-center">
             {" "}
