@@ -20,6 +20,8 @@ const SignupSchema = Yup.object().shape({
     afeccionesMedicas: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
     medicamentos: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
     objetivoDeEntrenamiento: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+    actividades: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+    rol: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
 
     email: Yup.string().email('Invalid email').required('Required'),
     password: Yup.string().required('Required'),
@@ -105,6 +107,8 @@ export const CrearAlumno = () => {
                             mutualista: '',
                             afeccionesMedicas: '',
                             objetivoDeEntrenamiento: '',
+                            actividades: '',
+                            rol: '',
                             email: '',
                             password: '',
                             cuota: ''
@@ -115,7 +119,7 @@ export const CrearAlumno = () => {
                         (values, {resetForm}) => { // same shape as initial values
                             console.log(values.nombre);
                             resetForm();
-                            actions.crearAlumno(values.mutualista, values.cedula, values.nombre, values.apellido, values.celular, values.fechaDeNacimiento, values.fechaDeIngreso, values.medicamentos, values.afeccionesMedicas, values.objetivoDeEntrenamiento, values.email, values.password, values.cuota);
+                            actions.crearAlumno(values.rol, values.actividades, values.mutualista, values.cedula, values.nombre, values.apellido, values.celular, values.fechaDeNacimiento, values.fechaDeIngreso, values.medicamentos, values.afeccionesMedicas, values.objetivoDeEntrenamiento, values.email, values.password, values.cuota);
                             // registro()
                         }
                 }>
@@ -343,43 +347,51 @@ export const CrearAlumno = () => {
                             }>
                                 <div className="row">
                                     {/* Actividades */}
-                                    {/* <div className="col">
+                                    <div className="col">
                                         <label htmlFor="actividades" className="form-label">
                                             <b>Actividades</b>
-                                        </label>
-                                        <select className="form-select" id="inputGroupSelect01"
-                                            onChange={
-                                                (e) => setActivities(e.target.value)
-                                            }
-                                            value={activities}>
 
-                                            <option select>Actividad</option>
-                                            <option value="Funcional">Funcional</option>
-                                            <option value="Entrenamiento personalizado">
-                                                Entrenamiento personalizado
-                                            </option>
-                                            <option value="Ambos (Func, Entrenamiento)">
-                                                Ambos (Func, Entrenamiento)
-                                            </option>
-                                        </select>
-                                    </div> */}
+                                            <Field as="select" name="actividades" className="form-select" id="inputGroupSelect01">
+
+                                                <option value>Actividad</option>
+                                                <option value="Funcional">Funcional</option>
+                                                <option value="Entrenamiento personalizado">
+                                                    Entrenamiento personalizado
+                                                </option>
+                                                <option value="Ambos (Func, Entrenamiento)">
+                                                    Ambos (Func, Entrenamiento)
+                                                </option>
+                                            </Field>
+                                            {
+                                            errors.actividades && touched.actividades ? (
+                                                <div className="text-light">
+                                                    {
+                                                    errors.actividades
+                                                }</div>
+                                            ) : null
+                                        } </label>
+                                    </div>
                                     {/* Rol */}
-                                    {/* <div className="col">
+                                    <div className="col">
                                         <label htmlFor="rol" className="form-label">
                                             <b>Rol</b>
-                                        </label>
-                                        <select className="form-select" id="inputGroupSelect01"
-                                            onChange={
-                                                (e) => setRole(e.target.value)
-                                            }
-                                            value={role}>
 
-                                            <option select>Rol</option>
-                                            <option value="Alumno">Alumno</option>
-                                            <option value="Administrador">Administrador</option>
-                                            <option value="Usuario Internet">Usuario Internet</option>
-                                        </select>
-                                    </div> */}
+                                            <Field as="select" name="rol" className="form-select" id="inputGroupSelect01">
+
+                                                <option value>Rol</option>
+                                                <option value="Alumno">Alumno</option>
+                                                <option value="Administrador">Administrador</option>
+                                                <option value="Usuario Internet">Usuario Internet</option>
+                                            </Field>
+                                            {
+                                            errors.rol && touched.rol ? (
+                                                <div className="text-light">
+                                                    {
+                                                    errors.rol
+                                                }</div>
+                                            ) : null
+                                        } </label>
+                                    </div>
                                     {/* Cuota */}
                                     <div className="col">
                                         <label htmlFor="afec_medicas" className="form-label">
