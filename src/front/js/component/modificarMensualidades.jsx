@@ -26,23 +26,21 @@ export const EditarMensualidad = () => {
   let nombreCompleto = nombre + " " + apellido;
 
   const modificarMensualidad = (e) => {
-    swal({
-      title: `Mensualidad Modificada`,
-      icon: "success",
-      button: "Aceptar"
-    })
     e.preventDefault();
-
     let id = parseInt(params.theid);
-
-    actions.modificarMensualidad(
-      id,
-      user_id,
-      fechaPago,
-      numeroFactura,
-      monto,
-      descripcion
-    );
+    swal({
+      title: "Cambios realizados",
+      icon: "success",
+      button: "Aceptar",
+      actions: actions.modificarMensualidad(
+        id,
+        user_id,
+        fechaPago,
+        numeroFactura,
+        monto,
+        descripcion
+      ),
+    });
   };
 
   return (
@@ -174,7 +172,7 @@ export const EditarMensualidad = () => {
           <button
             type="button"
             className="btn btn-outline-danger w-50 float-end"
-            onClick={()=>modificarMensualidad()}
+            onClick={(e) => modificarMensualidad(e)}
           >
             Guardar modificación
           </button>

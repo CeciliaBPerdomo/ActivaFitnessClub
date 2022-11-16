@@ -24,7 +24,7 @@ export const CrearMensualidad = () => {
   const agregarMensualidad = (event) => {
     event.preventDefault();
     swal({
-      title: "Mensualidad Creada",
+      title: "Mensualidad de ingresada",
       icon: "success",
       button: "Aceptar",
       /* Agrega el pago de la mensualidad */
@@ -112,8 +112,6 @@ export const CrearMensualidad = () => {
                 <input
                   type="date"
                   className="form-control"
-                  aria-label="Sizing example input"
-                  //aria-describedby="inputGroup-sizing-sm"
                   onChange={(event) => setFechaPago(event.target.value)}
                   value={fechaPago}
                 />
@@ -172,7 +170,7 @@ export const CrearMensualidad = () => {
           <button
             type="button"
             className="btn btn-outline-danger w-50 float-end"
-            onClick={() => agregarMensualidad()}
+            onClick={(event) => agregarMensualidad(event)}
           >
             Agregar pago nueva mensualidad
           </button>
