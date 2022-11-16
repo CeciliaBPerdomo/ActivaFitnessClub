@@ -4,7 +4,6 @@ import {Link, useParams} from "react-router-dom";
 import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 
-// import {Link} from "react-router-dom"
 import {Context} from "../store/appContext";
 
 // Datos: ci, name, last_name, phone, date_of_admission, birthday, mutualist, medical_conditions,
