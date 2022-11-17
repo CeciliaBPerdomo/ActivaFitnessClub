@@ -589,6 +589,20 @@ const getState = ({
                 }
             },
 
+            buscadorproductos: (valor) => {
+                let store = getStore()
+                let resultados = store.productos.filter((item)=> {
+                    if (item.name.toString().toLowerCase().includes(valor.toLowerCase())){
+                        console.log(valor)
+                        return valor;
+                    }
+                    
+                })
+                setStore({
+                    productos:resultados
+                })
+            },
+
             // obtener productos por Id
             obtenerProductoId: async (id) => {
                 try {
