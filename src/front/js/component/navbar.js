@@ -26,8 +26,8 @@ export const Navbar = () => {
                 className=""
                 src={logo}
                 style={{
-                  maxWidth: "50px",
-                  maxHeigth: "50px",
+                  maxWidth: "80px",
+                  maxHeigth: "80px",
                 }}
               />
             </Link>
