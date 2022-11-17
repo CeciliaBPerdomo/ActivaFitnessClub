@@ -89,7 +89,10 @@ export const Carrito = () => {
                       >
                         {item.productInfo.name}
                       </div>
-                      <div className="col-md-2 d-flex align-items-center">
+                      <div
+                        className="col-md-4 d-flex align-items-center"
+                        style={{ marginLeft: "30px" }}
+                      >
                         <button
                           type="button"
                           className="btn btn-outline-danger float-end"
@@ -99,24 +102,20 @@ export const Carrito = () => {
                         </button>
                         <input
                           type="text"
-                          defaultValue={cantidad}
+                          value={cantidad}
                           className="col-4"
-                          style={{ marginRight: "5px" }}
+                          style={{ marginRight: "5px", textAlign: "center" }}
                         />
                         <button
                           type="button"
-                          className="btn btn-outline-danger float-end"
-                          style={{ marginRight: "5px" }}
+                          className="btn btn-outline-success float-end"
+                          style={{ marginRight: "40px" }}
                         >
                           <i className="fa fa-plus"></i>
                         </button>
-                      </div>
 
-                      <div className="col-md-2 d-flex align-items-center">
-                        {/* <div className="btn-group-vertical"> */}
                         <button
                           type="button"
-                          sytle={{ marginLeft: "1550px" }}
                           className="btn btn-outline-danger float-end"
                           onClick={() =>
                             actions.borrarProductoCarrito(
@@ -127,7 +126,6 @@ export const Carrito = () => {
                         >
                           <i className="fa fa-trash"></i>
                         </button>
-                        {/* </div> */}
                       </div>
                     </div>
                   ))}
