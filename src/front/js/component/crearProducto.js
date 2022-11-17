@@ -29,10 +29,10 @@ export const CrearProducto = () => {
     <>
       <div
         className="container"
-        style={{ marginTop: "20px", marginBottom: "35px" }}
+        style={{ marginTop: "50px", marginBottom: "35px" }}
       >
         {/* Titulo */}
-        <h1>Carga de productos</h1>
+        <h1 style={{ color: "white" }}>Ingreso de nuevos productos</h1>
         <br />
 
         {/* Listado de productos */}
@@ -41,7 +41,7 @@ export const CrearProducto = () => {
             <button
               type="button"
               className="btn btn-outline-danger w-50 float-end"
-              style={{ marginBottom: "20px" }}
+              style={{ marginBottom: "20px", color: "white" }}
             >
               Listado de productos
             </button>
@@ -49,7 +49,7 @@ export const CrearProducto = () => {
         </div>
         <br />
 
-        <div className="formulario">
+        <div className="formulario" style={{ color: "white" }}>
           <form>
             <div
               className="container text-start "
@@ -146,6 +146,7 @@ export const CrearProducto = () => {
               <div className="col">
                 <button
                   type="button"
+                  style={{ color: "white" }}
                   className="btn btn-outline-danger w-50 float-end"
                   onClick={agregarProducto}
                 >
