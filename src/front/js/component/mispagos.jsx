@@ -29,9 +29,10 @@ export const MisPagos = () => {
   return (
     <>
       <br />
+      <br />
       <button
         type="button"
-        className="btn btn-outline-danger justify-content-md-end float-end"
+        className="btn btn-outline-danger justify-content-md-end float-end relative"
         style={{ marginRight: "125px" }}
         onClick={pagoMercadoPago}
       >
