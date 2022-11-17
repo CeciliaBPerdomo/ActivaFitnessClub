@@ -50,11 +50,13 @@ export const Navbar = () => {
               className="collapse navbar-collapse d-flex justify-content-md-end"
               id="navbarSupportedContent"
             >
-              <Link to="/login">
-                <button className="btn btn-danger" type="submit">
-                  Login
-                </button>
-              </Link>
+              {!store.auth ? (
+                <Link to="/login">
+                  <button className="btn btn-danger d-flex" type="submit">
+                    Login
+                  </button>
+                </Link>
+              ) : null}
             </div>
           </div>
         </nav>
@@ -68,7 +70,7 @@ export const Navbar = () => {
       {store.auth && store.profile.role === "Administrador" ? (
         <nav className="navbar navbar-dark bg-danger fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to="/login">
+            <Link className="navbar-brand" to="/">
               <img src={logo} style={{ maxWidth: "50px", maxHeigth: "50px" }} />
             </Link>
 
@@ -230,7 +232,7 @@ export const Navbar = () => {
       {store.auth && store.profile.role === "Alumno" ? (
         <nav className="navbar navbar-dark bg-dark fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to={"/login"}>
+            <Link className="navbar-brand" to={"/"}>
               <img
                 src={logo}
                 style={{
@@ -242,13 +244,12 @@ export const Navbar = () => {
 
             <ul className="nav justify-content-end">
               <li className="nav-item">
-                <a
-                  className="nav-link active text-white"
-                  aria-current="page"
-                  href="#"
+                <Link
+                  className="nav-link text-white"
+                  to={"/ListaRutinaDeAlumno/" + store.profile.id}
                 >
-                  Home
-                </a>
+                  Mi Rutina
+                </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link text-white" to={"/vistaEjercicio/1"}>
@@ -274,14 +275,14 @@ export const Navbar = () => {
                   Tus Opciones de Usuario
                 </Link>
                 <ul className="dropdown-menu bg-danger">
-                  <li>
+                  {/* <li>
                     <Link
                       className="dropdown-item text-black"
                       to={"/ListaRutinaDeAlumno/" + store.profile.id}
                     >
                       Mi Rutina
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       className="dropdown-item text-black"
