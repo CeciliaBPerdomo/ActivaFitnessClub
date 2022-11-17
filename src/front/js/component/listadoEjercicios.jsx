@@ -6,6 +6,20 @@ import swal from "sweetalert";
 export const ListadoEjercicios = () => {
   const { store, actions } = useContext(Context);
 
+
+  const[buscaejer, setBuscaejer]= useState("")
+  const handlebuscarejer= (e) =>  {
+    e.preventDefault();
+    setBuscaejer(e.target.value)
+    console.log(buscaejer)
+
+    if (buscaejer === ""){
+      actions.obtenerEjercicios()
+    } 
+    else{ actions.buscadorejercicios(e.target.value)
+    }
+
+  }
   // Inicio
   useEffect(() => {
     actions.obtenerEjercicios();
@@ -27,6 +41,7 @@ export const ListadoEjercicios = () => {
         <br /> {/* Buscar */}
         <div>
           <input
+          onChange={handlebuscarejer}
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"

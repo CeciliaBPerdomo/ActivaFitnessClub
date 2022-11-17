@@ -8,6 +8,20 @@ export const ListaAlumno = () => {
   const { store, actions } = useContext(Context);
   let navegacion = useNavigate();
 
+  const[busqueda, setBusqueda]= useState("")
+  const handlebusca= (e) =>  {
+    e.preventDefault();
+    setBusqueda(e.target.value)
+    console.log(busqueda)
+
+    if (busqueda === ""){
+      actions.obtenerAlumnos()
+    } 
+    else{ actions.buscador(e.target.value)
+    }
+
+  }
+
   //Inicio
   useEffect(() => {
     actions.obtenerAlumnos();
@@ -60,6 +74,7 @@ export const ListaAlumno = () => {
         {/* Buscar */}
         <div>
           <input
+            onChange={handlebusca}
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"

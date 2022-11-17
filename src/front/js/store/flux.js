@@ -200,6 +200,22 @@ const getState = ({
                 }
             },
 
+            // Buscador de Alumnos
+
+            buscador: (valor) => {
+                let store = getStore()
+                let resultados = store.alumnos.filter((item)=> {
+                    if (item.name.toString().toLowerCase().includes(valor.toLowerCase())){
+                        console.log(valor)
+                        return valor;
+                    }
+                    
+                })
+                setStore({
+                    alumnos:resultados
+                })
+            },
+
             /* Listar alumnos */
             obtenerAlumnos: async () => {
                 try {
@@ -461,6 +477,22 @@ const getState = ({
                 }
             },
 
+            // Buscador de Ejercicios
+
+            buscadorejercicios: (valor) => {
+                let store = getStore()
+                let resultados = store.ejercicios.filter((item)=> {
+                    if (item.exercise_name.toString().toLowerCase().includes(valor.toLowerCase())){
+                        console.log(valor)
+                        return valor;
+                    }
+                    
+                })
+                setStore({
+                    ejercicios:resultados
+                })
+            },
+
             // obtener ejercicio por Id
             obtenerEjercicioId: async (id) => {
                 try {
@@ -555,6 +587,20 @@ const getState = ({
                         console.log(error.response.data.msg);
                     }
                 }
+            },
+
+            buscadorproductos: (valor) => {
+                let store = getStore()
+                let resultados = store.productos.filter((item)=> {
+                    if (item.name.toString().toLowerCase().includes(valor.toLowerCase())){
+                        console.log(valor)
+                        return valor;
+                    }
+                    
+                })
+                setStore({
+                    productos:resultados
+                })
             },
 
             // obtener productos por Id
@@ -1050,3 +1096,4 @@ const getState = ({
 };
 
 export default getState;
+
