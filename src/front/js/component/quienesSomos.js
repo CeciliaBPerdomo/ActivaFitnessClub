@@ -5,6 +5,7 @@ import lk from "../../img/Perfiles/linkedin.png";
 import fede from "../../img/Perfiles/Fede.jpg";
 import norbis from "../../img/Perfiles/norbis.png";
 import juan from "../../img/Perfiles/juan.png";
+import mail from "../../img/Perfiles/gmail.png";
 
 export const QuienesSomos = () => {
   return (
@@ -37,8 +38,8 @@ export const QuienesSomos = () => {
                       className="card-title"
                       style={{
                         color: "blueviolet",
-                        "font-family": "Inspiration, cursive",
-                        "font-size": "48px",
+                        fontFamily: "Inspiration, cursive",
+                        fontSize: "48px",
                         marginTop: "15px",
                       }}
                     >
@@ -58,6 +59,11 @@ export const QuienesSomos = () => {
                             (window.location.href =
                               "https://www.linkedin.com/in/cecilia-perdomo/")
                           }
+                        />
+                        <img
+                          src={mail}
+                          className="card-img-top rounded-circle float-end"
+                          style={{ margin: "10px", width: "12%" }}
                         />
                       </small>
                     </p>
@@ -83,8 +89,8 @@ export const QuienesSomos = () => {
                       className="card-title"
                       style={{
                         color: "blueviolet",
-                        "font-family": "Inspiration, cursive",
-                        "font-size": "48px",
+                        fontFamily: "Inspiration, cursive",
+                        fontSize: "48px",
                         marginTop: "15px",
                       }}
                     >
@@ -104,6 +110,11 @@ export const QuienesSomos = () => {
                             (window.location.href =
                               "https://www.linkedin.com/in/federica-ram%C3%ADrez-peluffo-b23bb0197/")
                           }
+                        />
+                        <img
+                          src={mail}
+                          className="card-img-top rounded-circle float-end"
+                          style={{ margin: "10px", width: "12%" }}
                         />
                       </small>
                     </p>
@@ -132,8 +143,8 @@ export const QuienesSomos = () => {
                       className="card-title"
                       style={{
                         color: "blueviolet",
-                        "font-family": "Inspiration, cursive",
-                        "font-size": "48px",
+                        fontFamily: "Inspiration, cursive",
+                        fontSize: "48px",
                         marginTop: "15px",
                       }}
                     >
@@ -153,6 +164,11 @@ export const QuienesSomos = () => {
                             (window.location.href =
                               "https://www.linkedin.com/in/juan-moreira-a0813b257/")
                           }
+                        />
+                        <img
+                          src={mail}
+                          className="card-img-top rounded-circle float-end"
+                          style={{ margin: "10px", width: "12%" }}
                         />
                       </small>
                     </p>
@@ -178,12 +194,12 @@ export const QuienesSomos = () => {
                       className="card-title"
                       style={{
                         color: "blueviolet",
-                        "font-family": "Inspiration, cursive",
-                        "font-size": "48px",
+                        fontFamily: "Inspiration, cursive",
+                        fontSize: "48px",
                         marginTop: "15px",
                       }}
                     >
-                      Norbis Silveira
+                      Norbis Silvera
                     </h5>
                     <p className="card-text">
                       Full Stack developer <br />
@@ -200,6 +216,11 @@ export const QuienesSomos = () => {
                               "https://www.linkedin.com/in/juan-moreira-a0813b257/")
                           }
                         /> */}
+                        <img
+                          src={mail}
+                          className="card-img-top rounded-circle float-end"
+                          style={{ margin: "10px", width: "12%" }}
+                        />
                       </small>
                     </p>
                   </div>

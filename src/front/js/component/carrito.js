@@ -43,9 +43,16 @@ export const Carrito = () => {
     <>
       <div>
         {/* Saludo */}
-        <p style={{ color: "white", marginLeft: "10px", marginTop: "10px" }}>
+        <h2
+          style={{
+            color: "white",
+            marginLeft: "10px",
+            marginTop: "10px",
+            marginBottom: "10px",
+          }}
+        >
           ¡Hola <b>{store.alumno.name}</b>, estás por finalizar tu compra!
-        </p>
+        </h2>
       </div>
 
       <hr />
@@ -77,44 +84,50 @@ export const Carrito = () => {
                         />
                       </div>
                       <div
-                        className="col-md-4 d-flex align-items-center"
+                        className="col-md-3 d-flex align-items-center"
                         style={{ marginLeft: "55px" }}
                       >
                         {item.productInfo.name}
                       </div>
                       <div className="col-md-2 d-flex align-items-center">
-                        <div className="card-body">
-                          <select
-                            className="form-select"
-                            id="inputGroupSelect01"
-                            onChange={(e) => setCantidad(e.target.value)}
-                            value={cantidad}
-                            onClick={() => cambioCantidad(cantidad, item)}
-                          >
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                          </select>
-                        </div>
+                        <button
+                          type="button"
+                          className="btn btn-outline-danger float-end"
+                          style={{ marginRight: "5px" }}
+                        >
+                          <i className="fa fa-minus"></i>
+                        </button>
+                        <input
+                          type="text"
+                          defaultValue={cantidad}
+                          className="col-4"
+                          style={{ marginRight: "5px" }}
+                        />
+                        <button
+                          type="button"
+                          className="btn btn-outline-danger float-end"
+                          style={{ marginRight: "5px" }}
+                        >
+                          <i className="fa fa-plus"></i>
+                        </button>
                       </div>
 
                       <div className="col-md-2 d-flex align-items-center">
-                        <div className="btn-group-vertical">
-                          <button
-                            type="button"
-                            className="btn btn-outline-success float-end"
-                            onClick={() =>
-                              actions.borrarProductoCarrito(
-                                item.idCarrito,
-                                item.product_id
-                              )
-                            }
-                          >
-                            <i className="fa fa-trash"></i>
-                          </button>
-                        </div>
+                        {/* <div className="btn-group-vertical"> */}
+                        <button
+                          type="button"
+                          sytle={{ marginLeft: "1550px" }}
+                          className="btn btn-outline-danger float-end"
+                          onClick={() =>
+                            actions.borrarProductoCarrito(
+                              item.idCarrito,
+                              item.product_id
+                            )
+                          }
+                        >
+                          <i className="fa fa-trash"></i>
+                        </button>
+                        {/* </div> */}
                       </div>
                     </div>
                   ))}
