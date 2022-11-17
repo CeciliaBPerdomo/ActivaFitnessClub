@@ -65,49 +65,74 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const CrearAlumno = () => {
-  // const [ci, setCI] = useState("");
-  // const [name, setName] = useState("");
-  // const [last_name, setLast_Name] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const [admission, setAdmission] = useState("");
-  // const [birthday, setBirthday] = useState("");
-  // const [mutualist, setMutualist] = useState("");
-  // const [conditions, setConditions] = useState("");
-  // const [medicines, setMedicines] = useState("");
-  // const [training_goals, setTraining] = useState("");
-  // const [mail, setMail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [activities, setActivities] = useState("");
-  // const [role, setRole] = useState("");
-  // const [isActive, setActive] = useState(true);
-  // const [cuota, setCuota] = useState("");
+  const [ci, setCI] = useState("");
+  const [name, setName] = useState("");
+  const [last_name, setLast_Name] = useState("");
+  const [phone, setPhone] = useState("");
+  const [admission, setAdmission] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [mutualist, setMutualist] = useState("");
+  const [conditions, setConditions] = useState("");
+  const [medicines, setMedicines] = useState("");
+  const [training_goals, setTraining] = useState("");
+  const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
+  const [activities, setActivities] = useState("");
+  const [role, setRole] = useState("");
+  const [isActive, setActive] = useState(true);
+  const [cuota, setCuota] = useState("");
 
   const { actions } = useContext(Context);
 
   const registro = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
-    // actions.crearAlumno(ci, name, last_name, phone, admission, birthday, mutualist, conditions, medicines, training_goals, mail, password, activities, role, isActive, cuota);
+    /* Limpia el formulario */
+    
 
-    {
-      /* Limpia el formulario */
-    }
-    // setCI("");
-    // setName("");
-    // setLast_Name("");
-    // setPhone("");
-    // setAdmission("");
-    // setBirthday("");
-    // setMutualist("");
-    // setConditions("");
-    // setMedicines("");
-    // setTraining("");
-    // setMail("");
-    // setPassword("");
-    // setActivities("");
-    // setRole("");
-    // setActive("true");
-    // setCuota("");
+    swal({
+      title: "Alumno Creado",
+      icon: "success",
+      button: "Aceptar",
+      timer:"5000",
+
+      //Guarda el formulario
+      actions: actions.crearAlumno(
+        ci,
+        name,
+        last_name,
+        phone,
+        admission,
+        birthday,
+        mutualist,
+        conditions,
+        medicines,
+        training_goals, 
+        mail,
+        password,
+        activities,
+        role, 
+        isActive,
+        cuota
+      ),
+    });
+
+    setCI("");
+    setName("");
+    setLast_Name("");
+    setPhone("");
+    setAdmission("");
+    setBirthday("");
+    setMutualist("");
+    setConditions("");
+    setMedicines("");
+    setTraining("");
+    setMail("");
+    setPassword("");
+    setActivities("");
+    setRole("");
+    setActive("true");
+    setCuota("");
   };
 
   return (
@@ -518,6 +543,7 @@ export const CrearAlumno = () => {
                     marginBottom: "15px",
                     color: "white",
                   }}
+                  onClick={() => registro()}
                 >
                   Guardar datos
                 </button>
