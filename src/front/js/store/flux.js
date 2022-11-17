@@ -477,6 +477,22 @@ const getState = ({
                 }
             },
 
+            // Buscador de Ejercicios
+
+            buscadorejercicios: (valor) => {
+                let store = getStore()
+                let resultados = store.ejercicios.filter((item)=> {
+                    if (item.exercise_name.toString().toLowerCase().includes(valor.toLowerCase())){
+                        console.log(valor)
+                        return valor;
+                    }
+                    
+                })
+                setStore({
+                    ejercicios:resultados
+                })
+            },
+
             // obtener ejercicio por Id
             obtenerEjercicioId: async (id) => {
                 try {
