@@ -1,10 +1,24 @@
-import React, {useEffect, useContext} from "react";
+import React, {useEffect, useContext, useState} from "react";
 import {Link} from "react-router-dom";
 import {Context} from "../store/appContext";
 
 export const VerEjercicio = () => {
 
     const {store, actions} = useContext(Context);
+
+    const[buscaejer, setBuscaejer]= useState("")
+  const handlebuscarejer= (e) =>  {
+    e.preventDefault();
+    setBuscaejer(e.target.value)
+    console.log(buscaejer)
+
+    if (buscaejer === ""){
+      actions.obtenerEjercicios()
+    } 
+    else{ actions.buscadorejercicios(e.target.value)
+    }
+
+  }
 
     useEffect(() => {
         actions.obtenerEjercicios();
@@ -14,7 +28,7 @@ export const VerEjercicio = () => {
 
         <br/>
         <div>
-            <input className="form-control d-flex" list="datalistOptions" id="exampleDataList" placeholder="Buscar por nombre..."
+            <input className="form-control d-flex" list="datalistOptions" id="exampleDataList" placeholder="Buscar por nombre..." onChange={handlebuscarejer}
                 style={
                     {width: "30%"}
                 }/>
