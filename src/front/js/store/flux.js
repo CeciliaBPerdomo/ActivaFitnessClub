@@ -200,6 +200,22 @@ const getState = ({
                 }
             },
 
+            // Buscador de Alumnos
+
+            buscador: (valor) => {
+                let store = getStore()
+                let resultados = store.alumnos.filter((item)=> {
+                    if (item.name.toString().toLowerCase().includes(valor.toLowerCase())){
+                        console.log(valor)
+                        return valor;
+                    }
+                    
+                })
+                setStore({
+                    alumnos:resultados
+                })
+            },
+
             /* Listar alumnos */
             obtenerAlumnos: async () => {
                 try {
@@ -1050,3 +1066,4 @@ const getState = ({
 };
 
 export default getState;
+
