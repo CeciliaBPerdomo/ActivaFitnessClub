@@ -27,6 +27,7 @@ export const Carrito = () => {
       );
     }
   };
+
   totalCompra();
 
   const mp = async () => {
@@ -35,8 +36,9 @@ export const Carrito = () => {
     window.location.replace(store?.mercadopago.sandbox_init_point);
   };
 
-  const cambioCantidad = (cantidad, item) => {
-    actions.modificarCantidad(item.idCarrito, item.product_id, cantidad);
+  const cambioCantidad = async (cantidad, item) => {
+    setCantidad(cantidad + 1);
+    await actions.modificarCantidad(item.idCarrito, item.product_id, cantidad);
   };
 
   return (
@@ -57,13 +59,13 @@ export const Carrito = () => {
 
       <hr />
 
-      <div className="container text-center">
+      <div className="container text-center" style={{ marginTop: "25px" }}>
         <div className="row">
           {/* carrito de compras */}
           <div className="col" style={{ marginBottom: "25px" }}>
             <div className="card">
               <div className="card-header">
-                <h2>Carrito de compras</h2>
+                <h2>Resumen de compra</h2>
               </div>
               <ul className="list-group list-group-flush">
                 <div className="card mb-3">
@@ -87,12 +89,16 @@ export const Carrito = () => {
                         className="col-md-3 d-flex align-items-center"
                         style={{ marginLeft: "55px" }}
                       >
-                        {item.productInfo.name}
+                        {" "}
+                        <b>{item.productInfo.name}</b>
                       </div>
+
+                      {/* Cantidad */}
                       <div
                         className="col-md-4 d-flex align-items-center"
                         style={{ marginLeft: "30px" }}
                       >
+                        {/* Resta la cantidad */}
                         <button
                           type="button"
                           className="btn btn-outline-danger float-end"
@@ -102,12 +108,15 @@ export const Carrito = () => {
                         </button>
                         <input
                           type="text"
-                          value={cantidad}
+                          defaultValue={item.cantidad}
                           className="col-4"
                           style={{ marginRight: "5px", textAlign: "center" }}
                         />
+                        {/* Suma mas cantidad */}
                         <button
                           type="button"
+                          value={cantidad}
+                          onClick={() => cambioCantidad(cantidad, item)}
                           className="btn btn-outline-success float-end"
                           style={{ marginRight: "40px" }}
                         >
@@ -129,49 +138,39 @@ export const Carrito = () => {
                       </div>
                     </div>
                   ))}
-                </div>
-              </ul>
-            </div>
-          </div>
-
-          {/* Resumen de pedido */}
-          <div className="col" style={{ marginBottom: "25px" }}>
-            <div className="card">
-              <div className="card-header">
-                <h2>Resumen de compra</h2>
-              </div>
-              <ul className="list-group list-group-flush">
-                <div className="card mb-3">
-                  <div className="row g-0" style={{ marginBottom: "15px" }}>
-                    <div className="col-md-2"></div>
-                    <div className="col-md-6"></div>
-                    <div className="card-body">
-                      {store.carrito.map((item, id) => (
-                        <div
-                          className="input-group mb-3 justify-content-md-left"
-                          key={id}
+                  {/* Total de la compra y pago */}
+                  <div className="Total">
+                    <ul
+                      className="list-group list-group-flush"
+                      style={{ marginTop: "15px" }}
+                    >
+                      <hr />
+                      <div className="text-end" style={{ marginRight: "15px" }}>
+                        <h4
+                          style={{
+                            marginRight: "35px",
+                            marginBottom: "10px",
+                          }}
                         >
-                          {item.cantidad} {item.productInfo.name} - ${" "}
-                          {item.precio}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="text-end" style={{ marginRight: "15px" }}>
-                      <h4 style={{ marginRight: "35px", marginBottom: "10px" }}>
-                        Total: $ {total}
-                      </h4>
-                    </div>
-                    <div></div>
-                    <div>
-                      <button
-                        type="button"
-                        className="btn btn-outline-success w-50 float-end"
-                        style={{ marginRight: "35px", marginTop: "15px" }}
-                        onClick={mp}
-                      >
-                        Finalizar compra (pago on-line)
-                      </button>
-                    </div>
+                          Total: $ {total}
+                        </h4>
+                      </div>
+                      <div></div>
+                      <div>
+                        <button
+                          type="button"
+                          className="btn btn-outline-danger w-50 float-end"
+                          style={{
+                            marginRight: "35px",
+                            marginTop: "15px",
+                            marginBottom: "15px",
+                          }}
+                          onClick={mp}
+                        >
+                          Finalizar compra (pago on-line)
+                        </button>
+                      </div>
+                    </ul>
                   </div>
                 </div>
               </ul>

@@ -203,17 +203,18 @@ const getState = ({
             // Buscador de Alumnos
 
             buscador: (valor) => {
-                let store = getStore()
-                let resultados = store.alumnos.filter((item)=> {
-                    if (item.name.toString().toLowerCase().includes(valor.toLowerCase())){
-                        console.log(valor)
+                let store = getStore();
+                let resultados = store.alumnos.filter((item) => {
+                    if (
+                        item.name.toString().toLowerCase().includes(valor.toLowerCase())
+                    ) {
+                        console.log(valor);
                         return valor;
                     }
-                    
-                })
+                });
                 setStore({
-                    alumnos:resultados
-                })
+                    alumnos: resultados,
+                });
             },
 
             /* Listar alumnos */
@@ -368,17 +369,18 @@ const getState = ({
             },
 
             buscadormens: (valor) => {
-                let store = getStore()
-                let resultados = store.mensualidades.filter((item)=> {
-                    if (item.bill_n.toString().toLowerCase().includes(valor.toLowerCase())){
-                        console.log(valor)
+                let store = getStore();
+                let resultados = store.mensualidades.filter((item) => {
+                    if (
+                        item.bill_n.toString().toLowerCase().includes(valor.toLowerCase())
+                    ) {
+                        console.log(valor);
                         return valor;
                     }
-                    
-                })
+                });
                 setStore({
-                    mensualidades:resultados
-                })
+                    mensualidades: resultados,
+                });
             },
 
             /* Borrar mensualidades */
@@ -494,17 +496,21 @@ const getState = ({
             // Buscador de Ejercicios
 
             buscadorejercicios: (valor) => {
-                let store = getStore()
-                let resultados = store.ejercicios.filter((item)=> {
-                    if (item.exercise_name.toString().toLowerCase().includes(valor.toLowerCase())){
-                        console.log(valor)
+                let store = getStore();
+                let resultados = store.ejercicios.filter((item) => {
+                    if (
+                        item.exercise_name
+                        .toString()
+                        .toLowerCase()
+                        .includes(valor.toLowerCase())
+                    ) {
+                        console.log(valor);
                         return valor;
                     }
-                    
-                })
+                });
                 setStore({
-                    ejercicios:resultados
-                })
+                    ejercicios: resultados,
+                });
             },
 
             // obtener ejercicio por Id
@@ -604,17 +610,18 @@ const getState = ({
             },
 
             buscadorproductos: (valor) => {
-                let store = getStore()
-                let resultados = store.productos.filter((item)=> {
-                    if (item.name.toString().toLowerCase().includes(valor.toLowerCase())){
-                        console.log(valor)
+                let store = getStore();
+                let resultados = store.productos.filter((item) => {
+                    if (
+                        item.name.toString().toLowerCase().includes(valor.toLowerCase())
+                    ) {
+                        console.log(valor);
                         return valor;
                     }
-                    
-                })
+                });
                 setStore({
-                    productos:resultados
-                })
+                    productos: resultados,
+                });
             },
 
             // obtener productos por Id
@@ -970,7 +977,6 @@ const getState = ({
                             cantidad: cantidad,
                         }
                     );
-                    console.log(response.data);
                     getActions().obtenerCarrito(idCarrito);
                 } catch (error) {
                     console.log(error);
@@ -1110,4 +1116,3 @@ const getState = ({
 };
 
 export default getState;
-

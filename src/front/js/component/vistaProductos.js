@@ -36,7 +36,7 @@ export const VistaProducto = () => {
   return (
     <>
       <div style={{ backgroundColor: "" }}>
-        <p style={{ marginLeft: "10px", marginTop: "10px", color: "white" }}>
+        <p style={{ marginLeft: "10px", marginTop: "80px", color: "white" }}>
           ¡Hola, <b>{store.alumno.name}</b>! ¿Qué vas a comprar hoy?
         </p>
 
