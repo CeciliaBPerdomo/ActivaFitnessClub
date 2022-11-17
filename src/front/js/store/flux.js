@@ -367,6 +367,20 @@ const getState = ({
                 }
             },
 
+            buscadormens: (valor) => {
+                let store = getStore()
+                let resultados = store.mensualidades.filter((item)=> {
+                    if (item.bill_n.toString().toLowerCase().includes(valor.toLowerCase())){
+                        console.log(valor)
+                        return valor;
+                    }
+                    
+                })
+                setStore({
+                    mensualidades:resultados
+                })
+            },
+
             /* Borrar mensualidades */
             borrarMensualidad: async (id) => {
                 try {

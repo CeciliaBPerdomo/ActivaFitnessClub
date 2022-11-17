@@ -10,6 +10,20 @@ import swal from "sweetalert";
 export const VistaMensualidades = () => {
   const { store, actions } = useContext(Context);
 
+  const[buscarmens, setBuscarmens]= useState("")
+  const handlebuscarmens= (e) =>  {
+    e.preventDefault();
+    setBuscarmens(e.target.value)
+    console.log(buscarmens)
+
+    if (buscarmens === ""){
+      actions.obtenerMensualidades()
+    } 
+    else{ actions.buscadormens(e.target.value)
+    }
+
+  }
+
   useEffect(() => {
     actions.obtenerMensualidades();
   }, []);
@@ -52,6 +66,7 @@ export const VistaMensualidades = () => {
         {/* Buscar */}
         <div>
           <input
+          onChange={handlebuscarmens}
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"
