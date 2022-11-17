@@ -28,7 +28,7 @@ export const Home = () => {
     <>
       {" "}
       {/* COMIENZO NAVBAR */}
-      <nav className="navbar navbar-expand-lg bg-dark bg-gradient fixed-top">
+      {/* <nav className="navbar navbar-expand-lg bg-dark bg-gradient fixed-top">
         <div className="container-fluid">
           <div>
             <Link to="/">
@@ -43,19 +43,6 @@ export const Home = () => {
             </Link>
           </div>
 
-          <div
-            className="collapse navbar-collapse d-flex justify-content-md-end"
-            id="navbarSupportedContent"
-          >
-            {/* <button className="btn btn-ligth " type="submit">
-              <i className="bi bi-calendar3"></i>
-            </button> */}
-            <Link to="/login">
-              <button className="btn btn-danger" type="submit">
-                Login
-              </button>
-            </Link>
-          </div>
           <div>
             <button
               className="btn btn-ligth d-flex flex-row-reverse"
@@ -65,7 +52,7 @@ export const Home = () => {
             </button>
           </div>
         </div>
-      </nav>
+      </nav> */}
       {/* FIN DE NAVBAR */}
       {/* COMIENZO PORTADA */}
       <div
@@ -81,7 +68,6 @@ export const Home = () => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           marginBottom: "140px",
-          
         }}
       >
         <div
@@ -167,15 +153,18 @@ export const Home = () => {
               marginBottom: "80px",
             }}
           >
-            <p className="display-5"
+            <p
+              className="display-5"
               style={{
                 fontSize: "50px",
-                color:"#a5b1c2"
+                color: "#a5b1c2",
               }}
             >
               Filosofía
             </p>
-            <p style={{ fontSize: "18px", textAlign: "justify", color:"white" }}>
+            <p
+              style={{ fontSize: "18px", textAlign: "justify", color: "white" }}
+            >
               El ejercicio no solo cambia tu cuerpo, también cambia tu mente, tu
               actitud y tu humor. Beneficia tu salud y contribuye de gran manera
               en la mejora de tu calidad de vida. Nuestra filosofía consiste en
@@ -207,13 +196,18 @@ export const Home = () => {
           }}
         >
           <div className="information">
-            <p className="display-5" style={{ fontSize: "50px", color:"#a5b1c2" }}>¿Quiénes somos?</p>
+            <p
+              className="display-5"
+              style={{ fontSize: "50px", color: "#a5b1c2" }}
+            >
+              ¿Quiénes somos?
+            </p>
             <p
               style={{
                 fontSize: "18px",
                 marginRight: "35px",
                 textAlign: "justify",
-                color:"white"
+                color: "white",
               }}
             >
               Somos un Centro de Fitness con un enfoque integral del
@@ -290,14 +284,18 @@ export const Home = () => {
               marginLeft: "15px",
             }}
           >
-            <p className="display-5"
+            <p
+              className="display-5"
               style={{
-                fontSize: "50px", color:"#a5b1c2"
+                fontSize: "50px",
+                color: "#a5b1c2",
               }}
             >
               Nuestros planes
             </p>
-            <p style={{ fontSize: "18px", textAlign: "justify", color:"white" }}>
+            <p
+              style={{ fontSize: "18px", textAlign: "justify", color: "white" }}
+            >
               Nuestros planes de entrenamiento son muy variados, y tienen como
               principal función cumplir tus objetivos. La modalidad de
               entrenamiento individual tiene un enfoque más personalizado y
@@ -308,7 +306,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      <hr className="text-light"/>
+      <hr className="text-light" />
       {/* CUADRADO NEGRO CON PELADO */}
       <div className="container" style={{ marginTop: "60px" }}>
         <div
@@ -347,15 +345,18 @@ export const Home = () => {
               margin: "5px",
             }}
           >
-            <p className="display-5"
+            <p
+              className="display-5"
               style={{
                 fontSize: "50px",
-                color:"#a5b1c2"
+                color: "#a5b1c2",
               }}
             >
               Entrenamiento personalizado
             </p>
-            <p style={{ fontSize: "18px", textAlign: "justify", color:"white" }}>
+            <p
+              style={{ fontSize: "18px", textAlign: "justify", color: "white" }}
+            >
               Por otro lado la modalidad de entrenamiento grupal esta mas
               enfocada en el dinamismo y la intensidad, el compañerismo y el
               trabajo en equipo. Prima la constante búsqueda de variar los
@@ -406,15 +407,18 @@ export const Home = () => {
               margin: "5px",
             }}
           >
-            <p className="display-5"
+            <p
+              className="display-5"
               style={{
                 fontSize: "50px",
-                color:"#a5b1c2"
+                color: "#a5b1c2",
               }}
             >
               Entrenamiento funcional
             </p>
-            <p style={{ fontSize: "18px", textAlign: "justify", color:"white" }}>
+            <p
+              style={{ fontSize: "18px", textAlign: "justify", color: "white" }}
+            >
               Es un método de entrenamiento que mejora nuestro rendimiento en
               cualquier aspecto que nos propongamos, desde los movimientos de la
               vida cotidiana hasta las actividades deportivas de alto nivel de
@@ -428,7 +432,6 @@ export const Home = () => {
         </div>
       </div>
       <hr className="text-light" />
-
       <div
         className="container"
         style={{ marginTop: "60px", marginBottom: "60px" }}
@@ -451,8 +454,15 @@ export const Home = () => {
               height: "100%",
             }}
           >
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.351810195052!2d-57.8423841850913!3d-34.46859845786764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a313f2236d1c15%3A0x6c5d7dcbab5d10d6!2sActiva%20Fitness%20Club!5e0!3m2!1ses!2suy!4v1668024931885!5m2!1ses!2suy" width="400" height="200" style={{border:"0", marginLeft:"10px", marginTop:"40px"}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-      
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.351810195052!2d-57.8423841850913!3d-34.46859845786764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a313f2236d1c15%3A0x6c5d7dcbab5d10d6!2sActiva%20Fitness%20Club!5e0!3m2!1ses!2suy!4v1668024931885!5m2!1ses!2suy"
+              width="400"
+              height="200"
+              style={{ border: "0", marginLeft: "10px", marginTop: "40px" }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
           <div
             className="container text"
@@ -462,15 +472,20 @@ export const Home = () => {
               margin: "5px",
             }}
           >
-            <p className="display-5"
+            <p
+              className="display-5"
               style={{
                 fontSize: "50px",
-                color:"#a5b1c2"
+                color: "#a5b1c2",
               }}
             >
               Ubicación
             </p>
-            <p style={{ fontSize: "18px", textAlign: "justify", color:"white" }}>Encontranos en Fosalba 674, Colonia del Sacramento</p>
+            <p
+              style={{ fontSize: "18px", textAlign: "justify", color: "white" }}
+            >
+              Encontranos en Fosalba 674, Colonia del Sacramento
+            </p>
           </div>
         </div>
       </div>

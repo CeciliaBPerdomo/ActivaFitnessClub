@@ -18,6 +18,7 @@ export const Navbar = () => {
 
   return (
     <>
+      {/* Navbar sin estar logueado */}
       <nav className="navbar navbar-expand-lg bg-dark bg-gradient">
         <div className="container-fluid">
           <div>
@@ -36,25 +37,21 @@ export const Navbar = () => {
           <div
             className="collapse navbar-collapse d-flex justify-content-md-end"
             id="navbarSupportedContent"
+          ></div>
+          <div
+            className="collapse navbar-collapse d-flex justify-content-md-end"
+            id="navbarSupportedContent"
           >
-            {/* <button className="btn btn-ligth " type="submit">
-              <i className="bi bi-calendar3"></i>
-            </button> */}
-            <hr />
-            {/* <Link className={"btn btn-outline-danger "+visibilidadBoton} type="submit" to="/login">
-                            Login
-                        </Link> */}
-          </div>
-          <div>
-            {/* <button
-              className="btn btn-ligth d-flex flex-row-reverse"
-              type="submit"
-            >
-              <i className="bi bi-question-circle"></i>
-            </button> */}
+            {" "}
+            <Link to="/login">
+              <button className="btn btn-danger" type="submit">
+                Login
+              </button>
+            </Link>
           </div>
         </div>
       </nav>
+      {/* Fin de navbar sin loguearse */}
     </>
   );
 };
