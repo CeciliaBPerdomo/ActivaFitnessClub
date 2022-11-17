@@ -26,15 +26,17 @@ export const ListaRutinaDeAlumno = () => {
         <br />
         {/* Ir al listado de todos los alumnos */}
         <div>
-          <Link to={"/listaAlumno"}>
-            <button
-              type="button"
-              className="btn btn-outline-danger float-end"
-              style={{ marginBottom: "20px" }}
-            >
-              Listado de alumnos
-            </button>
-          </Link>
+          {store.auth && store.profile.role === "Administrador" ? (
+            <Link to={"/listaAlumno"}>
+              <button
+                type="button"
+                className="btn btn-outline-danger float-end"
+                style={{ marginBottom: "20px" }}
+              >
+                Listado de alumnos
+              </button>
+            </Link>
+          ) : null}
         </div>
         <br />
         <table className="table table-hover table-secondary">
