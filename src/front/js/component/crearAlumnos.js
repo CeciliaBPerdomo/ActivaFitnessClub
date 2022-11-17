@@ -13,18 +13,20 @@ const SignupSchema = Yup.object().shape({
     nombre: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
     apellido: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
     celular: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
-    fechaDeNacimiento: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
     fechaDeIngreso: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+    fechaDeNacimiento: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+
     mutualista: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
     afeccionesMedicas: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
     medicamentos: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
     objetivoDeEntrenamiento: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
-    actividades: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
-    rol: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
-
     email: Yup.string().email('Invalid email').required('Required'),
     password: Yup.string().required('Required'),
-    cuota: Yup.string().required('Required')
+    actividades: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+    rol: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+    activo: Yup.bool().isTrue(true).required('Required'),
+    cuota: Yup.number().required('Required')
+
 });
 
 export const CrearAlumno = () => {
@@ -100,25 +102,27 @@ export const CrearAlumno = () => {
                             nombre: '',
                             apellido: '',
                             celular: '',
-                            fechaDeNacimiento: '',
                             fechaDeIngreso: '',
-                            medicamentos: '',
+                            fechaDeNacimiento: '',
                             mutualista: '',
                             afeccionesMedicas: '',
+                            medicamentos: '',
                             objetivoDeEntrenamiento: '',
-                            actividades: '',
-                            rol: '',
                             email: '',
                             password: '',
+                            actividades: '',
+                            rol: '',
+                            activo: '',
                             cuota: ''
+
                         }
                     }
                     validationSchema={SignupSchema}
                     onSubmit={
                         (values, {resetForm}) => { // same shape as initial values
-                            console.log(values.nombre);
+                            console.log(values);
                             resetForm();
-                            actions.crearAlumno(values.rol, values.actividades, values.mutualista, values.cedula, values.nombre, values.apellido, values.celular, values.fechaDeNacimiento, values.fechaDeIngreso, values.medicamentos, values.afeccionesMedicas, values.objetivoDeEntrenamiento, values.email, values.password, values.cuota);
+                            actions.crearAlumno(values.cedula, values.nombre, values.apellido, values.celular, values.fechaDeIngreso, values.fechaDeNacimiento, values.mutualista, values.afeccionesMedicas, values.medicamentos, values.objetivoDeEntrenamiento, values.email, values.password, values.actividades, values.rol, values.activo, values.cuota);
                             // registro()
                         }
                 }>
@@ -145,7 +149,7 @@ export const CrearAlumno = () => {
                                                 cedula:
                                             </b>
                                         </label>
-                                        <Field type="number" name="cedula" className="form-control" id="inputCedula"/>{
+                                        <Field type="text" name="cedula" className="form-control" id="inputCedula"/>{
                                         errors.cedula && touched.cedula ? (
                                             <div className="text-light">
                                                 {
@@ -188,7 +192,7 @@ export const CrearAlumno = () => {
                                         <label htmlFor="celular" className="form-label">
                                             <b>Celular</b>
                                         </label>
-                                        <Field type="number" name="celular" className="form-control" id="inputCelular"/>{
+                                        <Field type="text" name="celular" className="form-control" id="inputCelular"/>{
                                         errors.celular && touched.celular ? (
                                             <div className="text-light">
                                                 {
@@ -350,7 +354,7 @@ export const CrearAlumno = () => {
                                         <label htmlFor="actividades" className="form-label">
                                             <b>Actividades</b>
 
-                                            <Field as="select" name="actividades" className="form-select" id="inputGroupSelect01">
+                                            <Field as="select" name="actividades" className="form-select" id="inputGroupSelect02">
 
                                                 <option value>Actividad</option>
                                                 <option value="Funcional">Funcional</option>
@@ -375,7 +379,7 @@ export const CrearAlumno = () => {
                                         <label htmlFor="rol" className="form-label">
                                             <b>Rol</b>
 
-                                            <Field as="select" name="rol" className="form-select" id="inputGroupSelect01">
+                                            <Field as="select" name="rol" className="form-select" id="inputGroupSelect03">
 
                                                 <option value>Rol</option>
                                                 <option value="Alumno">Alumno</option>
@@ -396,7 +400,7 @@ export const CrearAlumno = () => {
                                         <label htmlFor="afec_medicas" className="form-label">
                                             <b>Cuota mensual:</b>
                                         </label>
-                                        <Field type="text" name="cuota" className="form-control" id="inputCuota"/>{
+                                        <Field type="number" name="cuota" className="form-control" id="inputCuota"/>{
                                         errors.cuota && touched.cuota ? (
                                             <div className="text-light">
                                                 {
@@ -406,24 +410,27 @@ export const CrearAlumno = () => {
                                     } </div>
 
                                     {/* Activo */}
-                                    {/* <div className="col form-check"
+                                    <div className="col form-check"
                                         style={
                                             {
                                                 marginTop: "38px",
                                                 marginLeft: "25px"
                                             }
                                     }>
-                                        <input className="form-check-input" type="checkbox" select="true" id="flexCheckChecked" checked
-                                            onChange={
-                                                (e) => setActive(e.target.value)
-                                            }
-                                            value={isActive}/>
-
                                         <label className="form-check-label" htmlFor="flexCheckChecked">
                                             Activo
                                         </label>
-                                    </div> */} </div>
-                            </div>
+
+                                        <Field className="form-check-input" name="activo" type="checkbox" select="true" id="flexCheckChecked"/></div>
+                                </div>
+                                {
+                                errors.activo && touched.activo ? (
+                                    <div className="text-light">
+                                        {
+                                        errors.activo
+                                    }</div>
+                                ) : null
+                            } </div>
 
                             <br/> {/* Agregar */}
                             <div>
