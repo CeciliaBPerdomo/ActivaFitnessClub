@@ -27,7 +27,7 @@ export const Navbar = () => {
       ################################################*/}
 
       {!store.auth ? (
-        <nav className="navbar navbar-expand-lg bg-dark bg-gradient">
+        <nav className="navbar navbar-expand-lg sticky-top bg-dark bg-gradient">
           <div className="container-fluid">
             <div>
               <Link to="/">
@@ -95,6 +95,11 @@ export const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link text-black" to="/mensualidades">
+                  <strong> Pagos de Clientes</strong>
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link
                   className="nav-link link-light"
                   onClick={() => actions.logOut()}
@@ -142,7 +147,7 @@ export const Navbar = () => {
               <hr className="text-light" />
               <div className="offcanvas-body">
                 <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link
                       className="nav-link"
                       aria-current="page"
@@ -150,15 +155,9 @@ export const Navbar = () => {
                     >
                       Rutinas de Clientes
                     </Link>
-                  </li>
+                  </li> */}
 
-                  <hr className="text-light" />
-
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/">
-                      Pagos de Clientes
-                    </Link>
-                  </li>
+                  {/* <hr className="text-light" /> */}
 
                   <li className="nav-item">
                     <Link
@@ -208,13 +207,13 @@ export const Navbar = () => {
 
                   <hr className="text-light" />
 
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link className="nav-link" to="/">
                       Caja
                     </Link>
-                  </li>
+                  </li> */}
 
-                  <hr className="text-light" />
+                  {/* <hr className="text-light" /> */}
                 </ul>
                 <br />
               </div>
@@ -252,7 +251,7 @@ export const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to={"/vistaEjercicio/1"}>
+                <Link className="nav-link text-white" to={"/verEjercicios"}>
                   Ejercicios
                 </Link>
               </li>
