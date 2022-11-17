@@ -9,7 +9,7 @@ export const HomeUsuario = () => {
 
   return (
     <>
-      <nav className="navbar navbar-dark bg-dark fixed-top">
+      {/* <nav className="navbar navbar-dark bg-dark fixed-top">
         <div className="container">
           <Link className="navbar-brand" to={"/login"}>
             <img
@@ -89,7 +89,7 @@ export const HomeUsuario = () => {
             </li>
           </ul>
         </div>
-      </nav>
+      </nav> */}
 
       <div className="bg-homeUsua vh-100">
         <div className="hstack gap-3 p-5" style={{ height: "800px" }}>

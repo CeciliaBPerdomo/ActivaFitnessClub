@@ -1,53 +1,12 @@
 import React from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../img/Logo.png";
 import "../../styles/homeAdmi.css";
 
 export const HomeAdmin = () => {
-  // return (
-  //   <>
-  //     <nav className="navbar navbar-dark bg-danger fixed-top">
-  //       <div className="container-fluid">
-  //         <Link className="navbar-brand" to="/login">
-  //           <img src={logo} style={{ maxWidth: "50px", maxHeigth: "50px" }} />
-  //         </Link>
-  //         <button
-  //           className="navbar-toggler text-black"
-  //           type="button"
-  //           data-bs-toggle="offcanvas"
-  //           data-bs-target="#offcanvasDarkNavbar"
-  //           aria-controls="offcanvasDarkNavbar"
-  //         >
-  //           <span className="navbar-toggler-icon text-black"></span>
-  //         </button>
-  //         <div
-  //           className="offcanvas offcanvas-end text-bg-dark bg-black"
-  //           tabIndex="-1"
-  //           id="offcanvasDarkNavbar"
-  //           aria-labelledby="offcanvasDarkNavbarLabel"
-  //         >
-  //           <div className="offcanvas-header text-light">
-  //             <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
-  //               Bienvenido Admin
-  //             </h5>
-  //             <button
-  //               type="button"
-  //               className="btn-close btn-close-white"
-  //               data-bs-dismiss="offcanvas"
-  //               aria-label="Close"
-  //             ></button>
-  //           </div>
-  //           <div className="offcanvas-body">
-  //             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-  //               <li className="nav-item">
-  //                 <Link className="nav-link" aria-current="page" to="/#">
-  //                   Rutinas de Clientes
-  //                 </Link>
-  //               </li>
-
-    return (
-      <>
-<nav className="navbar navbar-dark bg-danger fixed-top">
+  return (
+    <>
+      {/* <nav className="navbar navbar-dark bg-danger fixed-top">
   <div className="container">
     <Link className="navbar-brand" to="/login">
     <img src={logo} style={{maxWidth: "50px", maxHeigth: "50px"}}/>
@@ -84,19 +43,6 @@ export const HomeAdmin = () => {
       </div>
       <hr className="text-light" />
       <div className="offcanvas-body">
-      {/* <form className="d-flex mt-3" role="search">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Buscar"
-                  aria-label="Buscar"
-              
-                />
-                <button className="btn btn-success" type="submit">
-                <i className="fas fa-search"></i>
-                </button>
-              </form>
-              <hr className="text-light" /> */}
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
         
           <li className="nav-item">
@@ -144,15 +90,12 @@ export const HomeAdmin = () => {
           <hr className="text-light" />
               </ul>
               <br />
-              {/* <div className="embed-responsive embed-responsive-16by9">
-        <iframe width="370" height="215" src="https://www.youtube.com/embed/ag9EWDlrPR4" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-</div> */}
       </div>
     </div>
   </div>
-</nav>
+</nav> */}
 
-        {/* </div>
+      {/* </div>
       </nav> */}
       <div className="bg-homeAdmi vh-100">
         <div className="hstack gap-3 p-5" style={{ height: "800px" }}>
@@ -163,7 +106,6 @@ export const HomeAdmin = () => {
           </div>
         </div>
       </div>
-      
     </>
   );
 };
