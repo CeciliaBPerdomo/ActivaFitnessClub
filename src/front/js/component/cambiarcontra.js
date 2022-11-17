@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 export const Cambiarcontra = () => {
   const [cambioContra, setCambioContra] = useState("");
@@ -14,6 +15,14 @@ export const Cambiarcontra = () => {
 
     let mail = cambioContra;
     console.log(mail);
+
+    swal({
+      title: "Se enviara un mail a tu correo electronico",
+      text:"Consejo: revisa tu bandeja de Spam, si ves que el mail de solicitud de nueva contraseña, no te llega a tu bandeja de entrada",
+      icon: "success",
+      button: "Aceptar",
+      timer:"10000",
+  })
   };
 
   return (
@@ -24,7 +33,7 @@ export const Cambiarcontra = () => {
           style={{ width: "100%" }}
           className="d-flex justify-content-center"
         >
-          <div className="card" style={{ width: "30rem" }}>
+          <div className="card pb-2" style={{ width: "30rem" }}>
             <div className="card-body">
               <div className="titulo" style={{ marginTop: "25px" }}>
                 <h1
@@ -33,14 +42,15 @@ export const Cambiarcontra = () => {
                     display: "flex",
                   }}
                 ></h1>
-                <h1 className="display-5 text-center">Cambio de contraseña</h1>
+                <h1 className="display-6 text-center"><strong>Cambio de contraseña</strong></h1>
                 <br />
-                <div className="mb-3">
+                <p className="ms-4 me-4">Introduce el email que tienes asociado a tu cuenta en Activa Fitness Club. Te enviaremos un email en el cual recibiran una nueva contraseña.</p>
+                <div className="mb-3 ms-4 me-4">
                   <label
                     htmlFor="exampleFormControlInput1"
                     className="form-label"
                   >
-                    Email address
+                    Tú Email
                   </label>
                   <input
                     type="email"
@@ -51,11 +61,11 @@ export const Cambiarcontra = () => {
                     onChange={(e) => setCambioContra(e.target.value)}
                   />
                 </div>
-
-                <div>
+                
+                <div className="d-grid gap-2 ms-4 me-4">
                   <button
                     type="submit"
-                    className="btn btn-warning"
+                    className="btn btn-outline-danger text-dark p-4"
                     onClick={envioMail}
                   >
                     Solicitar nueva contraseña
