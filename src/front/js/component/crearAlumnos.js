@@ -57,7 +57,9 @@ export const CrearAlumno = () => {
         <>
             <div className="container">
                 <br/>
-                <h1>
+                <h1 style={
+                    {color: "white"}
+                }>
                     <i className="fa fa-user"></i>
                     Ingreso de alumno
                 </h1>
@@ -67,7 +69,10 @@ export const CrearAlumno = () => {
                     <Link to={"/listaAlumno"}>
                         <button type="button" className="btn btn-outline-danger float-end"
                             style={
-                                {marginBottom: "20px"}
+                                {
+                                    marginBottom: "20px",
+                                    color: "white"
+                                }
                         }>
                             Listado de alumnos
                         </button>
@@ -87,7 +92,10 @@ export const CrearAlumno = () => {
                         style={
                             {marginTop: "35px"}
                     }>
-                        <div className="row">
+                        <div className="row"
+                            style={
+                                {color: "white"}
+                        }>
                             <div className="col ">
                                 {/* Cedula */}
                                 <label htmlFor="validationCustom01" className="form-label">
@@ -143,7 +151,10 @@ export const CrearAlumno = () => {
 
                     <div className="container text-start"
                         style={
-                            {marginTop: "35px"}
+                            {
+                                marginTop: "35px",
+                                color: "white"
+                            }
                     }>
                         <div className="row">
                             <div className="col">
@@ -194,7 +205,10 @@ export const CrearAlumno = () => {
 
                     <div className="container text-start"
                         style={
-                            {marginTop: "35px"}
+                            {
+                                marginTop: "35px",
+                                color: "white"
+                            }
                     }>
                         <div className="row">
                             {/* Afecciones medicas */}
@@ -236,7 +250,10 @@ export const CrearAlumno = () => {
 
                     <div className="container text-start"
                         style={
-                            {marginTop: "35px"}
+                            {
+                                marginTop: "35px",
+                                color: "white"
+                            }
                     }>
                         <div className="row">
                             {/* Email */}
@@ -267,7 +284,10 @@ export const CrearAlumno = () => {
 
                     <div className="container text-start"
                         style={
-                            {marginTop: "35px"}
+                            {
+                                marginTop: "35px",
+                                color: "white"
+                            }
                     }>
                         <div className="row">
                             {/* Actividades */}
@@ -344,7 +364,8 @@ export const CrearAlumno = () => {
                             style={
                                 {
                                     marginTop: "35px",
-                                    marginBottom: "15px"
+                                    marginBottom: "15px",
+                                    color: "white"
                                 }
                         }>
                             Guardar datos
