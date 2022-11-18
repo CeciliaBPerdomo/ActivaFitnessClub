@@ -7,18 +7,22 @@ export const Carrito = () => {
   const { actions, store } = useContext(Context);
   const params = useParams();
   let total = 0;
-  const [cantidad, setCantidad] = useState(1);
+  const [cantidad, setCantidad] = useState();
 
   useEffect(() => {
     const getInfo = async () => {
+      // Productos del carrito
       await actions.obtenerCarrito(parseInt(params.theid));
+
       // Datos del usuario
-      await actions.obtenerAlumnoId(parseInt(store.carrito.user_id));
+      let idUsuario = await store.carrito.user_id;
+      await actions.obtenerAlumnoId(parseInt(idUsuario));
     };
 
     getInfo();
   }, []);
 
+  // Calculo total de la compra
   const totalCompra = () => {
     total = 0;
     {
@@ -36,9 +40,11 @@ export const Carrito = () => {
     window.location.replace(store?.mercadopago.sandbox_init_point);
   };
 
-  const cambioCantidad = async (cantidad, item) => {
-    setCantidad(cantidad + 1);
+  const cambioCantidad = async (item) => {
+    await setCantidad(item.cantidad + 1);
+    console.log(cantidad);
     await actions.modificarCantidad(item.idCarrito, item.product_id, cantidad);
+    totalCompra();
   };
 
   return (
@@ -49,7 +55,7 @@ export const Carrito = () => {
           style={{
             color: "white",
             marginLeft: "10px",
-            marginTop: "10px",
+            marginTop: "90px",
             marginBottom: "10px",
           }}
         >
@@ -106,17 +112,19 @@ export const Carrito = () => {
                         >
                           <i className="fa fa-minus"></i>
                         </button>
+                        {/* Numero */}
                         <input
                           type="text"
-                          defaultValue={item.cantidad}
+                          value={item.cantidad}
+                          onChange={(e) => setCantidad(e.target.value)}
                           className="col-4"
                           style={{ marginRight: "5px", textAlign: "center" }}
                         />
                         {/* Suma mas cantidad */}
                         <button
                           type="button"
-                          value={cantidad}
-                          onClick={() => cambioCantidad(cantidad, item)}
+                          //value={cantidad}
+                          onClick={() => cambioCantidad(item)}
                           className="btn btn-outline-success float-end"
                           style={{ marginRight: "40px" }}
                         >

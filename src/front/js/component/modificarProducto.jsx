@@ -24,13 +24,20 @@ export const EditarProducto = () => {
     actions.obtenerProductoId(parseInt(params.theid));
   }, []);
 
-  const modificarProducto = (event) => {
+  const modificarProducto = async (event) => {
     event.preventDefault();
 
     let id = parseInt(params.theid);
 
     // Guarda el formulario
-    actions.modificarProducto(id, nombreProducto, stock, compra, imagen, venta);
+    await actions.modificarProducto(
+      id,
+      nombreProducto,
+      stock,
+      compra,
+      imagen,
+      venta
+    );
 
     swal({
       title: "Modificación",
