@@ -56,7 +56,6 @@ const getState = ({
 
             login: async (email, password) => {
                 try {
-                    console.log(email);
                     const response = await axios.post(direccion + "/api/login", {
                         email: email,
                         password: password,
@@ -258,7 +257,6 @@ const getState = ({
                     });
                     return response.data;
                 } catch (error) {
-                    console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
                         console.log(error.response.data.msg);
                     }

@@ -18,7 +18,7 @@ export const Navbar = () => {
     // actions.obtenerAlumnoId(parseInt(params.theid));
   }, []);
 
-  console.log(store.profile);
+  //  console.log(store.profile);
 
   return (
     <>

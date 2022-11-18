@@ -2,23 +2,28 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/carr.css";
+import swal from "sweetalert";
 
 export const Carrito = () => {
   const { actions, store } = useContext(Context);
   const params = useParams();
   let total = 0;
-  const [cantidad, setCantidad] = useState(1);
+  const [cantidad, setCantidad] = useState();
 
   useEffect(() => {
     const getInfo = async () => {
+      // Productos del carrito
       await actions.obtenerCarrito(parseInt(params.theid));
+
       // Datos del usuario
-      await actions.obtenerAlumnoId(parseInt(store.carrito.user_id));
+      let idUsuario = await store.carrito.user_id;
+      await actions.obtenerAlumnoId(parseInt(idUsuario));
     };
 
     getInfo();
   }, []);
 
+  // Calculo total de la compra
   const totalCompra = () => {
     total = 0;
     {
@@ -37,8 +42,33 @@ export const Carrito = () => {
   };
 
   const cambioCantidad = async (cantidad, item) => {
-    setCantidad(cantidad + 1);
-    await actions.modificarCantidad(item.idCarrito, item.product_id, cantidad);
+    // Chequea que no pida menos de un producto
+    if (cantidad < 1) {
+      swal({
+        title: "Eliminar producto",
+        text: `El producto ${item.productInfo.name} se eliminará.`,
+        icon: "warning",
+        button: "ok",
+        actions: actions.borrarProductoCarrito(item.idCarrito, item.product_id),
+      });
+      // Chequea que alcance el stock
+    } else if (cantidad > item.productInfo.stock) {
+      cantidad = cantidad - 1;
+      swal({
+        title: `${item.productInfo.name}`,
+        text: `Llegaste al limite de la cantidad que hay en stock.`,
+        icon: "warning",
+        button: "ok",
+      });
+    } else {
+      // Si esta todo ok, actualiza
+      await actions.modificarCantidad(
+        item.idCarrito,
+        item.product_id,
+        cantidad
+      );
+    }
+    totalCompra();
   };
 
   return (
@@ -49,7 +79,7 @@ export const Carrito = () => {
           style={{
             color: "white",
             marginLeft: "10px",
-            marginTop: "10px",
+            marginTop: "90px",
             marginBottom: "10px",
           }}
         >
@@ -103,20 +133,26 @@ export const Carrito = () => {
                           type="button"
                           className="btn btn-outline-danger float-end"
                           style={{ marginRight: "5px" }}
+                          onClick={() =>
+                            cambioCantidad(item.cantidad - 1, item)
+                          }
                         >
                           <i className="fa fa-minus"></i>
                         </button>
+                        {/* Numero */}
                         <input
                           type="text"
-                          defaultValue={item.cantidad}
+                          value={item.cantidad}
+                          onChange={(e) => setCantidad(e.target.value)}
                           className="col-4"
                           style={{ marginRight: "5px", textAlign: "center" }}
                         />
                         {/* Suma mas cantidad */}
                         <button
                           type="button"
-                          value={cantidad}
-                          onClick={() => cambioCantidad(cantidad, item)}
+                          onClick={() =>
+                            cambioCantidad(item.cantidad + 1, item)
+                          }
                           className="btn btn-outline-success float-end"
                           style={{ marginRight: "40px" }}
                         >
