@@ -51,7 +51,7 @@ export const Navbar = () => {
               id="navbarSupportedContent"
             >
               {!store.auth ? (
-                <Link to="/login">
+                <Link to="/login" style={{ textDecoration: "none" }}>
                   <button className="btn btn-danger d-flex" type="submit">
                     Login
                   </button>
@@ -70,7 +70,7 @@ export const Navbar = () => {
       {store.auth && store.profile.role === "Administrador" ? (
         <nav className="navbar navbar-dark bg-danger fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to="/HomeAdmin">
               <img src={logo} style={{ maxWidth: "50px", maxHeigth: "50px" }} />
             </Link>
 
@@ -231,7 +231,7 @@ export const Navbar = () => {
       {store.auth && store.profile.role === "Alumno" ? (
         <nav className="navbar navbar-dark bg-dark fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to={"/"}>
+            <Link className="navbar-brand" to={"/HomeUser"}>
               <img
                 src={logo}
                 style={{
