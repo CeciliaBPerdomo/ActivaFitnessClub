@@ -38,7 +38,19 @@ export const Contacto = () => {
                             marginTop: "25px",
                             color: "#95afc0",
 
-                            fontFamily: "serif"
+                            fontFamily: "serif",
+                            background: "rgba(0,0,0, 0.315)",
+                            width: "40%",
+                            margin: "auto",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            padding: "15px",
+                            boxShadow: "20px 20px 50px rgba(0,0,0, 0.5)",
+                            borderRadius: "15px",
+                            borderLeft: "0.5px solid rgba(255,255,255, 0.5)",
+                            borderRight: "0.5px solid rgba(255,255,255, 0.5)",
+                            borderTop: "0.5px solid rgba(255,255,255, 0.5)",
+                            borderBlock: "0.5px solid rgba(255,255,255, 0.5)"
 
 
                         }
@@ -57,7 +69,10 @@ export const Contacto = () => {
                         <br/>
                         <div className=""
                             style={
-                                {marginTop: "15px"}
+                                {
+                                    marginTop: "15px",
+                                    padding: "15px"
+                                }
                         }>
                             <div className="row">
                                 <div className="col">
@@ -69,7 +84,8 @@ export const Contacto = () => {
                                                 borderBottom: "2px solid",
                                                 borderBottomColor: "#641E16",
                                                 marginBottom: "10px",
-                                                fontSize: "20px"
+                                                fontSize: "17px"
+
                                             }
 
                                         }
@@ -87,7 +103,7 @@ export const Contacto = () => {
                                                 borderBottom: "2px solid",
                                                 borderBottomColor: "#641E16",
                                                 marginBottom: "10px",
-                                                fontSize: "20px"
+                                                fontSize: "17px"
                                             }
 
 
@@ -109,7 +125,7 @@ export const Contacto = () => {
                                                 borderBottom: "2px solid",
                                                 borderBottomColor: "#641E16",
                                                 marginBottom: "10px",
-                                                fontSize: "20px"
+                                                fontSize: "17px"
                                             }
 
                                         }
@@ -126,7 +142,7 @@ export const Contacto = () => {
                                                 borderBottom: "2px solid",
                                                 borderBottomColor: "#641E16",
                                                 marginBottom: "10px",
-                                                fontSize: "20px"
+                                                fontSize: "17px"
                                             }
 
                                         }
@@ -145,7 +161,7 @@ export const Contacto = () => {
                                                 borderBottom: "2px solid",
                                                 borderBottomColor: "#641E16",
                                                 marginBottom: "10px",
-                                                fontSize: "20px",
+                                                fontSize: "17px",
                                                 outline: "none"
                                             }
 
