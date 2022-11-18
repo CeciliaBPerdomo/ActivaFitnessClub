@@ -6,19 +6,18 @@ import swal from "sweetalert";
 export const ListadoProductos = () => {
   const { store, actions } = useContext(Context);
 
-  const[buscarproducto, setBuscarproducto]= useState("")
-  const handlebuscarproduct= (e) =>  {
+  const [buscarproducto, setBuscarproducto] = useState("");
+  const handlebuscarproduct = (e) => {
     e.preventDefault();
-    setBuscarproducto(e.target.value)
-    console.log(buscarproducto)
+    setBuscarproducto(e.target.value);
+    console.log(buscarproducto);
 
-    if (buscarproducto === ""){
-      actions.obtenerProducto()
-    } 
-    else{ actions.buscadorproductos(e.target.value)
+    if (buscarproducto === "") {
+      actions.obtenerProducto();
+    } else {
+      actions.buscadorproductos(e.target.value);
     }
-
-  }
+  };
 
   // Inicio
   useEffect(() => {
@@ -62,7 +61,7 @@ export const ListadoProductos = () => {
         <br /> {/* Buscar */}
         <div>
           <input
-          onChange={handlebuscarproduct}
+            onChange={handlebuscarproduct}
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"
@@ -82,7 +81,7 @@ export const ListadoProductos = () => {
           </Link>
         </div>
         <br /> {/* Listado de producto */}
-        <table className="table table-hover" style={{ color: "white" }}>
+        <table className="table" style={{ color: "white" }}>
           <thead>
             <tr className="text-center">
               {" "}
