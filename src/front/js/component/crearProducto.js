@@ -27,12 +27,16 @@ export const CrearProducto = () => {
 
   return (
     <>
+      <br />
+      <br />
       <div
         className="container"
-        style={{ marginTop: "50px", marginBottom: "35px" }}
+        style={{ marginTop: "50px", marginBottom: "50px" }}
       >
         {/* Titulo */}
-        <h1 style={{ color: "white" }}>Ingreso de nuevos productos</h1>
+        <h1 style={{ color: "white", marginBottom: "35px" }}>
+          Ingreso de nuevos productos
+        </h1>
         <br />
 
         {/* Listado de productos */}
