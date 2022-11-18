@@ -8,19 +8,18 @@ export const ListaAlumno = () => {
   const { store, actions } = useContext(Context);
   let navegacion = useNavigate();
 
-  const[busqueda, setBusqueda]= useState("")
-  const handlebusca= (e) =>  {
+  const [busqueda, setBusqueda] = useState("");
+  const handlebusca = (e) => {
     e.preventDefault();
-    setBusqueda(e.target.value)
-    console.log(busqueda)
+    setBusqueda(e.target.value);
+    console.log(busqueda);
 
-    if (busqueda === ""){
-      actions.obtenerAlumnos()
-    } 
-    else{ actions.buscador(e.target.value)
+    if (busqueda === "") {
+      actions.obtenerAlumnos();
+    } else {
+      actions.buscador(e.target.value);
     }
-
-  }
+  };
 
   //Inicio
   useEffect(() => {
@@ -32,8 +31,11 @@ export const ListaAlumno = () => {
     actions.crearRutina(item.id);
 
     await actions.obtenerUltimoId();
+    console.log(store.rutina?.id);
     let idRutina = store.rutina?.id;
-    let idUsuario = store.rutina?.user_id;
+    console.log(idRutina);
+    console.log(item.id);
+    let idUsuario = item.id;
 
     navegacion("/crearRutina/" + idRutina + "/" + idUsuario);
   };
