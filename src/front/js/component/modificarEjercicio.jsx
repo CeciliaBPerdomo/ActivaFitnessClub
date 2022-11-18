@@ -50,7 +50,7 @@ export const EditarEjercicio = () => {
   return (
     <>
       <div
-        className="container"
+        className="container text-light"
         style={{
           marginTop: "20px",
           marginBottom: "35px",

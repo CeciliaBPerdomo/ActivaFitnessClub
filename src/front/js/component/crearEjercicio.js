@@ -64,7 +64,7 @@ export const CrearEjercicio = () => {
         </div>
         <br />
 
-        <div className="formulario">
+        <div className="formulario text-light">
           <form>
             <div
               className="container text-start "
