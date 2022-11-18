@@ -32,7 +32,12 @@ export const ModificarAlumno = () => {
 
     let id = parseInt(params.theid);
 
-    actions.modificarAlumno(
+    swal({
+      title: "Alumno Modificado",
+      icon: "success",
+      buttons: "Aceptar",
+      timer:"5000",
+    actions: actions.modificarAlumno(
       id,
       ci,
       name,
@@ -50,7 +55,8 @@ export const ModificarAlumno = () => {
       role,
       isActive,
       cuota
-    );
+    ),
+  });
   };
 
   return (
@@ -354,6 +360,7 @@ export const ModificarAlumno = () => {
                 type="submit"
                 className="btn btn-outline-danger w-100"
                 style={{ marginTop: "35px" }}
+                onClick={(e) => modificarAlumno(e)}
               >
                 Guardar datos modificados
               </button>

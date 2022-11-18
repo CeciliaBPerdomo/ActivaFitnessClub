@@ -20,6 +20,28 @@ export const ListadoEjercicios = () => {
     }
 
   }
+
+  const borrar = (e, item) => {
+    e.preventDefault();
+
+    // Elimina el ejercicio!
+    swal({
+      title: `Desea borrar el ejercicio ${item.exercise_name}`,
+      text: "Una vez eliminado, no se podra recuperar",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal(`Poof! el alumno ${item.exercise_name} fue borrado`, {
+          icon: "success",
+          actions: actions.borrarEjercicio(item.id),
+        });
+      } else {
+        swal("Ups! Casi, casi!");
+      }
+    });
+  };
   // Inicio
   useEffect(() => {
     actions.obtenerEjercicios();

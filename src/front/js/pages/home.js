@@ -140,6 +140,7 @@ export const Home = () => {
                 marginTop: "-20px",
                 position: "relative",
                 filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
+                marginRight:"90px"
               }}
             />
           </div>
@@ -157,7 +158,7 @@ export const Home = () => {
               className="display-5"
               style={{
                 fontSize: "50px",
-                color: "#a5b1c2",
+                color: "#c7ecee",
               }}
             >
               Filosofía
@@ -198,7 +199,7 @@ export const Home = () => {
           <div className="information">
             <p
               className="display-5"
-              style={{ fontSize: "50px", color: "#a5b1c2" }}
+              style={{ fontSize: "50px", color: "#c7ecee" }}
             >
               ¿Quiénes somos?
             </p>
@@ -268,10 +269,11 @@ export const Home = () => {
               src="https://cdn.pixabay.com/photo/2016/03/31/19/34/black-1295124_960_720.png"
               alt=""
               style={{
-                width: "400px",
+                width: "300px",
                 marginTop: "-20px",
                 position: "relative",
                 filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
+                marginRight:"90px"
               }}
             />
           </div>
@@ -288,7 +290,7 @@ export const Home = () => {
               className="display-5"
               style={{
                 fontSize: "50px",
-                color: "#a5b1c2",
+                color: "#c7ecee",
               }}
             >
               Nuestros planes
@@ -334,6 +336,7 @@ export const Home = () => {
                 marginTop: "-30px",
                 position: "relative",
                 filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
+                marginLeft:"500px"
               }}
             />
           </div>
@@ -343,19 +346,21 @@ export const Home = () => {
               widht: "60%",
               position: "relative",
               margin: "5px",
+              marginRight: "35px",
             }}
           >
             <p
               className="display-5"
               style={{
                 fontSize: "50px",
-                color: "#a5b1c2",
+                color: "#c7ecee",
+                marginLeft:"-475px",
               }}
             >
               Entrenamiento personalizado
             </p>
             <p
-              style={{ fontSize: "18px", textAlign: "justify", color: "white" }}
+              style={{ fontSize: "18px", textAlign: "justify", color: "white",marginLeft:"-475px", marginRight: "550px", }}
             >
               Por otro lado la modalidad de entrenamiento grupal esta mas
               enfocada en el dinamismo y la intensidad, el compañerismo y el
@@ -411,7 +416,7 @@ export const Home = () => {
               className="display-5"
               style={{
                 fontSize: "50px",
-                color: "#a5b1c2",
+                color: "#c7ecee",
               }}
             >
               Entrenamiento funcional
@@ -456,9 +461,9 @@ export const Home = () => {
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.351810195052!2d-57.8423841850913!3d-34.46859845786764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a313f2236d1c15%3A0x6c5d7dcbab5d10d6!2sActiva%20Fitness%20Club!5e0!3m2!1ses!2suy!4v1668024931885!5m2!1ses!2suy"
-              width="400"
+              width="350"
               height="200"
-              style={{ border: "0", marginLeft: "10px", marginTop: "40px" }}
+              style={{ border: "0", marginLeft: "500px", marginTop: "40px", }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -476,13 +481,14 @@ export const Home = () => {
               className="display-5"
               style={{
                 fontSize: "50px",
-                color: "#a5b1c2",
+                color: "#c7ecee",
+                marginLeft:"-475px"
               }}
             >
               Ubicación
             </p>
             <p
-              style={{ fontSize: "18px", textAlign: "justify", color: "white" }}
+              style={{ fontSize: "18px", textAlign: "justify", color: "white", marginLeft:"-475px" }}
             >
               Encontranos en Fosalba 674, Colonia del Sacramento
             </p>
