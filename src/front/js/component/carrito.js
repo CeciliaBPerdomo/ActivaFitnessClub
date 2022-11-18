@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/carr.css";
+import swal from "sweetalert";
 
 export const Carrito = () => {
   const { actions, store } = useContext(Context);
@@ -40,10 +41,33 @@ export const Carrito = () => {
     window.location.replace(store?.mercadopago.sandbox_init_point);
   };
 
-  const cambioCantidad = async (item) => {
-    await setCantidad(item.cantidad + 1);
-    console.log(cantidad);
-    await actions.modificarCantidad(item.idCarrito, item.product_id, cantidad);
+  const cambioCantidad = async (cantidad, item) => {
+    // Chequea que no pida menos de un producto
+    if (cantidad < 1) {
+      swal({
+        title: "Eliminar producto",
+        text: `El producto ${item.productInfo.name} se eliminará.`,
+        icon: "warning",
+        button: "ok",
+        actions: actions.borrarProductoCarrito(item.idCarrito, item.product_id),
+      });
+      // Chequea que alcance el stock
+    } else if (cantidad > item.productInfo.stock) {
+      cantidad = cantidad - 1;
+      swal({
+        title: `${item.productInfo.name}`,
+        text: `Llegaste al limite de la cantidad que hay en stock.`,
+        icon: "warning",
+        button: "ok",
+      });
+    } else {
+      // Si esta todo ok, actualiza
+      await actions.modificarCantidad(
+        item.idCarrito,
+        item.product_id,
+        cantidad
+      );
+    }
     totalCompra();
   };
 
@@ -109,6 +133,9 @@ export const Carrito = () => {
                           type="button"
                           className="btn btn-outline-danger float-end"
                           style={{ marginRight: "5px" }}
+                          onClick={() =>
+                            cambioCantidad(item.cantidad - 1, item)
+                          }
                         >
                           <i className="fa fa-minus"></i>
                         </button>
@@ -123,8 +150,9 @@ export const Carrito = () => {
                         {/* Suma mas cantidad */}
                         <button
                           type="button"
-                          //value={cantidad}
-                          onClick={() => cambioCantidad(item)}
+                          onClick={() =>
+                            cambioCantidad(item.cantidad + 1, item)
+                          }
                           className="btn btn-outline-success float-end"
                           style={{ marginRight: "40px" }}
                         >
