@@ -6,20 +6,18 @@ import swal from "sweetalert";
 export const ListadoEjercicios = () => {
   const { store, actions } = useContext(Context);
 
-
-  const[buscaejer, setBuscaejer]= useState("")
-  const handlebuscarejer= (e) =>  {
+  const [buscaejer, setBuscaejer] = useState("");
+  const handlebuscarejer = (e) => {
     e.preventDefault();
-    setBuscaejer(e.target.value)
-    console.log(buscaejer)
+    setBuscaejer(e.target.value);
+    console.log(buscaejer);
 
-    if (buscaejer === ""){
-      actions.obtenerEjercicios()
-    } 
-    else{ actions.buscadorejercicios(e.target.value)
+    if (buscaejer === "") {
+      actions.obtenerEjercicios();
+    } else {
+      actions.buscadorejercicios(e.target.value);
     }
-
-  }
+  };
 
   const borrar = (e, item) => {
     e.preventDefault();
@@ -57,13 +55,13 @@ export const ListadoEjercicios = () => {
       >
         {" "}
         {/* Titulo */}
-        <h1>
+        <h1 style={{ color: "white" }}>
           <i className="fa fa-dumbbell"></i> Listado de ejercicios
         </h1>
         <br /> {/* Buscar */}
         <div>
           <input
-          onChange={handlebuscarejer}
+            onChange={handlebuscarejer}
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"
@@ -119,7 +117,7 @@ export const ListadoEjercicios = () => {
                     to={"/vistaEjercicio/" + item.id}
                     className="btn btn-outline-dark"
                   >
-                    <i className="fa fa-user-plus"></i>
+                    <i className="fa fa-eye"></i>
                   </Link>
                 </td>
 

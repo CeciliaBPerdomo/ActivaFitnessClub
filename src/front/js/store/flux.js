@@ -532,10 +532,8 @@ const getState = ({
             /* Borrar ejercicio */
             borrarEjercicio: async (id) => {
                 try {
-                    const response = await axios.delete(
-                        direccion + "/api/ejercicios/" + id, {}
-                    );
-                    console.log(response);
+                    await axios.delete(direccion + "/api/ejercicios/" + id, {});
+                    getActions().obtenerEjercicios();
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
