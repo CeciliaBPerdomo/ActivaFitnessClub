@@ -80,7 +80,7 @@ export const CrearRutina = () => {
         {/* Titulo */}
         <div>
           <br />
-          <p className="h1">
+          <p className="h1" style={{ color: "white" }}>
             <i className="fa fa-dumbbell"></i> Crear rutina
           </p>
         </div>
@@ -90,25 +90,24 @@ export const CrearRutina = () => {
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
           <Link
             to={"/ListaRutinaDeAlumno/" + parseInt(params.idAlumno)}
-            className="btn btn-outline-success w-25"
+            className="btn btn-outline-danger w-50"
             type="button"
-            style={{ marginBottom: "20px" }}
+            style={{ marginBottom: "20px", color: "white" }}
           >
             Ver rutinas del alumno
           </Link>
 
           {/* Listado de todas las rutinas */}
-          <button
+          {/* <button
             className="btn btn-outline-success w-25"
             type="button"
             style={{ marginBottom: "20px" }}
           >
             Ver todas las rutinas
-          </button>
+          </button>*/}
         </div>
 
-        {/* <div className="d-grid gap-2 d-md-flex justify-content-md-end"></div> */}
-        <div className="formulario">
+        <div className="formulario" style={{ color: "white" }}>
           <form onSubmit={cargarRutina}>
             <div
               className="container text-start "
@@ -243,9 +242,9 @@ export const CrearRutina = () => {
 
               <div className="col">
                 <button
-                  className="btn btn-outline-success float-end w-50"
+                  className="btn btn-outline-danger float-end w-50"
                   type="button"
-                  style={{ marginTop: "31px" }}
+                  style={{ marginTop: "31px", color: "white" }}
                   onClick={cargarRutina}
                 >
                   Añadir ejercicio
@@ -280,7 +279,9 @@ export const CrearRutina = () => {
                 <td className="text-start">
                   {item.exerciseInfo.exercise_name}
                 </td>
-                <td className="text-start">{item.exerciseInfo.description}</td>
+                <td className="text-start">
+                  {item.exerciseInfo.type_of_muscle}
+                </td>
                 <td>{item.series}</td>
                 <td>{item.repeticiones}</td>
                 <td>{item.carga}</td>
