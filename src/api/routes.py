@@ -762,16 +762,33 @@ def get_shoppingCart(shoppingCart_id):
 
     return jsonify(results), 200
 
+# Muestra todo el carrito por id de usuario
+@api.route('/compraCarrito/<int:idUsuario>', methods=['GET'])
+def get_shoppingCartbyUser(idUsuario):
+    shoppingCartId = ShoppingCart.query.filter_by(user_id=idUsuario).all()
+    results = list(map(lambda x: {**x.serializeProductos(), **x.serialize()}, shoppingCartId))
+
+    if results is None: 
+        response_body = {"msg": "Compra no encontrada"}
+        return jsonify(response_body), 400
+
+    return jsonify(results), 200
+
 # Busca por id de usuario (chequea que no tenga un carrito)
 @api.route('/compra/<int:userid>', methods=['GET'])
 def get_shoppingCart_userId(userid):
     queryNewShoppingCart= ShoppingCart.query.filter_by(user_id=userid).first()
-   
+
     # No existe carrito para ese usuario
     if queryNewShoppingCart is None: 
         ultimoid = ShoppingCart.query.order_by(desc(ShoppingCart.idCarrito)).first()
-        return jsonify(ultimoid.serialize()), 200
+        # Si no existe ningun carrito
+        if ultimoid is None: 
+            ultimoid = 0
+            return jsonify(ultimoid)
     
+        return jsonify(ultimoid.serialize()), 200
+
     #Existe el carrito para ese usuario
     return jsonify(queryNewShoppingCart.serialize()), 200
 

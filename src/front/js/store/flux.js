@@ -912,13 +912,30 @@ const getState = ({
                 }
             },
 
+            //Mostrar carrito por usuario
+            obtenerCarritoIdUsuario: async (idUsuario) => {
+                try {
+                    const response = await axios.get(
+                        direccion + "/api/compraCarrito/" + idUsuario, {}
+                    );
+                    console.log(response.data);
+                    setStore({
+                        carrito: response.data,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
+                }
+            },
+
             //Mostrar todos los productos del carrito
             obtenerCarrito: async (idCarrito) => {
                 try {
                     const response = await axios.get(
                         direccion + "/api/compras/" + idCarrito, {}
                     );
-                    console.log(response.data);
                     setStore({
                         carrito: response.data,
                     });
@@ -951,10 +968,11 @@ const getState = ({
                     const response = await axios.get(
                         direccion + "/api/compra/" + idUsuario, {}
                     );
+                    console.log(response.data);
                     setStore({
-                        idCarrito: response.data.idCarrito + 1,
+                        idCarrito: response.data,
                     });
-                    return response.data.idCarrito + 1;
+                    return response.data;
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {

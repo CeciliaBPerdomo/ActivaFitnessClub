@@ -9,12 +9,12 @@ export const ListadoProductos = () => {
   const [buscarproducto, setBuscarproducto] = useState("");
   const handlebuscarproduct = (e) => {
     if (e.key === "Enter") {
-    if (buscarproducto === "") {
-      actions.obtenerProducto();
-    } else {
-      actions.buscadorproductos(e.target.value);
+      if (buscarproducto === "") {
+        actions.obtenerProducto();
+      } else {
+        actions.buscadorproductos(e.target.value);
+      }
     }
-  }
   };
 
   // Inicio
@@ -55,7 +55,7 @@ export const ListadoProductos = () => {
       >
         {" "}
         {/* Titulo */}
-        <h1>Listado de productos</h1>
+        <h1 style={{ color: "white" }}>Listado de productos</h1>
         <br /> {/* Buscar */}
         <div>
           <input
@@ -63,8 +63,6 @@ export const ListadoProductos = () => {
             onKeyPress={handlebuscarproduct}
             value={buscarproducto}
             className="form-control"
-            list="datalistOptions"
-            id="exampleDataList"
             placeholder="Buscar por nombre..."
           />
         </div>
@@ -74,7 +72,7 @@ export const ListadoProductos = () => {
             <button
               type="button"
               className="btn btn-outline-danger w-50 float-end"
-              style={{ marginBottom: "40px" }}
+              style={{ marginBottom: "40px", color: "white" }}
             >
               Crear nuevo producto
             </button>
