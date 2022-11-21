@@ -8,15 +8,13 @@ export const ListadoProductos = () => {
 
   const [buscarproducto, setBuscarproducto] = useState("");
   const handlebuscarproduct = (e) => {
-    e.preventDefault();
-    setBuscarproducto(e.target.value);
-    console.log(buscarproducto);
-
+    if (e.key === "Enter") {
     if (buscarproducto === "") {
       actions.obtenerProducto();
     } else {
       actions.buscadorproductos(e.target.value);
     }
+  }
   };
 
   // Inicio
@@ -61,7 +59,9 @@ export const ListadoProductos = () => {
         <br /> {/* Buscar */}
         <div>
           <input
-            onChange={handlebuscarproduct}
+            onChange={(e) => setBuscarproducto(e.target.value)}
+            onKeyPress={handlebuscarproduct}
+            value={buscarproducto}
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"
