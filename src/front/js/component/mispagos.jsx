@@ -2,15 +2,6 @@ import React, {useState, useContext, useEffect} from "react";
 import {Link, useParams} from "react-router-dom";
 import {Context} from "../store/appContext";
 import titulo from "../../img/Cabeceras/pagos.jpg";
-import {
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td
-} from "react-super-responsive-table";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 // ///////////////////////////////////////////
 // CLIENTE PUEDE VER LISTADO DE SUS PAGOS  //
@@ -64,51 +55,55 @@ export const MisPagos = () => {
                     <br/>
                 </div>
 
-                {/* Listado de pagos */}
-                <Table className="table table-hover table-secondary">
-                    <Thead>
-                        <Tr> {/* Cabezeras */}
-                            <Th scope="col" className="text-center">
-                                Fecha de ingreso
-                            </Th>
-                            <Th scope="col" className="text-center">
-                                Fecha de pago
-                            </Th>
-                            <Th scope="col" className="text-center">
-                                Monto
-                            </Th>
-                            <Th scope="col" className="text-center">
-                                Factura
-                            </Th>
-                            <Th scope="col">Descripción</Th>
-                        </Tr>
-                    </Thead>
 
-                    <Tbody> {
+                {/* Listado de pagos */}
+                <table className="table table-hover table-secondary">
+                    <thead>
+                        <tr> {" "}
+                            {/* Cabezeras */}
+                            <th scope="col" className="text-center">
+                                Fecha de ingreso
+                            </th>
+                            <th scope="col" className="text-center">
+                                Fecha de pago
+                            </th>
+                            <th scope="col" className="text-center">
+                                Monto
+                            </th>
+                            <th scope="col" className="text-center">
+                                Factura
+                            </th>
+                            <th scope="col">Descripción</th>
+                        </tr>
+                    </thead>
+
+                    <tbody> {" "}
+                        {
                         store.mens.map((item, id) => (
-                            <Tr key={id}>
-                                <Td className="text-center">
+                            <tr key={id}>
+                                <td className="text-center">
                                     {
                                     store.alumno.date_of_admission
-                                } </Td>
-                                <Td className="text-center">
+                                }
+                                    {" "} </td>
+                                <td className="text-center">
                                     {
                                     item.payment_date
-                                }</Td>
-                                <Td className="text-center">$ {
+                                }</td>
+                                <td className="text-center">$ {
                                     item.payment_amount
-                                }</Td>
-                                <Td className="text-center">
+                                }</td>
+                                <td className="text-center">
                                     {
                                     item.bill_n
-                                }</Td>
-                                <Td>{
+                                }</td>
+                                <td>{
                                     item.description
-                                }</Td>
-                            </Tr>
+                                }</td>
+                            </tr>
                         ))
-                    } </Tbody>
-                </Table>
+                    } </tbody>
+                </table>
             </div>
         </>
     );
