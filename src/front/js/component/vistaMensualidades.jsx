@@ -10,25 +10,21 @@ import swal from "sweetalert";
 export const VistaMensualidades = () => {
   const { store, actions } = useContext(Context);
 
-  const[buscarmens, setBuscarmens]= useState("")
-  const handlebuscarmens= (e) =>  {
+  const [buscarmens, setBuscarmens] = useState("");
+  const handlebuscarmens = (e) => {
     e.preventDefault();
-    setBuscarmens(e.target.value)
-    console.log(buscarmens)
+    setBuscarmens(e.target.value);
 
-    if (buscarmens === ""){
-      actions.obtenerMensualidades()
-    } 
-    else{ actions.buscadormens(e.target.value)
+    if (buscarmens === "") {
+      actions.obtenerMensualidades();
+    } else {
+      actions.buscadormens(e.target.value);
     }
-
-  }
+  };
 
   useEffect(() => {
     actions.obtenerMensualidades();
   }, []);
-
-  console.log(store.mens);
 
   const borrar = (e, item) => {
     e.preventDefault();
@@ -56,7 +52,7 @@ export const VistaMensualidades = () => {
     <>
       <div
         className="container"
-        style={{ marginBottom: "15px", marginTop: "15px" }}
+        style={{ marginBottom: "15px", marginTop: "15px", color: "white" }}
       >
         <h1>
           <i className="fa fa-wallet"></i> Mensualidades
@@ -66,7 +62,7 @@ export const VistaMensualidades = () => {
         {/* Buscar */}
         <div>
           <input
-          onChange={handlebuscarmens}
+            onChange={handlebuscarmens}
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"
@@ -130,7 +126,7 @@ export const VistaMensualidades = () => {
                 <td>{item.userInfo.last_name}</td>
                 <td>{item.userInfo.date_of_admission}</td>
                 <td>{item.payment_date}</td>
-                <td>{item.payment_amount}</td>
+                <td>$ {item.payment_amount}</td>
                 <td>{item.bill_n}</td>
 
                 {/* Modificar */}

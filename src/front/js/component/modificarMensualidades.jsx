@@ -48,8 +48,9 @@ export const EditarMensualidad = () => {
       <div
         className="container"
         style={{
-          marginTop: "20px",
+          marginTop: "80px",
           marginBottom: "35px",
+          color: "white",
         }}
       >
         {" "}
@@ -63,8 +64,8 @@ export const EditarMensualidad = () => {
           <Link to={"/mensualidades"}>
             <button
               type="button"
-              className="btn btn-outline-danger float-end"
-              style={{ marginBottom: "20px" }}
+              className="btn btn-outline-danger w-50 float-end"
+              style={{ marginBottom: "20px", color: "white" }}
             >
               Listado de mensualidades
             </button>
@@ -88,7 +89,7 @@ export const EditarMensualidad = () => {
                 marginTop: "25px",
               }}
             >
-              <div className="col">
+              <div className="col" style={{ color: "white" }}>
                 <label htmlFor="Alumno" className="form-label">
                   <b>Alumno:</b>
                 </label>
@@ -153,8 +154,6 @@ export const EditarMensualidad = () => {
                 <input
                   type="text"
                   className="form-control"
-                  id="basic-description"
-                  aria-describedby="basic-addon3"
                   onChange={(e) => setDescripcion(e.target.value)}
                   defaultValue={store.mensualidad.description}
                 />
@@ -172,6 +171,7 @@ export const EditarMensualidad = () => {
           <button
             type="button"
             className="btn btn-outline-danger w-50 float-end"
+            style={{ color: "white" }}
             onClick={(e) => modificarMensualidad(e)}
           >
             Guardar modificación
