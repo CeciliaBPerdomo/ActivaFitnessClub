@@ -42,10 +42,10 @@ export const CrearEjercicio = () => {
     <>
       <div
         className="container"
-        style={{ marginTop: "20px", marginBottom: "35px" }}
+        style={{ marginTop: "70px", marginBottom: "35px" }}
       >
         {/* Titulo */}
-        <h1>
+        <h1 style={{ color: "white" }}>
           <i className="fa fa-dumbbell"></i> Carga de ejercicios
         </h1>
         <br />
@@ -56,7 +56,7 @@ export const CrearEjercicio = () => {
             <button
               type="button"
               className="btn btn-outline-danger w-50 float-end"
-              style={{ marginBottom: "20px" }}
+              style={{ marginBottom: "20px", color: "white" }}
             >
               Listado de ejercicios
             </button>
@@ -163,6 +163,7 @@ export const CrearEjercicio = () => {
               <div className="col">
                 <button
                   type="button"
+                  style={{ color: "white" }}
                   className="btn btn-outline-danger w-50 float-end"
                   onClick={() => agregarEjercicio()}
                 >

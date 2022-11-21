@@ -80,8 +80,8 @@ export const CrearRutina = () => {
         {/* Titulo */}
         <div>
           <br />
-          <p className="h1" style={{ color: "white" }}>
-            <i className="fa fa-dumbbell"></i> Crear rutina
+          <p className="h1" style={{ marginTop: "80px", color: "white" }}>
+            <i className="fa fa-dumbbell"></i> Crear nueva rutina
           </p>
         </div>
         <br />
@@ -89,7 +89,7 @@ export const CrearRutina = () => {
         {/* Ver todas las rutinas del alumno */}
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
           <Link
-            to={"/ListaRutinaDeAlumno/" + parseInt(params.idAlumno)}
+            to={"/ListaRutinaDeAlumno/" + store.alumno.id}
             className="btn btn-outline-danger w-50"
             type="button"
             style={{ marginBottom: "20px", color: "white" }}

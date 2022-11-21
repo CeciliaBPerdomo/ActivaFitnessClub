@@ -559,7 +559,7 @@ def getRoutines():
 def addRoutines():
     body = json.loads(request.data)
 
-    queryNewRoutines= Routines.query.filter_by(user_id=body["user_id"]).first()
+    queryNewRoutines= User.query.filter_by(id=body["user_id"]).first()
     
     if queryNewRoutines:
         new_routines = Routines(user_id=body["user_id"])
