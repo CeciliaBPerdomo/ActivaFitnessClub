@@ -28,13 +28,12 @@ export const ListaAlumno = () => {
 
   const crearRutina = async (e, item) => {
     e.preventDefault();
-    actions.crearRutina(item.id);
-
+    // Crea la nueva rutina
+    await actions.crearRutina(item.id);
+    // Busca por el ultimo id creado
     await actions.obtenerUltimoId();
-    console.log(store.rutina?.id);
+
     let idRutina = store.rutina?.id;
-    console.log(idRutina);
-    console.log(item.id);
     let idUsuario = item.id;
 
     navegacion("/crearRutina/" + idRutina + "/" + idUsuario);

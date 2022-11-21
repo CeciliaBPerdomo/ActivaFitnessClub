@@ -49,7 +49,7 @@ export const ListadoEjercicios = () => {
       <div
         className="container"
         style={{
-          marginTop: "20px",
+          marginTop: "100px",
           marginBottom: "35px",
         }}
       >

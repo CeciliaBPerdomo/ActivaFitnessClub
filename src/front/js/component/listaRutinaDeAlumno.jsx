@@ -11,14 +11,12 @@ export const ListaRutinaDeAlumno = () => {
     actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
   }, []);
 
-  console.log(store.rutinasEjercicios);
-
   return (
     <>
       <div className="container" style={{ marginBottom: "25px" }}>
         {/* Titulo */}
-        <div className="titulo" style={{ marginTop: "25px" }}>
-          <h1>
+        <div className="titulo" style={{ marginTop: "80px" }}>
+          <h1 style={{ color: "white" }}>
             <i className="fa fa-dumbbell"></i> Rutinas de: {store.alumno.name}{" "}
             {store.alumno.last_name}
           </h1>
@@ -30,7 +28,7 @@ export const ListaRutinaDeAlumno = () => {
             <Link to={"/listaAlumno"}>
               <button
                 type="button"
-                className="btn btn-outline-danger float-end"
+                className="btn btn-outline-danger w-50 float-end"
                 style={{ marginBottom: "20px" }}
               >
                 Listado de alumnos
