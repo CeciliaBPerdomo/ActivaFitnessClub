@@ -27,9 +27,13 @@ export const Contacto = () => {
 
     return (
         <>
+            <br/>
+            <br/>
+
 
             <form action={direccion}
                 method="POST">
+
 
                 <div className="container d-flex justify-content-center"
                     style={
@@ -56,10 +60,12 @@ export const Contacto = () => {
                         }
                 }>
 
+
                     <div className="card "
                         style={
                             {width: "100%"}
                     }>
+
                         <div className="card-header"
                             style={
                                 {background: "#641E16"}
@@ -187,6 +193,7 @@ export const Contacto = () => {
 
                         </div>
                     </div>
+
 
                 </div>
                 <br/>
