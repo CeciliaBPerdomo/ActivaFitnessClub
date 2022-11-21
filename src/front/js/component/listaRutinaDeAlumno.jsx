@@ -1,8 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 export const ListaRutinaDeAlumno = () => {
   const { store, actions } = useContext(Context);
@@ -39,53 +37,53 @@ export const ListaRutinaDeAlumno = () => {
           ) : null}
         </div>
         <br />
-        <Table className="table table-hover table-secondary">
-          <Thead>
-            <Tr className="text-center">
+        <table className="table table-hover table-secondary">
+          <thead>
+            <tr className="text-center">
               {/* Cabeceras */}
-              <Th scope="col">Finaliza</Th>
-              <Th scope="col">Ejercicio</Th>
-              <Th scope="col">Semana</Th>
-              <Th scope="col">Series</Th>
-              <Th scope="col">Repeticiones</Th>
-              <Th scope="col">Carga</Th>
-              <Th scope="col">Ver Ejercicio</Th>
-            </Tr>
-          </Thead>
+              <th scope="col">Finaliza</th>
+              <th scope="col">Ejercicio</th>
+              <th scope="col">Semana</th>
+              <th scope="col">Series</th>
+              <th scope="col">Repeticiones</th>
+              <th scope="col">Carga</th>
+              <th scope="col">Ver Ejercicio</th>
+            </tr>
+          </thead>
 
           {/* Listado */}
-          <Tbody className="align-middle text-center">
+          <tbody className="align-middle text-center">
             {store.rutinasEjercicios.length > 0
               ? store.rutinasEjercicios.map((item) => (
                   <>
-                    <Tr>
-                      <Th colSpan="7">Rutina: {item.idRutina}</Th>
-                    </Tr>
+                    <tr>
+                      <th colSpan="7">Rutina: {item.idRutina}</th>
+                    </tr>
                     <>
                       {item.results.map((dato) => (
-                        <Tr>
-                          <Td>{dato.finaliza}</Td>
-                          <Td>{dato.exerciseInfo.exercise_name}</Td>
-                          <Td>{dato.semana}</Td>
-                          <Td>{dato.series}</Td>
-                          <Td>{dato.repeticiones}</Td>
-                          <Td>{dato.carga}</Td>
-                          <Td>
+                        <tr>
+                          <td>{dato.finaliza}</td>
+                          <td>{dato.exerciseInfo.exercise_name}</td>
+                          <td>{dato.semana}</td>
+                          <td>{dato.series}</td>
+                          <td>{dato.repeticiones}</td>
+                          <td>{dato.carga}</td>
+                          <td>
                             <Link
                               to={"/vistaEjercicio/" + dato.idEjercicios}
                               className="btn btn-outline-dark"
                             >
                               <i className="fa fa-eye"></i>
                             </Link>
-                          </Td>
-                        </Tr>
+                          </td>
+                        </tr>
                       ))}
                     </>
                   </>
                 ))
               : null}
-          </Tbody>
-        </Table>
+          </tbody>
+        </table>
       </div>
     </>
   );
