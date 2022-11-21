@@ -1,48 +1,62 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Context } from "../store/appContext";
+import React, {useState, useContext, useEffect} from "react";
+import {Link, useParams} from "react-router-dom";
+import {Context} from "../store/appContext";
 import Table from "react-bootstrap/Table";
 
 export const ListaRutinaDeAlumno = () => {
-  const { store, actions } = useContext(Context);
-  const params = useParams();
+    const {store, actions} = useContext(Context);
+    const params = useParams();
 
-  useEffect(() => {
-    actions.obtenerAlumnoId(parseInt(params.theid));
-    actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
-  }, []);
+    useEffect(() => {
+        actions.obtenerAlumnoId(parseInt(params.theid));
+        actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
+    }, []);
 
-  return (
-    <>
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="container" style={{ marginBottom: "50px" }}>
-        {/* Titulo */}
-        <div className="titulo" style={{ marginTop: "80px" }}>
-          <h1 style={{ color: "white" }}>
-            <i className="fa fa-dumbbell"></i> Rutinas de: {store.alumno.name}{" "}
-            {store.alumno.last_name}
-          </h1>
-        </div>{" "}
-        <br />
-        {/* Ir al listado de todos los alumnos */}
-        <div>
-          {store.auth && store.profile.role === "Administrador" ? (
-            <Link to={"/listaAlumno"}>
-              <button
-                type="button"
-                className="btn btn-outline-danger w-50 float-end"
-                style={{ marginBottom: "20px" }}
-              >
-                Listado de alumnos
-              </button>
-            </Link>
-          ) : null}
-        </div>
-        <br />
-        <pre className="d-flex mx-3 chroma">
+    return (
+        <>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <div className="container"
+                style={
+                    {marginBottom: "50px"}
+            }>
+                {/* Titulo */}
+                <div className="titulo"
+                    style={
+                        {marginTop: "80px"}
+                }>
+                    <h1 style={
+                        {color: "white"}
+                    }>
+                        <i className="fa fa-dumbbell"></i>
+                        Rutinas de: {
+                        store.alumno.name
+                    }
+                        {" "}
+                        {
+                        store.alumno.last_name
+                    } </h1>
+                </div>
+                {" "}
+                <br/> {/* Ir al listado de todos los alumnos */}
+                {/* <div> {
+                    store.auth && store.profile.role === "Administrador" ? (
+                        <Link to={"/listaAlumno"}>
+                            <button type="button" className="btn btn-outline-danger w-50 float-end d-flex"
+                                style={
+                                    {marginBottom: "50px"}
+                            }>
+                                Listado de alumnos
+                            </button>
+                        </Link>
+                    ) : null
+                } </div> */}
+                <br/>
+                <br/>
+                <br/>
+                <pre className="d-flex mx-3 chroma">
           <Table
             striped
             bordered
@@ -97,7 +111,7 @@ export const ListaRutinaDeAlumno = () => {
             </tbody>
           </Table>
         </pre>
-      </div>
-    </>
-  );
+            </div>
+        </>
+    );
 };
