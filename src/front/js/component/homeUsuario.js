@@ -91,7 +91,7 @@ export const HomeUsuario = () => {
         </div>
       </nav> */}
 
-      <div className="bg-homeUsua vh-100">
+      <div className="bg-homeUsua vh-100 col">
         <div className="hstack gap-3 p-5" style={{ height: "800px" }}>
           <div className="position-absolute top-50 start-50 translate-middle">
             <h1 className="display-1 text-danger">
