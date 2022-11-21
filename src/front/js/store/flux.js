@@ -691,7 +691,6 @@ const getState = ({
                     const response = await axios.post(direccion + "/api/rutinas", {
                         user_id: user_id,
                     });
-                    console.log(response.data);
                 } catch (error) {
                     console.log(error);
                 }
@@ -831,7 +830,6 @@ const getState = ({
                     const response = await axios.get(
                         direccion + "/api/rutinaEjercicioId/" + id, {}
                     );
-                    console.log(response.data);
                     setStore({
                         rutinasEjercicios: response.data,
                     });

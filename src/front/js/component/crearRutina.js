@@ -23,6 +23,7 @@ export const CrearRutina = () => {
   let nombre = store.alumno.name;
   let apellido = store.alumno.last_name;
   let nombreCompleto = nombre + " " + apellido;
+  let user = store?.alumno.id;
 
   const cargarRutina = (e) => {
     // Agrega el ejercicio a la rutina actual
@@ -89,7 +90,7 @@ export const CrearRutina = () => {
         {/* Ver todas las rutinas del alumno */}
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
           <Link
-            to={"/ListaRutinaDeAlumno/" + store.alumno.id}
+            to={"/ListaRutinaDeAlumno/" + user}
             className="btn btn-outline-danger w-50"
             type="button"
             style={{ marginBottom: "20px", color: "white" }}
