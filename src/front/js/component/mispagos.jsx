@@ -50,56 +50,55 @@ export const MisPagos = () => {
       {/* </Link> */}
       <div className="container">
         <div>
-          <br />
+          <br />{" "}
           {/* <img src={titulo} style={{ width: "75%", height: "150px" }} /> */}
           <h1 style={{ color: "white" }}>Mis pagos</h1>
           <br />
         </div>
-        {/* Listado de pagos */}
-        {/* Sroll lateral */}
-        <pre className="d-flex mx-3 chroma">
-          <Table
-            striped
-            bordered
-            hover
-            variant="dark"
-            className="table table-hover table-secondary "
-            responsive="sm"
-          >
-            <thead>
-              <tr>
-                {/* Cabezeras */}
-                <th scope="col" className="text-center">
-                  Fecha de ingreso
-                </th>
-                <th scope="col" className="text-center">
-                  Fecha de pago
-                </th>
-                <th scope="col" className="text-center">
-                  Monto
-                </th>
-                <th scope="col" className="text-center">
-                  Factura
-                </th>
-                <th scope="col">Descripción</th>
-              </tr>
-            </thead>
 
-            <tbody>
-              {store.mens.map((item, id) => (
-                <tr key={id}>
-                  <td className="text-center">
-                    {store.alumno.date_of_admission}
-                  </td>
-                  <td className="text-center">{item.payment_date}</td>
-                  <td className="text-center">$ {item.payment_amount}</td>
-                  <td className="text-center">{item.bill_n}</td>
-                  <td>{item.description}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </pre>
+        {/* Listado de pagos */}
+        <Table
+          striped
+          bordered
+          hover
+          variant="dark"
+          className="table table-hover table-secondary"
+        >
+          <thead>
+            <tr>
+              {" "}
+              {/* Cabezeras */}
+              <th scope="col" className="text-center">
+                Fecha de ingreso
+              </th>
+              <th scope="col" className="text-center">
+                Fecha de pago
+              </th>
+              <th scope="col" className="text-center">
+                Monto
+              </th>
+              <th scope="col" className="text-center">
+                Factura
+              </th>
+              <th scope="col">Descripción</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {" "}
+            {store.mens.map((item, id) => (
+              <tr key={id}>
+                <td className="text-center">
+                  {store.alumno.date_of_admission}{" "}
+                </td>
+                <td className="text-center">{item.payment_date}</td>
+                <td className="text-center">$ {item.payment_amount}</td>
+                <td className="text-center">{item.bill_n}</td>
+                <td>{item.description}</td>
+              </tr>
+            ))}{" "}
+          </tbody>
+        </Table>
       </div>
     </>
   );
