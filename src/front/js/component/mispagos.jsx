@@ -1,8 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Context } from "../store/appContext";
+import React, {useState, useContext, useEffect} from "react";
+import {Link, useParams} from "react-router-dom";
+import {Context} from "../store/appContext";
 import titulo from "../../img/Cabeceras/pagos.jpg";
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import {
+    Table,
+    Thead,
+    Tbody,
+    Tr,
+    Th,
+    Td
+} from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 // ///////////////////////////////////////////
@@ -10,89 +17,99 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 // /////////////////////////////////////////
 
 export const MisPagos = () => {
-  const { store, actions } = useContext(Context);
-  const params = useParams();
+    const {store, actions} = useContext(Context);
+    const params = useParams();
 
-  useEffect(() => {
-    actions.obtenerMensualidadId(parseInt(params.theid));
+    useEffect(() => {
+        actions.obtenerMensualidadId(parseInt(params.theid));
 
-    const getInfo = async () => {
-      let { cuota } = await actions.obtenerAlumnoId(parseInt(params.theid));
-      // Mercado pago
-      actions.pagoMercadoPago(cuota);
+        const getInfo = async () => {
+            let {cuota} = await actions.obtenerAlumnoId(parseInt(params.theid));
+            // Mercado pago
+            actions.pagoMercadoPago(cuota);
+        };
+        getInfo();
+    }, []);
+
+    const pagoMercadoPago = () => {
+        window.location.replace(store ?. mercadopago.sandbox_init_point);
     };
-    getInfo();
-  }, []);
 
-  const pagoMercadoPago = () => {
-    window.location.replace(store?.mercadopago.sandbox_init_point);
-  };
+    return (
+        <>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
 
-  return (
-    <>
-      <br />
-      <br />
-      <br />
-      <br />
+            <button type="button" className="btn btn-outline-danger justify-content-md-end float-end relative"
+                style={
+                    {
+                        marginRight: "125px",
 
-      <button
-        type="button"
-        className="btn btn-outline-danger justify-content-md-end float-end relative"
-        style={{
-          marginRight: "125px",
+                        marginBottom: "20px",
+                        color: "white"
+                    }
+                }
+                onClick={pagoMercadoPago}>
+                Pagar mensualidad on-line
+            </button>
+            {/* </Link> */}
+            <div className="container">
+                <div>
+                    <br/> {/* <img src={titulo} style={{ width: "75%", height: "150px" }} /> */}
+                    <h1 style={
+                        {color: "white"}
+                    }>Mis pagos</h1>
+                    <br/>
+                </div>
 
-          marginBottom: "20px",
-          color: "white",
-        }}
-        onClick={pagoMercadoPago}
-      >
-        Pagar mensualidad on-line
-      </button>
-      {/* </Link> */}
-      <div className="container">
-        <div>
-          <br />
-          {/* <img src={titulo} style={{ width: "75%", height: "150px" }} /> */}
-          <h1 style={{ color: "white" }}>Mis pagos</h1>
-          <br />
-        </div>
+                {/* Listado de pagos */}
+                <Table className="table table-hover table-secondary">
+                    <Thead>
+                        <Tr> {/* Cabezeras */}
+                            <Th scope="col" className="text-center">
+                                Fecha de ingreso
+                            </Th>
+                            <Th scope="col" className="text-center">
+                                Fecha de pago
+                            </Th>
+                            <Th scope="col" className="text-center">
+                                Monto
+                            </Th>
+                            <Th scope="col" className="text-center">
+                                Factura
+                            </Th>
+                            <Th scope="col">Descripción</Th>
+                        </Tr>
+                    </Thead>
 
-        {/* Listado de pagos */}
-        <Table className="table table-hover table-secondary">
-          <Thead>
-            <Tr>
-              {/* Cabezeras */}
-              <Th scope="col" className="text-center">
-                Fecha de ingreso
-              </Th>
-              <Th scope="col" className="text-center">
-                Fecha de pago
-              </Th>
-              <Th scope="col" className="text-center">
-                Monto
-              </Th>
-              <Th scope="col" className="text-center">
-                Factura
-              </Th>
-              <Th scope="col">Descripción</Th>
-            </Tr>
-          </Thead>
-
-          <Tbody>
-            {store.mens.map((item, id) => (
-              <Tr key={id}>
-                <Td className="text-center">
-                  {store.alumno.date_of_admission}
-                </Td>
-                <Td className="text-center">{item.payment_date}</Td>
-                <Td className="text-center">$ {item.payment_amount}</Td>
-                <Td className="text-center">{item.bill_n}</Td>
-                <Td>{item.description}</Td>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      </div>
-    </>
-  );
+                    <Tbody> {
+                        store.mens.map((item, id) => (
+                            <Tr key={id}>
+                                <Td className="text-center">
+                                    {
+                                    store.alumno.date_of_admission
+                                } </Td>
+                                <Td className="text-center">
+                                    {
+                                    item.payment_date
+                                }</Td>
+                                <Td className="text-center">$ {
+                                    item.payment_amount
+                                }</Td>
+                                <Td className="text-center">
+                                    {
+                                    item.bill_n
+                                }</Td>
+                                <Td>{
+                                    item.description
+                                }</Td>
+                            </Tr>
+                        ))
+                    } </Tbody>
+                </Table>
+            </div>
+        </>
+    );
 };
