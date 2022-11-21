@@ -33,7 +33,9 @@ const Log_in = () => {
 
     return (
         <>
+
             <div className="bg-loguearse vh-100">
+                <br/>
                 <br/>
                 <div style={
                         {width: "100%"}
@@ -49,15 +51,18 @@ const Log_in = () => {
                                 style={
                                     {marginTop: "25px"}
                             }>
-                                <h1 style={
-                                    {
-                                        justifyContent: "center",
-                                        display: "flex"
-                                    }
+                                <h2 className="fw-light"
+                                    style={
+                                        {
+                                            justifyContent: "center",
+                                            display: "flex",
+                                            color: "#A00404"
+                                        }
                                 }>
                                     Iniciar sesión
-                                </h1>
+                                </h2>
                             </div>
+                            <br/>
                             <div className="mb-3">
                                 <label htmlFor="exampleInputEmail1" className="form-label">
                                     Email:
@@ -89,14 +94,32 @@ const Log_in = () => {
                                     alignContent: "center"
                                 }
                             }>
-                                <Link className="btn btn-secundary mx-2" type="submit"
+                                <Link className="btn btn-secundary mx-2 link-danger" type="submit"
                                     to={"/cambiarcontra"}>
-                                    <i>¿Has olvidado de tu contraseña?</i>
+                                    <i>¿Has olvidado tu contraseña?</i>
                                 </Link>
-                                <button type="submit" className="btn btn-primary d-flex content-justify-center"
-                                    onClick={ingreso}>
-                                    Ingresar
-                                </button>
+                                <br/>
+                                <br/>
+
+                                <div>
+
+
+                                    <button type="submit" className="btn btn-outline-danger float-end "
+                                        style={
+                                            {
+                                                marginBottom: "20px",
+                                                color: "black"
+
+
+                                            }
+                                        }
+
+
+                                        onClick={ingreso}>
+                                        Ingresar
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
