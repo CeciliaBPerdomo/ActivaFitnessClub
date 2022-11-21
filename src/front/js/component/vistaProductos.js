@@ -19,7 +19,6 @@ export const VistaProducto = () => {
       await actions.crearIdCarrito(id);
 
       idCarrito = await store.idCarrito;
-      console.log(idCarrito);
     };
 
     getInfo();

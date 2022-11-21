@@ -9,6 +9,7 @@ export const Navbar = () => {
 
   const [visibilidadBoton, setVisibilidadBoton] = useState("");
   const params = useParams();
+  let idCarrito;
 
   useEffect(() => {
     if (store.auth === true) {
@@ -19,10 +20,8 @@ export const Navbar = () => {
   }, []);
 
   const getInfo = async () => {
-    console.log("Hola");
-    console.log(await store.profile.id);
     await actions.obtenerCarritoIdUsuario(await store.profile.id);
-    console.log(store.carrito);
+    idCarrito = await store.carrito.idCarrito;
   };
 
   return (
@@ -279,11 +278,7 @@ export const Navbar = () => {
 
               {/* Mi carrito */}
               <div className="btn-group">
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  onClick={getInfo}
-                >
+                <button type="button" className="btn btn-danger">
                   <img src={carrito} style={{ width: "20px" }} />
                 </button>
                 <button
@@ -298,12 +293,12 @@ export const Navbar = () => {
                 <ul className="dropdown-menu">
                   {store.carrito.map((item, id) => (
                     <li key={id}>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item">
                         <img
                           src={item.productInfo.photo}
                           style={{ width: "25px" }}
                         />{" "}
-                        {item.productInfo.name}
+                        {item.cantidad} -{item.productInfo.name}
                       </a>
                     </li>
                   ))}
@@ -311,9 +306,8 @@ export const Navbar = () => {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Separated link
-                    </a>
+                    {/* Finaliza la compra */}
+                    <a className="dropdown-item">Finalizar compra</a>
                   </li>
                 </ul>
               </div>
