@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 export const CrearProducto = () => {
   const [nombreProducto, setNombreProducto] = useState("");
@@ -14,8 +15,20 @@ export const CrearProducto = () => {
   const agregarProducto = (event) => {
     event.preventDefault();
 
-    //Guarda el formulario
-    actions.crearProducto(nombreProducto, stock, compra, imagen, venta);
+    swal({
+      title: `Producto ${nombreProducto} creado`,
+      text: "Producto creado correctamente",
+      icon: "success",
+      button: "okey",
+      //Guarda el formulario
+      actions: actions.crearProducto(
+        nombreProducto,
+        stock,
+        compra,
+        imagen,
+        venta
+      ),
+    });
 
     // Limpia el formulario
     setNombreProducto("");

@@ -6,16 +6,15 @@ import swal from "sweetalert";
 export const ListadoProductos = () => {
   const { store, actions } = useContext(Context);
 
-  const [buscarproducto, setBuscarproducto] = useState("");
-  const handlebuscarproduct = (e) => {
-    e.preventDefault();
-    setBuscarproducto(e.target.value);
-    console.log(buscarproducto);
+  const [busqueda, setBusqueda] = useState("");
 
-    if (buscarproducto === "") {
-      actions.obtenerProducto();
-    } else {
-      actions.buscadorproductos(e.target.value);
+  const handlebuscarproduct = (e) => {
+    if (e.key === "Enter") {
+      if (busqueda === "") {
+        actions.obtenerProducto();
+      } else {
+        actions.buscadorproductos(busqueda);
+      }
     }
   };
 
@@ -57,14 +56,14 @@ export const ListadoProductos = () => {
       >
         {" "}
         {/* Titulo */}
-        <h1>Listado de productos</h1>
+        <h1 style={{ color: "white" }}>Listado de productos</h1>
         <br /> {/* Buscar */}
         <div>
           <input
-            onChange={handlebuscarproduct}
+            onChange={(e) => setBusqueda(e.target.value)}
+            onKeyPress={handlebuscarproduct}
+            value={busqueda}
             className="form-control"
-            list="datalistOptions"
-            id="exampleDataList"
             placeholder="Buscar por nombre..."
           />
         </div>
@@ -74,7 +73,7 @@ export const ListadoProductos = () => {
             <button
               type="button"
               className="btn btn-outline-danger w-50 float-end"
-              style={{ marginBottom: "40px" }}
+              style={{ marginBottom: "40px", color: "white" }}
             >
               Crear nuevo producto
             </button>

@@ -58,7 +58,7 @@ class Product(db.Model):
     name = db.Column(db.String(80), nullable=False)
     stock = db.Column(db.String(80), nullable=False)
     sale_price = db.Column(db.String(80), nullable=False)
-    photo = db.Column(db.String(80), nullable=False)
+    photo = db.Column(db.String(500), nullable=False)
     purchase_price = db.Column(db.String(80), nullable=False)
 
     carrito_id = db.relationship('ShoppingCart', backref = "product", cascade="all, delete-orphan", lazy=True)
@@ -212,6 +212,7 @@ class ShoppingCart(db.Model):
             "cantidad": self.cantidad,
             "precio": self.precio
         }
+
     
     def serializeProductos(self):
         results = Product.query.filter_by(id = self.product_id).first()

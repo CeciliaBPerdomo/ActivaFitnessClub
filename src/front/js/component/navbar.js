@@ -7,8 +7,6 @@ import carrito from "../../img/Carrito/carrito.png";
 export const Navbar = () => {
   let { store, actions } = useContext(Context);
 
-  //console.log(actions.obtenerCarrito);
-
   const [visibilidadBoton, setVisibilidadBoton] = useState("");
   const params = useParams();
 
@@ -18,8 +16,14 @@ export const Navbar = () => {
     } else {
       setVisibilidadBoton("hidden");
     }
-    // actions.obtenerAlumnoId(parseInt(params.theid));
   }, []);
+
+  const getInfo = async () => {
+    console.log("Hola");
+    console.log(await store.profile.id);
+    await actions.obtenerCarritoIdUsuario(await store.profile.id);
+    console.log(store.carrito);
+  };
 
   return (
     <>
@@ -272,31 +276,48 @@ export const Navbar = () => {
                   Mis Pagos
                 </Link>
               </li>
-              <li className="nav-item">
-                <div className="dropdown">
-                  <button
-                    className="btn btn-danger dropdown-toggle"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <img src={carrito} style={{ width: "20px" }} />
-                  </button>
-                  <ul className="dropdown-menu">
-                    <li>Aca van las cosas</li>
-                    {/* {store.carrito.map((idCarrito) => (
-                      <li key={id}>
-                        <button
-                          className="dropdown-item"
-                          onClick={() => actions.obtenerCarrito(idCarrito)}
-                        >
-                          {item} <i class="fa fa-trash float-end"></i>
-                        </button>
-                      </li>
-                    ))} */}
-                  </ul>
-                </div>
-              </li>
+
+              {/* Mi carrito */}
+              <div className="btn-group">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={getInfo}
+                >
+                  <img src={carrito} style={{ width: "20px" }} />
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  onClick={getInfo}
+                >
+                  <span className="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul className="dropdown-menu">
+                  {store.carrito.map((item, id) => (
+                    <li key={id}>
+                      <a className="dropdown-item" href="#">
+                        <img
+                          src={item.productInfo.photo}
+                          style={{ width: "25px" }}
+                        />{" "}
+                        {item.productInfo.name}
+                      </a>
+                    </li>
+                  ))}
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Separated link
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
               <li className="nav-item">
                 <Link
                   className="nav-link link-danger"
