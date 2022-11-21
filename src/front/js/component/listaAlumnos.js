@@ -9,15 +9,13 @@ export const ListaAlumno = () => {
   let navegacion = useNavigate();
 
   const [busqueda, setBusqueda] = useState("");
-  const handlebusca = (e) => {
-    e.preventDefault();
-    setBusqueda(e.target.value);
-    console.log(busqueda);
-
-    if (busqueda == "") {
-      actions.obtenerAlumnos();
-    } else {
-      actions.buscador(e.target.value);
+  const buscar = (e) => {
+    if (e.key === "Enter") {
+      if (busqueda === "") {
+        actions.obtenerAlumnos();
+      } else {
+        actions.buscador(e.target.value);
+      }
     }
   };
 
@@ -78,7 +76,9 @@ export const ListaAlumno = () => {
         {/* Buscar */}
         <div>
           <input
-            onChange={handlebusca}
+            onChange={(e) => setBusqueda(e.target.value)}
+            onKeyPress={buscar}
+            value={busqueda}
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"
