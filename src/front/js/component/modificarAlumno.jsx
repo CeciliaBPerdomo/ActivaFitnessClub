@@ -29,51 +29,50 @@ export const ModificarAlumno = () => {
 
   const modificarAlumno = (e) => {
     e.preventDefault();
-
     let id = parseInt(params.theid);
 
     swal({
       title: "Alumno Modificado",
       icon: "success",
       buttons: "Aceptar",
-      timer:"5000",
-    actions: actions.modificarAlumno(
-      id,
-      ci,
-      name,
-      last_name,
-      phone,
-      admission,
-      birthday,
-      mutualist,
-      conditions,
-      medicines,
-      training_goals,
-      mail,
-      password,
-      activities,
-      role,
-      isActive,
-      cuota
-    ),
-  });
+      timer: "5000",
+      actions: actions.modificarAlumno(
+        id,
+        ci,
+        name,
+        last_name,
+        phone,
+        admission,
+        birthday,
+        mutualist,
+        conditions,
+        medicines,
+        training_goals,
+        mail,
+        password,
+        activities,
+        role,
+        isActive,
+        cuota
+      ),
+    });
   };
 
   return (
     <>
       <div className="container" style={{ marginBottom: "35px" }}>
         <br />
-        <h1>
-          <i className="fa fa-user"></i>
-          Modificación de datos
+        <h1 style={{ color: "white" }}>
+          <i className="fa fa-user"> </i>
+          Modificación datos de alumnos
         </h1>
         <br />
         <div>
           <Link to={"/listaAlumno"}>
             <button
               type="button"
-              className="btn btn-outline-danger float-end"
-              style={{ marginBottom: "20px" }}
+              className="btn btn-outline-danger w-50 float-end"
+              style={{ marginBottom: "20px", color: "white" }}
             >
               Listado de alumnos
             </button>
@@ -82,9 +81,12 @@ export const ModificarAlumno = () => {
         <br /> {/* Formulario de modificacion de datos */}
         <div className="formulario" onSubmit={modificarAlumno}>
           <form>
-            <div className="container text-start" style={{ marginTop: "35px" }}>
+            <div
+              className="container text-start"
+              style={{ marginTop: "35px", color: "white" }}
+            >
               <div className="row">
-                <div className="col ">
+                <div className="col">
                   {" "}
                   {/* Cedula */}
                   <label htmlFor="validationCustom01" className="form-label">
@@ -118,7 +120,7 @@ export const ModificarAlumno = () => {
                   {" "}
                   {/* Apellido */}
                   <label htmlFor="apellido" className="form-label">
-                    <b>Apellido</b>
+                    <b>Apellido:</b>
                   </label>
                   <input
                     type="text"
@@ -133,7 +135,7 @@ export const ModificarAlumno = () => {
                   {" "}
                   {/* Celular */}
                   <label htmlFor="celular" className="form-label">
-                    <b>Celular</b>
+                    <b>Celular:</b>
                   </label>
                   <input
                     type="number"
@@ -145,13 +147,16 @@ export const ModificarAlumno = () => {
                 </div>
               </div>
             </div>
-            <div className="container text-start" style={{ marginTop: "35px" }}>
+            <div
+              className="container text-start"
+              style={{ marginTop: "35px", color: "white" }}
+            >
               <div className="row">
                 <div className="col">
                   {" "}
                   {/* Fecha de nacimiento */}
                   <label htmlFor="nacimiento" className="form-label">
-                    <b>Fecha de nacimiento</b>
+                    <b>Fecha de nacimiento:</b>
                   </label>
                   <input
                     type="date"
@@ -165,7 +170,7 @@ export const ModificarAlumno = () => {
                 {/* Fecha de ingreso */}
                 <div className="col">
                   <label htmlFor="ingreso" className="form-label">
-                    <b>Fecha de ingreso</b>
+                    <b>Fecha de ingreso:</b>
                   </label>
                   <input
                     type="date"
@@ -179,7 +184,7 @@ export const ModificarAlumno = () => {
                 {/* Mutualista */}
                 <div className="col">
                   <label htmlFor="mutualista" className="form-label">
-                    <b>Mutualista</b>
+                    <b>Mutualista:</b>
                   </label>
                   <select
                     className="form-select"
@@ -198,13 +203,16 @@ export const ModificarAlumno = () => {
                 </div>
               </div>
             </div>
-            <div className="container text-start" style={{ marginTop: "35px" }}>
+            <div
+              className="container text-start"
+              style={{ marginTop: "35px", color: "white" }}
+            >
               <div className="row">
                 {" "}
                 {/* Afecciones medicas */}
                 <div className="col">
                   <label htmlFor="afec_medicas" className="form-label">
-                    <b>Afecciones medicas</b>
+                    <b>Afecciones médicas:</b>
                   </label>
                   <input
                     type="text"
@@ -217,7 +225,7 @@ export const ModificarAlumno = () => {
                 {/* Medicamentos */}
                 <div className="col">
                   <label htmlFor="medicamentos" className="form-label">
-                    <b>Medicamentos</b>
+                    <b>Medicamentos:</b>
                   </label>
                   <input
                     type="text"
@@ -230,7 +238,7 @@ export const ModificarAlumno = () => {
                 {/* Objetivo entreamiento */}
                 <div className="col">
                   <label htmlFor="entrenamiento" className="form-label">
-                    <b>Objetivo entrenamiento</b>
+                    <b>Objetivo entrenamiento:</b>
                   </label>
                   <input
                     type="text"
@@ -243,13 +251,16 @@ export const ModificarAlumno = () => {
                 </div>
               </div>
             </div>
-            <div className="container text-start" style={{ marginTop: "35px" }}>
+            <div
+              className="container text-start"
+              style={{ marginTop: "35px", color: "white" }}
+            >
               <div className="row">
                 {" "}
                 {/* Email */}
                 <div className="col">
                   <label htmlFor="email" className="form-label">
-                    <b>Email</b>
+                    <b>Email:</b>
                   </label>
                   <input
                     type="email"
@@ -262,7 +273,7 @@ export const ModificarAlumno = () => {
                 {/* Password */}
                 <div className="col">
                   <label htmlFor="password" className="form-label">
-                    <b>Password</b>
+                    <b>Password:</b>
                   </label>
                   <input
                     type="password"
@@ -274,13 +285,16 @@ export const ModificarAlumno = () => {
                 </div>
               </div>
             </div>
-            <div className="container text-start" style={{ marginTop: "35px" }}>
+            <div
+              className="container text-start"
+              style={{ marginTop: "35px", color: "white" }}
+            >
               <div className="row">
                 {" "}
                 {/* Actividades */}
                 <div className="col">
                   <label htmlFor="actividades" className="form-label">
-                    <b>Actividades</b>
+                    <b>Actividades:</b>
                   </label>
                   <select
                     className="form-select"
@@ -288,7 +302,7 @@ export const ModificarAlumno = () => {
                     onChange={(e) => setActivities(e.target.value)}
                     defaultValue={store.alumno.activities}
                   >
-                    <option select>Actividad</option>
+                    <option select>Actividad:</option>
                     <option value="Funcional">Funcional</option>
                     <option value="Entrenamiento personalizado">
                       Entrenamiento personalizado
@@ -301,7 +315,7 @@ export const ModificarAlumno = () => {
                 {/* Rol */}
                 <div className="col">
                   <label htmlFor="rol" className="form-label">
-                    <b>Rol</b>
+                    <b>Rol:</b>
                   </label>
                   <select
                     className="form-select"
@@ -349,7 +363,7 @@ export const ModificarAlumno = () => {
                     className="form-check-label"
                     htmlFor="flexCheckChecked"
                   >
-                    Activo
+                    Activo:
                   </label>
                 </div>
               </div>
@@ -359,7 +373,7 @@ export const ModificarAlumno = () => {
               <button
                 type="submit"
                 className="btn btn-outline-danger w-100"
-                style={{ marginTop: "35px" }}
+                style={{ marginTop: "35px", color: "white" }}
                 onClick={(e) => modificarAlumno(e)}
               >
                 Guardar datos modificados

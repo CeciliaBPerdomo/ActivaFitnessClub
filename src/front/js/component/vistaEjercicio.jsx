@@ -56,66 +56,63 @@ export const VistaEjercicio = () => {
           >
             {/* Foto del ejercicio */}
             <div
+              className="d-flex justify-content-center"
               style={{
                 borderRadius: "10 5 5 5 5",
-                width: "520px",
-                margin: "5px",
+                margin: "10px",
               }}
             >
               <img
                 src={store.ejercicio.photo_exercise}
-                className="card-img-top"
+                className="d-flex justify-content-center"
+                style={{ width: "520px" }}
               />
             </div>
-            <div className="card-body" style={{ width: "50%" }}>
+            <div className="card-body">
               <h5
                 style={{
-                  marginLeft: "38px",
+                  marginLeft: "8px",
                   fontSize: "34px",
                   paddingTop: "10px",
                 }}
               >
-                Descripción del ejercicio
+                Descripción del ejercicio:
               </h5>
               <p
                 className="card-text"
                 style={{
                   fontSize: "20px",
                   paddingTop: "10px",
+                  textAlign: "justify",
                 }}
               >
                 {store.ejercicio.description}
               </p>
             </div>
             <ul className="list-group list-group-flush">
-              <div className="d-flex">
-                <ReactPlayer
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                  }}
-                  url={store.ejercicio.video_exercise}
-                ></ReactPlayer>
+              <div className="d-flex justify-content-center">
+                <ReactPlayer url={store.ejercicio.video_exercise}></ReactPlayer>
               </div>
             </ul>
           </div>
         </div>
         <br />
-        <div
-          className="btn "
-          role="group"
-          aria-label="Basic outlined example"
-          //     style={
-          //         {marginRight: "70px"}
-          // }
-        >
+        <div className="btn d-flex justify-content-center" role="group">
           <Link to={"/vistaEjercicio/" + down}>
-            <button className="btn btn-dark float-left" style={{}}>
-              Down
+            <button
+              className="btn btn-outline-danger float-left"
+              style={{ color: "white" }}
+            >
+              Anterior
             </button>
           </Link>
           <Link to={"/vistaEjercicio/" + next}>
-            <button className="btn btn-dark float-right">Next</button>
+            <button
+              className="btn btn-outline-danger float-right"
+              style={{ color: "white" }}
+            >
+              Siguiente
+            </button>
           </Link>
         </div>
         <br />
