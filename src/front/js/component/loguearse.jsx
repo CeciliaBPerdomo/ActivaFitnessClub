@@ -47,7 +47,7 @@ const Log_in = () => {
                     }>
                         <div className="card-body">
                             {/* Titulo */}
-                            <div className="titulo"
+                            <div className="titulo" id="titulo"
                                 style={
                                     {marginTop: "25px"}
                             }>

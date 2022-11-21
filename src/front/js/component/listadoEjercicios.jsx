@@ -8,15 +8,13 @@ export const ListadoEjercicios = () => {
 
   const [buscaejer, setBuscaejer] = useState("");
   const handlebuscarejer = (e) => {
-    e.preventDefault();
-    setBuscaejer(e.target.value);
-    console.log(buscaejer);
-
+    if (e.key === "Enter") {
     if (buscaejer === "") {
       actions.obtenerEjercicios();
     } else {
       actions.buscadorejercicios(e.target.value);
     }
+  }
   };
 
   const borrar = (e, item) => {
@@ -61,7 +59,9 @@ export const ListadoEjercicios = () => {
         <br /> {/* Buscar */}
         <div>
           <input
-            onChange={handlebuscarejer}
+            onChange={(e) => setBuscaejer(e.target.value)}
+            onKeyPress={handlebuscarejer}
+            value={buscaejer}
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"

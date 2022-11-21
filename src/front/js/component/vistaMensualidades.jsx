@@ -12,14 +12,13 @@ export const VistaMensualidades = () => {
 
   const [buscarmens, setBuscarmens] = useState("");
   const handlebuscarmens = (e) => {
-    e.preventDefault();
-    setBuscarmens(e.target.value);
-
+    if (e.key === "Enter") {
     if (buscarmens === "") {
       actions.obtenerMensualidades();
     } else {
       actions.buscadormens(e.target.value);
     }
+  }
   };
 
   useEffect(() => {
@@ -62,7 +61,9 @@ export const VistaMensualidades = () => {
         {/* Buscar */}
         <div>
           <input
-            onChange={handlebuscarmens}
+            onChange={(e) => setBuscarmens(e.target.value)}
+            onKeyPress={handlebuscarmens}
+            value={buscarmens}
             className="form-control"
             list="datalistOptions"
             id="exampleDataList"

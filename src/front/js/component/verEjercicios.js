@@ -8,14 +8,13 @@ export const VerEjercicio = () => {
   const [buscaejer, setBuscaejer] = useState("");
 
   const handlebuscarejer = (e) => {
-    e.preventDefault();
-    setBuscaejer(e.target.value);
-
+    if (e.key === "Enter") {
     if (buscaejer === "") {
       actions.obtenerEjercicios();
     } else {
       actions.buscadorejercicios(e.target.value);
     }
+  }
   };
 
   useEffect(() => {
@@ -35,7 +34,9 @@ export const VerEjercicio = () => {
           list="datalistOptions"
           id="exampleDataList"
           placeholder="Buscar por nombre..."
-          onChange={handlebuscarejer}
+          onChange={(e) => setBuscaejer(e.target.value)}
+          onKeyPress={handlebuscarejer}
+          value={buscaejer}
           style={{ width: "95%" }}
         />
       </div>

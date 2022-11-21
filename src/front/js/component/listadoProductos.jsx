@@ -6,14 +6,13 @@ import swal from "sweetalert";
 export const ListadoProductos = () => {
   const { store, actions } = useContext(Context);
 
-  const [busqueda, setBusqueda] = useState("");
-
+  const [buscarproducto, setBuscarproducto] = useState("");
   const handlebuscarproduct = (e) => {
     if (e.key === "Enter") {
-      if (busqueda === "") {
+      if (buscarproducto === "") {
         actions.obtenerProducto();
       } else {
-        actions.buscadorproductos(busqueda);
+        actions.buscadorproductos(e.target.value);
       }
     }
   };
@@ -60,9 +59,9 @@ export const ListadoProductos = () => {
         <br /> {/* Buscar */}
         <div>
           <input
-            onChange={(e) => setBusqueda(e.target.value)}
+            onChange={(e) => setBuscarproducto(e.target.value)}
             onKeyPress={handlebuscarproduct}
-            value={busqueda}
+            value={buscarproducto}
             className="form-control"
             placeholder="Buscar por nombre..."
           />

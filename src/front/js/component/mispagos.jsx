@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import titulo from "../../img/Cabeceras/pagos.jpg";
+import Table from "react-bootstrap/Table";
 
 // ///////////////////////////////////////////
 // CLIENTE PUEDE VER LISTADO DE SUS PAGOS  //
@@ -56,7 +57,13 @@ export const MisPagos = () => {
         </div>
 
         {/* Listado de pagos */}
-        <table className="table table-hover table-secondary">
+        <Table
+          striped
+          bordered
+          hover
+          variant="dark"
+          className="table table-hover table-secondary"
+        >
           <thead>
             <tr>
               {" "}
@@ -89,9 +96,9 @@ export const MisPagos = () => {
                 <td className="text-center">{item.bill_n}</td>
                 <td>{item.description}</td>
               </tr>
-            ))}
+            ))}{" "}
           </tbody>
-        </table>
+        </Table>
       </div>
     </>
   );
