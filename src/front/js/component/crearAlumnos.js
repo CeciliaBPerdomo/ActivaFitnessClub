@@ -186,7 +186,7 @@ export const CrearAlumno = () => {
                                 <label htmlFor="mutualista" className="form-label">
                                     <b>Mutualista</b>
                                 </label>
-                                <select className="form-select" id="inputGroupSelect01"
+                                <select className="form-select" id="inputGroupSelect0"
                                     onChange={
                                         (e) => setMutualist(e.target.value)
                                     }
@@ -295,7 +295,7 @@ export const CrearAlumno = () => {
                                 <label htmlFor="actividades" className="form-label">
                                     <b>Actividades</b>
                                 </label>
-                                <select className="form-select" id="inputGroupSelect01"
+                                <select className="form-select" id="inputGroupSelect02"
                                     onChange={
                                         (e) => setActivities(e.target.value)
                                     }
@@ -331,7 +331,7 @@ export const CrearAlumno = () => {
                                 <label htmlFor="afec_medicas" className="form-label">
                                     <b>Cuota mensual:</b>
                                 </label>
-                                <input type="text" className="form-control" id="inputAfecciones"
+                                <input type="text" className="form-control" id="inputCuota"
                                     onChange={
                                         (e) => setCuota(e.target.value)
                                     }
