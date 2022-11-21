@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import logo from "../../img/Logo.png";
+import carrito from "../../img/Carrito/carrito.png";
 
 export const Navbar = () => {
   let { store, actions } = useContext(Context);
+
+  //console.log(actions.obtenerCarrito);
 
   const [visibilidadBoton, setVisibilidadBoton] = useState("");
   const params = useParams();
@@ -17,8 +20,6 @@ export const Navbar = () => {
     }
     // actions.obtenerAlumnoId(parseInt(params.theid));
   }, []);
-
-  //  console.log(store.profile);
 
   return (
     <>
@@ -231,7 +232,7 @@ export const Navbar = () => {
       {store.auth && store.profile.role === "Alumno" ? (
         <nav className="navbar navbar-dark bg-dark fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to={"/HomeUser"}>
+            <Link className="navbar-brand" to={"/HomeUsuario"}>
               <img
                 src={logo}
                 style={{
@@ -263,39 +264,37 @@ export const Navbar = () => {
                   Productos
                 </Link>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item">
                 <Link
-                  className="nav-link dropdown-toggle text-white"
-                  data-bs-toggle="dropdown"
-                  to={""}
-                  role="button"
-                  aria-expanded="false"
+                  className="nav-link text-white"
+                  to={"/mispagos/" + store.profile.id}
                 >
-                  Tus Opciones de Usuario
+                  Mis Pagos
                 </Link>
-                <ul className="dropdown-menu bg-danger">
-                  {/* <li>
-                    <Link
-                      className="dropdown-item text-black"
-                      to={"/ListaRutinaDeAlumno/" + store.profile.id}
-                    >
-                      Mi Rutina
-                    </Link>
-                  </li> */}
-                  <li>
-                    <Link
-                      className="dropdown-item text-black"
-                      to={"/mispagos/" + store.profile.id}
-                    >
-                      Mis Pagos
-                    </Link>
-                  </li>
-                  <li>
-                    <a className="dropdown-item text-black" href="#">
-                      Tus Compras
-                    </a>
-                  </li>
-                </ul>
+              </li>
+              <li className="nav-item">
+                <div className="dropdown">
+                  <button
+                    className="btn btn-danger dropdown-toggle"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img src={carrito} style={{ width: "20px" }} />
+                  </button>
+                  <ul>
+                    {/* {store.carrito.map((idCarrito) => (
+                      <li key={id}>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => actions.obtenerCarrito(idCarrito)}
+                        >
+                          {item} <i class="fa fa-trash float-end"></i>
+                        </button>
+                      </li>
+                    ))} */}
+                  </ul>
+                </div>
               </li>
               <li className="nav-item">
                 <Link
