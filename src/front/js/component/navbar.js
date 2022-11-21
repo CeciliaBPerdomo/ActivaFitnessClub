@@ -282,7 +282,8 @@ export const Navbar = () => {
                   >
                     <img src={carrito} style={{ width: "20px" }} />
                   </button>
-                  <ul>
+                  <ul className="dropdown-menu">
+                    <li>Aca van las cosas</li>
                     {/* {store.carrito.map((idCarrito) => (
                       <li key={id}>
                         <button
