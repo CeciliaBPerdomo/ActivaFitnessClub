@@ -86,6 +86,7 @@
 		"react-player": "^2.11.0",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
+		"react-super-responsive-table": "^5.2.1",
 		"react-whatsapp": "^0.3.0",
 		"sweetalert": "^2.1.2",
 		"yup": "^0.32.11"
