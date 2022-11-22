@@ -54,8 +54,11 @@ export const Navbar = () => {
                                     style={
                                         {textDecoration: "none"}
                                 }>
-                                    <button className="btn btn-danger d-flex" type="submit">
-                                        Login
+                                    <button className="btn btn-danger d-flex" type="submit"
+                                        style={
+                                            {background: "#A00404"}
+                                    }>
+                                        Ingresar
                                     </button>
                                 </a>
                             ) : null
