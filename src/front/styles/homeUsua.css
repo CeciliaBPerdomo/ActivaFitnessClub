@@ -1,6 +1,9 @@
 .bg-homeUsua {
-    background-image: url("https://cdn.hsnstore.com/blog/wp-content/uploads/2017/10/press-banca.gif");
+    background-image: url("https://cdn.hsnstore.com/blog/wp-content/uploads/2017/05/kb-snatch.gif");
     background-repeat: no-repeat;
+    width: 100%;
+    margin: auto;
+    background-position: center center;
     background-size: cover;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
