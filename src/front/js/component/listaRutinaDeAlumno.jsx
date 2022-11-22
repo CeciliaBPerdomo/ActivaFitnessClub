@@ -1,62 +1,33 @@
-import React, {useState, useContext, useEffect} from "react";
-import {Link, useParams} from "react-router-dom";
-import {Context} from "../store/appContext";
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
 import Table from "react-bootstrap/Table";
 
 export const ListaRutinaDeAlumno = () => {
-    const {store, actions} = useContext(Context);
-    const params = useParams();
+  const { store, actions } = useContext(Context);
+  const params = useParams();
 
-    useEffect(() => {
-        actions.obtenerAlumnoId(parseInt(params.theid));
-        actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
-    }, []);
+  useEffect(() => {
+    const getInfo = async () => {
+      await actions.obtenerAlumnoId(parseInt(params.theid));
+      await actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
+    };
+    getInfo();
+  }, []);
 
-    return (
-        <>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <div className="container"
-                style={
-                    {marginBottom: "50px"}
-            }>
-                {/* Titulo */}
-                <div className="titulo"
-                    style={
-                        {marginTop: "80px"}
-                }>
-                    <h1 style={
-                        {color: "white"}
-                    }>
-                        <i className="fa fa-dumbbell"></i>
-                        Rutinas de: {
-                        store.alumno.name
-                    }
-                        {" "}
-                        {
-                        store.alumno.last_name
-                    } </h1>
-                </div>
-                {" "}
-                <br/> {/* Ir al listado de todos los alumnos */}
-                {/* <div> {
-                    store.auth && store.profile.role === "Administrador" ? (
-                        <Link to={"/listaAlumno"}>
-                            <button type="button" className="btn btn-outline-danger w-50 float-end d-flex"
-                                style={
-                                    {marginBottom: "50px"}
-                            }>
-                                Listado de alumnos
-                            </button>
-                        </Link>
-                    ) : null
-                } </div> */}
-                <br/>
-                <br/>
-                <br/>
-                <pre className="d-flex mx-3 chroma">
+  return (
+    <>
+      <div className="container" style={{ marginBottom: "50px" }}>
+        {/* Titulo */}
+        <div className="titulo" style={{ marginTop: "80px" }}>
+          <h1 style={{ color: "white" }}>
+            <i className="fa fa-dumbbell"></i> Rutinas de: {store.alumno.name}{" "}
+            {store.alumno.last_name}
+          </h1>
+        </div>{" "}
+        <br />
+        <br />
+        <pre className="d-flex mx-3 chroma">
           <Table
             striped
             bordered
@@ -83,7 +54,9 @@ export const ListaRutinaDeAlumno = () => {
                 ? store.rutinasEjercicios.map((item) => (
                     <>
                       <tr>
-                        <th colSpan="7">Rutina: {item.idRutina}</th>
+                        <th colSpan="7">
+                          <b>Rutina</b>
+                        </th>
                       </tr>
                       <>
                         {item.results.map((dato) => (
@@ -97,7 +70,8 @@ export const ListaRutinaDeAlumno = () => {
                             <td>
                               <Link
                                 to={"/vistaEjercicio/" + dato.idEjercicios}
-                                className="btn btn-outline-dark"
+                                className="btn btn-outline-dark border border-white"
+                                style={{ color: "white" }}
                               >
                                 <i className="fa fa-eye"></i>
                               </Link>
@@ -111,7 +85,7 @@ export const ListaRutinaDeAlumno = () => {
             </tbody>
           </Table>
         </pre>
-            </div>
-        </>
-    );
+      </div>
+    </>
+  );
 };

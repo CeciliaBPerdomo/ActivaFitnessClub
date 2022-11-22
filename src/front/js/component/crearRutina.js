@@ -15,9 +15,13 @@ export const CrearRutina = () => {
   const [finaliza, setFinaliza] = useState("");
 
   useEffect(() => {
-    actions.obtenerAlumnoId(parseInt(params.idAlumno));
-    actions.obtenerEjercicios();
-    actions.obtenerRutinaEjercicioId(parseInt(params.theid));
+    const getInfo = async () => {
+      await actions.obtenerAlumnoId(parseInt(params.idAlumno));
+      await actions.obtenerEjercicios();
+      await actions.obtenerRutinaEjercicioId(parseInt(params.theid));
+    };
+
+    getInfo();
   }, []);
 
   let nombre = store.alumno.name;
@@ -89,14 +93,14 @@ export const CrearRutina = () => {
 
         {/* Ver todas las rutinas del alumno */}
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-          <Link
+          {/* <Link
             to={"/ListaRutinaDeAlumno/" + user}
             className="btn btn-outline-danger w-50"
             type="button"
             style={{ marginBottom: "20px", color: "white" }}
           >
             Ver rutinas del alumno
-          </Link>
+          </Link> */}
 
           {/* Listado de todas las rutinas */}
           {/* <button
