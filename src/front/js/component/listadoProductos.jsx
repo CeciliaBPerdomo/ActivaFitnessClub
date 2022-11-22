@@ -55,7 +55,9 @@ export const ListadoProductos = () => {
       >
         {" "}
         {/* Titulo */}
-        <h1 style={{ color: "white" }}>Listado de productos</h1>
+        <h1 style={{ color: "white", marginTop: "85px" }}>
+          Listado de productos
+        </h1>
         <br /> {/* Buscar */}
         <div>
           <input
@@ -112,7 +114,7 @@ export const ListadoProductos = () => {
                 <td>
                   <Link
                     to={"/producto/" + item.id}
-                    className="btn btn-outline-dark"
+                    className="btn btn-outline-dark border border-white"
                     style={{ color: "white" }}
                   >
                     <i className="fa fa-eye"></i>
@@ -122,7 +124,7 @@ export const ListadoProductos = () => {
                 <td>
                   <Link
                     to={"/editarProducto/" + item.id}
-                    className="btn btn-outline-dark"
+                    className="btn btn-outline-dark border border-white"
                     style={{ color: "white" }}
                   >
                     <i className="fa fa-pen"></i>
