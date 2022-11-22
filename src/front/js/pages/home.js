@@ -55,11 +55,17 @@ export const Home = () => {
       </nav> */}
       {/* FIN DE NAVBAR */}
       {/* COMIENZO PORTADA */}
+      <div 
+          className="container" 
+          style={{width: "100%",
+                  maxWidth:"1000px",
+                  margin:"0 auto",
+                  overflow:"hidden"}}>
       <div
-        className="container"
+        className="container pt-5 pb-5 mt-5"
         style={{
-          width: "1200px",
-          height: "500px",
+          width: "100%",
+          height: "100%",
           position: "relative",
           top: "80px",
           backgroundImage:
@@ -71,10 +77,12 @@ export const Home = () => {
         }}
       >
         <div
-          className="container"
+          className="container pt-5 pb-5 mt-5"
           style={{
-            maxWidth: "800px",
-            height: "500px",
+            maxWidth: "100%",
+            minWidth: "100%",
+            width: "100%",
+            height: "100%",
             margin: "auto",
             display: "flex",
             flexDirection: "column",
@@ -86,11 +94,13 @@ export const Home = () => {
         >
           <h1
             style={{
-              fontSize: "80px",
+              width: "100%",
+              fontSize: "450%",
               fontWeight: "500",
               marginBottom: "20px",
-              textAlign: "left",
-              color: "red",
+              textAlign: "center",
+              color: "#A00404",
+
             }}
           >
             Bienvenido a
@@ -102,6 +112,9 @@ export const Home = () => {
               fontSize: "28px",
               fontWeight: "300",
               color: "",
+              backgroundColor:"black",
+              backgroundSize:"cover",
+              opacity:"0.5"
             }}
           >
             <strong>Tu gimnasio, tu lugar</strong>
@@ -112,14 +125,14 @@ export const Home = () => {
       {/* FIN DE PORTADA */}
       {/* Filosofia */}
       <div
-        className="container"
-        style={{ marginTop: "60px", marginBottom: "30px" }}
+        className="container pt-5 pb-5 mt-5"
+        style={{ marginTop: "60px", marginBottom: "30px",width: "100%", }}
       >
         <div
-          className="container"
+          className="container-md"
           style={{
-            width: "1200px",
-            height: "250px",
+            width: "100%",
+            height: "100%",
             display: "flex",
             alignContent: "center",
             position: "relative",
@@ -127,7 +140,7 @@ export const Home = () => {
           }}
         >
           <div
-            className="container"
+            className="container-md"
             style={{
               width: "35%",
               height: "100%",
@@ -136,7 +149,8 @@ export const Home = () => {
             <img
               src={logoActiva}
               style={{
-                width: "285px",
+                width: "115%",
+                height:"50%",
                 marginTop: "-20px",
                 position: "relative",
                 filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
@@ -145,7 +159,7 @@ export const Home = () => {
             />
           </div>
           <div
-            className="container"
+            className="container-md"
             style={{
               widht: "60%",
               position: "relative",
@@ -182,21 +196,29 @@ export const Home = () => {
       {/* PORTADA */}
       <main
         style={{
-          width: "1200px",
+          width: "100%",
           position: "relative",
           padding: "40px",
           margin: "auto",
         }}
       >
         <div
-          className="container"
+          className="container-md"
           style={{
             display: "flex",
             justifyContent: "center",
             marginTop: "60px",
           }}
         >
-          <div className="information">
+          <div className="container-md"
+          style={{
+            widht: "60%",
+            position: "relative",
+            //margin: "5px",
+            marginLeft: "15px",
+            marginBottom: "80px",
+          }}
+        >
             <p
               className="display-5"
               style={{ fontSize: "50px", color: "#c7ecee" }}
@@ -217,7 +239,7 @@ export const Home = () => {
             </p>
             <div>
               <button
-                className="btn btn-outline-light"
+                className="btn btn-outline-dark"
                 style={{ marginTop: "35px" }}
                 onClick={() =>
                   (window.location.href =
@@ -229,7 +251,7 @@ export const Home = () => {
             </div>
           </div>
 
-          <div className="media cover" style={{ width: "60%" }}>
+          <div className="media cover" style={{ width: "100%", height:"100%" }}>
             <ReactPlayer
               url="https://www.youtube.com/watch?v=W96ITkVBRDE"
               controls
@@ -237,6 +259,7 @@ export const Home = () => {
               muted
               style={{
                 width: "100%",
+                height:"100%",
                 marginTop: "-40px",
               }}
             ></ReactPlayer>
@@ -250,8 +273,8 @@ export const Home = () => {
         <div
           className="container"
           style={{
-            width: "1200px",
-            height: "250px",
+            width: "100%",
+            height: "100%",
             display: "flex",
             alignContent: "center",
             position: "relative",
@@ -269,8 +292,8 @@ export const Home = () => {
               src="https://cdn.pixabay.com/photo/2016/03/31/19/34/black-1295124_960_720.png"
               alt=""
               style={{
-                width: "300px",
-                marginTop: "-20px",
+                width: "115%",
+                marginTop: "20px",
                 position: "relative",
                 filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
                 marginRight:"90px"
@@ -314,8 +337,8 @@ export const Home = () => {
         <div
           className="container"
           style={{
-            width: "1200px",
-            height: "280px",
+            width: "100%",
+            height: "100%",
             display: "flex",
             alignContent: "center",
             position: "relative",
@@ -332,11 +355,11 @@ export const Home = () => {
             <img
               src={pelado}
               style={{
-                width: "465px",
-                marginTop: "-30px",
+                width: "105%",
+                marginTop: "10px",
                 position: "relative",
                 filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
-                marginLeft:"500px"
+                marginLeft:"560px"
               }}
             />
           </div>
@@ -354,13 +377,13 @@ export const Home = () => {
               style={{
                 fontSize: "50px",
                 color: "#c7ecee",
-                marginLeft:"-475px",
+                marginLeft:"-375px",
               }}
             >
               Entrenamiento personalizado
             </p>
             <p
-              style={{ fontSize: "18px", textAlign: "justify", color: "white",marginLeft:"-475px", marginRight: "550px", }}
+              style={{ fontSize: "18px", textAlign: "justify", color: "white",marginLeft:"-375px", marginRight: "280px", }}
             >
               Por otro lado la modalidad de entrenamiento grupal esta mas
               enfocada en el dinamismo y la intensidad, el compañerismo y el
@@ -379,8 +402,8 @@ export const Home = () => {
         <div
           className="container"
           style={{
-            width: "1200px",
-            height: "300px",
+            width: "100%",
+            height: "100%",
             display: "flex",
             alignContent: "center",
             position: "relative",
@@ -397,8 +420,8 @@ export const Home = () => {
             <img
               src={pelota}
               style={{
-                width: "375px",
-                marginTop: "-30px",
+                width: "100%",
+                marginTop: "30px",
                 position: "relative",
                 filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
               }}
@@ -444,8 +467,8 @@ export const Home = () => {
         <div
           className="container"
           style={{
-            width: "1200px",
-            height: "300px",
+            width: "100%",
+            height: "100%",
             display: "flex",
             alignContent: "center",
             position: "relative",
@@ -461,8 +484,8 @@ export const Home = () => {
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.351810195052!2d-57.8423841850913!3d-34.46859845786764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a313f2236d1c15%3A0x6c5d7dcbab5d10d6!2sActiva%20Fitness%20Club!5e0!3m2!1ses!2suy!4v1668024931885!5m2!1ses!2suy"
-              width="350"
-              height="200"
+              width="100%"
+              height="100%"
               style={{ border: "0", marginLeft: "500px", marginTop: "40px", }}
               allowFullScreen=""
               loading="lazy"
@@ -482,18 +505,19 @@ export const Home = () => {
               style={{
                 fontSize: "50px",
                 color: "#c7ecee",
-                marginLeft:"-475px"
+                marginLeft:"-375px"
               }}
             >
               Ubicación
             </p>
             <p
-              style={{ fontSize: "18px", textAlign: "justify", color: "white", marginLeft:"-475px" }}
+              style={{ fontSize: "18px", textAlign: "justify", color: "white", marginLeft:"-375px" }}
             >
               Encontranos en Fosalba 674, Colonia del Sacramento
             </p>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
