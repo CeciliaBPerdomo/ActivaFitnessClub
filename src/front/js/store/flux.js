@@ -81,7 +81,6 @@ const getState = ({
                 try {
                     const response = await axios.get(direccion + "/api/profile", {
                         headers: {
-                            // Authorization: Bearer
                             Authorization: "Bearer " + accessToken,
                         },
                     });
@@ -104,7 +103,6 @@ const getState = ({
                 try {
                     const response = await axios.get(direccion + "/api/validation", {
                         headers: {
-                            // 'Authorization: Bearer
                             Authorization: "Bearer " + accessToken,
                         },
                     });
@@ -200,14 +198,12 @@ const getState = ({
             },
 
             // Buscador de Alumnos
-
             buscador: (valor) => {
                 let store = getStore();
                 let resultados = store.alumnos.filter((item) => {
                     if (
                         item.name.toString().toLowerCase().includes(valor.toLowerCase())
                     ) {
-                        console.log(valor);
                         return valor;
                     }
                 });
@@ -302,7 +298,6 @@ const getState = ({
                         is_active: isActive,
                         cuota: cuota,
                     });
-                    //console.log(response.data);
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
@@ -324,7 +319,6 @@ const getState = ({
                     setStore({
                         mens: response.data,
                     });
-                    // console.log(mens);
                 } catch (error) {
                     console.log(error);
                 }
@@ -414,6 +408,7 @@ const getState = ({
                             description: description,
                         }
                     );
+                    getActions().obtenerMensualidades();
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
@@ -431,7 +426,6 @@ const getState = ({
                 state,
                 user_id
             ) => {
-                // payment_date: payment_date,
                 try {
                     const response = await axios.post(direccion + "/api/mensualidades", {
                         payment_date: payment_date,
@@ -441,9 +435,10 @@ const getState = ({
                         state: state,
                         user_id: user_id,
                     });
-                    console.log(response.data);
                 } catch (error) {
-                    console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
                 }
             },
 
@@ -467,10 +462,12 @@ const getState = ({
                         photo_exercise: photo_exercise,
                         video_exercise: video_exercise,
                     });
-                    console.log(response);
                     return true;
                 } catch (error) {
                     console.log(error);
+                    if (error.code === "ERR_BAD_REQUEST") {
+                        console.log(error.response.data.msg);
+                    }
                 }
             },
 
@@ -490,7 +487,6 @@ const getState = ({
             },
 
             // Buscador de Ejercicios
-
             buscadorejercicios: (valor) => {
                 let store = getStore();
                 let resultados = store.ejercicios.filter((item) => {
@@ -500,7 +496,6 @@ const getState = ({
                         .toLowerCase()
                         .includes(valor.toLowerCase())
                     ) {
-                        console.log(valor);
                         return valor;
                     }
                 });
@@ -515,7 +510,6 @@ const getState = ({
                     const response = await axios.get(
                         direccion + "/api/ejercicios/" + id, {}
                     );
-                    console.log(response.data);
                     setStore({
                         ejercicio: response.data,
                     });
@@ -559,7 +553,7 @@ const getState = ({
                             video_exercise: video_exercise,
                         }
                     );
-                    console.log(response.data);
+                    getActions().obtenerEjercicios();
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
@@ -669,7 +663,6 @@ const getState = ({
                         photo: photo,
                         purchase_price: purchase_price,
                     });
-                    //console.log(response.data);
                     getActions().obtenerProducto();
                 } catch (error) {
                     console.log(error);
