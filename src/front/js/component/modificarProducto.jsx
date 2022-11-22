@@ -59,21 +59,23 @@ export const EditarProducto = () => {
       >
         {" "}
         {/* Titulo */}
-        <h1>Editar producto</h1>
+        <h1 style={{ marginTop: "85px", color: "white" }}>
+          Modificar información de producto
+        </h1>
         <br /> {/* Listado de productos */}
         <div>
           <Link to={"/ListadoProductos"}>
             <button
               type="button"
-              className="btn btn-outline-danger w-35 float-end"
-              style={{ marginBottom: "20px" }}
+              className="btn btn-outline-danger w-50 float-end"
+              style={{ marginBottom: "20px", color: "white" }}
             >
               Listado de productos
             </button>
           </Link>
         </div>
         <br />
-        <div className="formulario">
+        <div className="formulario" style={{ color: "white" }}>
           <form>
             <div
               className="container text-start "
@@ -182,7 +184,8 @@ export const EditarProducto = () => {
               <div className="col">
                 <button
                   type="button"
-                  className="btn btn-outline-danger w-50 float-end"
+                  style={{ color: "white" }}
+                  className="btn btn-outline-danger w-50 float-end "
                   onClick={modificarProducto}
                 >
                   Guardar cambios

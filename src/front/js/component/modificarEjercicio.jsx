@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 // ///////////////////////////////////////////
 // ADMIN PUEDE MODIFICAR LOS EJERCICIOS   //
@@ -10,6 +11,7 @@ import swal from "sweetalert";
 export const EditarEjercicio = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
+  let navegacion = useNavigate();
 
   const [nombreEjercicio, setNombreEjercicio] = useState(
     store.ejercicio.exercise_name
@@ -24,7 +26,10 @@ export const EditarEjercicio = () => {
   const [video, setVideo] = useState(store.ejercicio.video_exercise);
 
   useEffect(() => {
-    actions.obtenerEjercicioId(parseInt(params.theid));
+    const getInfo = async () => {
+      await actions.obtenerEjercicioId(parseInt(params.theid));
+    };
+    getInfo();
   }, []);
 
   const modificarEjercicio = (event) => {
@@ -45,6 +50,7 @@ export const EditarEjercicio = () => {
         video
       ),
     });
+    navegacion("/ListadoEjercicios/");
   };
 
   return (
