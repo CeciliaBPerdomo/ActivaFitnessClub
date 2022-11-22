@@ -127,7 +127,7 @@ export const VistaProducto = () => {
                   </div>
                 </div>
               </div>
-            ))}{" "}
+            ))}
           </div>
         </div>
       </div>
