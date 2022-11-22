@@ -52,14 +52,14 @@ export const QuienesSomos = () => {
                         <div className="row">
                             {" "}
                             {/* Ceci */}
-                            <div className="col"
+                            <div className="col-sm-4"
                                 style={
                                     {margin: "10px"}
                             }>
-                                <div className="card mb-3 d-flex"
+                                <div className="card mb-3"
                                     style={
                                         {
-                                            width: "470px",
+                                            maxWidth: "470px",
                                             boxShadow: "20px 20px 50px rgba(0,0,0, 0.5)",
                                             borderRadius: "15px"
                                         }
@@ -76,7 +76,7 @@ export const QuienesSomos = () => {
                                                     }
                                                 }/>
                                         </div>
-                                        <div className="col-md-8">
+                                        <div className="col-md-8 ">
                                             <div className="card-body">
                                                 <h5 className="card-title"
                                                     style={
@@ -125,14 +125,14 @@ export const QuienesSomos = () => {
                                 </div>
                             </div>
                             {/* Fede */}
-                            <div className="col "
+                            <div className="col-sm-4 "
                                 style={
                                     {margin: "10px"}
                             }>
                                 <div className="card mb-3"
                                     style={
                                         {
-                                            width: "470px",
+                                            maxWidth: "470px",
                                             boxShadow: "20px 20px 50px rgba(0,0,0, 0.5)",
                                             borderRadius: "15px"
                                         }
@@ -149,7 +149,7 @@ export const QuienesSomos = () => {
                                                     }
                                                 }/>
                                         </div>
-                                        <div className="col-md-8">
+                                        <div className="col-md-8 ">
                                             <div className="card-body">
                                                 <h5 className="card-title"
                                                     style={
@@ -202,14 +202,14 @@ export const QuienesSomos = () => {
                         <div className="row">
                             {" "}
                             {/* Juan */}
-                            <div className="col"
+                            <div className="col-sm-4"
                                 style={
                                     {margin: "10px"}
                             }>
                                 <div className="card mb-3"
                                     style={
                                         {
-                                            width: "470px",
+                                            maxWidth: "470px",
                                             boxShadow: "20px 20px 50px rgba(0,0,0, 0.5)",
                                             borderRadius: "15px"
                                         }
@@ -226,7 +226,7 @@ export const QuienesSomos = () => {
                                                     }
                                                 }/>
                                         </div>
-                                        <div className="col-md-8">
+                                        <div className="col-md-8 ">
                                             <div className="card-body">
                                                 <h5 className="card-title"
                                                     style={
@@ -275,14 +275,14 @@ export const QuienesSomos = () => {
                                 </div>
                             </div>
                             {/* Norbis */}
-                            <div className="col"
+                            <div className="col-sm-4"
                                 style={
                                     {margin: "10px"}
                             }>
                                 <div className="card mb-3"
                                     style={
                                         {
-                                            width: "470px",
+                                            mawWidth: "470px",
                                             boxShadow: "20px 20px 50px rgba(0,0,0, 0.5)",
                                             borderRadius: "15px"
                                         }
@@ -299,7 +299,7 @@ export const QuienesSomos = () => {
                                                     }
                                                 }/>
                                         </div>
-                                        <div className="col-md-8">
+                                        <div className="col-md-8 ">
                                             <div className="card-body">
                                                 <h5 className="card-title"
                                                     style={
