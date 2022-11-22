@@ -9,12 +9,12 @@ export const VerEjercicio = () => {
 
   const handlebuscarejer = (e) => {
     if (e.key === "Enter") {
-    if (buscaejer === "") {
-      actions.obtenerEjercicios();
-    } else {
-      actions.buscadorejercicios(e.target.value);
+      if (buscaejer === "") {
+        actions.obtenerEjercicios();
+      } else {
+        actions.buscadorejercicios(e.target.value);
+      }
     }
-  }
   };
 
   useEffect(() => {
@@ -23,11 +23,25 @@ export const VerEjercicio = () => {
 
   return (
     <>
-      {" "}
+      <br />
+      <br />
+      {/* Titulo */}
+      <h1 className="text-light text-center" style={{ marginBottom: "25px" }}>
+        <i className="fa fa-dumbbell"> </i>
+        Ejercicios
+      </h1>
+      <br />
+
       {/* Buscar */}
       <br />
       <div
-        style={{ marginTop: "70px", marginLeft: "15px", marginBottom: "10px" }}
+        className="d-flex"
+        style={{
+          marginTop: "10px",
+          marginLeft: "15px",
+          marginBottom: "10px",
+          MaxWidth: "500px",
+        }}
       >
         <input
           className="form-control d-flex"
@@ -40,49 +54,95 @@ export const VerEjercicio = () => {
           style={{ width: "95%" }}
         />
       </div>
-      <div className="container">
-        <div className="d-flex row">
-          {" "}
+      <br />
+      <br />
+
+      <div className="d-flex justify-content-center">
+        <div className="container row">
           {store.ejercicios.map((item, id) => (
-            <div
-              className="card"
-              style={{
-                width: "25%",
-                margin: "20px",
-                borderRadius: "6px",
-                overflow: "hidden",
-                background: "#ffff",
-                boxShadow: "0px 1px 10px rgb(0, 0, 0, 0.2)",
-                cursor: "default",
-                transition: "all 400ms ease",
-              }}
-            >
-              <div className="card-body">
-                <h2 className="display-6" style={{ marginBottom: "15px" }}>
+            <div className="col-sm-4" style={{ marginBottom: "40px" }}>
+              <div
+                className="card border-success text-center"
+                style={{ width: "18rem" }}
+              >
+                <h2 className="text-center" style={{ marginBottom: "15px" }}>
                   {item.exercise_name}
                 </h2>
-                <img
-                  src={item.photo_exercise}
-                  style={{
-                    width: "100%",
-                    height: "210px",
-                  }}
-                  className="card-img-top"
-                />
-              </div>
-              <div className="card-body text-center">
-                <Link
-                  type="button"
-                  className="btn btn-outline-danger float-end"
-                  to={"/vistaEjercicio/" + item.id}
-                >
-                  <i className="fa fa-eye"></i>
-                </Link>
+                <div className="rounded mx-auto d-block">
+                  <img
+                    src={item.photo_exercise}
+                    className="rounded"
+                    style={{
+                      width: "200px",
+                      height: "175px",
+                      marginTop: "10px",
+                    }}
+                  />
+                </div>
+                <div className="card-body text-center">
+                  <Link
+                    type="button"
+                    className="btn btn-outline-danger float-end"
+                    to={"/vistaEjercicio/" + item.id}
+                  >
+                    <i className="fa fa-eye"></i>
+                  </Link>
+                </div>
               </div>
             </div>
-          ))}{" "}
+          ))}
         </div>
       </div>
     </>
   );
 };
+
+{
+  /* <div className="d-flex justify-content-center">
+        <div className="container row">
+          {store.ejercicios.map((item, id) => (
+            <div className="col-sm-4" style={{ marginBottom: "40px" }}>
+              <div
+                className="card border-success text-center"
+                style={{
+                  width: "25%",
+                  margin: "20px",
+                  borderRadius: "6px",
+                  overflow: "hidden",
+                  background: "#ffff",
+                  boxShadow: "0px 1px 10px rgb(0, 0, 0, 0.2)",
+                  cursor: "default",
+                  transition: "all 400ms ease",
+                }}
+              >
+                <div className="card-body">
+                  <h2 className="display-6" style={{ marginBottom: "15px" }}>
+                    {item.exercise_name}
+                  </h2>
+                  <div className="rounded mx-auto d-block">
+                    <img
+                      className="rounded"
+                      src={item.photo_exercise}
+                      style={{
+                        width: "200px",
+                        height: "175px",
+                        marginTop: "10px",
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="card-body text-center">
+                  <Link
+                    type="button"
+                    className="btn btn-outline-danger float-end"
+                    to={"/vistaEjercicio/" + item.id}
+                  >
+                    <i className="fa fa-eye"></i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div> */
+}
