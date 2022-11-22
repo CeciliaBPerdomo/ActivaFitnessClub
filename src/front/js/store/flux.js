@@ -336,7 +336,6 @@ const getState = ({
                     const response = await axios.get(
                         direccion + "/api/mensualidades/" + id, {}
                     );
-                    console.log(response.data);
                     setStore({
                         mensualidad: response.data,
                     });
@@ -354,7 +353,6 @@ const getState = ({
                     const response = await axios.get(
                         direccion + "/api/mensualidades", {}
                     );
-                    // console.log(response.data);
                     setStore({
                         mensualidades: response.data,
                     });
@@ -387,7 +385,7 @@ const getState = ({
                     const response = await axios.delete(
                         direccion + "/api/mensualidades/" + id, {}
                     );
-                    // console.log(response);
+                    getActions().obtenerMensualidades();
                 } catch (error) {
                     console.log(error);
                     if (error.code === "ERR_BAD_REQUEST") {
