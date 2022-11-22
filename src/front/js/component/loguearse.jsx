@@ -35,6 +35,19 @@ const Log_in = () => {
         setGuardadoPassword("");
     };
 
+    const Alert = async (e) => {
+        if (setGuardadoEmail && setGuardadoPassword === "Alumno") {
+            navegacion("/homeUsuario");
+        } else if (setGuardadoEmail && setGuardadoPassword === "Administrador") {
+            navegacion("/homeAdmin");
+        } else {
+            alert("Email y/o contraseña incorrectas")
+        }
+
+
+    };
+    console.log(Alert);
+
 
     return (
         <>
