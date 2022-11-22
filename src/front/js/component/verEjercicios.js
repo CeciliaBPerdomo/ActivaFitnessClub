@@ -64,10 +64,7 @@ export const VerEjercicio = () => {
         <div className="container row">
           {store.ejercicios.map((item, id) => (
             <div className="col-sm-4" style={{ marginBottom: "40px" }}>
-              <div
-                className="card border-success text-center"
-                style={{ width: "18rem" }}
-              >
+              <div className="card text-center" style={{ width: "18rem" }}>
                 <h2 className="text-center" style={{ marginBottom: "15px" }}>
                   {item.exercise_name}
                 </h2>
