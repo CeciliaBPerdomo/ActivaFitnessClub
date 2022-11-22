@@ -31,21 +31,24 @@ export const VistaEjercicio = () => {
 
   return (
     <>
-      <div className="">
-        <br /> {/* Titulo */}
+      <div className="container">
+        <br />
         <h1
           className="justify-content-center d-flex"
           style={{ color: "white", marginTop: "80px" }}
         >
           <i className="fa fa-dumbbell"></i>
+          {/* Titulo */}
           {store.ejercicio.exercise_name}{" "}
         </h1>
         <br />
-        <div className="justify-content-center d-flex ">
+        <div
+          className="container justify-content-center d-flex"
+          style={{ maxWidth: "90%" }}
+        >
           <div
             className="card"
             style={{
-              maxWidth: "47%",
               display: "flex",
               margin: "auto",
               borderRadius: "7px",
@@ -65,7 +68,7 @@ export const VistaEjercicio = () => {
               <img
                 src={store.ejercicio.photo_exercise}
                 className="d-flex justify-content-center"
-                style={{ width: "520px" }}
+                style={{ maxWidth: "70%" }}
               />
             </div>
             <div className="card-body">
@@ -89,11 +92,12 @@ export const VistaEjercicio = () => {
                 {store.ejercicio.description}
               </p>
             </div>
-            <ul className="list-group list-group-flush">
-              <div className="d-flex justify-content-center">
-                <ReactPlayer url={store.ejercicio.video_exercise}></ReactPlayer>
-              </div>
-            </ul>
+            <div
+              className="d-flex justify-content-center"
+              style={{ marginTop: "25px", marginBottom: "25px" }}
+            >
+              <ReactPlayer url={store.ejercicio.video_exercise}></ReactPlayer>
+            </div>
           </div>
         </div>
         <br />

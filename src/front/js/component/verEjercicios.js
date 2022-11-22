@@ -26,7 +26,10 @@ export const VerEjercicio = () => {
       <br />
       <br />
       {/* Titulo */}
-      <h1 className="text-light text-center" style={{ marginBottom: "25px" }}>
+      <h1
+        className="text-light text-center"
+        style={{ marginBottom: "25px", marginTop: "75px" }}
+      >
         <i className="fa fa-dumbbell"> </i>
         Ejercicios
       </h1>
