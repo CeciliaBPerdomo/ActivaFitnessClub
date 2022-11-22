@@ -5,12 +5,15 @@ import {useNavigate} from "react-router-dom";
 
 import fondologin from "../../img/fondologin.png";
 import "../../styles/loginn.css";
+import {Form} from "formik";
+import {Alert} from "bootstrap";
 
 const Log_in = () => {
     const [guardadoEmail, setGuardadoEmail] = useState("");
     const [guardadoPassword, setGuardadoPassword] = useState("");
     const {actions, store} = useContext(Context);
     let navegacion = useNavigate();
+
 
     // Prevenir el envio
     const ingreso = async (e) => {
@@ -27,16 +30,20 @@ const Log_in = () => {
             null;
         }
 
+
         setGuardadoEmail("");
         setGuardadoPassword("");
     };
 
+
     return (
         <>
+
 
             <div className="bg-loguearse vh-100">
                 <br/>
                 <br/>
+
                 <div style={
                         {width: "100%"}
                     }
@@ -124,7 +131,9 @@ const Log_in = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </>
     );
 };
