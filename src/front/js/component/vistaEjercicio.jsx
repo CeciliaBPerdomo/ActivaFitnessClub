@@ -31,7 +31,7 @@ export const VistaEjercicio = () => {
 
   return (
     <>
-      <div>
+      <div className="">
         <br /> {/* Titulo */}
         <h1
           className="justify-content-center d-flex"
@@ -41,11 +41,11 @@ export const VistaEjercicio = () => {
           {store.ejercicio.exercise_name}{" "}
         </h1>
         <br />
-        <div className="justify-content-center d-flex">
+        <div className="justify-content-center d-flex ">
           <div
             className="card"
             style={{
-              width: "47%",
+              maxWidth: "47%",
               display: "flex",
               margin: "auto",
               borderRadius: "7px",
