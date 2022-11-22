@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Context } from "../store/appContext";
+import React, {useState, useContext, useEffect} from "react";
+import {Link, useParams} from "react-router-dom";
+import {Context} from "../store/appContext";
 import titulo from "../../img/Cabeceras/pagos.jpg";
 import Table from "react-bootstrap/Table";
 
@@ -9,54 +9,56 @@ import Table from "react-bootstrap/Table";
 // /////////////////////////////////////////
 
 export const MisPagos = () => {
-  const { store, actions } = useContext(Context);
-  const params = useParams();
+    const {store, actions} = useContext(Context);
+    const params = useParams();
 
-  useEffect(() => {
-    actions.obtenerMensualidadId(parseInt(params.theid));
+    useEffect(() => {
+        actions.obtenerMensualidadId(parseInt(params.theid));
 
-    const getInfo = async () => {
-      let { cuota } = await actions.obtenerAlumnoId(parseInt(params.theid));
-      // Mercado pago
-      actions.pagoMercadoPago(cuota);
+        const getInfo = async () => {
+            let {cuota} = await actions.obtenerAlumnoId(parseInt(params.theid));
+            // Mercado pago
+            actions.pagoMercadoPago(cuota);
+        };
+        getInfo();
+    }, []);
+
+    const pagoMercadoPago = () => {
+        window.location.replace(store ?. mercadopago.sandbox_init_point);
     };
-    getInfo();
-  }, []);
 
-  const pagoMercadoPago = () => {
-    window.location.replace(store?.mercadopago.sandbox_init_point);
-  };
+    return (
+        <>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
 
-  return (
-    <>
-      <br />
-      <br />
-      <br />
-      <br />
+            <button type="button" className="btn btn-outline-danger justify-content-md-end float-end relative"
+                style={
+                    {
+                        marginRight: "125px",
 
-      <button
-        type="button"
-        className="btn btn-outline-danger justify-content-md-end float-end relative"
-        style={{
-          marginRight: "125px",
+                        marginBottom: "20px",
+                        color: "white"
+                    }
+                }
+                onClick={pagoMercadoPago}>
+                Pagar mensualidad on-line
+            </button>
+            {/* </Link> */}
+            <div className="container">
+                <div>
+                    <br/>{" "}
+                    {/* <img src={titulo} style={{ width: "75%", height: "150px" }} /> */}
+                    <h1 style={
+                        {color: "white"}
+                    }>Mis pagos</h1>
+                    <br/>
+                </div>
 
-          marginBottom: "20px",
-          color: "white",
-        }}
-        onClick={pagoMercadoPago}
-      >
-        Pagar mensualidad on-line
-      </button>
-      {/* </Link> */}
-      <div className="container">
-        <div>
-          <br />{" "}
-          {/* <img src={titulo} style={{ width: "75%", height: "150px" }} /> */}
-          <h1 style={{ color: "white" }}>Mis pagos</h1>
-          <br />
-        </div>
-
-        {/* Listado de pagos */}
+                {/* Listado de pagos */}
+                <pre className="d-flex mx-3 chroma">
         <Table
           striped
           bordered
@@ -99,7 +101,8 @@ export const MisPagos = () => {
             ))}{" "}
           </tbody>
         </Table>
-      </div>
-    </>
-  );
+        </pre>
+            </div>
+        </>
+    );
 };
