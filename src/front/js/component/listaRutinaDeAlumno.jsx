@@ -8,16 +8,15 @@ export const ListaRutinaDeAlumno = () => {
   const params = useParams();
 
   useEffect(() => {
-    actions.obtenerAlumnoId(parseInt(params.theid));
-    actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
+    const getInfo = async () => {
+      await actions.obtenerAlumnoId(parseInt(params.theid));
+      await actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
+    };
+    getInfo();
   }, []);
 
   return (
     <>
-      <br />
-      <br />
-      <br />
-      <br />
       <div className="container" style={{ marginBottom: "50px" }}>
         {/* Titulo */}
         <div className="titulo" style={{ marginTop: "80px" }}>
@@ -27,20 +26,6 @@ export const ListaRutinaDeAlumno = () => {
           </h1>
         </div>{" "}
         <br />
-        {/* Ir al listado de todos los alumnos */}
-        <div>
-          {store.auth && store.profile.role === "Administrador" ? (
-            <Link to={"/listaAlumno"}>
-              <button
-                type="button"
-                className="btn btn-outline-danger w-50 float-end"
-                style={{ marginBottom: "20px" }}
-              >
-                Listado de alumnos
-              </button>
-            </Link>
-          ) : null}
-        </div>
         <br />
         <pre className="d-flex mx-3 chroma">
           <Table
@@ -69,7 +54,9 @@ export const ListaRutinaDeAlumno = () => {
                 ? store.rutinasEjercicios.map((item) => (
                     <>
                       <tr>
-                        <th colSpan="7">Rutina: {item.idRutina}</th>
+                        <th colSpan="7">
+                          <b>Rutina</b>
+                        </th>
                       </tr>
                       <>
                         {item.results.map((dato) => (
@@ -83,7 +70,8 @@ export const ListaRutinaDeAlumno = () => {
                             <td>
                               <Link
                                 to={"/vistaEjercicio/" + dato.idEjercicios}
-                                className="btn btn-outline-dark"
+                                className="btn btn-outline-dark border border-white"
+                                style={{ color: "white" }}
                               >
                                 <i className="fa fa-eye"></i>
                               </Link>
