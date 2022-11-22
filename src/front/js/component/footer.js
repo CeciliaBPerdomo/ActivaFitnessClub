@@ -26,6 +26,7 @@ export const Footer = () => (
                 className="center rounded"
                 src={logo}
                 style={{
+                  backgroundColor:"black",
                   maxWidth: "30px",
                   maxHeigth: "30px",
                 }}
@@ -44,6 +45,7 @@ export const Footer = () => (
                 className="center rounded"
                 src="https://cdn.pixabay.com/photo/2021/06/15/12/17/instagram-6338401_1280.png"
                 style={{
+                  backgroundColor:"black",
                   maxWidth: "30px",
                   maxHeigth: "30px",
                 }}
@@ -62,6 +64,7 @@ export const Footer = () => (
                 className="center rounded"
                 src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-3-1.png"
                 style={{
+                  backgroundColor:"black",
                   maxWidth: "30px",
                   maxHeigth: "30px",
                 }}
