@@ -35,9 +35,8 @@ export const VistaEjercicio = () => {
         <br />
         <h1
           className="justify-content-center d-flex"
-          style={{ color: "white", marginTop: "80px" }}
+          style={{ color: "white", marginTop: "70px" }}
         >
-          <i className="fa fa-dumbbell"></i>
           {/* Titulo */}
           {store.ejercicio.exercise_name}{" "}
         </h1>

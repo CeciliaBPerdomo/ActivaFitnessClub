@@ -60,11 +60,13 @@ export const ModificarAlumno = () => {
 
   return (
     <>
-      <div className="container" style={{ marginBottom: "35px" }}>
+      <div
+        className="container"
+        style={{ marginBottom: "35px", marginTop: "60px" }}
+      >
         <br />
         <h1 style={{ color: "white" }}>
-          <i className="fa fa-user"> </i>
-          Modificación datos de alumnos
+          <i className="fa fa-user"> </i> Modificación datos de alumnos
         </h1>
         <br />
         <div>

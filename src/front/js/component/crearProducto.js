@@ -57,7 +57,7 @@ export const CrearProducto = () => {
           <Link to={"/ListadoProductos"}>
             <button
               type="button"
-              className="btn btn-outline-danger w-50 float-end"
+              className="btn btn-outline-danger w-50 float-end border border-white"
               style={{ marginBottom: "20px", color: "white" }}
             >
               Listado de productos
@@ -86,6 +86,7 @@ export const CrearProducto = () => {
 
                 <input
                   type="text"
+                  placeholder="Nombre del producto"
                   className="form-control"
                   onChange={(event) => setNombreProducto(event.target.value)}
                   value={nombreProducto}
@@ -104,6 +105,7 @@ export const CrearProducto = () => {
 
                 <input
                   type="text"
+                  placeholder="Stock"
                   className="form-control"
                   onChange={(event) => setStock(event.target.value)}
                   value={stock}
@@ -116,6 +118,7 @@ export const CrearProducto = () => {
                 </label>
                 <input
                   type="text"
+                  placeholder="Precio de compra"
                   className="form-control"
                   onChange={(event) => setCompra(event.target.value)}
                   value={compra}
@@ -129,6 +132,7 @@ export const CrearProducto = () => {
 
                 <input
                   type="text"
+                  placeholder="Precio de venta"
                   className="form-control"
                   id="basic-url"
                   onChange={(event) => setVenta(event.target.value)}
@@ -148,6 +152,7 @@ export const CrearProducto = () => {
 
                 <input
                   type="text"
+                  placeholder="URL de la foto del producto"
                   className="form-control"
                   id="basic-url"
                   onChange={(event) => setImagen(event.target.value)}
@@ -164,7 +169,7 @@ export const CrearProducto = () => {
                 <button
                   type="button"
                   style={{ color: "white" }}
-                  className="btn btn-outline-danger w-50 float-end"
+                  className="btn btn-outline-danger w-50 float-end border border-white"
                   onClick={agregarProducto}
                 >
                   Agregar nuevo producto
