@@ -3,3 +3,11 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.sweet-warning {
+    background-color: #a00404;
+}
+
+.sweet-warning:not([disabled]):hover {
+    background-color: #a00404;
+}
