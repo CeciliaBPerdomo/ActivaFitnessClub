@@ -31,6 +31,7 @@ export const Home = () => {
         className="img-fluid"
         style={{
           width: "100%",
+          height: "100%",
           overflow: "hidden",
         }}
       >
@@ -44,12 +45,11 @@ export const Home = () => {
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            marginBottom: "40px",
           }}
         >
           {/* Bienvenida */}
           <div
-            className="container pt-5 pb-5 mt-5"
+            className="container pt-5 pb-5"
             style={{
               maxWidth: "100%",
               minWidth: "100%",
@@ -65,6 +65,7 @@ export const Home = () => {
             }}
           >
             <h1
+              className="display-1 text-danger"
               style={{
                 width: "100%",
                 fontSize: "450%",
@@ -74,15 +75,18 @@ export const Home = () => {
                 color: "#A00404",
               }}
             >
-              Bienvenido a
-              <br />
-              Activa Fitness Club
+              {" "}
+              <strong>
+                Bienvenido a
+                <br />
+                Activa Fitness Club
+              </strong>
             </h1>
             <p
               style={{
                 fontSize: "28px",
                 fontWeight: "300",
-                color: "",
+                // color: "",
                 backgroundColor: "black",
                 backgroundSize: "cover",
                 opacity: "0.5",
@@ -92,7 +96,7 @@ export const Home = () => {
             </p>
           </div>
         </div>
-        <hr className="text-light" />
+
         {/* FIN DE PORTADA */}
 
         {/* Filosofia */}
