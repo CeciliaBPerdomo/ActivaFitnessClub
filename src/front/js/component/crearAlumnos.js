@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import swal from "sweetalert";
+import Form from "react-bootstrap/Form";
 
 export const CrearAlumno = () => {
   const [ci, setCI] = useState("");
@@ -85,9 +86,10 @@ export const CrearAlumno = () => {
         <div>
           <Link to={"/listaAlumno"}>
             <button
-              type="button"
-              className="btn btn-outline-danger float-end"
+              className="btn btn-danger float-end"
+              type="submit"
               style={{
+                background: "#A00404",
                 marginBottom: "20px",
                 color: "white",
               }}
@@ -98,7 +100,7 @@ export const CrearAlumno = () => {
         </div>
         <br />
 
-        <form onSubmit={registro}>
+        <Form onSubmit={registro}>
           <div className="container text-start " style={{ marginTop: "10px" }}>
             <div className="row "></div>
           </div>
@@ -110,8 +112,10 @@ export const CrearAlumno = () => {
                   <b>Cédula:</b>
                 </label>
                 <input
+                  required
                   type="number"
                   className="form-control"
+                  placeholder="Sin puntos ni guiones"
                   id="inputCedula"
                   onChange={(e) => setCI(e.target.value)}
                   value={ci}
@@ -125,7 +129,9 @@ export const CrearAlumno = () => {
                 </label>
 
                 <input
+                  required
                   type="text"
+                  placeholder="Nombre de pila"
                   className="form-control"
                   id="inputNombre"
                   onChange={(e) => setName(e.target.value)}
@@ -136,10 +142,11 @@ export const CrearAlumno = () => {
               <div className="col">
                 {/* Apellido */}
                 <label htmlFor="apellido" className="form-label">
-                  <b>Apellido</b>
+                  <b>Apellido:</b>
                 </label>
                 <input
                   type="text"
+                  placeholder="Apellido"
                   className="form-control"
                   id="inputApellido"
                   onChange={(e) => setLast_Name(e.target.value)}
@@ -150,10 +157,11 @@ export const CrearAlumno = () => {
               <div className="col">
                 {/* Celular */}
                 <label htmlFor="celular" className="form-label">
-                  <b>Celular</b>
+                  <b>Celular:</b>
                 </label>
                 <input
                   type="number"
+                  placeholder="Nº celular"
                   className="form-control"
                   id="inputCelular"
                   onChange={(e) => setPhone(e.target.value)}
@@ -173,7 +181,7 @@ export const CrearAlumno = () => {
               <div className="col">
                 {/* Fecha de nacimiento */}
                 <label htmlFor="nacimiento" className="form-label">
-                  <b>Fecha de nacimiento</b>
+                  <b>Fecha de nacimiento:</b>
                 </label>
                 <input
                   type="date"
@@ -187,7 +195,7 @@ export const CrearAlumno = () => {
               {/* Fecha de ingreso */}
               <div className="col">
                 <label htmlFor="ingreso" className="form-label">
-                  <b>Fecha de ingreso</b>
+                  <b>Fecha de ingreso:</b>
                 </label>
                 <input
                   type="date"
@@ -201,7 +209,7 @@ export const CrearAlumno = () => {
               {/* Mutualista */}
               <div className="col">
                 <label htmlFor="mutualista" className="form-label">
-                  <b>Mutualista</b>
+                  <b>Mutualista:</b>
                 </label>
                 <select
                   className="form-select"
@@ -209,7 +217,7 @@ export const CrearAlumno = () => {
                   onChange={(e) => setMutualist(e.target.value)}
                   value={mutualist}
                 >
-                  <option select>Mutualista</option>
+                  <option select>Seleccionar</option>
                   <option value="Hospital Evangelico">
                     Hospital Evangelico
                   </option>
@@ -231,9 +239,10 @@ export const CrearAlumno = () => {
               {/* Afecciones medicas */}
               <div className="col">
                 <label htmlFor="afec_medicas" className="form-label">
-                  <b>Afecciones medicas</b>
+                  <b>Afecciones medicas:</b>
                 </label>
                 <input
+                  placeholder="Ej: Ninguna"
                   type="text"
                   className="form-control"
                   id="inputAfecciones"
@@ -244,9 +253,10 @@ export const CrearAlumno = () => {
               {/* Medicamentos */}
               <div className="col">
                 <label htmlFor="medicamentos" className="form-label">
-                  <b>Medicamentos</b>
+                  <b>Medicamentos:</b>
                 </label>
                 <input
+                  placeholder="Ej: Ninguno"
                   type="text"
                   className="form-control"
                   id="inputMedicamentos"
@@ -258,9 +268,10 @@ export const CrearAlumno = () => {
               {/* Objetivo entreamiento */}
               <div className="col">
                 <label htmlFor="entrenamiento" className="form-label">
-                  <b>Objetivo entrenamiento</b>
+                  <b>Objetivo entrenamiento:</b>
                 </label>
                 <input
+                  placeholder="Ej: Aumento de masa muscular"
                   type="text"
                   className="form-control"
                   id="inputEntrenamiento"
@@ -282,9 +293,10 @@ export const CrearAlumno = () => {
               {/* Email */}
               <div className="col">
                 <label htmlFor="email" className="form-label">
-                  <b>Email</b>
+                  <b>Email:</b>
                 </label>
                 <input
+                  placeholder="abcd@mail.com"
                   type="email"
                   className="form-control"
                   id="inputEmail"
@@ -296,9 +308,10 @@ export const CrearAlumno = () => {
               {/* Password */}
               <div className="col">
                 <label htmlFor="password" className="form-label">
-                  <b>Password</b>
+                  <b>Password:</b>
                 </label>
                 <input
+                  placeholder="&!Qe1"
                   type="password"
                   className="form-control"
                   id="password"
@@ -319,7 +332,7 @@ export const CrearAlumno = () => {
               {/* Actividades */}
               <div className="col">
                 <label htmlFor="actividades" className="form-label">
-                  <b>Actividades</b>
+                  <b>Actividades:</b>
                 </label>
                 <select
                   className="form-select"
@@ -327,7 +340,7 @@ export const CrearAlumno = () => {
                   onChange={(e) => setActivities(e.target.value)}
                   value={activities}
                 >
-                  <option select>Actividad</option>
+                  <option select>Seleccionar</option>
                   <option value="Funcional">Funcional</option>
                   <option value="Entrenamiento personalizado">
                     Entrenamiento personalizado
@@ -340,7 +353,7 @@ export const CrearAlumno = () => {
               {/* Rol */}
               <div className="col">
                 <label htmlFor="rol" className="form-label">
-                  <b>Rol</b>
+                  <b>Rol:</b>
                 </label>
                 <select
                   className="form-select"
@@ -348,10 +361,10 @@ export const CrearAlumno = () => {
                   onChange={(e) => setRole(e.target.value)}
                   value={role}
                 >
-                  <option select>Rol</option>
+                  <option select>Seleccionar</option>
                   <option value="Alumno">Alumno</option>
                   <option value="Administrador">Administrador</option>
-                  <option value="Usuario Internet">Usuario Internet</option>
+                  {/* <option value="Usuario Internet">Usuario Internet</option> */}
                 </select>
               </div>
               {/* Cuota */}
@@ -360,6 +373,7 @@ export const CrearAlumno = () => {
                   <b>Cuota mensual:</b>
                 </label>
                 <input
+                  placeholder="Solo importe"
                   type="text"
                   className="form-control"
                   id="inputCuota"
@@ -395,8 +409,9 @@ export const CrearAlumno = () => {
           <div>
             <button
               type="submit"
-              className="btn btn-outline-danger w-100"
+              className="btn btn-danger w-100"
               style={{
+                background: "#A00404",
                 marginTop: "35px",
                 marginBottom: "15px",
                 color: "white",
@@ -405,7 +420,9 @@ export const CrearAlumno = () => {
               Guardar datos
             </button>
           </div>
-        </form>
+        </Form>
+        <br />
+        <br />
       </div>
     </>
   );
