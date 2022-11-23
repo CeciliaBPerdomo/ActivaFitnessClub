@@ -94,10 +94,11 @@ export const ListaAlumno = () => {
           <Link to={"/crearAlumno"}>
             <button
               type="button"
-              className="btn btn-outline-danger w-50 float-end"
+              className="btn btn-danger w-50 float-end"
               style={{
                 marginBottom: "18px",
                 color: "white",
+                background:"#A00404"
               }}
             >
               Ingresar nuevo alumno
@@ -105,7 +106,7 @@ export const ListaAlumno = () => {
           </Link>
         </div>
         <br /> {/* Listado de alumnos */}
-        <table className="table table-hover table-secondary">
+        <table className="table" style={{ color: "white" }}>
           <thead>
             <tr className="text-center">
               {/* Cabeceras */}

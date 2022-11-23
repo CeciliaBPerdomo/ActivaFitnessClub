@@ -73,15 +73,15 @@ export const ListadoEjercicios = () => {
           <Link to={"/crearEjercicio"}>
             <button
               type="button"
-              className="btn btn-outline-danger w-50 float-end"
-              style={{ marginBottom: "20px", color: "white" }}
+              className="btn btn-danger w-50 float-end"
+              style={{ marginBottom: "20px", color: "white", background:"#A00404" }}
             >
               Crear nuevo ejercicio
             </button>
           </Link>
         </div>
         <br /> {/* Listado de ejercicio */}
-        <table className="table table-hover table-secondary">
+        <table className="table" style={{ color: "white" }}>
           <thead>
             <tr className="text-center">
               {" "}
