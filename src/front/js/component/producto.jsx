@@ -19,14 +19,21 @@ export const Producto = () => {
             marginTop: "10px",
           }}
         >
-          <h1 style={{ marginTop: "80px", color: "white" }}>Producto:</h1>
+          <h1 style={{ marginTop: "80px", color: "white" }}>
+            {" "}
+            <i class="fa-thin fa-clipboard-list-check"></i> Producto:
+          </h1>
           <br />
 
           <Link to={"/ListadoProductos"}>
             <button
               type="button"
-              className="btn btn-outline-danger w-50 float-start border border-white"
-              style={{ marginBottom: "20px", color: "white" }}
+              className="btn border-white w-50 float-start border border-white"
+              style={{
+                marginBottom: "20px",
+                color: "white",
+                background: "#A00404",
+              }}
             >
               Listado de productos
             </button>
