@@ -31,7 +31,7 @@ export const VistaEjercicio = () => {
 
   return (
     <>
-      <div className="container vh-100">
+      <div className="container">
         <br />
         <h1
           className="justify-content-center d-flex"
@@ -103,16 +103,16 @@ export const VistaEjercicio = () => {
         <div className="btn d-flex justify-content-center" role="group">
           <Link to={"/vistaEjercicio/" + down}>
             <button
-              className="btn btn-outline-danger float-left"
-              style={{ color: "white" }}
+              className="btn btn-danger float-left border border-white"
+              style={{ color: "white", background: "#A00404" }}
             >
               Anterior
             </button>
           </Link>
           <Link to={"/vistaEjercicio/" + next}>
             <button
-              className="btn btn-outline-danger float-right"
-              style={{ color: "white" }}
+              className="btn btn-danger float-right border border-white"
+              style={{ color: "white", background: "#A00404" }}
             >
               Siguiente
             </button>
