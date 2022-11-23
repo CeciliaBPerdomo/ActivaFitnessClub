@@ -53,7 +53,7 @@ export const VistaMensualidades = () => {
   return (
     <>
       <div
-        className="container"
+        className="container vh-100"
         style={{
           marginBottom: "15px",
           marginTop: "90px",
@@ -61,8 +61,7 @@ export const VistaMensualidades = () => {
         }}
       >
         <h1>
-          <i className="fa fa-wallet"></i>
-          Mensualidades
+          <i className="fa fa-wallet"></i> Mensualidades
         </h1>
         <br /> {/* Buscar */}
         <div>
@@ -84,8 +83,10 @@ export const VistaMensualidades = () => {
               type="button"
               className="btn btn-outline-danger w-25 float-end border border-white"
               style={{
-                marginBottom: "25px",
+                marginTop: "15px",
+                marginBottom: "45px",
                 color: "white",
+                background: "#A00404",
               }}
             >
               Pago de mensualidad
@@ -98,9 +99,11 @@ export const VistaMensualidades = () => {
               type="button"
               className="btn btn-outline-danger w-25 float-end border border-white"
               style={{
-                marginBottom: "25px",
+                marginTop: "15px",
+                marginBottom: "45px",
                 color: "white",
                 marginRight: "25px",
+                background: "#A00404",
               }}
             >
               Listado de alumnos
@@ -109,8 +112,8 @@ export const VistaMensualidades = () => {
         </div>
         <br /> {/* Listado de mensualidades */}
         <table
-          className="table table-hover table-secondary"
-          style={{ marginBottom: "25px" }}
+          className="table"
+          style={{ marginBottom: "25px", color: "white" }}
         >
           <thead>
             <tr className="text-center">
@@ -127,7 +130,10 @@ export const VistaMensualidades = () => {
           </thead>
 
           {/* Mensualidades */}
-          <tbody className="align-middle text-center">
+          <tbody
+            className="align-middle text-center"
+            style={{ color: "white" }}
+          >
             {store.mensualidades.map((item, id) => (
               <tr key={id}>
                 <td>{item.userInfo.name}</td>
@@ -140,7 +146,11 @@ export const VistaMensualidades = () => {
                 {/* Modificar */}
                 <td>
                   <Link to={"/editarMensualidad/" + item.id}>
-                    <button type="button" className="btn btn-outline-dark">
+                    <button
+                      type="button"
+                      className="btn btn-outline-dark border border-white"
+                      style={{ color: "white" }}
+                    >
                       <i className="fa fa-pen"></i>
                     </button>
                   </Link>

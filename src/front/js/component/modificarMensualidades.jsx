@@ -48,7 +48,7 @@ export const EditarMensualidad = () => {
   return (
     <>
       <div
-        className="container"
+        className="container vh-100"
         style={{
           marginTop: "80px",
           marginBottom: "35px",
@@ -58,18 +58,18 @@ export const EditarMensualidad = () => {
         {" "}
         {/* Titulo */}
         <h1>
-          <i className="fa fa-wallet"></i>
-          Editar mensualidad
+          <i className="fa fa-wallet"></i> Editar mensualidad
         </h1>{" "}
         <br /> {/* Listado de mensualidades */}
         <div>
           <Link to={"/mensualidades"}>
             <button
               type="button"
-              className="btn btn-outline-danger w-50 float-end"
+              className="btn btn-outline-danger w-50 float-end border border-white"
               style={{
                 marginBottom: "20px",
                 color: "white",
+                background: "#A00404",
               }}
             >
               Listado de mensualidades
@@ -174,8 +174,8 @@ export const EditarMensualidad = () => {
         >
           <button
             type="button"
-            className="btn btn-outline-danger w-50 float-end"
-            style={{ color: "white" }}
+            className="btn btn-outline-danger w-50 float-end border border-white"
+            style={{ color: "white", background: "#A00404" }}
             onClick={(e) => modificarMensualidad(e)}
           >
             Guardar modificación
