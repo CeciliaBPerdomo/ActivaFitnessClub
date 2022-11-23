@@ -47,7 +47,7 @@ export const ListadoProductos = () => {
   return (
     <>
       <div
-        className="container"
+        className="container vh-100"
         style={{
           marginTop: "20px",
           marginBottom: "35px",
@@ -73,8 +73,12 @@ export const ListadoProductos = () => {
           <Link to={"/crearProducto"}>
             <button
               type="button"
-              className="btn btn-danger w-50 float-end"
-              style={{ marginBottom: "40px", color: "white", background:"#A00404" }}
+              className="btn border border-white w-50 float-end"
+              style={{
+                marginBottom: "40px",
+                color: "white",
+                background: "#A00404",
+              }}
             >
               Crear nuevo producto
             </button>

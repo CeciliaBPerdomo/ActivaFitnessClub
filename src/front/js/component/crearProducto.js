@@ -43,7 +43,7 @@ export const CrearProducto = () => {
       <br />
       <br />
       <div
-        className="container"
+        className="container vh-100"
         style={{ marginTop: "50px", marginBottom: "50px" }}
       >
         {/* Titulo */}
@@ -52,13 +52,17 @@ export const CrearProducto = () => {
         </h1>
         <br />
 
-        {/* Listado de productos */}
+        {/* Boton listado de productos */}
         <div>
           <Link to={"/ListadoProductos"}>
             <button
-              type="button"
-              className="btn btn-outline-danger w-50 float-end border border-white"
-              style={{ marginBottom: "20px", color: "white" }}
+              type="button "
+              className="btn border border-white w-50 float-end border border-white"
+              style={{
+                marginBottom: "20px",
+                color: "white",
+                background: "#A00404",
+              }}
             >
               Listado de productos
             </button>
@@ -168,8 +172,8 @@ export const CrearProducto = () => {
               <div className="col">
                 <button
                   type="button"
-                  style={{ color: "white" }}
-                  className="btn btn-outline-danger w-50 float-end border border-white"
+                  style={{ color: "white", background: "#A00404" }}
+                  className="btn border border-white w-50 float-end border border-white"
                   onClick={agregarProducto}
                 >
                   Agregar nuevo producto
