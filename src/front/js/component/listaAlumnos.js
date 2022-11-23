@@ -69,7 +69,7 @@ export const ListaAlumno = () => {
 
     return (
         <>
-            <div className="container"
+            <div className="container vh-100"
                 style={
                     {
                         marginBottom: "15px",
@@ -83,9 +83,7 @@ export const ListaAlumno = () => {
                         <i className="fa fa-user"></i>
                         Alumnos
                     </h1>
-                    {" "}
-                    <br/>
-                </div>
+                    {" "}<br/></div>
                 {/* Buscar */}
                 <div>
                     <input onChange={
