@@ -12,7 +12,7 @@ export const Producto = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container vh-100">
         <div
           style={{
             marginBottom: "10px",
