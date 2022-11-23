@@ -41,7 +41,7 @@ export const CrearEjercicio = () => {
   return (
     <>
       <div
-        className="container"
+        className="container vh-100"
         style={{
           marginTop: "90px",
           marginBottom: "35px",
@@ -56,8 +56,9 @@ export const CrearEjercicio = () => {
           <Link to={"/ListadoEjercicios"}>
             <button
               type="button"
-              className="btn btn-outline-danger w-50 float-end"
+              className="btn btn-danger w-50 float-end border border-white"
               style={{
+                background: "#A00404",
                 marginBottom: "20px",
                 color: "white",
               }}
@@ -183,8 +184,8 @@ export const CrearEjercicio = () => {
               <div className="col">
                 <button
                   type="button"
-                  style={{ color: "white" }}
-                  className="btn btn-outline-danger w-50 float-end"
+                  style={{ color: "white",background: "#A00404" }}
+                  className="btn btn-danger w-50 float-end border border-white"
                   onClick={() => agregarEjercicio()}
                 >
                   Agregar nuevo ejercicio

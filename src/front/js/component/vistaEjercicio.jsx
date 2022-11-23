@@ -31,7 +31,7 @@ export const VistaEjercicio = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container vh-100">
         <br />
         <h1
           className="justify-content-center d-flex"

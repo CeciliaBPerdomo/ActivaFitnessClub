@@ -56,7 +56,7 @@ export const EditarEjercicio = () => {
   return (
     <>
       <div
-        className="container text-light"
+        className="container text-light vh-100"
         style={{
           marginTop: "90px",
           marginBottom: "20px",
@@ -73,8 +73,8 @@ export const EditarEjercicio = () => {
           <Link to={"/ListadoEjercicios"}>
             <button
               type="button"
-              className="btn btn-outline-danger w-50 float-end"
-              style={{ marginBottom: "20px", color: "white" }}
+              className="btn btn-danger w-50 float-end border border-white"
+              style={{ marginBottom: "20px", color: "white", background:"#A00404" }}
             >
               Listado de ejercicios
             </button>
@@ -192,8 +192,8 @@ export const EditarEjercicio = () => {
               <div className="col">
                 <button
                   type="button"
-                  className="btn btn-outline-danger w-50 float-end"
-                  style={{ color: "white" }}
+                  className="btn btn-danger w-50 float-end border border-white"
+                  style={{ color: "white",background:"#A00404" }}
                   onClick={(e) => modificarEjercicio(e)}
                 >
                   Guardar modificaciones
