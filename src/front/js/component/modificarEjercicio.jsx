@@ -65,8 +65,8 @@ export const EditarEjercicio = () => {
         {" "}
         {/* Titulo */}
         <h1>
-          <i className="fa fa-dumbbell"> </i>
-          Editar información de: {store.ejercicio.exercise_name}
+          <i className="fa fa-dumbbell"> </i> Editar información de:{" "}
+          {store.ejercicio.exercise_name}
         </h1>
         <br /> {/* Listado de ejercicios */}
         <div>
