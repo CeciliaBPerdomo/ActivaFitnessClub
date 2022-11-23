@@ -1,39 +1,52 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Context } from "../store/appContext";
+import React, {useState, useContext, useEffect} from "react";
+import {Link, useParams} from "react-router-dom";
+import {Context} from "../store/appContext";
 import Table from "react-bootstrap/Table";
 
 export const ListaRutinaDeAlumno = () => {
-  const { store, actions } = useContext(Context);
-  const params = useParams();
+    const {store, actions} = useContext(Context);
+    const params = useParams();
 
-  useEffect(() => {
-    const getInfo = async () => {
-      await actions.obtenerAlumnoId(parseInt(params.theid));
-      await actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
-    };
-    getInfo();
-  }, []);
+    useEffect(() => {
+        const getInfo = async () => {
+            await actions.obtenerAlumnoId(parseInt(params.theid));
+            await actions.obtenerRutinaEjercicioIdUser(parseInt(params.theid));
+        };
+        getInfo();
+    }, []);
 
-  return (
-    <>
-      <div className="container" style={{ marginBottom: "50px" }}>
-        {/* Titulo */}
-        <div className="titulo" style={{ marginTop: "80px" }}>
-          <h1 style={{ color: "white" }}>
-            <i className="fa fa-dumbbell"></i> Rutinas de: {store.alumno.name}{" "}
-            {store.alumno.last_name}
-          </h1>
-        </div>{" "}
-        <br />
-        <br />
-        <pre className="d-flex mx-3 chroma">
-          <Table
+    return (<>
+        <div className="container vh-100"
+            style={
+                {marginBottom: "50px"}
+        }>
+            {/* Titulo */}
+            <div className="titulo"
+                style={
+                    {marginTop: "80px"}
+            }>
+                <h1 style={
+                    {color: "white"}
+                }>
+                    <i className="fa fa-dumbbell"></i>
+                    Rutinas de: {
+                    store.alumno.name
+                }
+                    {" "}
+                    {
+                    store.alumno.last_name
+                } </h1>
+            </div>
+            {" "}
+            <br/>
+            <br/>
+            <pre className="d-flex mx-3 chroma">
+          <table
             striped
             bordered
             hover
             variant="dark"
-            className="table table-hover table-secondary"
+            className="table"  style={{ color: "white" }}
           >
             <thead>
               <tr className="text-center">
@@ -83,9 +96,9 @@ export const ListaRutinaDeAlumno = () => {
                   ))
                 : null}
             </tbody>
-          </Table>
+          </table>
         </pre>
       </div>
     </>
-  );
-};
+        );
+    };;;;
