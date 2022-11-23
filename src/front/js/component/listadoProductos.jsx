@@ -73,8 +73,8 @@ export const ListadoProductos = () => {
           <Link to={"/crearProducto"}>
             <button
               type="button"
-              className="btn btn-outline-danger w-50 float-end"
-              style={{ marginBottom: "40px", color: "white" }}
+              className="btn btn-danger w-50 float-end"
+              style={{ marginBottom: "40px", color: "white", background:"#A00404" }}
             >
               Crear nuevo producto
             </button>
