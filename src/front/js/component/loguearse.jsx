@@ -20,7 +20,19 @@ const Log_in = () => {
         let logged = await actions.login(guardadoEmail, guardadoPassword);
 
         if (! logged) {
-            swal({title: "Error en el ingreso", text: "Usuario y/o contraseña incorrecto. Intentelo nuevamente.", icon: "warning"});
+            swal({
+                title: "Error en el ingreso",
+                text: "Usuario y/o contraseña incorrecto. Intentelo nuevamente.",
+                icon: "warning",
+
+                buttons: {
+                    confirm: {
+                        text: 'Entendido',
+                        className: 'sweet-warning'
+                    }
+
+                }
+            });
         } else {
             if (logged.user.role === "Alumno") {
                 navegacion("/homeUsuario");
@@ -105,7 +117,7 @@ const Log_in = () => {
                                 <br/>
 
                                 <div>
-                                    <button type="submit" className="btn btn-danger d-flex float-end "
+                                    <button type="submit" className="btn btn-danger  d-flex float-end "
                                         style={
                                             {
                                                 marginBottom: "20px",
