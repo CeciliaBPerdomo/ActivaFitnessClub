@@ -49,7 +49,7 @@ export const ModificarAlumno = () => {
 
     return (
         <>
-            <div className="container"
+            <div className="container vh-100"
                 style={
                     {
                         marginBottom: "35px",
