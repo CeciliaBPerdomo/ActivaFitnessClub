@@ -81,7 +81,7 @@ export const CrearRutina = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container vh-100">
         {/* Titulo */}
         <div>
           <br />
@@ -176,6 +176,7 @@ export const CrearRutina = () => {
                 </label>
                 <input
                   type="text"
+                  placeholder="Series"
                   className="form-control"
                   onChange={(e) => setSeries(e.target.value)}
                   value={series}
@@ -189,6 +190,7 @@ export const CrearRutina = () => {
                 <input
                   type="text"
                   className="form-control"
+                  placeholder="Repeticiones"
                   onChange={(e) => setRepeticiones(e.target.value)}
                   value={repeticiones}
                 />
@@ -201,6 +203,7 @@ export const CrearRutina = () => {
                 <input
                   type="text"
                   className="form-control"
+                  placeholder="Carga"
                   onChange={(e) => setCarga(e.target.value)}
                   value={carga}
                 />
@@ -247,9 +250,14 @@ export const CrearRutina = () => {
 
               <div className="col">
                 <button
-                  className="btn btn-outline-danger float-end w-50"
+                  className="btn btn-outline-danger float-end w-50 border border-white"
                   type="button"
-                  style={{ marginTop: "31px", color: "white" }}
+                  style={{
+                    marginTop: "31px",
+                    color: "white",
+                    background: "#A00404",
+                    marginBottom: "35px",
+                  }}
                   onClick={cargarRutina}
                 >
                   Añadir ejercicio
@@ -259,7 +267,7 @@ export const CrearRutina = () => {
           </form>
         </div>
 
-        <table className="table table-hover table-secondary">
+        <table className="table" style={{ color: "white" }}>
           <thead>
             <tr className="text-center">
               <th scope="col" className="text-start">
@@ -298,6 +306,7 @@ export const CrearRutina = () => {
                 <td>
                   <i
                     className="fa fa-trash"
+                    style={{ color: "red" }}
                     onClick={(e) => borrarEjercicio(e, item)}
                   ></i>
                 </td>
