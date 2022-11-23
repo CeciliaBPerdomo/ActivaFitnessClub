@@ -45,7 +45,7 @@ export const ListadoEjercicios = () => {
   return (
     <>
       <div
-        className="container"
+        className="container vh-100"
         style={{
           marginTop: "100px",
           marginBottom: "35px",
@@ -73,7 +73,7 @@ export const ListadoEjercicios = () => {
           <Link to={"/crearEjercicio"}>
             <button
               type="button"
-              className="btn btn-danger w-50 float-end"
+              className="btn btn-danger w-50 float-end border border-white"
               style={{ marginBottom: "20px", color: "white", background:"#A00404" }}
             >
               Crear nuevo ejercicio
@@ -115,7 +115,7 @@ export const ListadoEjercicios = () => {
                 <td>
                   <Link
                     to={"/vistaEjercicio/" + item.id}
-                    className="btn btn-outline-dark"
+                    className="btn btn-outline-light"
                   >
                     <i className="fa fa-eye"></i>
                   </Link>
@@ -125,7 +125,7 @@ export const ListadoEjercicios = () => {
                 <td>
                   <Link
                     to={"/editarEjercicio/" + item.id}
-                    className="btn btn-outline-dark"
+                    className="btn btn-outline-light"
                   >
                     <i className="fa fa-pen"></i>
                   </Link>
