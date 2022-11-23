@@ -38,8 +38,9 @@ export const VistaProducto = () => {
 
     return (
         <>
-            <div style={
-                {backgroundColor: ""}
+            <div className="container vh-100"
+                style={
+                    {backgroundColor: ""}
             }>
                 <p style={
                     {
@@ -64,14 +65,16 @@ export const VistaProducto = () => {
                     <Link to={
                         "/carrito/" + store ?. idCarrito.idCarrito
                     }>
-                        <button type="button" className="btn btn-outline-danger float-end"
+                        <button type="button" className="btn btn-danger d-flex float-end"
                             style={
                                 {
                                     marginRight: "10px",
-                                    color: "white"
+                                    color: "white",
+                                    background: "#A00404"
                                 }
                         }>
                             Finalizar compra
+
                         </button>
                     </Link>
                 </div>
