@@ -56,7 +56,7 @@ export const ListadoProductos = () => {
         {" "}
         {/* Titulo */}
         <h1 style={{ color: "white", marginTop: "85px" }}>
-          Listado de productos
+          <i class="fa-thin fa-clipboard-list-check"></i> Listado de productos
         </h1>
         <br /> {/* Buscar */}
         <div>

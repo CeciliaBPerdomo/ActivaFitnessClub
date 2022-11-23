@@ -48,7 +48,8 @@ export const CrearProducto = () => {
       >
         {/* Titulo */}
         <h1 style={{ color: "white", marginBottom: "35px" }}>
-          Ingreso de nuevos productos
+          <i class="fa-thin fa-clipboard-list-check"></i> Ingreso de nuevos
+          productos
         </h1>
         <br />
 
