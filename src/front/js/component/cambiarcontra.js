@@ -27,14 +27,20 @@ export const Cambiarcontra = () => {
             title: "Se enviara un mail a tu correo electronico",
             text: "Consejo: revisa tu bandeja de Spam, si ves que el mail de solicitud de nueva contraseña, no te llega a tu bandeja de entrada",
             icon: "success",
-            button: "Aceptar",
+            buttons:{
+                confirm: {
+                    text: 'Aceptar',
+                    className: 'sweet-warning'
+                }
+
+            },
             timer: "10000"
         })
     };
 
     return (
         <>
-            <div className="container">
+            <div className="container vh-100">
                 <br/>
                 <div style={
                         {width: "100%"}
@@ -56,7 +62,7 @@ export const Cambiarcontra = () => {
                                     }
                                 }></h1>
                                 <h1 className="display-6 text-center">
-                                    <strong>Cambio de contraseña</strong>
+                                    <strong style={{color:"#A00404"}}>Cambio de contraseña</strong>
                                 </h1>
                                 <br/>
                                 <p className="ms-4 me-4">Introduce el email que tienes asociado a tu cuenta en Activa Fitness Club. Te enviaremos un email en el cual recibiran una nueva contraseña.</p>
@@ -73,7 +79,11 @@ export const Cambiarcontra = () => {
 
                                 <div className="d-grid gap-2 ms-4 me-4">
 
-                                    <button type="submit" className="btn btn-outline-danger text-dark p-4"
+                                    <button type="submit" className="btn btn-danger p-4 border border-white"
+                                        style={{
+                                            background: "#A00404",
+                                            color:"white"
+                                          }}
                                         onClick={envioMail}>
                                         Solicitar nueva contraseña
                                     </button>
