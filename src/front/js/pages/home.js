@@ -119,26 +119,25 @@ export const Home = () => {
                 height: "100%",
               }}
             >
+              {/* Imagen */}
               <img
                 src={logoActiva}
                 style={{
-                  width: "85%",
-                  //height: "50%",
+                  width: "75%",
                   marginTop: "-20px",
                   position: "relative",
                   filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
-                  marginRight: "90px",
+                  marginRight: "60px",
                 }}
               />
             </div>
             <div
               className="container-md"
               style={{
-                widht: "60%",
+                width: "60%",
                 position: "relative",
-                //margin: "5px",
-                marginLeft: "15px",
-                marginBottom: "80px",
+                marginLeft: "10px",
+                marginBottom: "40px",
               }}
             >
               <p
@@ -148,7 +147,7 @@ export const Home = () => {
                   color: "#c7ecee",
                 }}
               >
-                Filosofía
+                <b>Filosofía</b>
               </p>
               <p
                 style={{
@@ -170,86 +169,81 @@ export const Home = () => {
         </div>
         <hr className="text-light" />
         {/* FIN Filosofia */}
-        {/* PORTADA */}
-        <main
+
+        {/* Quienes somos */}
+        <div
+          className="container-md"
           style={{
-            width: "100%",
-            position: "relative",
-            padding: "40px",
-            margin: "auto",
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "80px",
           }}
         >
           <div
             className="container-md"
             style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "60px",
+              width: "60%",
+              position: "relative",
+              marginLeft: "5px",
+              marginBottom: "80px",
             }}
           >
-            <div
-              className="container-md"
+            <p
+              className="display-5"
+              style={{ fontSize: "50px", color: "#c7ecee" }}
+            >
+              {" "}
+              <b>¿Quiénes somos? </b>
+            </p>
+            <p
               style={{
-                widht: "60%",
-                position: "relative",
-                //margin: "5px",
-                marginLeft: "15px",
-                marginBottom: "80px",
+                fontSize: "18px",
+                marginRight: "5px",
+                textAlign: "justify",
+                color: "white",
               }}
             >
-              <p
-                className="display-5"
-                style={{ fontSize: "50px", color: "#c7ecee" }}
+              Somos un Centro de Fitness con un enfoque integral del
+              entrenamiento, buscando no solo mejorar tu rendimiento físico sino
+              también potenciar el valor humano.
+            </p>
+            <div>
+              <button
+                className="btn btn-dark"
+                style={{ marginTop: "35px" }}
+                onClick={() =>
+                  (window.location.href =
+                    "https://api.whatsapp.com/send?phone=59899626792")
+                }
               >
-                ¿Quiénes somos?
-              </p>
-              <p
-                style={{
-                  fontSize: "18px",
-                  marginRight: "35px",
-                  textAlign: "justify",
-                  color: "white",
-                }}
-              >
-                Somos un Centro de Fitness con un enfoque integral del
-                entrenamiento, buscando no solo mejorar tu rendimiento físico
-                sino también potenciar el valor humano.
-              </p>
-              <div>
-                <button
-                  className="btn btn-outline-dark"
-                  style={{ marginTop: "35px" }}
-                  onClick={() =>
-                    (window.location.href =
-                      "https://api.whatsapp.com/send?phone=59899626792")
-                  }
-                >
-                  Contactate con nosotros
-                </button>
-              </div>
-            </div>
-
-            <div
-              className="media cover"
-              style={{ width: "100%", height: "100%" }}
-            >
-              <ReactPlayer
-                url="https://www.youtube.com/watch?v=W96ITkVBRDE"
-                controls
-                playing
-                muted
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  marginTop: "-40px",
-                }}
-              ></ReactPlayer>
+                Contactate con nosotros
+              </button>
             </div>
           </div>
-        </main>
+
+          {/* Video presentacion */}
+          <div
+            className="d-flex justify-content-end"
+            style={{ width: "100%", height: "100%" }}
+          >
+            <ReactPlayer
+              url="https://www.youtube.com/watch?v=W96ITkVBRDE"
+              controls
+              playing
+              muted
+              style={{
+                width: "100%",
+                height: "100%",
+                marginTop: "-40px",
+                marginBottom: "40px",
+              }}
+            ></ReactPlayer>
+          </div>
+        </div>
         <hr className="text-light" />
         {/* FIN DE QUIENES SOMOS */}
-        {/* CUADRADO NEGRO CON PESA-NUESTROS PLANES */}
+
+        {/* PESA-NUESTROS PLANES */}
         <div className="container " style={{ marginTop: "60px" }}>
           <div
             className="container"
@@ -269,22 +263,23 @@ export const Home = () => {
                 height: "100%",
               }}
             >
+              {/* Imagen de pesa */}
               <img
                 src="https://cdn.pixabay.com/photo/2016/03/31/19/34/black-1295124_960_720.png"
                 alt=""
                 style={{
-                  width: "115%",
-                  marginTop: "20px",
+                  width: "85%",
+                  marginTop: "-20px",
+                  marginBottom: "40px",
                   position: "relative",
                   filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
-                  marginRight: "90px",
                 }}
               />
             </div>
             <div
               className="container"
               style={{
-                widht: "60%",
+                width: "60%",
                 position: "relative",
                 margin: "5px",
                 marginLeft: "15px",
@@ -297,7 +292,8 @@ export const Home = () => {
                   color: "#c7ecee",
                 }}
               >
-                Nuestros planes
+                {" "}
+                <b>Nuestros planes </b>
               </p>
               <p
                 style={{
@@ -317,10 +313,15 @@ export const Home = () => {
           </div>
         </div>
         <hr className="text-light" />
-        {/* CUADRADO NEGRO CON PELADO */}
-        <div className="container" style={{ marginTop: "60px" }}>
+        {/* FIN NUESTROS PLANES */}
+
+        {/* Entrenamiento personalizado */}
+        <div
+          className="pt-5 pb-5 mt-5"
+          style={{ marginTop: "60px", width: "100%" }}
+        >
           <div
-            className="container"
+            className="container-md"
             style={{
               width: "100%",
               height: "100%",
@@ -330,31 +331,14 @@ export const Home = () => {
               borderBox: "none",
             }}
           >
+            {/* Texto */}
             <div
-              className="container"
+              className="container-md"
               style={{
-                width: "40%",
-                height: "100%",
-              }}
-            >
-              <img
-                src={pelado}
-                style={{
-                  width: "105%",
-                  marginTop: "10px",
-                  position: "relative",
-                  filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
-                  marginLeft: "560px",
-                }}
-              />
-            </div>
-            <div
-              className="container text"
-              style={{
-                widht: "60%",
+                width: "75%",
                 position: "relative",
-                margin: "5px",
-                marginRight: "35px",
+                marginLeft: "10px",
+                marginRight: "20px",
               }}
             >
               <p
@@ -362,29 +346,47 @@ export const Home = () => {
                 style={{
                   fontSize: "50px",
                   color: "#c7ecee",
-                  marginLeft: "-375px",
                 }}
               >
-                Entrenamiento personalizado
+                <b>Entrenamiento personalizado</b>
               </p>
               <p
                 style={{
                   fontSize: "18px",
                   textAlign: "justify",
                   color: "white",
-                  marginLeft: "-375px",
-                  marginRight: "280px",
                 }}
               >
-                Por otro lado la modalidad de entrenamiento grupal esta mas
-                enfocada en el dinamismo y la intensidad, el compañerismo y el
-                trabajo en equipo. Prima la constante búsqueda de variar los
-                escenarios de entrenamiento.
+                La modalidad de entrenamiento grupal esta mas enfocada en el
+                dinamismo y la intensidad, el compañerismo y el trabajo en
+                equipo. Prima la constante búsqueda de variar los escenarios de
+                entrenamiento.
               </p>
+            </div>
+
+            {/* Profesor */}
+            <div
+              className="container-md"
+              style={{
+                width: "38%",
+              }}
+            >
+              {/* Imagen */}
+              <img
+                src={pelado}
+                style={{
+                  width: "100%",
+                  marginTop: "-70px",
+                  position: "relative",
+                  filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
+                }}
+              />
             </div>
           </div>
         </div>
         <hr className="text-light" />
+        {/* FIN Entrenamiento personalizado */}
+
         {/* Entrenamiento funcional */}
         <div
           className="container"
@@ -401,27 +403,28 @@ export const Home = () => {
               borderBox: "none",
             }}
           >
+            {/* Imagen */}
             <div
               className="container"
               style={{
                 width: "40%",
-                height: "100%",
               }}
             >
               <img
                 src={pelota}
                 style={{
-                  width: "100%",
-                  marginTop: "30px",
+                  width: "85%",
+                  marginTop: "-10px",
+                  marginRight: "20px",
                   position: "relative",
                   filter: "drop-shadow (-40px 0px 30px rgba(0,0,0,0.5))",
                 }}
               />
             </div>
+            {/* Texto */}
             <div
-              className="container text"
+              className="container"
               style={{
-                widht: "60%",
                 position: "relative",
                 margin: "5px",
               }}
@@ -433,7 +436,7 @@ export const Home = () => {
                   color: "#c7ecee",
                 }}
               >
-                Entrenamiento funcional
+                <b>Entrenamiento funcional</b>
               </p>
               <p
                 style={{
@@ -455,12 +458,12 @@ export const Home = () => {
           </div>
         </div>
         <hr className="text-light" />
-        <div
-          className="container"
-          style={{ marginTop: "60px", marginBottom: "60px" }}
-        >
+        {/* Fin entrenamiento funcional */}
+
+        {/* Ubicacion */}
+        <div className="pt-5 pb-5 mt-5" style={{ width: "100%" }}>
           <div
-            className="container"
+            className="container-md"
             style={{
               width: "100%",
               height: "100%",
@@ -470,29 +473,14 @@ export const Home = () => {
               borderBox: "none",
             }}
           >
+            {/* Texto */}
             <div
-              className="container"
+              className="container-md"
               style={{
-                width: "40%",
-                height: "100%",
-              }}
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.351810195052!2d-57.8423841850913!3d-34.46859845786764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a313f2236d1c15%3A0x6c5d7dcbab5d10d6!2sActiva%20Fitness%20Club!5e0!3m2!1ses!2suy!4v1668024931885!5m2!1ses!2suy"
-                width="100%"
-                height="100%"
-                style={{ border: "0", marginLeft: "500px", marginTop: "40px" }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-            <div
-              className="container text"
-              style={{
-                widht: "60%",
+                width: "60%",
                 position: "relative",
-                margin: "5px",
+                marginLeft: "10px",
+                marginTop: "-20px",
               }}
             >
               <p
@@ -500,24 +488,42 @@ export const Home = () => {
                 style={{
                   fontSize: "50px",
                   color: "#c7ecee",
-                  marginLeft: "-375px",
                 }}
               >
-                Ubicación
+                <b>¿Dónde estamos?</b>
               </p>
               <p
                 style={{
                   fontSize: "18px",
                   textAlign: "justify",
                   color: "white",
-                  marginLeft: "-375px",
                 }}
               >
                 Encontranos en Fosalba 674, Colonia del Sacramento
               </p>
             </div>
+            {/* Mapa */}
+            <div
+              className="container-md"
+              style={{
+                width: "80%",
+                height: "70%",
+              }}
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.351810195052!2d-57.8423841850913!3d-34.46859845786764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a313f2236d1c15%3A0x6c5d7dcbab5d10d6!2sActiva%20Fitness%20Club!5e0!3m2!1ses!2suy!4v1668024931885!5m2!1ses!2suy"
+                width="100%"
+                height="100%"
+                style={{ border: "0", marginTop: "-40px" }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
         </div>
+        {/* <hr className="text-light" /> */}
+        {/* Fin de la ubicacion */}
       </div>
     </>
   );
