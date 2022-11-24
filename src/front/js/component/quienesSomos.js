@@ -310,16 +310,15 @@ export const QuienesSomos = () => {
                         </p>
                         <p className="card-text">
                           <small className="text-muted">
-                            {" "}
-                            {/* <img
-                          src={lk}
-                          className="card-img-top rounded-circle float-end"
-                          style={{ margin: "10px", width: "12%" }}
-                          onClick={() =>
-                            (window.location.href =
-                              "https://www.linkedin.com/in/juan-moreira-a0813b257/")
-                          }
-                        /> */}
+                            <img
+                              src={lk}
+                              className="card-img-top rounded-circle float-end"
+                              style={{ margin: "10px", width: "12%" }}
+                              onClick={() =>
+                                (window.location.href =
+                                  "https://www.linkedin.com/in/norbis-silvera/")
+                              }
+                            />
                             <a href="/contacto/1">
                               <img
                                 src={mail}
